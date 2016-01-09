@@ -8,42 +8,23 @@
 # use gtk for java apps
 export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=on -Dswing.aatext=true -Dswing.defaultlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel -Dswing.crossplatformlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel'
 
-## OVERALL CONDITIONALS {{{
-_islinux=false
-[[ "$(uname -s)" =~ Linux|GNU|GNU/* ]] && _islinux=true
-
-_isarch=false
-[[ -f /etc/arch-release ]] && _isarch=true
-
-_isxrunning=false
-[[ -n "$DISPLAY" ]] && _isxrunning=true
-
-_isroot=false
-[[ $UID -eq 0 ]] && _isroot=true
-# }}}
-
-# export PROMPT_COMMAND='echo -ne "\033]0;$PWD\007"'
-
-# Sets command prompt format
-PS1='[\u@\h \W]\$ '
-
 ## PS1 CONFIG {{{
+  _isxrunning=false
+  [[ -n "$DISPLAY" ]] && _isxrunning=true
+  PS1='[\u@\h \W]\$ '
+
   [[ -f $HOME/.dircolors ]] && eval $(dircolors -b $HOME/.dircolors)
+  export TERM='xterm-256color'
   if $_isxrunning; then
-
-    [[ -f $HOME/.dircolors_256 ]] && eval $(dircolors -b $HOME/.dircolors_256)
-
-    export TERM='xterm-256color'
-
-     B='\[\e[1;34m\]'
+    B='\[\e[1;34m\]'
     LB='\[\e[34m\]'
     GY='\[\e[1;30m\]'
-     G='\[\e[30m\]'
-     P='\[\e[36m\]'
+    G='\[\e[30m\]'
+    P='\[\e[36m\]'
     PP='\[\e[37m\]'
-     R='\[\e[35m\]'
-     Y='\[\e[0m\]'
-     W='\[\e[0m\]'
+    R='\[\e[35m\]'
+    Y='\[\e[0m\]'
+    W='\[\e[0m\]'
 
     get_prompt_symbol() {
       [[ $UID == 0 ]] && echo "#" || echo "\$"
@@ -57,12 +38,10 @@ PS1='[\u@\h \W]\$ '
       export GIT_PS1_SHOWSTASHSTATE=1
       export GIT_PS1_SHOWUNTRACKEDFILES=0
 
-          export PS1="$GY[$Y\u$GY@$P\h$GY:$B\W\$(__git_ps1 \"$GY|$LB%s\")$GY]$W\$(get_prompt_symbol) "
-else
+      export PS1="$GY[$Y\u$GY@$P\h$GY:$B\W\$(__git_ps1 \"$GY|$LB%s\")$GY]$W\$(get_prompt_symbol) "
+    else
       export PS1="$GY[$Y\u$GY@$P\h$GY:$B\W$GY]$W\$(get_prompt_symbol) "
     fi
-  else
-    export TERM='xterm-256color'
   fi
 #}}}
 
