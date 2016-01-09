@@ -4,11 +4,9 @@
     format = "%I <b>%s %p</b>\n%b"
     sort = yes
     indicate_hidden = true
-    # geometry = "x5"
     idle_threshold = 0
     ignore_newline = yes
     geometry = "300x5-10+20"
-    #geometry = "300x5-30+20" # geometry [{width}]x{height}][+/-{x}+/-{y}]
     alignment = center
     show_age_threshold = 60
     sticky_history = yes
@@ -26,11 +24,11 @@
     dmenu = "/usr/bin/dmenu -p dunst: -nb #FFFFFF -nf #000000 -sb #94DBFF -sf #000000"
     browser = /usr/bin/firefox -new-tab
     show_icons = left
-    icon_folders = /usr/share/icons/Paper/16x16/status/:/usr/share/icons/Paper/16x16/devices/
+    icon_folders = /usr/share/icons/Paper/16x16/status/:/usr/share/icons/Paper/16x16/devices/:/usr/share/icons/Paper/16x16/apps/:/usr/share/icons/Paper/16x16/actions/:/usr/share/icons/Paper/16x16/places/:/usr/share/icons/Paper/16x16/panels/:/usr/share/icons/Paper/16x16/categories/:/usr/share/icons/Paper/16x16/mimetypes/
 
 [frame]
-    width = 3
-    color = "#aaaaaa"
+    width = 1
+    color = "#999999"
 
 [shortcuts]
     close = ctrl+space
