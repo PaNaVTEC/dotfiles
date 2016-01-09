@@ -14,6 +14,4 @@ case $BLOCK_BUTTON in
     1) i3-msg layout tabbed ;; #left click tabbed layout
     2) i3-msg layout stacked ;; #middle click stacked
     3) i3-msg layout toggle split ;; #right click
-    4) rofi -show window ;; #scroll down jump to window
-    5) rofi-getwindow ;; #scroll up move window to current
 esac
