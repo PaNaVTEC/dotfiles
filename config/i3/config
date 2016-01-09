@@ -144,11 +144,13 @@ bindsym XF86AudioRaiseVolume exec amixer -D pulse sset Master 5%+ unmute && pkil
 bindsym XF86AudioLowerVolume exec amixer -D pulse sset Master 5%- && pkill -RTMIN+1 i3blocks
 bindsym $mod+XF86AudioRaiseVolume exec amixer -D pulse sset Master 2%+ unmute && pkill -RTMIN+1 i3blocks
 bindsym $mod+XF86AudioLowerVolume exec amixer -D pulse sset Master 2%- && pkill -RTMIN+1 i3blocks
-bindsym XF86AudioMute exec amixer sset Master toggle && pkill -RTMIN+1 i3blocks
+bindsym XF86AudioMute exec amixer -D pulse sset Master toggle && pkill -RTMIN+1 i3blocks
 bindsym XF86AudioMicMute exec "amixer -D pulse sset Capture toggle" && pkill -RTMIN+1 i3blocks
 
-bindsym XF86KbdBrightnessDown exec "sudo /opt/kbdlight/bin/kbdlight -"
-bindsym XF86KbdBrightnessUp exec "sudo /opt/kbdlight/bin/kbdlight +"
+bindsym XF86KbdBrightnessDown exec xbacklight -dec 5
+bindsym XF86KbdBrightnessUp exec xbacklight -inc 5
+bindsym XF86MonBrightnessDown exec xbacklight -dec 5
+bindsym XF86MonBrightnessUp exec xbacklight -inc 5
 bindsym XF86TouchpadToggle exec "synclient TouchpadOff=$(synclient | awk '/TouchpadOff/ {print ($3+1)%2}')"
 
 bindsym XF86Display exec "arandr"
