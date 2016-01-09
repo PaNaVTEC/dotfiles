@@ -74,6 +74,6 @@ case $BLOCK_BUTTON in
   3) dpmstoggle ;; # left click, control DPMS
   2) togglered ;;  # right click, redshift on/off
   1) getacpi "$@" &>/dev/null ;; # yad dialog with battery info
-  5) xbacklight -inc 10 ;; # scroll up, increase brightness
-  4) xbacklight -dec 10 ;; # scroll down, decrease brightness
+  4) xbacklight -inc 10 ;; # scroll up, increase brightness
+  5) xbacklight -dec 10 ;; # scroll down, decrease brightness
 esac
