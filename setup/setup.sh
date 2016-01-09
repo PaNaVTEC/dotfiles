@@ -123,4 +123,4 @@ ask "Install configuration for bin?" Y && ln -sfn ${dir}/bin ${HOME}/.bin
 ask "Install configuration for i3?" Y && ln -sfn ${dir}/config/i3 ${HOME}/.config/i3
 ask "Install configuration for i3blocks?" Y && ln -sfn ${dir}/.i3blocks.conf ${HOME}/.i3blocks.conf; ln -sfn ${dir}/config/i3blocks ${HOME}/.config/i3blocks
 ask "Install configuration for dunst?" Y && ln -sfn ${dir}/config/dunst ${HOME}/.config/dunst
-ask "Install configuration for termite?" Y && ln -sfn ${dir}/config/termite ${HOME}/.config/termite
+ask "Install configuration for termite?" Y && ln -sfn ${dir}/config/termite ${HOME}/.config/termite; ln -sfn ${dir}/.dircolors ${HOME}/.dircolors;
