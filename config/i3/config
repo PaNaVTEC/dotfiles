@@ -1,0 +1,216 @@
+# i3 config file PaNaVTEC
+#
+# Please see http://i3wm.org/docs/userguide.html for a complete reference!
+
+#only Workspace variables
+set $WS1 1 
+set $WS2 2 
+set $WS3 3 
+set $WS4 4 
+set $WS5 5 
+set $WS6 6 
+set $WS7 7 7
+set $WS8 8 
+set $WS9 9 
+set $WS0 10 10
+
+# Apps assigned to workspaces
+assign [instance="urxvt|ws1_termite|gnome-terminal"] $WS1
+assign [window_role="browser"] $WS2
+assign [class="Scudcloud"] $WS4
+assign [class="Pidgin"] $WS4
+assign [class="jetbrains(?)"] $WS3
+assign [class="genymotion"] $WS3
+assign [class="Genymotion Player"] $WS3
+assign [instance="subl3|sublime_text"] $WS5
+assign [instance="atom"] $WS5
+assign [instance="thunar"] $WS6
+assign [class="^(?i)vlc$"] $WS8
+assign [class="Spotify"] $WS8
+
+#Apps without borders
+#for_window [class="Firefox"] border 1pixel
+#for_window [class="Scudcloud"] border 1pixel
+new_window 1pixel
+
+#layout
+for_window [workspace="$WS3|$WS5"] layout tabbed
+
+#Sets the modifier to the Windows key
+set $mod Mod4
+
+# fonts
+font pango:Roboto 10, FontAwesome Regular 10
+
+# Move windows with mouse+$mod
+floating_modifier $mod
+
+# Keybindings
+bindsym $mod+Return exec termite
+bindsym $mod+Shift+q kill
+bindsym $mod+d exec j4-dmenu-desktop
+bindsym $mod+Tab exec --no-startup-id quickswitch.py -d "dmenu -b -i -l 20 -nb \#285577 -nf \#FFFFFF -sb \#B9D5EF -sf \#3E719F"
+bindsym Shift+Print exec ~/.bin/scrot-with-message -s
+bindsym $mod+i exec google-chrome-stable --incognito
+
+# change focus
+bindsym $mod+j focus left
+bindsym $mod+Left focus left
+bindsym $mod+k focus down
+bindsym $mod+Down focus down
+bindsym $mod+l focus up
+bindsym $mod+Up focus up
+bindsym $mod+semicolon focus right
+bindsym $mod+Right focus right
+
+# move focused window
+bindsym $mod+Shift+j move left
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+k move down
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+l move up
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+semicolon move right
+bindsym $mod+Shift+Right move right
+
+#move workspace to monitors
+bindsym $mod+Shift+Control+Left exec i3-msg move workspace to output left
+bindsym $mod+Shift+Control+Right exec i3-msg move workspace to output right
+
+#float windows
+for_window [instance="pavucontrol"] floating enable
+for_window [class="genymotion"] floating enable
+for_window [class="Wicd-client.py"] floating enable
+
+# split in horizontal orientation
+bindsym $mod+h split h
+
+# split in vertical orientation
+bindsym $mod+v split v
+
+# enter fullscreen mode for the focused container
+bindsym $mod+f fullscreen toggle
+
+# change container layout (stacked, tabbed, toggle split)
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
+
+# toggle tiling / floating
+bindsym $mod+Shift+space floating toggle
+
+# change focus between tiling / floating windows
+bindsym $mod+space focus mode_toggle
+
+# focus the parent container
+bindsym $mod+a focus parent
+
+# focus the child container
+#bindsym $mod+d focus child
+
+# switch to workspace
+bindsym $mod+1 workspace $WS1
+bindsym $mod+2 workspace $WS2
+bindsym $mod+3 workspace $WS3
+bindsym $mod+4 workspace $WS4
+bindsym $mod+5 workspace $WS5
+bindsym $mod+6 workspace $WS6
+bindsym $mod+7 workspace $WS7
+bindsym $mod+8 workspace $WS8
+bindsym $mod+9 workspace $WS9
+bindsym $mod+0 workspace $WS0
+
+# move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace $WS1
+bindsym $mod+Shift+2 move container to workspace $WS2
+bindsym $mod+Shift+3 move container to workspace $WS3
+bindsym $mod+Shift+4 move container to workspace $WS4
+bindsym $mod+Shift+5 move container to workspace $WS5
+bindsym $mod+Shift+6 move container to workspace $WS6
+bindsym $mod+Shift+7 move container to workspace $WS7
+bindsym $mod+Shift+8 move container to workspace $WS8
+bindsym $mod+Shift+9 move container to workspace $WS9
+bindsym $mod+Shift+0 move container to workspace $WS0
+
+# reload the configuration file
+bindsym $mod+Shift+c reload
+# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+bindsym $mod+Shift+r restart
+# exit i3 (logs you out of your X session)
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+
+# Volume keys
+bindsym XF86AudioRaiseVolume exec amixer -D pulse sset Master 5%+ unmute && pkill -RTMIN+1 i3blocks
+bindsym XF86AudioLowerVolume exec amixer -D pulse sset Master 5%- && pkill -RTMIN+1 i3blocks
+bindsym $mod+XF86AudioRaiseVolume exec amixer -D pulse sset Master 2%+ unmute && pkill -RTMIN+1 i3blocks
+bindsym $mod+XF86AudioLowerVolume exec amixer -D pulse sset Master 2%- && pkill -RTMIN+1 i3blocks
+bindsym XF86AudioMute exec amixer sset Master toggle && pkill -RTMIN+1 i3blocks
+bindsym XF86AudioMicMute exec "amixer -D pulse sset Capture toggle" && pkill -RTMIN+1 i3blocks
+
+bindsym XF86KbdBrightnessDown exec "sudo /opt/kbdlight/bin/kbdlight -"
+bindsym XF86KbdBrightnessUp exec "sudo /opt/kbdlight/bin/kbdlight +"
+bindsym XF86TouchpadToggle exec "synclient TouchpadOff=$(synclient | awk '/TouchpadOff/ {print ($3+1)%2}')"
+
+bindsym XF86Display exec "arandr"
+
+# resize window (you can also use the mouse for that)
+set $resize "  "
+bindsym $mod+r mode $resize
+mode $resize {
+        bindsym j resize shrink width 10 px or 10 ppt
+        bindsym k resize grow height 10 px or 10 ppt
+        bindsym l resize shrink height 10 px or 10 ppt
+        bindsym semicolon resize grow width 10 px or 10 ppt
+        bindsym Left resize shrink width 10 px or 10 ppt
+        bindsym Down resize grow height 10 px or 10 ppt
+        bindsym Up resize shrink height 10 px or 10 ppt
+        bindsym Right resize grow width 10 px or 10 ppt
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+#lockscreen
+set $Locker ~/.bin/ilockit && sleep 1
+bindsym $mod+Escape exec $Locker
+
+# Shutdown / reboot...
+set $mode_system System (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, (Shift+s) shutdown
+mode "$mode_system" {
+    bindsym l exec --no-startup-id $Locker, mode "default"
+    bindsym e exec --no-startup-id i3-msg exit, mode "default"
+    bindsym s exec --no-startup-id $Locker && systemctl suspend, mode "default"
+    bindsym h exec --no-startup-id $Locker && systemctl hibernate, mode "default"
+    bindsym r exec --no-startup-id systemctl reboot, mode "default"
+    bindsym Shift+s exec --no-startup-id systemctl poweroff -i, mode "default"
+
+    # back to normal: Enter or Escape
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+bindsym $mod+End mode "$mode_system"
+
+bar {
+      	position top
+        status_command i3blocks
+        workspace_buttons yes
+        tray_padding 3
+        # tray_output primary
+        colors {
+               separator #586e75
+               background #2d2d2d
+               statusline #c7c7c7
+               focused_workspace  #586e75 #586e75 #ffffff
+               active_workspace #2d2d2d #2d2d2d #ffffff
+               inactive_workspace #455057 #455057 #c7c7c7
+               urgent_workspace #ae4544 #ae4544 #ffffff
+        }
+}
+
+#other
+focus_follows_mouse no
+
+# Monitor last configuration
+# exec --no-startup-id sh ~/.bin/monitor.sh
+exec --no-startup-id feh --bg-scale ~/Pictures/pict.jpg
+exec --no-startup-id wicd-client --tray
+exec --no-startup-id dropbox &
+exec --no-startup-id blueman-applet

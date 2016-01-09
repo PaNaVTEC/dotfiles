@@ -1,0 +1,19 @@
+#!/bin/bash
+TITLE=$(~/.bin/spoticontrol.sh getTitle)
+
+if [ "$(pidof spotify)" = "" ]
+then
+  echo " <span foreground='#A3685A'> X</span>"
+  exit
+fi
+
+echo "  $TITLE"
+
+#-----------------------------------------------------------------------
+# mouse buttons
+
+case $BLOCK_BUTTON in
+    1) ~/.bin/spoticontrol.sh play ;;
+    4) ~/.bin/spoticontrol.sh prev ;;
+    5) ~/.bin/spoticontrol.sh next ;;
+esac

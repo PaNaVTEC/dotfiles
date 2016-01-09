@@ -1,0 +1,17 @@
+#!/bin/sh
+WIN=$(xdotool getactivewindow) 
+
+if [ -n "$WIN" ]; 
+   then 
+       #echo "<span font='10' weight='light' foreground='#A3685A'>🞩</span>"
+       echo "<span font='10.5' foreground='#A3685A'>⊗</span>"
+   else 
+       exit 0
+   fi
+
+case $BLOCK_BUTTON in
+  3) sh -c xkill "$@" &>/dev/null ;; #right click kill app
+  1) i3-msg kill ;; #left click close app
+  4) i3-msg focus right ;; #scroll up, focus window right 
+  5) i3-msg focus left ;; #scroll down, focus window left
+esac

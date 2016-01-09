@@ -1,0 +1,16 @@
+#!/bin/sh
+WIN=$(xdotool getactivewindow) 
+if [ -n "$WIN" ]; 
+   then 
+       #echo "<span font='8' weight='normal' foreground='#969896'>🗖</span>"
+       echo "<span font='10.5' foreground='#6C9770'>⊕</span>"
+   else 
+       exit 0
+    fi
+
+case $BLOCK_BUTTON in
+  1) i3-msg floating toggle ;; #left click 
+  3) i3-msg layout toggle split ;; #right click
+  4) i3-msg focus right ;; #scroll up, focus window right 
+  5) i3-msg focus left ;; #scroll down, focus window left
+esac

@@ -1,0 +1,17 @@
+#!/bin/sh
+WIN=$(xdotool getactivewindow) 
+if [ -n "$WIN" ]; 
+   then 
+       #echo "<span font='10' weight='heavy' foreground='#586E75'>-</span>"
+       echo "<span font='10.5' foreground='#97976C'>⊖</span>"
+   else 
+       exit 0
+   fi
+
+case $BLOCK_BUTTON in
+  1) i3-msg move scratchpad ;; #left click
+  2) i3-msg 'floating enable; resize set 422 240; sticky enable; move position 933 518' ;; #middle click, sticky window in corner 
+  3) i3-msg scratchpad show ;; #right click show scratchpad
+  4) i3-msg focus right ;; #scroll up, focus window right 
+  5) i3-msg focus left ;; #scroll down, focus window left
+esac
