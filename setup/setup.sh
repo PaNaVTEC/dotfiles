@@ -45,7 +45,8 @@ installi3() {
     xdotool \
     feh \
     unclutter \
-    scrot
+    scrot \
+    htop
 }
 
 installFonts() {
