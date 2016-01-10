@@ -224,10 +224,10 @@ orphans() {
 }
 
 # Paths
-export PATH=${PATH}:/home/panavtec/Android/Sdk/tools/
-export PATH=${PATH}:/home/panavtec/Android/Sdk/platform-tools/
+export PATH=${PATH}:~/Android/Sdk/tools/
+export PATH=${PATH}:~/Android/Sdk/platform-tools/
 export PATH=${PATH}:/opt/pypy3/bin/
-export PATH=${PATH}:/home/panavtec/.bin/
+export PATH=${PATH}:~/.bin/
 
 #Current aliases
 alias ls='ls --color=auto'
@@ -242,5 +242,5 @@ setxkbmap -layout us -variant altgr-intl -option nodeadkeys
 eval $(dircolors ~/.dircolors)
 
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
-export SDKMAN_DIR="/home/panavtec/.sdkman"
-[[ -s "/home/panavtec/.sdkman/bin/sdkman-init.sh" ]] && source "/home/panavtec/.sdkman/bin/sdkman-init.sh"
+export SDKMAN_DIR="~/.sdkman"
+[[ -s "~/.sdkman/bin/sdkman-init.sh" ]] && source "~/.sdkman/bin/sdkman-init.sh"

@@ -47,8 +47,12 @@ installi3() {
     unclutter \
     scrot \
     htop \
+    python-pip \
     gsimplecal \
     xorg-xbacklight
+    # Window switcher
+    sudo pip install i3-py
+    sudo pip install quickswitch-i3
 }
 
 installFonts() {
