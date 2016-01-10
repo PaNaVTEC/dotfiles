@@ -3,13 +3,14 @@
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
 
 #only Workspace variables
+# To convert from font awesome U+f1d3 to symbol: https://r12a.github.io/apps/conversion/
 set $WS1 1 
 set $WS2 2 
 set $WS3 3 
 set $WS4 4 
 set $WS5 5 
 set $WS6 6 
-set $WS7 7 7
+set $WS7 7 
 set $WS8 8 
 set $WS9 9 
 set $WS0 10 10
