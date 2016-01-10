@@ -17,6 +17,8 @@ set $WS0 10 10
 
 # Apps assigned to workspaces
 assign [instance="urxvt|ws1_termite|gnome-terminal"] $WS1
+assign [class="stremio"] $WS8
+assign [instance="atom"] $WS5
 assign [window_role="browser"] $WS2
 assign [class="Scudcloud"] $WS4
 assign [class="Pidgin"] $WS4
@@ -24,7 +26,6 @@ assign [class="jetbrains(?)"] $WS3
 assign [class="genymotion"] $WS3
 assign [class="Genymotion Player"] $WS3
 assign [instance="subl3|sublime_text"] $WS5
-assign [instance="atom"] $WS5
 assign [instance="thunar"] $WS6
 assign [class="^(?i)vlc$"] $WS8
 assign [class="Spotify"] $WS8
