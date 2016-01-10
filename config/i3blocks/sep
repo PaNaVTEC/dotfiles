@@ -1,8 +1,2 @@
 #!/bin/sh
-WIN=$(xdotool getactivewindow) 
-if [ -n "$WIN" ]; 
-   then 
-       echo "<span font_weight='bold' foreground='#586E75'>〉</span>"
-   else 
-       exit 0
-   fi
+echo "<span font_weight='bold' foreground='#586E75'>|</span>"
