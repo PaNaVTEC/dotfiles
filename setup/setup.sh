@@ -46,7 +46,9 @@ installi3() {
     feh \
     unclutter \
     scrot \
-    htop
+    htop \
+    gsimplecal \
+    xorg-xbacklight
 }
 
 installFonts() {
