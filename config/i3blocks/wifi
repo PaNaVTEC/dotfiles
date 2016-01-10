@@ -18,14 +18,14 @@ QUALITY=$(grep $INTERFACE /proc/net/wireless | awk '{ print int($3 * 100 / 70) }
 
 #------------------------------------------------------------------------
 
-  if [[ $QUALITY -ge 80 ]]; then
-      echo "<span foreground='#C5C8C6'></span><span foreground='#87AFAF'> $SSID</span>"
-  elif [[ $QUALITY -lt 80 ]]; then
-      echo "<span foreground='#C5C8C6'></span><span foreground='#87AFAF'> $SSID</span>"
-  elif [[ $QUALITY -lt 60 ]]; then
-      echo "<span foreground='#C5C8C6'></span><span foreground='#87AFAF'> $SSID</span>" #orange
-  elif [[ $QUALITY -lt 40 ]]; then
-      echo "<span foreground='#C5C8C6'></span><span foreground='#87AFAF'> $SSID</span>" #red
+if [[ $QUALITY -ge 80 ]]; then
+    echo "<span foreground='#C5C8C6'></span><span foreground='#87AFAF'> $SSID</span>"
+elif [[ $QUALITY -lt 80 ]]; then
+    echo "<span foreground='#C5C8C6'></span><span foreground='#87AFAF'> $SSID</span>"
+elif [[ $QUALITY -lt 60 ]]; then
+    echo "<span foreground='#ff8f00'></span><span foreground='#87AFAF'> $SSID</span>" #orange
+elif [[ $QUALITY -lt 40 ]]; then
+    echo "<span foreground='#ff0f00'></span><span foreground='#87AFAF'> $SSID</span>" #red
 fi
 
 #-----------------------------------------------------------------------
