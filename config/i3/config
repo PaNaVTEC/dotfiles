@@ -218,3 +218,4 @@ exec --no-startup-id feh --bg-scale ~/Pictures/pict.jpg
 exec --no-startup-id wicd-client --tray
 exec --no-startup-id dropbox &
 exec --no-startup-id blueman-applet
+exec --no-startup-id redshift &
