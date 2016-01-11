@@ -13,7 +13,7 @@ set $WS6 6 
 set $WS7 7 
 set $WS8 8 
 set $WS9 9 
-set $WS0 10 10
+set $WS0 10 
 
 # Apps assigned to workspaces
 assign [instance="urxvt|ws1_termite|gnome-terminal"] $WS1
@@ -29,6 +29,7 @@ assign [instance="subl3|sublime_text"] $WS5
 assign [instance="thunar"] $WS6
 assign [class="^(?i)vlc$"] $WS8
 assign [class="Spotify"] $WS8
+assign [title="TweetDeck"] $WS0
 
 #Apps without borders
 #for_window [class="Firefox"] border 1pixel
@@ -191,6 +192,25 @@ mode "$mode_system" {
     bindsym Escape mode "default"
 }
 bindsym $mod+End mode "$mode_system"
+
+set $mode_workspaces Go to workspace... 10+
+mode "$mode_workspaces" {
+  bindsym 1 exec i3-msg workspace 11, mode "default"
+  bindsym 2 exec i3-msg workspace 12, mode "default"
+  bindsym 3 exec i3-msg workspace 13, mode "default"
+  bindsym 4 exec i3-msg workspace 14, mode "default"
+  bindsym 5 exec i3-msg workspace 15, mode "default"
+  bindsym 6 exec i3-msg workspace 16, mode "default"
+  bindsym 7 exec i3-msg workspace 17, mode "default"
+  bindsym 8 exec i3-msg workspace 18, mode "default"
+  bindsym 9 exec i3-msg workspace 19, mode "default"
+  bindsym 0 exec i3-msg workspace 20, mode "default"
+
+  # back to normal: Enter or Escape
+  bindsym Return mode "default"
+  bindsym Escape mode "default"
+}
+bindsym $mod+Shift+w mode "$mode_workspaces"
 
 bar {
       	position top
