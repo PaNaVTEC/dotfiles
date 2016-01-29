@@ -51,7 +51,7 @@ floating_modifier $mod
 # Keybindings
 bindsym $mod+Return exec termite
 bindsym $mod+Shift+q kill
-bindsym $mod+d exec j4-dmenu-desktop
+bindsym $mod+d exec --no-startup-id j4-dmenu-desktop
 bindsym $mod+Tab exec --no-startup-id quickswitch.py -d "dmenu -b -i -l 20 -nb \#285577 -nf \#FFFFFF -sb \#B9D5EF -sf \#3E719F"
 bindsym Shift+Print exec ~/.bin/scrot-with-message -s
 bindsym $mod+i exec google-chrome-stable --incognito
@@ -82,6 +82,7 @@ bindsym $mod+Shift+Control+Right exec i3-msg move workspace to output right
 
 #float windows
 for_window [instance="pavucontrol"] floating enable
+for_window [instance="chrome_app_list"] floating enable
 for_window [class="genymotion"] floating enable
 for_window [class="Wicd-client.py"] floating enable
 
@@ -150,11 +151,15 @@ bindsym $mod+XF86AudioLowerVolume exec amixer -D pulse sset Master 2%- && pkill 
 bindsym XF86AudioMute exec amixer -D pulse sset Master toggle && pkill -RTMIN+1 i3blocks
 bindsym XF86AudioMicMute exec "amixer -D pulse sset Capture toggle" && pkill -RTMIN+1 i3blocks
 
+# Brightness
 bindsym XF86KbdBrightnessDown exec xbacklight -dec 5
 bindsym XF86KbdBrightnessUp exec xbacklight -inc 5
 bindsym XF86MonBrightnessDown exec xbacklight -dec 5
 bindsym XF86MonBrightnessUp exec xbacklight -inc 5
+
+#Touchpad
 bindsym XF86TouchpadToggle exec "synclient TouchpadOff=$(synclient | awk '/TouchpadOff/ {print ($3+1)%2}')"
+bindsym XF86Tools exec "synclient TouchpadOff=$(synclient | awk '/TouchpadOff/ {print ($3+1)%2}')"
 
 bindsym XF86Display exec "arandr"
 
