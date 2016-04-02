@@ -8,6 +8,8 @@
 # use gtk for java apps
 # export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=on -Dswing.aatext=true -Dswing.defaultlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel -Dswing.crossplatformlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel'
 
+export BROWSER=firefox
+
 ## PS1 CONFIG {{{
   _isxrunning=false
   [[ -n "$DISPLAY" ]] && _isxrunning=true
@@ -232,6 +234,10 @@ export PATH=${PATH}:~/.bin/
 #Current aliases
 alias ls='ls --color=auto'
 alias manupdate='sudo systemctl start man-db.service'
+alias ccat='pygmentize -g'
+alias ccatl='pygmentize -g -O style=colorful,linenos=1'
+alias wear_emulator='adb -d forward tcp:5601 tcp:5601'
+alias wear_device='adb forward tcp:4444 localabstract:/adb-hub; adb connect localhost:4444'
 
 # Sets the default editor for commands like visudo
 export EDITOR="$(if [[ -n $DISPLAY ]]; then echo 'atom'; else echo 'nano'; fi)"
