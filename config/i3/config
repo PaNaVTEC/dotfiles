@@ -25,7 +25,7 @@ assign [class="Scudcloud"] $WS4
 assign [instance="slack"] $WS4
 assign [class="Pidgin"] $WS4
 assign [class="Geary"] $WS5
-assign [instance="atom"] $WS6
+assign [class="Atom"] $WS6
 assign [instance="subl3|sublime_text"] $WS6
 assign [instance="gitkraken"] $WS7
 assign [class="stremio"] $WS8
@@ -39,6 +39,9 @@ assign [title="TweetDeck"] $WS0
 #for_window [class="Firefox"] border 1pixel
 #for_window [class="Scudcloud"] border 1pixel
 new_window 1pixel
+
+#Nyan saver full screen always
+for_window [title="^Nyanyanyanyanyanyanya...$"] mark "STATWIN", fullscreen enable
 
 #layout
 for_window [workspace="$WS3|$WS6"] layout tabbed
@@ -188,13 +191,14 @@ set $Locker ~/.bin/ilockit && sleep 1
 bindsym $mod+Escape exec $Locker
 
 # Shutdown / reboot...
-set $mode_system System (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, (Shift+s) shutdown
+set $mode_system System (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, (n) nyancat, (Shift+s) shutdown
 mode "$mode_system" {
     bindsym l exec --no-startup-id $Locker, mode "default"
     bindsym e exec --no-startup-id i3-msg exit, mode "default"
     bindsym s exec --no-startup-id $Locker && systemctl suspend, mode "default"
     bindsym h exec --no-startup-id $Locker && systemctl hibernate, mode "default"
     bindsym r exec --no-startup-id systemctl reboot, mode "default"
+    bindsym n exec --no-startup-id termite --exec=nyancat, mode "default"
     bindsym Shift+s exec --no-startup-id systemctl poweroff -i, mode "default"
 
     # back to normal: Enter or Escape
@@ -249,3 +253,4 @@ exec --no-startup-id wicd-client --tray
 exec --no-startup-id dropbox &
 exec --no-startup-id blueman-applet
 exec --no-startup-id redshift &
+exec --no-startup-id github-notify -c ~/.github_notify_config &
