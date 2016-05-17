@@ -242,7 +242,7 @@ alias wear_emulator='adb -d forward tcp:5601 tcp:5601'
 alias wear_device='adb forward tcp:4444 localabstract:/adb-hub; adb connect localhost:4444'
 
 # Sets the default editor for commands like visudo
-export EDITOR="$(if [[ -n $DISPLAY ]]; then echo 'atom'; else echo 'nano'; fi)"
+export EDITOR="$(if [[ -n $DISPLAY ]]; then echo 'subl'; else echo 'nano'; fi)"
 
 # Set keyboard to US
 setxkbmap -layout us -variant altgr-intl -option nodeadkeys
