@@ -108,6 +108,19 @@ installRedshift() {
   yaourt --noconfirm -S redshift
 }
 
+installScreensavers() {
+  echo "Installing screensavers"
+  sleep 2
+  yaourt --noconfirm -S nyancat
+}
+
+installBluetoothResumePatch() {
+  echo "Installing resume patch"
+  sleep 2
+  sudo cat 'ACTION=="add", KERNEL=="hci0", RUN+="/usr/bin/hciconfig hci0 up"' >> 
+/etc/udev/rules.d/10-local.rules
+}
+
 dir=`pwd`
 if [ ! -e "${dir}/${0}" ]; then
   echo "Script not called from within repository directory. Aborting."
@@ -138,3 +151,5 @@ ask "Install configuration for i3?" Y && ln -sfn ${dir}/config/i3 ${HOME}/.confi
 ask "Install configuration for i3blocks?" Y && ln -sfn ${dir}/.i3blocks.conf ${HOME}/.i3blocks.conf; mkdir ${HOME}/.config/i3blocks; ln -sfn ${dir}/config/i3blocks ${HOME}/.config/i3blocks
 ask "Install configuration for dunst?" Y && mkdir ${HOME}/.config/dunst; ln -sfn ${dir}/config/dunst ${HOME}/.config/dunst
 ask "Install configuration for termite?" Y && mkdir ${HOME}/.config/termite; ln -sfn ${dir}/config/termite ${HOME}/.config/termite; ln -sfn ${dir}/.dircolors ${HOME}/.dircolors;
+ask "Install screensavers?" Y && installScreensavers;
+ask "Install bluetooth resume patch?" Y && installBluetoothResumePatch;
