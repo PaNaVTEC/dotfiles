@@ -49,7 +49,11 @@ installi3() {
     htop \
     python-pip \
     gsimplecal \
-    xorg-xbacklight
+    xorg-xbacklight \
+    caja
+    # Default caja to file directories
+    gvfs-mime --set inode/directory caja.desktop
+    xdg-mime default caja.desktop inode/directory
     # Window switcher
     sudo pip install i3-py
     sudo pip install quickswitch-i3
@@ -84,7 +88,7 @@ installDevTools() {
       android-file-transfer \
       android-studio \
       diffmerge \
-      atom-editor \
+      sublime-text \
       genymotion \
       gitflow-git \
       smartgit
