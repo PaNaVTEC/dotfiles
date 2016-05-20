@@ -17,6 +17,7 @@ set $WS0 10 
 
 # Apps assigned to workspaces
 assign [instance="urxvt|ws1_termite|gnome-terminal"] $WS1
+assign [instance="nylas n1"] $WS5
 assign [window_role="browser"] $WS2
 assign [class="jetbrains(?)"] $WS3
 assign [class="genymotion"] $WS3
@@ -24,7 +25,6 @@ assign [class="Genymotion Player"] $WS3
 assign [class="Scudcloud"] $WS4
 assign [instance="slack"] $WS4
 assign [class="Pidgin"] $WS4
-assign [class="Geary"] $WS5
 assign [class="Atom"] $WS6
 assign [instance="subl3|sublime_text"] $WS6
 assign [instance="gitkraken"] $WS7
