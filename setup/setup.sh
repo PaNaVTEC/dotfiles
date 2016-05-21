@@ -50,6 +50,7 @@ installi3() {
     python-pip \
     gsimplecal \
     xorg-xbacklight \
+    jshon \
     caja
     # Default caja to file directories
     gvfs-mime --set inode/directory caja.desktop

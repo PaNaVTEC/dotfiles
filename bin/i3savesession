@@ -1,0 +1,7 @@
+#!/bin/bash
+(i3-msg -t get_workspaces | jshon -a -e name) | sed -e 's/^"//' -e 's/"$//' > ~/.data/workspacenames
+(i3-msg -t get_workspaces | jshon -a -e num) | sed -e 's/^"//' -e 's/"$//' > ~/.data/workspacenums
+
+while read p; do
+  i3-save-tree --workspace=$p | sed 's|// "cla|"cla|g' | sed 's|// "tran|"tran|g' | sed 's|// "wind|"wind|g' > ~/.data/workspace$p.json
+done <~/.data/workspacenums

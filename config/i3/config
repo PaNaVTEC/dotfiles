@@ -17,6 +17,7 @@ set $WS0 10 
 
 # Apps assigned to workspaces
 assign [instance="urxvt|ws1_termite|gnome-terminal"] $WS1
+assign [instance="franz"] $WS4
 assign [instance="nylas n1"] $WS5
 assign [window_role="browser"] $WS2
 assign [class="jetbrains(?)"] $WS3
@@ -199,7 +200,7 @@ mode "$mode_system" {
     bindsym h exec --no-startup-id $Locker && systemctl hibernate, mode "default"
     bindsym r exec --no-startup-id systemctl reboot, mode "default"
     bindsym n exec --no-startup-id termite --exec=nyancat, mode "default"
-    bindsym Shift+s exec --no-startup-id systemctl poweroff -i, mode "default"
+    bindsym Shift+s exec --no-startup-id i3savesession && systemctl poweroff -i, mode "default"
 
     # back to normal: Enter or Escape
     bindsym Return mode "default"
@@ -248,6 +249,11 @@ focus_follows_mouse no
 
 # Monitor last configuration
 # exec --no-startup-id sh ~/.bin/monitor.sh
+
+# Restore session
+exec --no-startup-id i3restoresession &
+
+# Start background / non-visible apps
 exec --no-startup-id feh --bg-scale ~/Pictures/pict.jpg
 exec --no-startup-id wicd-client --tray
 exec --no-startup-id dropbox &

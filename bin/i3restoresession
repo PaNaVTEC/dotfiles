@@ -1,0 +1,12 @@
+#!/bin/bash
+readarray -t workspaceNames < ~/.data/workspacenames
+readarray -t workspaceNums < ~/.data/workspacenums
+let i=0
+while (( ${#workspaceNums[@]} > i )); do
+	i3-msg "workspace ${workspaceNames[i]}; append_layout ~/.data/workspace${workspaceNums[i]}.json" > /dev/null
+	echo "workspace ${workspaceNames[i]}; append_layout ~/.data/workspace${workspaceNums[i]}.json"
+	for n in `cat ~/.data/workspace${workspaceNums[i]}.json | grep class | sed 's|"class": "^||g' | sed 's|$",||g' | awk '{$1=tolower($1)};1'`; do
+		exec nohup $n & /dev/null
+	done
+	let "i += 1"
+done
