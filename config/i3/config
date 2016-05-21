@@ -208,6 +208,18 @@ mode "$mode_system" {
 }
 bindsym $mod+End mode "$mode_system"
 
+# Session handling
+set $mode_session Session (r) restore, (s) save
+mode "$mode_session" {
+  bindsym r exec --no-startup-id i3restoresession, mode "default"
+  bindsym s exec --no-startup-id i3savesession, mode "default"
+
+  # back to normal: Enter or Escape
+  bindsym Return mode "default"
+  bindsym Escape mode "default" 
+}
+bindsym $mod+Shift+S mode "$mode_session"
+
 set $mode_workspaces Go to workspace... 10+
 mode "$mode_workspaces" {
   bindsym 1 exec i3-msg workspace 11, mode "default"
@@ -249,9 +261,6 @@ focus_follows_mouse no
 
 # Monitor last configuration
 # exec --no-startup-id sh ~/.bin/monitor.sh
-
-# Restore session
-exec --no-startup-id i3restoresession &
 
 # Start background / non-visible apps
 exec --no-startup-id feh --bg-scale ~/Pictures/pict.jpg

@@ -134,8 +134,9 @@ fi
 dir="${dir}/.."
 
 echo "PaNaVTEC dotfiles installer"
-Makes dir for scrot screenshots
+# Makes dir for scrot screenshots
 mkdir ${HOME}/Pictures/Screenshots
+mkdir ${HOME}/.data
 
 #Makes binary executable
 chmod a+x ${dir}/bin/*
