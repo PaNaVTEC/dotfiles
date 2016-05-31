@@ -159,3 +159,7 @@ ask "Install configuration for dunst?" Y && mkdir ${HOME}/.config/dunst; ln -sfn
 ask "Install configuration for termite?" Y && mkdir ${HOME}/.config/termite; ln -sfn ${dir}/config/termite ${HOME}/.config/termite; ln -sfn ${dir}/.dircolors ${HOME}/.dircolors;
 ask "Install screensavers?" Y && installScreensavers;
 ask "Install bluetooth resume patch?" Y && installBluetoothResumePatch;
+
+yaourt -S acpi
+mkdir ~/.i3
+ln -sfn ~/dotfiles/config/i3status/i3status.conf ~/.i3/i3status.conf

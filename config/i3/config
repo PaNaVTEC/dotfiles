@@ -256,12 +256,13 @@ bindsym $mod+Shift+w mode "$mode_workspaces"
 
 bar {
       	position top
-        status_command i3blocks
+        status_command py3status
         workspace_buttons yes
         tray_padding 3
+        # tray_output none
         # tray_output primary
         colors {
-               separator #586e75
+               separator #c7c7c7
                background #2d2d2d
                statusline #c7c7c7
                focused_workspace  #586e75 #586e75 #ffffff
