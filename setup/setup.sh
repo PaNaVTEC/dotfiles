@@ -106,7 +106,8 @@ installTools() {
       google-chrome \
       google-talkplugin \
       spotify \
-      archey3
+      archey3 \
+      n1
 }
 
 installRedshift() {
@@ -124,8 +125,7 @@ installScreensavers() {
 installBluetoothResumePatch() {
   echo "Installing resume patch"
   sleep 2
-  sudo cat 'ACTION=="add", KERNEL=="hci0", RUN+="/usr/bin/hciconfig hci0 up"' >> 
-/etc/udev/rules.d/10-local.rules
+  sudo cat 'ACTION=="add", KERNEL=="hci0", RUN+="/usr/bin/hciconfig hci0 up"' >> /etc/udev/rules.d/10-local.rules
 }
 
 dir=`pwd`
