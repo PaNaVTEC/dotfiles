@@ -39,7 +39,8 @@ installi3() {
   yaourt --noconfirm -S \
     i3 \
     j4-dmenu-desktop \
-    i3blocks \
+    py3status \
+    py3status-modules \
     i3lock-blur \
     xtitle \
     xdotool \
@@ -51,14 +52,15 @@ installi3() {
     gsimplecal \
     xorg-xbacklight \
     jshon \
-    caja
+    caja \
+    acpi
     # Default caja to file directories
     gvfs-mime --set inode/directory caja.desktop
     xdg-mime default caja.desktop inode/directory
     # Window switcher
     sudo pip install i3-py
     sudo pip install quickswitch-i3
-}
+  }
 
 installFonts() {
   echo "Installing fonts"
@@ -154,12 +156,8 @@ ask "Install symlink for .bash_profile?" Y && ln -sfn ${dir}/.bash_profile ${HOM
 
 ask "Install configuration for bin?" Y && ln -sfn ${dir}/bin ${HOME}/.bin
 ask "Install configuration for i3?" Y && ln -sfn ${dir}/config/i3 ${HOME}/.config/i3
-ask "Install configuration for i3blocks?" Y && ln -sfn ${dir}/.i3blocks.conf ${HOME}/.i3blocks.conf; mkdir ${HOME}/.config/i3blocks; ln -sfn ${dir}/config/i3blocks ${HOME}/.config/i3blocks
+ask "Install configuration for i3status/py3status?" Y && mkdir ${HOME}/.i3; ln -sfn ${dir}/config/i3status/i3status.conf ${dir}/.i3/i3status.conf
 ask "Install configuration for dunst?" Y && mkdir ${HOME}/.config/dunst; ln -sfn ${dir}/config/dunst ${HOME}/.config/dunst
 ask "Install configuration for termite?" Y && mkdir ${HOME}/.config/termite; ln -sfn ${dir}/config/termite ${HOME}/.config/termite; ln -sfn ${dir}/.dircolors ${HOME}/.dircolors;
 ask "Install screensavers?" Y && installScreensavers;
 ask "Install bluetooth resume patch?" Y && installBluetoothResumePatch;
-
-yaourt -S acpi
-mkdir ~/.i3
-ln -sfn ~/dotfiles/config/i3status/i3status.conf ~/.i3/i3status.conf
