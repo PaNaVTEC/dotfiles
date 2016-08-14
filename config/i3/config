@@ -263,13 +263,13 @@ bar {
         # tray_output none
         # tray_output primary
         colors {
-               separator #c7c7c7
-               background #2d2d2d
-               statusline #c7c7c7
-               focused_workspace  #586e75 #586e75 #ffffff
-               active_workspace #2d2d2d #2d2d2d #ffffff
-               inactive_workspace #455057 #455057 #c7c7c7
-               urgent_workspace #ae4544 #ae4544 #ffffff
+              background #002b36
+              statusline #839496
+              separator  #586e75
+              focused_workspace  #b58900 #b58900 #002b36
+              active_workspace   #586e75 #586e75 #002b36
+              inactive_workspace #073642 #002b36 #839496
+              urgent_workspace   #dc322f #dc322f #fdf6e3
         }
 }
 
@@ -280,7 +280,7 @@ focus_follows_mouse no
 # exec --no-startup-id sh ~/.bin/monitor.sh
 
 # Start background / non-visible apps
-exec --no-startup-id feh --bg-scale ~/Pictures/pict.jpg
+exec --no-startup-id feh --bg-scale ~/Pictures/pict.png
 exec --no-startup-id wicd-client --tray
 exec --no-startup-id dropbox &
 exec --no-startup-id blueman-applet
