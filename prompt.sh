@@ -92,15 +92,27 @@ __powerline() {
     ps1() {
         # Check the exit code of the previous command and display different
         # colors in the prompt accordingly. 
+        local SEPARATOR=""
         if [ $? -eq 0 ]; then
             local BG_EXIT="$BG_GREEN"
+            local FG_EXIT="$FG_GREEN"
         else
             local BG_EXIT="$BG_RED"
+            local FG_EXIT="$FG_RED"
         fi
 
+        local GIT_INFO=$(__git_info)
+
         PS1="$BG_BASE2$FG_BASE3 \w $RESET"
-        PS1+="$BG_BLUE$FG_BASE3$(__git_info)$RESET"
-        PS1+="$BG_EXIT$FG_BASE3 $PS_SYMBOL $RESET "
+        if [ -n "$GIT_INFO" ]; then
+            PS1+="$FG_BASE2$BG_BLUE$SEPARATOR$RESET"
+            PS1+="$BG_BLUE$FG_BASE3$GIT_INFO$RESET"
+            PS1+="$FG_BLUE$BG_EXIT$SEPARATOR$RESET"
+        else
+            PS1+="$FG_BASE2$BG_EXIT$SEPARATOR$RESET"
+        fi
+        PS1+="$BG_EXIT$FG_BASE3 $PS_SYMBOL $RESET"
+        PS1+="$FG_EXIT$SEPARATOR$RESET "
     }
 
     PROMPT_COMMAND=ps1
