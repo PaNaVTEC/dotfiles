@@ -5,11 +5,11 @@ font = Droid Sans Mono 12
 # Base16 Default
 # Scheme: Chris Kempson (http://chriskempson.com)
 
-foreground      = #d8d8d8
-foreground_bold = #d8d8d8
-cursor          = #585858
-#background      = #181818
-background      = rgba(24, 24, 24, 0.95)
+[colors]
+foreground = #839496
+foreground_bold = #eee8d5
+background = #002b36
+cursor = #93a1a1
 
 # black
 color0  = #282a2e
