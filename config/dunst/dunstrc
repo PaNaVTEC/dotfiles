@@ -24,7 +24,7 @@
     dmenu = "/usr/bin/dmenu -p dunst: -nb #FFFFFF -nf #000000 -sb #94DBFF -sf #000000"
     browser = /usr/bin/firefox -new-tab
     show_icons = left
-    icon_folders = /usr/share/icons/Paper/16x16/status/:/usr/share/icons/Paper/16x16/devices/:/usr/share/icons/Paper/16x16/apps/:/usr/share/icons/Paper/16x16/actions/:/usr/share/icons/Paper/16x16/places/:/usr/share/icons/Paper/16x16/panels/:/usr/share/icons/Paper/16x16/categories/:/usr/share/icons/Paper/16x16/mimetypes/
+    icon_folders = /usr/share/icons/Paper/16x16/status/:/usr/share/icons/Paper/16x16/devices/:/usr/share/icons/Paper/16x16/apps/:/usr/share/icons/Paper/16x16/actions/:/usr/share/icons/Paper/16x16/places/:/usr/share/icons/Paper/16x16/panels/:/usr/share/icons/Paper/16x16/categories/:/usr/share/icons/Paper/16x16/mimetypes/:~/dotfiles/config/dunst/icons/
 
 [frame]
     width = 1

@@ -17,7 +17,7 @@ tpset "Evdev Wheel Emulation Timeout" 200
 tpset "Evdev Wheel Emulation Axes" 6 7 4 5
 tpset "Device Accel Constant Deceleration" 0.95
 
-#setxkbmap -layout us -variant altgr-intl -option nodeadkeys
+setxkbmap -layout us -variant altgr-intl -option nodeadkeys
 
 # When I have a full screen disable suspend
 nodpms &
@@ -25,5 +25,5 @@ nodpms &
 #hides the mouse when inactivity
 #unclutter -b --timeout 30 &
 
-# Launch desktop environment
+#exec startkde
 exec i3

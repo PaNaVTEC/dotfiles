@@ -11,43 +11,9 @@
 export XDG_CONFIG_HOME=$HOME/.config
 export JAVA8_HOME=/usr/lib/jvm/java-8-jdk/
 export BROWSER=firefox
+export EDITOR="$(if [[ -n $DISPLAY ]]; then echo 'code'; else echo 'nano'; fi)"
 
-## PS1 CONFIG {{{
-  _isxrunning=false
-  [[ -n "$DISPLAY" ]] && _isxrunning=true
-  PS1='[\u@\h \W]\$ '
-
-  [[ -f $HOME/.dircolors ]] && eval $(dircolors -b $HOME/.dircolors)
-  export TERM='xterm-256color'
-  if $_isxrunning; then
-    B='\[\e[1;34m\]'
-    LB='\[\e[34m\]'
-    GY='\[\e[1;30m\]'
-    G='\[\e[30m\]'
-    P='\[\e[36m\]'
-    PP='\[\e[37m\]'
-    R='\[\e[35m\]'
-    Y='\[\e[0m\]'
-    W='\[\e[0m\]'
-
-    get_prompt_symbol() {
-      [[ $UID == 0 ]] && echo "#" || echo "\$"
-    }
-
-    if [[ $PS1 && -f /usr/share/git/git-prompt.sh ]]; then
-      source /usr/share/git/completion/git-completion.bash
-      source /usr/share/git/git-prompt.sh
-
-      export GIT_PS1_SHOWDIRTYSTATE=1
-      export GIT_PS1_SHOWSTASHSTATE=1
-      export GIT_PS1_SHOWUNTRACKEDFILES=0
-
-      export PS1="$GY[$Y\u$GY@$P\h$GY:$B\W\$(__git_ps1 \"$GY|$LB%s\")$GY]$W\$(get_prompt_symbol) "
-    else
-      export PS1="$GY[$Y\u$GY@$P\h$GY:$B\W$GY]$W\$(get_prompt_symbol) "
-    fi
-  fi
-#}}}
+source ~/dotfiles/prompt.sh
 
 ## COLORED MANUAL PAGES #{{{
     # @see http://www.tuxarena.com/?p=508
@@ -240,9 +206,6 @@ alias ccat='pygmentize -g'
 alias ccatl='pygmentize -g -O style=colorful,linenos=1'
 alias wear_emulator='adb -d forward tcp:5601 tcp:5601'
 alias wear_device='adb forward tcp:4444 localabstract:/adb-hub; adb connect localhost:4444'
-
-# Sets the default editor for commands like visudo
-export EDITOR="$(if [[ -n $DISPLAY ]]; then echo 'subl'; else echo 'nano'; fi)"
 
 # Set keyboard to US
 setxkbmap -layout us -variant altgr-intl -option nodeadkeys
