@@ -1,0 +1,6 @@
+alias ls='ls --color=auto'
+alias manupdate='sudo systemctl start man-db.service'
+alias ccat='pygmentize -g'
+alias ccatl='pygmentize -g -O style=colorful,linenos=1'
+alias wear_emulator='adb -d forward tcp:5601 tcp:5601'
+alias wear_device='adb forward tcp:4444 localabstract:/adb-hub; adb connect localhost:4444'
