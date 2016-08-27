@@ -143,6 +143,9 @@ installYaourt() {
   cd ..
   rm -rf yaourt
   rm yaourt.tar.gz
+  #init keyring
+  sudo pacman-key --init 
+  sudo pacman-key --populate archlinux
 }
 
 dir=`pwd`
