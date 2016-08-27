@@ -54,6 +54,8 @@ installi3() {
     xorg-xbacklight \
     jshon \
     thunar \
+    termite \
+    dunst \
     acpi
     # Default thunar to file directories
     #gvfs-mime --set inode/directory thunar.desktop
@@ -184,7 +186,7 @@ ask "Install symlink for .bash_profile?" Y && ln -sfn ${dir}/.bash_profile ${HOM
 ask "Install configuration for bin?" Y && ln -sfn ${dir}/bin ${HOME}/.bin
 ask "Install configuration for i3?" Y && ln -sfn ${dir}/config/i3 ${HOME}/.config/i3
 ask "Install configuration for i3status/py3status?" Y && mkdir ${HOME}/.i3; ln -sfn ${dir}/config/i3status/i3status.conf ${HOME}/.i3/i3status.conf
-ask "Install configuration for dunst?" Y && mkdir ${HOME}/.config/dunst; ln -sfn ${dir}/config/dunst ${HOME}/.config/dunst
-ask "Install configuration for termite?" Y && mkdir ${HOME}/.config/termite; ln -sfn ${dir}/config/termite ${HOME}/.config/termite; ln -sfn ${dir}/.dircolors ${HOME}/.dircolors;
+ask "Install configuration for dunst?" Y && ln -sfn ${dir}/config/dunst ${HOME}/.config/dunst
+ask "Install configuration for termite?" Y && ln -sfn ${dir}/config/termite ${HOME}/.config/termite; ln -sfn ${dir}/.dircolors ${HOME}/.dircolors;
 ask "Install screensavers?" Y && installScreensavers;
 ask "Install bluetooth resume patch?" Y && installBluetoothResumePatch;
