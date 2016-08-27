@@ -174,7 +174,7 @@ ask "install dev tools?" Y && installDevTools
 ask "install apps and tools?" Y && installTools
 ask "install themes?" Y && installThemes
 
-ask "Install redshift + config?" Y && installRedshift; mkdir ${HOME}/.config/redshift; ln -sfn ${dir}/config/redshift/config ${HOME}/.config/redshift/config
+ask "Install redshift + config?" Y && installRedshift; [ -d ${HOME}/.config/redshift ] mkdir -p ${HOME}/.config/redshift; ln -sfn ${dir}/config/redshift/config ${HOME}/.config/redshift/config
 ask "Install symlink for .xinitrc?" Y && ln -sfn ${dir}/.xinitrc ${HOME}/.xinitrc
 ask "Install symlink for .bashrc?" Y && ln -sfn ${dir}/.bashrc ${HOME}/.bashrc
 ask "Install symlink for .bash_profile?" Y && ln -sfn ${dir}/.bash_profile ${HOME}/.bash_profile
