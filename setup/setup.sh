@@ -129,16 +129,20 @@ installBluetoothResumePatch() {
 }
 
 installYaourt() {
-  git clone https://github.com/archlinuxfr/package-query.git
+  sudo pacman -S --needed base-devel git wget yajl
+  wget https://aur.archlinux.org/cgit/aur.git/snapshot/package-query.tar.gz
+  tar xvfz package-query.tar.gz
   cd package-query
   makepkg -si
   cd ..
-  rm -r package-query
-  git clone https://github.com/archlinuxfr/yaourt.git
+  rm -rf package-query
+  rm package-query.tar.gz
+  wget https://aur.archlinux.org/cgit/aur.git/snapshot/yaourt.tar.gz
   cd yaourt
   makepkg -si
   cd ..
-  rm -r yaourt
+  rm -rf yaourt
+  rm yaourt.tar.gz
 }
 
 dir=`pwd`
