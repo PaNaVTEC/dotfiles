@@ -41,7 +41,6 @@ installi3() {
     j4-dmenu-desktop \
     py3status \
     py3status-modules \
-    i3lock-blur \
     xtitle \
     xdotool \
     feh \
@@ -54,12 +53,14 @@ installi3() {
     jshon \
     thunar \
     acpi
-    # Default caja to file directories
+    # Default thunar to file directories
     gvfs-mime --set inode/directory thunar.desktop
     xdg-mime default thunar.desktop inode/directory
     # Window switcher
     sudo pip install i3-py
     sudo pip install quickswitch-i3
+    sleep 2
+    yaourt -S  i3lock-blur
   }
 
 installFonts() {
@@ -162,6 +163,9 @@ echo "PaNaVTEC dotfiles installer"
 
 #Makes binary executable
 chmod a+x ${dir}/bin/*
+
+#TODO: this autommagically
+echo "Remember that you need to uncommed the [multilib] repo in /etc/pacman.conf, if you haven't done that, please modify that file, update with pacman -Syua and come back later"
 
 ask "install yaourt?" Y && installYaourt
 ask "install i3?" Y && installi3
