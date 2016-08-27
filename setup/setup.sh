@@ -128,6 +128,19 @@ installBluetoothResumePatch() {
   sudo cat 'ACTION=="add", KERNEL=="hci0", RUN+="/usr/bin/hciconfig hci0 up"' >> /etc/udev/rules.d/10-local.rules
 }
 
+installYaourt() {
+  git clone https://github.com/archlinuxfr/package-query.git
+  cd package-query
+  sudo makepkg -si
+  cd ..
+  sudo rm -r package-query
+  git clone https://github.com/archlinuxfr/yaourt.git
+  cd yaourt
+  sudo makepkg -si
+  cd ..
+  sudo rm -r yaourt
+}
+
 dir=`pwd`
 if [ ! -e "${dir}/${0}" ]; then
   echo "Script not called from within repository directory. Aborting."
@@ -143,6 +156,7 @@ mkdir ${HOME}/.data
 #Makes binary executable
 chmod a+x ${dir}/bin/*
 
+ask "install yaourt?" Y && installYaourt
 ask "install i3?" Y && installi3
 ask "install fonts?" Y && installFonts
 ask "install dev tools?" Y && installDevTools
