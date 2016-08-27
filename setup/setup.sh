@@ -54,8 +54,8 @@ installi3() {
     thunar \
     acpi
     # Default thunar to file directories
-    gvfs-mime --set inode/directory thunar.desktop
-    xdg-mime default thunar.desktop inode/directory
+    #gvfs-mime --set inode/directory thunar.desktop
+    #xdg-mime default thunar.desktop inode/directory
     # Window switcher
     sudo pip install i3-py
     sudo pip install quickswitch-i3
@@ -91,8 +91,7 @@ installDevTools() {
       jd-gui-bin \
       android-file-transfer \
       android-studio \
-      diffmerge \
-      sublime-text \
+      visual-studio-code \
       genymotion \
       gitflow-git \
       smartgit
