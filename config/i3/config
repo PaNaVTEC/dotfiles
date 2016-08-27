@@ -18,7 +18,11 @@ set $WS0 10 
 # Apps assigned to workspaces
 assign [instance="urxvt|ws1_termite|gnome-terminal"] $WS1
 assign [instance="franz"] $WS4
+assign [instance="SmartGit"] $WS7
 assign [instance="nylas n1"] $WS5
+assign [class="Code"] $WS6
+assign [class="Atom"] $WS6
+assign [instance="subl3|sublime_text"] $WS6
 assign [window_role="browser"] $WS2
 assign [class="jetbrains(?)"] $WS3
 assign [class="genymotion"] $WS3
@@ -26,8 +30,6 @@ assign [class="Genymotion Player"] $WS3
 assign [class="Scudcloud"] $WS4
 assign [instance="slack"] $WS4
 assign [class="Pidgin"] $WS4
-assign [class="Atom"] $WS6
-assign [instance="subl3|sublime_text"] $WS6
 assign [instance="gitkraken"] $WS7
 assign [class="stremio"] $WS8
 assign [class="^(?i)vlc$"] $WS8
@@ -61,10 +63,9 @@ bindsym $mod+Return exec termite
 bindsym $mod+Shift+q kill
 bindsym $mod+Shift+Alt+q exec --no-startup-id kill $(xprop -id `xdotool getwindowfocus` | grep '_NET_WM_PID' | grep -oE '[[:digit:]]*$')
 bindsym $mod+d exec --no-startup-id j4-dmenu-desktop
-bindsym $mod+Tab exec --no-startup-id quickswitch.py -d "dmenu -b -i -l 20 -nb \#285577 -nf \#FFFFFF -sb \#B9D5EF -sf \#3E719F"
+bindsym $mod+Tab exec --no-startup-id quickswitch.py -d "dmenu -b -i -l 20 -nb \#002b36 -nf \#FFFFFF -sb \#839496 -sf \#3E719F"
 #bindsym Shift+Print exec ~/.bin/scrot-with-message -s
 bindsym Shift+Print exec --no-startup-id scrot
-bindsym $mod+i exec google-chrome-stable --incognito
 
 # change focus
 bindsym $mod+j focus left
