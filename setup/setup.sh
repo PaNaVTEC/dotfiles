@@ -138,6 +138,7 @@ installYaourt() {
   rm -rf package-query
   rm package-query.tar.gz
   wget https://aur.archlinux.org/cgit/aur.git/snapshot/yaourt.tar.gz
+  tar xvfz yaourt.tar.gz
   cd yaourt
   makepkg -si
   cd ..
