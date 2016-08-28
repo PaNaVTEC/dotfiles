@@ -39,6 +39,7 @@ installi3() {
   yaourt --noconfirm -S \
     xorg-server \
     xorg-xinit \
+    xorg-xinput \
     i3 \
     j4-dmenu-desktop \
     py3status \
@@ -56,7 +57,8 @@ installi3() {
     thunar \
     termite \
     dunst \
-    acpi
+    acpi \
+    iw
     # Default thunar to file directories
     #gvfs-mime --set inode/directory thunar.desktop
     #xdg-mime default thunar.desktop inode/directory
@@ -64,7 +66,7 @@ installi3() {
     sudo pip install i3-py
     sudo pip install quickswitch-i3
     sleep 2
-    yaourt -S  i3lock-blur
+    yaourt -S i3lock-blur --noconfirm
   }
 
 installFonts() {
@@ -73,7 +75,8 @@ installFonts() {
   yaourt --noconfirm -S \
       ttf-font-awesome \
       ttf-google-fonts-git \
-      ttf-ms-fonts
+      ttf-ms-fonts \
+      ttf-droid-sans-mono-dotted-powerline-git
 }
 
 installThemes() {
@@ -83,7 +86,10 @@ installThemes() {
       paper-gtk-theme-git \
       paper-icon-theme-git \
       numix-icon-theme-git \
-      lxapparence
+      gtk-theme-arc \
+      gtk-theme-arc-grey-git \
+      gtk-theme-solarc-git \
+      lxappearance
 }
 
 installDevTools() {
@@ -93,8 +99,14 @@ installDevTools() {
       jdk \
       jdk7 \
       jd-gui-bin \
+      scala \
+      sbt \
       android-file-transfer \
       android-studio \
+      android-apktool \
+      android-sdk-build-tools \
+      intellij-idea-community-edition \
+      dex2jar \
       visual-studio-code \
       genymotion \
       gitflow-git \
@@ -111,7 +123,8 @@ installTools() {
       google-talkplugin \
       spotify \
       archey3 \
-      n1
+      franz \
+      keeweb-desktop
 }
 
 installRedshift() {
@@ -185,7 +198,7 @@ ask "Install symlink for .bash_profile?" Y && ln -sfn ${dir}/.bash_profile ${HOM
 
 ask "Install configuration for bin?" Y && ln -sfn ${dir}/bin ${HOME}/.bin
 ask "Install configuration for i3?" Y && ln -sfn ${dir}/config/i3 ${HOME}/.config/i3
-ask "Install configuration for i3status/py3status?" Y && mkdir ${HOME}/.i3; ln -sfn ${dir}/config/i3status/i3status.conf ${HOME}/.i3/i3status.conf
+ask "Install configuration for i3status/py3status?" Y && ln -sfn ${dir}/config/i3status/i3status.conf ${HOME}/.i3/i3status.conf; sudo rm /etc/i3status.conf
 ask "Install configuration for dunst?" Y && ln -sfn ${dir}/config/dunst ${HOME}/.config/dunst
 ask "Install configuration for termite?" Y && ln -sfn ${dir}/config/termite ${HOME}/.config/termite; ln -sfn ${dir}/.dircolors ${HOME}/.dircolors;
 ask "Install screensavers?" Y && installScreensavers;
