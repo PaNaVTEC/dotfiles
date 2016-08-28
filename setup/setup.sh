@@ -55,6 +55,9 @@ installi3() {
     xorg-xbacklight \
     jshon \
     thunar \
+    thunar-volman \
+    thunar-archive-plugin \
+    thunar-dropbox \
     termite \
     dunst \
     acpi \
@@ -108,6 +111,8 @@ installDevTools() {
       intellij-idea-community-edition \
       dex2jar \
       visual-studio-code \
+      virtualbox \
+      linux-headers \
       genymotion \
       gitflow-git \
       smartgit
