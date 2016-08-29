@@ -68,6 +68,8 @@ installi3() {
     # Window switcher
     sudo pip install i3-py
     sudo pip install quickswitch-i3
+    #for spotify py3 module
+    sudo pip install dbus-python
     sleep 2
     yaourt -S i3lock-blur --noconfirm
   }
@@ -136,6 +138,8 @@ installRedshift() {
   echo "Installing redshift"
   sleep 2
   yaourt --noconfirm -S redshift
+  [ -d ${HOME}/.config/redshift ] || mkdir -p ${HOME}/.config/redshift
+  ln -sfn ${dir}/config/redshift/config ${HOME}/.config/redshift/config
 }
 
 installScreensavers() {
@@ -196,15 +200,15 @@ ask "install dev tools?" Y && installDevTools
 ask "install apps and tools?" Y && installTools
 ask "install themes?" Y && installThemes
 
-ask "Install redshift + config?" Y && installRedshift; [ -d ${HOME}/.config/redshift ] || mkdir -p ${HOME}/.config/redshift; ln -sfn ${dir}/config/redshift/config ${HOME}/.config/redshift/config
+ask "Install redshift + config?" Y && installRedshift
 ask "Install symlink for .xinitrc?" Y && ln -sfn ${dir}/.xinitrc ${HOME}/.xinitrc
 ask "Install symlink for .bashrc?" Y && ln -sfn ${dir}/.bashrc ${HOME}/.bashrc
 ask "Install symlink for .bash_profile?" Y && ln -sfn ${dir}/.bash_profile ${HOME}/.bash_profile
 
 ask "Install configuration for bin?" Y && ln -sfn ${dir}/bin ${HOME}/.bin
 ask "Install configuration for i3?" Y && ln -sfn ${dir}/config/i3 ${HOME}/.config/i3
-ask "Install configuration for i3status/py3status?" Y && ln -sfn ${dir}/config/i3status/i3status.conf ${HOME}/.i3/i3status.conf; sudo rm /etc/i3status.conf
+ask "Install configuration for i3status/py3status?" Y && ln -sfn ${dir}/config/i3status/i3status.conf ${HOME}/.i3/i3status.conf && sudo rm /etc/i3status.conf
 ask "Install configuration for dunst?" Y && ln -sfn ${dir}/config/dunst ${HOME}/.config/dunst
-ask "Install configuration for termite?" Y && ln -sfn ${dir}/config/termite ${HOME}/.config/termite; ln -sfn ${dir}/.dircolors ${HOME}/.dircolors;
+ask "Install configuration for termite?" Y && ln -sfn ${dir}/config/termite ${HOME}/.config/termite && ln -sfn ${dir}/.dircolors ${HOME}/.dircolors;
 ask "Install screensavers?" Y && installScreensavers;
 ask "Install bluetooth resume patch?" Y && installBluetoothResumePatch;
