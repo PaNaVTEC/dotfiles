@@ -40,6 +40,7 @@ installi3() {
     xorg-server \
     xorg-xinit \
     xorg-xinput \
+    xorg-xprop \
     i3 \
     j4-dmenu-desktop \
     py3status \
