@@ -287,3 +287,4 @@ exec --no-startup-id dropbox &
 exec --no-startup-id blueman-applet
 exec --no-startup-id redshift &
 exec --no-startup-id github-notify -c ~/.github_notify_config &
+exec --no-startup-id lightsOn.sh &
