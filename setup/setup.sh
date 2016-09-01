@@ -73,6 +73,10 @@ installi3() {
     sudo pip install dbus-python
     sleep 2
     yaourt -S i3lock-blur --noconfirm
+
+    # gsimplecal configuration
+    [ -d ${HOME}/.config/gsimplecal ] || mkdir -p ${HOME}/.config/gsimplecal
+    ln -sfn ${dir}/config/gsimplecal/config ${HOME}/.config/gsimplecal/config
   }
 
 installFonts() {
