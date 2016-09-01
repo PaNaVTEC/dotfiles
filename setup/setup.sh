@@ -115,6 +115,7 @@ installDevTools() {
       android-studio \
       android-apktool \
       android-sdk-build-tools \
+      android-udev \
       intellij-idea-community-edition \
       dex2jar \
       visual-studio-code \
