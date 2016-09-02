@@ -62,7 +62,8 @@ installi3() {
     termite \
     dunst \
     acpi \
-    iw
+    iw \
+    imagemagick
     # Default thunar to file directories
     #gvfs-mime --set inode/directory thunar.desktop
     #xdg-mime default thunar.desktop inode/directory
