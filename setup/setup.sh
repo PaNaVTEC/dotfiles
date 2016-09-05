@@ -125,6 +125,10 @@ installDevTools() {
       genymotion \
       gitflow-git \
       smartgit
+      
+  #IntelliJ watches in the FS
+  sudo bash -c 'echo "fs.inotify.max_user_watches = 524288" > /etc/sysctl.d/99-sysctl.conf'
+  sudo sysctl --system
 }
 
 installTools() {
