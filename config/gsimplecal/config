@@ -9,3 +9,4 @@ mainwindow_skip_taskbar = 1
 mark_today = 1
 show_week_numbers = 0
 show_calendar = 1
+force_lang = en_GB.utf8
