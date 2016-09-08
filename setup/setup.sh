@@ -41,6 +41,7 @@ installi3() {
     xorg-xinit \
     xorg-xinput \
     xorg-xprop \
+    xbacklight \
     i3 \
     j4-dmenu-desktop \
     py3status \
@@ -64,6 +65,8 @@ installi3() {
     acpi \
     iw \
     pavucontrol \
+    pulseaudio \
+    pulseaudio-ctl \
     imagemagick
     # Default thunar to file directories
     #gvfs-mime --set inode/directory thunar.desktop
