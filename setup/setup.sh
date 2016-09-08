@@ -190,6 +190,13 @@ installYaourt() {
   sudo pacman-key --populate archlinux
 }
 
+installVim() {
+  curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+      https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim	  
+  ln -sfn ${dir}/.vimrc ${HOME}/.vimrc	
+  ln -sfn ${dir}/.vim ${HOME}/.vim  
+}
+
 dir=`pwd`
 if [ ! -e "${dir}/${0}" ]; then
   echo "Script not called from within repository directory. Aborting."
