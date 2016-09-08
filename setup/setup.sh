@@ -63,6 +63,7 @@ installi3() {
     dunst \
     acpi \
     iw \
+    pavucontrol \
     imagemagick
     # Default thunar to file directories
     #gvfs-mime --set inode/directory thunar.desktop
