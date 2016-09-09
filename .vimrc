@@ -14,3 +14,6 @@ set number
 " NERDTree
 " autocmd vimenter * NERDTree " Init NERDTree when starts
 map <C-n> :NERDTreeToggle<CR>
+
+" airline
+let g:airline_powerline_fonts = 1
