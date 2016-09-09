@@ -96,6 +96,8 @@ for_window [instance="pavucontrol"] floating enable
 for_window [instance="chrome_app_list"] floating enable
 for_window [class="genymotion"] floating enable
 for_window [class="Wicd-client.py"] floating enable
+for_window [class="Wicd-client.py"] floating enable
+for_window [instance="sun-awt-X11-XFramePeer"] floating enable
 
 # split in horizontal orientation
 bindsym $mod+h split h
