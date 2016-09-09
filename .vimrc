@@ -8,7 +8,9 @@ Plug 'scrooloose/nerdtree'
 
 call plug#end()
 
-set number " Line numbers
+" Line numbers
+set number
 
-autocmd vimenter * NERDTree " Init NERDTree when starts
+" NERDTree
+" autocmd vimenter * NERDTree " Init NERDTree when starts
 map <C-n> :NERDTreeToggle<CR>
