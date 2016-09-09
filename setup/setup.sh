@@ -50,6 +50,7 @@ installi3() {
     xdotool \
     feh \
     unclutter \
+    perl-anyevent-i3 \
     scrot \
     htop \
     python-pip \
@@ -191,10 +192,13 @@ installYaourt() {
 }
 
 installVim() {
+  #Install plugin system 
   curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
-      https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim	  
+      https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  #Configuration	  
   ln -sfn ${dir}/.vimrc ${HOME}/.vimrc	
-  ln -sfn ${dir}/.vim ${HOME}/.vim  
+  ln -sfn ${dir}/.vim ${HOME}/.vim
+  echo "Open vim and run :PlugInstall to complete plugin installation"
 }
 
 dir=`pwd`
@@ -214,6 +218,7 @@ chmod a+x ${dir}/bin/*
 
 #TODO: this autommagically
 echo "Remember that you need to uncommed the [multilib] repo in /etc/pacman.conf, if you haven't done that, please modify that file, update with pacman -Syua and come back later"
+echo "actionSystem.suspendFocusTransferIfApplicationInactive=false add this into intelliJ to prevent focus lose"
 
 ask "install yaourt?" Y && installYaourt
 ask "install i3?" Y && installi3
@@ -221,6 +226,7 @@ ask "install fonts?" Y && installFonts
 ask "install dev tools?" Y && installDevTools
 ask "install apps and tools?" Y && installTools
 ask "install themes?" Y && installThemes
+ask "install vim config?" Y && installVim
 
 ask "Install redshift + config?" Y && installRedshift
 ask "Install symlink for .xinitrc?" Y && ln -sfn ${dir}/.xinitrc ${HOME}/.xinitrc
@@ -233,5 +239,4 @@ ask "Install configuration for i3status/py3status?" Y && ln -sfn ${dir}/config/i
 ask "Install configuration for dunst?" Y && ln -sfn ${dir}/config/dunst ${HOME}/.config/dunst
 ask "Install configuration for termite?" Y && ln -sfn ${dir}/config/termite ${HOME}/.config/termite && ln -sfn ${dir}/.dircolors ${HOME}/.dircolors;
 ask "Install screensavers?" Y && installScreensavers;
-ask "Install bluetooth resume patch?" Y && installBluetoothResumePatch;
-echo "actionSystem.suspendFocusTransferIfApplicationInactive=false add this into intelliJ to prevent focus lose"
+ask "Install bluetooth resume patch?" Y && installBluetoothResumePatch; 
