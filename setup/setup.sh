@@ -196,8 +196,10 @@ installVim() {
   curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
       https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
   #Configuration	  
-  ln -sfn ${dir}/.vimrc ${HOME}/.vimrc	
-  ln -sfn ${dir}/.vim ${HOME}/.vim
+  ln -sfn ${dir}/.vimrc ${HOME}/.vimrc
+  #ensime scala needed dependencies
+  pip install websocket-client sexpdata
+  pip2 install websocket-client sexpdata  
   echo "Open vim and run :PlugInstall to complete plugin installation"
 }
 
