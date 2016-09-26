@@ -16,6 +16,9 @@ source ~/dotfiles/functions.sh
 source ~/dotfiles/alias.sh
 source ~/dotfiles/paths.sh
 
+# Use omtc in firefox (enables html5 youtube hi quality videos)
+export MOZ_USE_OMTC=1
+
 # Set keyboard to US
 setxkbmap -layout us -variant altgr-intl -option nodeadkeys
 
