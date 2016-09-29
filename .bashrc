@@ -7,11 +7,11 @@
 export XDG_CONFIG_HOME=$HOME/.config
 export JAVA8_HOME=/usr/lib/jvm/java-8-jdk/
 export BROWSER=firefox
-#export EDITOR="$(if [[ -n $DISPLAY ]]; then echo 'code'; else echo 'vim'; fi)"
 export EDITOR=vim
 
 source ~/dotfiles/prompt.sh
 source ~/dotfiles/git-completion.bash
+source ~/dotfiles/git-alias.sh
 source ~/dotfiles/functions.sh
 source ~/dotfiles/alias.sh
 source ~/dotfiles/paths.sh
