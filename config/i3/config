@@ -97,7 +97,7 @@ for_window [instance="chrome_app_list"] floating enable
 for_window [class="genymotion"] floating enable
 for_window [class="Wicd-client.py"] floating enable
 for_window [class="Wicd-client.py"] floating enable
-for_window [instance="sun-awt-X11-XFramePeer"] floating enable
+for_window [instance="sun-awt-X11-XDialogPeer"] floating enable
 
 # split in horizontal orientation
 bindsym $mod+h split h
@@ -277,14 +277,5 @@ bar {
 #other
 focus_follows_mouse no
 
-# Monitor last configuration
-# exec --no-startup-id sh ~/.bin/monitor.sh
-
-# Start background / non-visible apps
 exec --no-startup-id feh --bg-scale ~/Pictures/pict.png
-exec --no-startup-id wicd-client --tray
-exec --no-startup-id dropbox &
-exec --no-startup-id blueman-applet
-exec --no-startup-id redshift &
-exec --no-startup-id github-notify -c ~/.github_notify_config &
-exec --no-startup-id lightsOn.sh &
+
