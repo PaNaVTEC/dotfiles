@@ -88,58 +88,62 @@ alias gdct='git describe --tags `git rev-list --tags --max-count=1`'
 alias gdt='git diff-tree --no-commit-id --name-only -r'
 alias gdw='git diff --word-diff'
 
-# function gdv() { git diff -w "$@" | view - }
+function gdv() { 
+	git diff -w "$@" | view - 
+}
 #compdef _git gdv=git-diff
 
 alias gf='git fetch'
 alias gfa='git fetch --all --prune'
 alias gfo='git fetch origin'
 
-# function gfg() { git ls-files | grep $@ }
+function gfg() { 
+	git ls-files | grep $@
+}
 #compdef _grep gfg
 
 alias gg='git gui citool'
 alias gga='git gui citool --amend'
 
-# ggf() {
-#   [[ "$#" != 1 ]] && local b="$(git_current_branch)"
-#   git push --force origin "${b:=$1}"
-# }
-# #compdef _git ggf=git-checkout
+function ggf() {
+  [[ "$#" != 1 ]] && local b="$(git_current_branch)"
+  git push --force origin "${b:=$1}"
+}
+ #compdef _git ggf=git-checkout
 
-# ggl() {
-#   if [[ "$#" != 0 ]] && [[ "$#" != 1 ]]; then
-#     git pull origin "${*}"
-#   else
-#     [[ "$#" == 0 ]] && local b="$(git_current_branch)"
-#     git pull origin "${b:=$1}"
-#   fi
-# }
+function ggl() {
+   if [[ "$#" != 0 ]] && [[ "$#" != 1 ]]; then
+     git pull origin "${*}"
+   else
+     [[ "$#" == 0 ]] && local b="$(git_current_branch)"
+     git pull origin "${b:=$1}"
+   fi
+ }
 # #compdef _git ggl=git-checkout
 
-# ggp() {
-#   if [[ "$#" != 0 ]] && [[ "$#" != 1 ]]; then
-#     git push origin "${*}"
-#   else
-#     [[ "$#" == 0 ]] && local b="$(git_current_branch)"
-#     git push origin "${b:=$1}"
-#   fi
-# }
+function ggp() {
+   if [[ "$#" != 0 ]] && [[ "$#" != 1 ]]; then
+     git push origin "${*}"
+   else
+     [[ "$#" == 0 ]] && local b="$(git_current_branch)"
+     git push origin "${b:=$1}"
+   fi
+ }
 # #compdef _git ggp=git-checkout
 
-# ggpnp() {
-#   if [[ "$#" == 0 ]]; then
-#     ggl && ggp
-#   else
-#     ggl "${*}" && ggp "${*}"
-#   fi
-# }
+function ggpnp() {
+   if [[ "$#" == 0 ]]; then
+     ggl && ggp
+   else
+     ggl "${*}" && ggp "${*}"
+   fi
+ }
 # #compdef _git ggpnp=git-checkout
 
-# ggu() {
-#   [[ "$#" != 1 ]] && local b="$(git_current_branch)"
-#   git pull --rebase origin "${b:=$1}"
-# }
+function ggu() {
+   [[ "$#" != 1 ]] && local b="$(git_current_branch)"
+   git pull --rebase origin "${b:=$1}"
+ }
 #compdef _git ggu=git-checkout
 
 alias ggpur='ggu'
