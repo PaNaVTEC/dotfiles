@@ -263,6 +263,7 @@ bar {
         tray_padding 3
         # tray_output none
         # tray_output primary
+        separator_symbol " "
         colors {
               background #002b36
               statusline #839496
