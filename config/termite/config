@@ -8,7 +8,7 @@ font = Droid Sans Mono Dotted For Powerline 12
 [colors]
 foreground = #839496
 foreground_bold = #eee8d5
-background = #002b36
+background = #282A2E
 cursor = #93a1a1
 
 # black
