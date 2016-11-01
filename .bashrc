@@ -23,7 +23,3 @@ export MOZ_USE_OMTC=1
 setxkbmap -layout us -variant altgr-intl -option nodeadkeys
 
 eval $(dircolors ~/.dircolors)
-
-#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
-export SDKMAN_DIR="~/.sdkman"
-[[ -s "~/.sdkman/bin/sdkman-init.sh" ]] && source "~/.sdkman/bin/sdkman-init.sh"
