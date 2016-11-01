@@ -42,7 +42,7 @@ installi3() {
     xorg-xinput \
     xorg-xprop \
     xbacklight \
-    i3 \
+    i3-gaps \
     j4-dmenu-desktop \
     py3status \
     py3status-modules \
