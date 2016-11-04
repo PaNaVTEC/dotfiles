@@ -15,6 +15,9 @@ set $WS8 8 
 set $WS9 9 
 set $WS0 10 
 
+# assign gaps to workspaces
+workspace "$WS1" gaps inner 2
+
 # Apps assigned to workspaces
 assign [instance="urxvt|ws1_termite|gnome-terminal"] $WS1
 assign [instance="franz"] $WS4
