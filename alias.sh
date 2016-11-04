@@ -12,3 +12,13 @@ alias yi='yaourt -S'
 alias yu='yaourt -Syua'
 alias yp='yaourt -Qm'
 alias yr='yaourt -R'
+
+javaProject () { 
+	gradle init --type java-library
+	sed '$itestCompile "org.mockito:mockito-all:1.10.19"' build.gradle >> build.gradle
+	gradle --refresh-dependencies
+}
+
+scalaProject () { 
+	 gradle init --type scala-library
+}
