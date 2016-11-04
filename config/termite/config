@@ -4,8 +4,6 @@ font = Droid Sans Mono Dotted For Powerline 12
 [colors]
 # Base16 Default
 # Scheme: Chris Kempson (http://chriskempson.com)
-
-[colors]
 foreground = #839496
 foreground_bold = #eee8d5
 background = #282A2E
