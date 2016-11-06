@@ -4,7 +4,7 @@ __powerline() {
 
     # Unicode symbols
     readonly PS_SYMBOL_DARWIN=''
-    readonly PS_SYMBOL_LINUX='$'
+    readonly PS_SYMBOL_LINUX='λ'
     readonly PS_SYMBOL_OTHER='%'
     readonly GIT_BRANCH_SYMBOL='⑂ '
     readonly GIT_BRANCH_CHANGED_SYMBOL='+'
