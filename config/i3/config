@@ -65,7 +65,7 @@ floating_modifier $mod
 bindsym $mod+Return exec termite
 bindsym $mod+Shift+q kill
 bindsym $mod+Shift+Alt+q exec --no-startup-id kill $(xprop -id `xdotool getwindowfocus` | grep '_NET_WM_PID' | grep -oE '[[:digit:]]*$')
-bindsym $mod+d exec --no-startup-id j4-dmenu-desktop --dmenu="dmenu -fn 'Roboto-12'"
+bindsym $mod+d exec --no-startup-id j4-dmenu-desktop --dmenu="dmenu -i -fn 'Roboto-12'"
 bindsym $mod+Tab exec --no-startup-id quickswitch.py -d "dmenu -b -i -l 20 -nb \#002b36 -nf \#FFFFFF -sb \#839496 -sf \#3E719F"
 #bindsym Shift+Print exec ~/.bin/scrot-with-message -s
 bindsym Shift+Print exec --no-startup-id scrot
