@@ -56,7 +56,7 @@ for_window [workspace="$WS3|$WS6"] layout tabbed
 set $mod Mod4
 
 # fonts
-font pango:Roboto 10, FontAwesome Regular 10
+font pango:Roboto 12, FontAwesome Regular 12
 
 # Move windows with mouse+$mod
 floating_modifier $mod
@@ -101,6 +101,7 @@ for_window [class="genymotion"] floating enable
 for_window [class="Wicd-client.py"] floating enable
 for_window [class="Wicd-client.py"] floating enable
 for_window [instance="sun-awt-X11-XDialogPeer"] floating enable
+for_window [title="^floatme$"] floating enable move position 25px 10px
 
 # split in horizontal orientation
 bindsym $mod+h split h
