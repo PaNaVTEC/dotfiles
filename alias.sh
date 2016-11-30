@@ -13,6 +13,9 @@ alias yu='yaourt -Syua'
 alias yp='yaourt -Qm'
 alias yr='yaourt -R'
 
+alias calmonth='gcalcli calw 4'
+alias calweek='gcalcli calw 1'
+
 javaProject () { 
 	gradle init --type java-library
 	sed '$itestCompile "org.mockito:mockito-all:1.10.19"' build.gradle >> build.gradle
@@ -21,4 +24,8 @@ javaProject () {
 
 scalaProject () { 
 	 gradle init --type scala-library
+}
+
+every() {
+	watch -c -n $1 $2
 }
