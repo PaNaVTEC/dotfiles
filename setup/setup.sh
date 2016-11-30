@@ -203,6 +203,12 @@ installVim() {
   echo "Open vim and run :PlugInstall to complete plugin installation"
 }
 
+installRanger() { 
+	yaourt -S ranger
+	ranger --copy-config=scope
+	ln -sfn ${$dir}/config/ranger/config ${$HOME}/.config/ranger/rc.conf
+}
+
 dir=`pwd`
 if [ ! -e "${dir}/${0}" ]; then
   echo "Script not called from within repository directory. Aborting."
@@ -242,3 +248,4 @@ ask "Install configuration for dunst?" Y && ln -sfn ${dir}/config/dunst ${HOME}/
 ask "Install configuration for termite?" Y && ln -sfn ${dir}/config/termite ${HOME}/.config/termite && ln -sfn ${dir}/.dircolors ${HOME}/.dircolors;
 ask "Install screensavers?" Y && installScreensavers;
 ask "Install bluetooth resume patch?" Y && installBluetoothResumePatch; 
+ask "Install Ranger" Y && installRanger; 
