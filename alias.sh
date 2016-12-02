@@ -13,8 +13,8 @@ alias yu='yaourt -Syua'
 alias yp='yaourt -Qm'
 alias yr='yaourt -R'
 
-alias calmonth='gcalcli calw 4'
-alias calweek='gcalcli calw 1'
+alias calmonth='gcalcli calw 4 --monday'
+alias calweek='gcalcli calw 1 --monday'
 
 javaProject () { 
 	gradle init --type java-library
