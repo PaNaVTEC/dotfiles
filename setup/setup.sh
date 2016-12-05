@@ -206,7 +206,15 @@ installVim() {
 installRanger() { 
 	yaourt -S ranger
 	ranger --copy-config=scope
-	ln -sfn ${$dir}/config/ranger/config ${$HOME}/.config/ranger/rc.conf
+	ln -sfn ${dir}/config/ranger/config ${$HOME}/.config/ranger/rc.conf
+}
+
+installKhal() { 
+	sudo pip install khal
+	sudo pip install vdirsyncer
+	sudo pip install requests-oauthlib
+	cp ${dir}/config/khal/khalconfig ${HOME}/.config/khal/khal.conf
+	cp ${dir}/config/khal/vdirsyncerconfig ${HOME}/.config/vdirsyncer/config
 }
 
 dir=`pwd`
@@ -249,3 +257,4 @@ ask "Install configuration for termite?" Y && ln -sfn ${dir}/config/termite ${HO
 ask "Install screensavers?" Y && installScreensavers;
 ask "Install bluetooth resume patch?" Y && installBluetoothResumePatch; 
 ask "Install Ranger" Y && installRanger; 
+ask "Install Khal" Y && installKhal;
