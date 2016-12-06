@@ -213,7 +213,7 @@ installKhal() {
 	sudo pip install khal
 	sudo pip install vdirsyncer
 	sudo pip install requests-oauthlib
-	cp ${dir}/config/khal/khalconfig ${HOME}/.config/khal/khal.conf
+	ln -sfn ${dir}/config/khal/khal.conf ${HOME}/.config/khal/khal.conf
 	cp ${dir}/config/khal/vdirsyncerconfig ${HOME}/.config/vdirsyncer/config
 }
 
