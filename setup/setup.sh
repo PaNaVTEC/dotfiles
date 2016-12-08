@@ -41,7 +41,6 @@ installi3() {
     xorg-xinit \
     xorg-xinput \
     xorg-xprop \
-    xbacklight \
     i3-gaps \
     j4-dmenu-desktop \
     py3status \
@@ -102,7 +101,7 @@ installThemes() {
       paper-gtk-theme-git \
       paper-icon-theme-git \
       numix-icon-theme-git \
-      gtk-theme-arc \
+      gtk-theme-arc-git \
       gtk-theme-arc-grey-git \
       gtk-theme-solarc-git \
       lxappearance
@@ -146,7 +145,7 @@ installTools() {
       google-talkplugin \
       spotify \
       archey3 \
-      franz \
+      franz-bin \
       keeweb-desktop
 }
 
@@ -204,7 +203,7 @@ installVim() {
 }
 
 installRanger() { 
-	yaourt -S ranger
+	yaourt -S ranger --noconfirm
 	ranger --copy-config=scope
 	ln -sfn ${dir}/config/ranger/config ${$HOME}/.config/ranger/rc.conf
 }
@@ -228,6 +227,7 @@ echo "PaNaVTEC dotfiles installer"
 # Makes dir for scrot screenshots
 [ -d ${HOME}/Pictures/Screenshots ] || mkdir -p ${HOME}/Pictures/Screenshots
 [ -d ${HOME}/.data ] || mkdir ${HOME}/.data
+[ -d ${HOME}/.i3 ] || mkdir ${HOME}/.i3
 
 #Makes binary executable
 chmod a+x ${dir}/bin/*
