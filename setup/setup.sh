@@ -43,8 +43,6 @@ installi3() {
     xorg-xprop \
     i3-gaps \
     j4-dmenu-desktop \
-    py3status \
-    py3status-modules \
     xtitle \
     xdotool \
     feh \
@@ -64,20 +62,19 @@ installi3() {
     dunst \
     acpi \
     iw \
-    pavucontrol \
-    pulseaudio \
-    pulseaudio-ctl \
-    imagemagick
+    imagemagick \
+    i3lock-blur
+
     # Default thunar to file directories
     #gvfs-mime --set inode/directory thunar.desktop
     #xdg-mime default thunar.desktop inode/directory
+    sudo pip install py3status
     # Window switcher
     sudo pip install i3-py
     sudo pip install quickswitch-i3
     #for spotify py3 module
     sudo pip install dbus-python
     sleep 2
-    yaourt -S i3lock-blur --noconfirm
 
     # gsimplecal configuration
     [ -d ${HOME}/.config/gsimplecal ] || mkdir -p ${HOME}/.config/gsimplecal
@@ -198,14 +195,13 @@ installVim() {
   ln -sfn ${dir}/.vimrc ${HOME}/.vimrc
   #ensime scala needed dependencies
   pip install websocket-client sexpdata
-  pip2 install websocket-client sexpdata  
   echo "Open vim and run :PlugInstall to complete plugin installation"
 }
 
 installRanger() { 
 	yaourt -S ranger --noconfirm
 	ranger --copy-config=scope
-	ln -sfn ${dir}/config/ranger/config ${$HOME}/.config/ranger/rc.conf
+	ln -sfn ${dir}/config/ranger/config ${HOME}/.config/ranger/rc.conf
 }
 
 installKhal() { 
@@ -214,6 +210,13 @@ installKhal() {
 	sudo pip install requests-oauthlib
 	ln -sfn ${dir}/config/khal/khal.conf ${HOME}/.config/khal/khal.conf
 	cp ${dir}/config/khal/vdirsyncerconfig ${HOME}/.config/vdirsyncer/config
+}
+
+installAudio() { 
+	yaourt -S --noconfirm \
+		pulseaudio \
+		pulseaudio-ctl \
+		pavucontrol
 }
 
 dir=`pwd`
@@ -236,13 +239,14 @@ chmod a+x ${dir}/bin/*
 echo "Remember that you need to uncommed the [multilib] repo in /etc/pacman.conf, if you haven't done that, please modify that file, update with pacman -Syua and come back later"
 echo "actionSystem.suspendFocusTransferIfApplicationInactive=false add this into intelliJ to prevent focus lose"
 
-ask "install yaourt?" Y && installYaourt
-ask "install i3?" Y && installi3
-ask "install fonts?" Y && installFonts
-ask "install dev tools?" Y && installDevTools
-ask "install apps and tools?" Y && installTools
-ask "install themes?" Y && installThemes
-ask "install vim config?" Y && installVim
+ask "install yaourt?" Y && installYaourt;
+ask "install i3?" Y && installi3;
+ask "install fonts?" Y && installFonts;
+ask "install dev tools?" Y && installDevTools;
+ask "install apps and tools?" Y && installTools;
+ask "install themes?" Y && installThemes;
+ask "install vim config?" Y && installVim;
+ask "install audio?" Y && installAudio;
 
 ask "Install redshift + config?" Y && installRedshift
 ask "Install symlink for .xinitrc?" Y && ln -sfn ${dir}/.xinitrc ${HOME}/.xinitrc
