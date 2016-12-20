@@ -138,6 +138,7 @@ installTools() {
   yaourt --noconfirm -S \
       firefox \
       dropbox \
+      dropbox-cli \
       google-chrome \
       google-talkplugin \
       spotify \
