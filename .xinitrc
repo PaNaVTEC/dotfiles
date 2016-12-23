@@ -16,10 +16,3 @@ fi
 
 # Start X
 exec i3
-
-if [ -d ~/.after_startx ] ; then
- for f in ~/.after_startx/?*.sh ; do
-  [ -x "$f" ] && . "$f"
- done
- unset f
-fi
