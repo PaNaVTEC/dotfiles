@@ -220,6 +220,14 @@ installAudio() {
 		pavucontrol
 }
 
+installCompton() {
+	yaourt -S --noconfirm \
+		compton \
+		xorg-xwininfo
+	mkdir ~/.after_startx
+        echo "compton -c -i 0.9 -b &" >> ~/after_startx/run.sh	
+}
+
 dir=`pwd`
 if [ ! -e "${dir}/${0}" ]; then
   echo "Script not called from within repository directory. Aborting."
@@ -242,6 +250,7 @@ echo "actionSystem.suspendFocusTransferIfApplicationInactive=false add this into
 
 ask "install yaourt?" Y && installYaourt;
 ask "install i3?" Y && installi3;
+ask "install compton?" Y && installCompton;
 ask "install fonts?" Y && installFonts;
 ask "install dev tools?" Y && installDevTools;
 ask "install apps and tools?" Y && installTools;
