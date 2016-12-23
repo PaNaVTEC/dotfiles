@@ -224,9 +224,9 @@ installCompton() {
 	yaourt -S --noconfirm \
 		compton \
 		xorg-xwininfo
-	mkdir ~/.after_startx
-        echo "compton -c -i 0.9 -b &" >> ~/.after_startx/run.sh	
-	chmod a+x ~/.after_startx/run.sh
+	mkdir ~/.before_startx
+        echo "compton -c -i 0.9 -b &" >> ~/.before_startx/run.sh	
+	chmod a+x ~/.before_startx/run.sh
 }
 
 dir=`pwd`
