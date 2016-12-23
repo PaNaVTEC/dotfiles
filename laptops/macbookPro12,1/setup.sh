@@ -1,7 +1,12 @@
+yaourt -R xorg-xbacklight
 yaourt -S --noconfirm 
-	xf86-input-mtrack-git \
-	kbdlight \
-	broadcom-wl
+	xf86-input-mtrack-git \   # Touchpad
+	kbdlight \ 		  # keyboard brightness
+	bcwc-pcie-git \		  # webcam
+	acpilight		  # screen brightness
+
+# Acpi light permissions
+sudo cp 90-backlight.rules /etc/udev/rules.d/90-backlight.rules
 
 #Fixes dpi of i3
 bash -c 'echo -e "xrandr --dpi 160\nxrdb -merge ~/.Xresources" >> ~/.before_startx/run.sh'

@@ -171,8 +171,8 @@ bindsym XF86AudioMute exec pulseaudio-ctl mute
 bindsym XF86AudioMicMute exec pulseaudio-ctl mute
  
 # Brightness
-bindsym XF86KbdBrightnessDown exec xbacklight -dec 5
-bindsym XF86KbdBrightnessUp exec xbacklight -inc 10
+bindsym XF86KbdBrightnessDown exec kbdlight down 5
+bindsym XF86KbdBrightnessUp exec kbdlight up 10
 bindsym XF86MonBrightnessDown exec xbacklight -dec 5 
 bindsym XF86MonBrightnessUp exec xbacklight -inc 10
 
