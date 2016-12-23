@@ -227,6 +227,7 @@ installCompton() {
 	mkdir ~/.before_startx
         echo "compton -c -i 0.9 -b &" >> ~/.before_startx/run.sh	
 	chmod a+x ~/.before_startx/run.sh
+	ln -sfn ${dir}/config/compton/compton.conf ${HOME}/.config/compton.conf
 }
 
 dir=`pwd`
