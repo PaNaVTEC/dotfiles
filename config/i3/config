@@ -95,6 +95,9 @@ bindsym $mod+Shift+Control+Left exec i3-msg move workspace to output left
 bindsym $mod+Shift+Control+Right exec i3-msg move workspace to output right
 
 #float windows
+for_window [window_role="pop-up"] floating enable 
+for_window [window_role="task_dialog"] floating enable 
+for_window [title="Preferences$"] floating enable
 for_window [instance="pavucontrol"] floating enable
 for_window [instance="chrome_app_list"] floating enable
 for_window [class="genymotion"] floating enable
