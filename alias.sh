@@ -10,6 +10,8 @@ alias y='yaourt'
 alias ys='yaourt -Ss'
 alias yi='yaourt -S'
 alias yu='yaourt -Syua'
+alias yun='yu --noconfirm'
+alias yunf='yun --force'
 alias yp='yaourt -Qm'
 alias yr='yaourt -R'
 
