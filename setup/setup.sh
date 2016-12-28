@@ -230,6 +230,13 @@ installCompton() {
 	ln -sfn ${dir}/config/compton/compton.conf ${HOME}/.config/compton.conf
 }
 
+configPy3status() { 
+	ln -sfn ${dir}/config/i3status/i3status.conf ${HOME}/.i3/i3status.conf
+        cp ${dir}/config/i3status/xrandr.py /usr/lib/python3.5/site-packages/py3status/modules
+        cp ${dir}/config/i3status/pomodoro.py /usr/lib/python3.5/site-packages/py3status/modules	
+	[ -e /etc/i3status.conf ] && sudo rm /etc/i3status.conf
+}
+
 dir=`pwd`
 if [ ! -e "${dir}/${0}" ]; then
   echo "Script not called from within repository directory. Aborting."
@@ -267,7 +274,7 @@ ask "Install symlink for .bash_profile?" Y && ln -sfn ${dir}/.bash_profile ${HOM
 
 ask "Install configuration for bin?" Y && ln -sfn ${dir}/bin ${HOME}/.bin
 ask "Install configuration for i3?" Y && ln -sfn ${dir}/config/i3 ${HOME}/.config/i3
-ask "Install configuration for i3status/py3status?" Y && ln -sfn ${dir}/config/i3status/i3status.conf ${HOME}/.i3/i3status.conf && sudo rm /etc/i3status.conf
+ask "Install configuration for i3status/py3status?" Y && configPy3status;
 ask "Install configuration for dunst?" Y && ln -sfn ${dir}/config/dunst ${HOME}/.config/dunst
 ask "Install configuration for termite?" Y && ln -sfn ${dir}/config/termite ${HOME}/.config/termite && ln -sfn ${dir}/.dircolors ${HOME}/.dircolors;
 ask "Install screensavers?" Y && installScreensavers;
