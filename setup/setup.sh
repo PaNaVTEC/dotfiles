@@ -232,8 +232,8 @@ installCompton() {
 
 configPy3status() { 
 	ln -sfn ${dir}/config/i3status/i3status.conf ${HOME}/.i3/i3status.conf
-        cp ${dir}/config/i3status/xrandr.py /usr/lib/python3.5/site-packages/py3status/modules
-        cp ${dir}/config/i3status/pomodoro.py /usr/lib/python3.5/site-packages/py3status/modules	
+        cp ${dir}/config/i3status/xrandr.py /usr/lib/python3.6/site-packages/py3status/modules
+        cp ${dir}/config/i3status/pomodoro.py /usr/lib/python3.6/site-packages/py3status/modules	
 	[ -e /etc/i3status.conf ] && sudo rm /etc/i3status.conf
 }
 
