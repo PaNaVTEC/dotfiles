@@ -1,10 +1,10 @@
-yaourt -R xorg-xbacklight
-yaourt -S --noconfirm 
-	xf86-input-mtrack-git \   # Touchpad
-	kbdlight \ 		  # keyboard brightness
-	bcwc-pcie-git \		  # webcam
-	acpilight \		  # screen brightness
-	mbpfan-git 		  # fan 
+#yaourt -R xorg-xbacklight
+yaourt --noconfirm -S  \
+	xf86-input-synaptics \
+  kbdlight \
+	bcwc-pcie-git \
+	acpilight \
+	mbpfan-git 
 
 # Fix wifi connection flickering
 sudo cp 40-ipv6.conf /etc/sysctl.d
