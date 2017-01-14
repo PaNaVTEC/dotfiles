@@ -75,6 +75,8 @@ installi3() {
   sudo pip install dbus-python
   sleep 2
 
+  ln -sfn ${dir}/config/i3 ${HOME}/.config/i3
+  
   # gsimplecal configuration
   [ -d ${HOME}/.config/gsimplecal ] || mkdir -p ${HOME}/.config/gsimplecal
   ln -sfn ${dir}/config/gsimplecal/config ${HOME}/.config/gsimplecal/config
@@ -277,7 +279,6 @@ ask "Install symlink for .bashrc?" Y && ln -sfn ${dir}/.bashrc ${HOME}/.bashrc
 ask "Install symlink for .bash_profile?" Y && ln -sfn ${dir}/.bash_profile ${HOME}/.bash_profile
 
 ask "Install configuration for bin?" Y && ln -sfn ${dir}/bin ${HOME}/.bin
-ask "Install configuration for i3?" Y && ln -sfn ${dir}/config/i3 ${HOME}/.config/i3
 ask "Install configuration for dunst?" Y && ln -sfn ${dir}/config/dunst ${HOME}/.config/dunst
 ask "Install configuration for termite?" Y && ln -sfn ${dir}/config/termite ${HOME}/.config/termite && ln -sfn ${dir}/.dircolors ${HOME}/.dircolors;
 ask "Install screensavers?" Y && installScreensavers;
