@@ -144,6 +144,7 @@ installTools() {
   echo "Installing apps and tools"
   sleep 2
   yaourt --noconfirm -S \
+    openssh \
     firefox \
     dropbox \
     dropbox-cli \
