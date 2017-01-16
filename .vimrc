@@ -48,10 +48,20 @@ call plug#end()
 if executable('ag')
 	let g:ackprg = 'ag --nogroup --nocolor --column'
 endif
+" Indentation
+set smartindent
+set tabstop=2
+set shiftwidth=2
+set expandtab
+set smarttab
 
 " Line numbers
 set number
 set numberwidth=5
+
+" Set highlight while searching
+set hlsearch
+set incsearch
 
 "Show context around current cursor position
 set scrolloff=8
@@ -75,3 +85,11 @@ au VimEnter * RainbowParenthesesToggle
 au Syntax * RainbowParenthesesLoadRound
 au Syntax * RainbowParenthesesLoadSquare
 au Syntax * RainbowParenthesesLoadBraces
+
+set clipboard+=unnamed
+vnoremap <C-c> "+y
+
+vnoremap <C-r> "hy:%s/<C-r>h//gc<left><left><left>
+
+au BufReadPost Jenkinsfile set syntax=groovy
+au BufReadPost Jenkinsfile set filetype=groovy

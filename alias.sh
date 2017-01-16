@@ -9,6 +9,7 @@ alias wear_device='adb forward tcp:4444 localabstract:/adb-hub; adb connect loca
 alias y='yaourt'
 alias ys='yaourt -Ss'
 alias yi='yaourt -S'
+alias yin='yi --noconfirm'
 alias yu='yaourt -Syua'
 alias yun='yu --noconfirm'
 alias yunf='yun --force'
