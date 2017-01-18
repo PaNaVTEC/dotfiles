@@ -1,0 +1,38 @@
+call plug#begin('~/.vim/plugged')
+
+Plug 'vim-airline/vim-airline'
+Plug 'scrooloose/nerdtree'
+Plug 'ctrlp.vim'
+Plug 'mileszs/ack.vim'
+
+" Syntax
+Plug 'plasticboy/vim-markdown'
+Plug 'kien/rainbow_parentheses.vim'
+
+"Git
+Plug 'tpope/vim-fugitive'
+Plug 'airblade/vim-gitgutter'
+
+" JS
+Plug 'pangloss/vim-javascript'
+      \| Plug 'mxw/vim-jsx' "JSX - For react
+      \| Plug 'heavenshell/vim-jsdoc'
+      \| Plug 'moll/vim-node', { 'for' : ['js'] } 
+
+" CSS
+Plug 'JulesWang/css.vim'
+      \| Plug 'hail2u/vim-css3-syntax'
+      \| Plug 'cakebaker/scss-syntax.vim', { 'for': ['scss'] }
+
+Plug 'ap/vim-css-color'
+
+" Omnicompletion, this is beta repo, where stables are already in VIMRUNTIME
+Plug 'othree/csscomplete.vim'
+
+" Scala
+Plug 'derekwyatt/vim-scala'
+    \| Plug 'ensime/ensime-vim', { 'for' : ['scala'] }
+" Plug 'ktvoelker/sbt-vim'
+" Plug 'dscleaver/sbt-quickfix'
+
+call plug#end()
