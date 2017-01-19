@@ -126,7 +126,7 @@ installDevTools() {
     android-apktool \
     android-sdk-build-tools \
     android-udev \
-    intellij-idea-community-edition \
+    intellij-idea-ce \
     dex2jar \
     visual-studio-code \
     virtualbox \
