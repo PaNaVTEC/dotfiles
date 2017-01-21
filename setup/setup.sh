@@ -119,7 +119,7 @@ installJava() {
     jdk \
     jdk7 \
     jd-gui-bin \
-    intellij-idea-ce \
+    intellij-idea-ce
 }
 
 installAndroid() {
@@ -149,16 +149,17 @@ installClojure() {
 installDevTools() {
   echo "Installing developer tools"
   sleep 2
-  installJava()
-  installAndroid()
-  installScala()
-  installClojure()
+
+  installJava;
+  installAndroid;
+  installScala;
+  installClojure;
 
   yaourt --noconfirm -S \
     virtualbox \
     linux-headers \
     gitflow-git \
-    smartgit \
+    smartgit 
 
   #IntelliJ watches in the FS
   sudo bash -c 'echo "fs.inotify.max_user_watches = 524288" > /etc/sysctl.d/99-sysctl.conf'
