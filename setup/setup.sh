@@ -71,8 +71,6 @@ installi3() {
   # Window switcher
   sudo pip install i3-py
   sudo pip install quickswitch-i3
-  #for spotify py3 module
-  sudo pip install dbus-python
   sleep 2
 
   ln -sfn ${dir}/config/i3 ${HOME}/.config/i3
