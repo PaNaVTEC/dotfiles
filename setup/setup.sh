@@ -112,28 +112,53 @@ installThemes() {
     lxappearance
 }
 
-installDevTools() {
-  echo "Installing developer tools"
-  sleep 2
-  yaourt --noconfirm -S \
+installJava() {
+  echo "Installing Java"
+  sleep 2 
+  yaourt --noconfirm -s \
     jdk \
     jdk7 \
     jd-gui-bin \
-    scala \
-    sbt \
+    intellij-idea-ce \
+}
+
+installAndroid() {
+  yaourt --noconfirm -S \
     android-file-transfer \
     android-studio \
     android-apktool \
     android-sdk-build-tools \
     android-udev \
-    intellij-idea-ce \
     dex2jar \
-    visual-studio-code \
+    genymotion
+}
+
+installScala() {
+  yaourt --noconfirm -S \
+    scala \
+    sbt
+}
+
+installClojure() { 
+  yaourt --noconfirm -S \
+    clojure \
+    leiningen-standalone \
+    leiningen-completions
+}
+
+installDevTools() {
+  echo "Installing developer tools"
+  sleep 2
+  installJava()
+  installAndroid()
+  installScala()
+  installClojure()
+
+  yaourt --noconfirm -S \
     virtualbox \
     linux-headers \
-    genymotion \
     gitflow-git \
-    smartgit
+    smartgit \
 
   #IntelliJ watches in the FS
   sudo bash -c 'echo "fs.inotify.max_user_watches = 524288" > /etc/sysctl.d/99-sysctl.conf'
@@ -198,7 +223,7 @@ installYaourt() {
 }
 
 installVim() {
-  yaourt -S --noconfirm vim
+  yaourt -S --noconfirm vim silver-searcher-git
   #Install plugin system 
   curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
