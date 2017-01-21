@@ -35,4 +35,12 @@ Plug 'derekwyatt/vim-scala'
 " Plug 'ktvoelker/sbt-vim'
 " Plug 'dscleaver/sbt-quickfix'
 
+" Clojure
+Plug 'venantius/vim-cljfmt'
+  \| Plug 'guns/vim-clojure-static'
+  \| Plug 'tpope/vim-fireplace', { 'for' : ['clojure'] }
+
+" General programming
+Plug 'tpope/vim-surround'
+
 call plug#end()

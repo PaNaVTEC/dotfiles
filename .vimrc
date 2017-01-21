@@ -56,3 +56,6 @@ vnoremap <C-r> "hy:%s/<C-r>h//gc<left><left><left>
 
 au BufReadPost Jenkinsfile set syntax=groovy
 au BufReadPost Jenkinsfile set filetype=groovy
+
+" Clojure
+filetype plugin indent on
