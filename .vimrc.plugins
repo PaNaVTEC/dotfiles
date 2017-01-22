@@ -1,13 +1,14 @@
 call plug#begin('~/.vim/plugged')
 
+" General vim utilities
 Plug 'vim-airline/vim-airline'
 Plug 'scrooloose/nerdtree'
 Plug 'ctrlp.vim'
 Plug 'mileszs/ack.vim'
+Plug 'sjl/gundo.vim'
 
-" Syntax
+" Markdown
 Plug 'plasticboy/vim-markdown'
-Plug 'kien/rainbow_parentheses.vim'
 
 "Git
 Plug 'tpope/vim-fugitive'
@@ -44,5 +45,6 @@ Plug 'venantius/vim-cljfmt'
 " General programming
 Plug 'tpope/vim-surround'
 Plug 'vim-syntastic/syntastic'
+Plug 'kien/rainbow_parentheses.vim'
 
 call plug#end()
