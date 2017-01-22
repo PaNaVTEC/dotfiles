@@ -38,9 +38,11 @@ Plug 'derekwyatt/vim-scala'
 " Clojure
 Plug 'venantius/vim-cljfmt'
   \| Plug 'guns/vim-clojure-static'
+  \| Plug 'venantius/vim-eastwood'
   \| Plug 'tpope/vim-fireplace', { 'for' : ['clojure'] }
 
 " General programming
 Plug 'tpope/vim-surround'
+Plug 'vim-syntastic/syntastic'
 
 call plug#end()
