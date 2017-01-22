@@ -144,10 +144,17 @@ installClojure() {
     leiningen-completions
 }
 
+installGit() {
+  yaourt --noconfirm -s \
+    diff-so-fancy
+
+}
+
 installDevTools() {
   echo "Installing developer tools"
   sleep 2
 
+  installGit;
   installJava;
   installAndroid;
   installScala;
