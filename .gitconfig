@@ -1,0 +1,13 @@
+[user]
+	email = panavtec@gmail.com
+	name = Christian Panadero
+[credential]
+	helper = cache --timeout 86400
+[color]
+	ui = auto
+[merge]
+  log = true
+[pager]
+  diff = diff-so-fancy | less --tabs=1,5 -RFX
+  show = diff-so-fancy | less --tabs=1,5 -RFX
+

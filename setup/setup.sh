@@ -145,9 +145,8 @@ installClojure() {
 }
 
 installGit() {
-  yaourt --noconfirm -s \
-    diff-so-fancy
-
+  yaourt --noconfirm -S diff-so-fancy
+  ln -sfn ${dir}/.gitconfig ${HOME}/.gitconfig
 }
 
 installDevTools() {
