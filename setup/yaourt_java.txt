@@ -1,0 +1,4 @@
+jdk
+jdk7
+jd-gui-bin
+intellij-idea-ce

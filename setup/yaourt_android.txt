@@ -1,0 +1,7 @@
+android-file-transfer
+android-studio
+android-apktool
+android-sdk-build-tools
+android-udev
+dex2jar
+genymotion

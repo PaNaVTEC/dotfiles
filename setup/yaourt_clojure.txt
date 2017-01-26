@@ -1,0 +1,3 @@
+clojure
+leiningen-standalone
+leiningen-completions

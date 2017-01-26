@@ -36,42 +36,13 @@ ask() {
 installi3() {
   echo "Installing i3 and required tools"
   sleep 2
-  yaourt --noconfirm -S \
-    xorg-server \
-    xorg-xinit \
-    xorg-xinput \
-    xorg-xprop \
-    i3-gaps \
-    j4-dmenu-desktop \
-    xtitle \
-    xdotool \
-    feh \
-    unclutter \
-    perl-anyevent-i3 \
-    scrot \
-    htop \
-    python-pip \
-    gsimplecal \
-    xorg-xbacklight \
-    jshon \
-    thunar \
-    thunar-volman \
-    thunar-archive-plugin \
-    thunar-dropbox \
-    termite \
-    dunst \
-    acpi \
-    iw \
-    imagemagick \
-    i3lock-blur
+  yaourt --noconfirm -S ./yaourt_i3.txt
 
   # Default thunar to file directories
   #gvfs-mime --set inode/directory thunar.desktop
   #xdg-mime default thunar.desktop inode/directory
   # Window switcher
-  sudo pip install i3-py
-  sudo pip install quickswitch-i3
-  sleep 2
+  sudo pip install i3-py quickswitch-i3
 
   ln -sfn ${dir}/config/i3 ${HOME}/.config/i3
   
@@ -90,58 +61,31 @@ installi3() {
 installFonts() {
   echo "Installing fonts"
   sleep 2
-  yaourt --noconfirm -S \
-    ttf-font-awesome \
-    ttf-google-fonts-git \
-    ttf-ms-fonts \
-    ttf-droid-sans-mono-dotted-powerline-git
+  yaourt --noconfirm -S ./yaourt_fonts.txt 
 }
 
 installThemes() {
   echo "Installing themes"
   sleep 2
-  yaourt --noconfirm -S \
-    paper-gtk-theme-git \
-    paper-icon-theme-git \
-    numix-icon-theme-git \
-    gtk-theme-arc-git \
-    gtk-theme-arc-grey-git \
-    gtk-theme-solarc-git \
-    lxappearance
+  yaourt --noconfirm -S ./yaourt_themes.txt
 }
 
 installJava() {
   echo "Installing Java"
   sleep 2 
-  yaourt --noconfirm -s \
-    jdk \
-    jdk7 \
-    jd-gui-bin \
-    intellij-idea-ce
+  yaourt --noconfirm -S ./yaourt_java.txt
 }
 
 installAndroid() {
-  yaourt --noconfirm -S \
-    android-file-transfer \
-    android-studio \
-    android-apktool \
-    android-sdk-build-tools \
-    android-udev \
-    dex2jar \
-    genymotion
+  yaourt --noconfirm -S ./yaourt_android.txt
 }
 
 installScala() {
-  yaourt --noconfirm -S \
-    scala \
-    sbt
+  yaourt --noconfirm -S ./yaourt_scala.txt
 }
 
 installClojure() { 
-  yaourt --noconfirm -S \
-    clojure \
-    leiningen-standalone \
-    leiningen-completions
+  yaourt --noconfirm -S ./yaourt_clojure.txt
 }
 
 installGit() {
@@ -159,11 +103,7 @@ installDevTools() {
   installScala;
   installClojure;
 
-  yaourt --noconfirm -S \
-    virtualbox \
-    linux-headers \
-    gitflow-git \
-    smartgit 
+  yaourt --noconfirm -S ./yaourt_devtools.txt
 
   #IntelliJ watches in the FS
   sudo bash -c 'echo "fs.inotify.max_user_watches = 524288" > /etc/sysctl.d/99-sysctl.conf'
@@ -173,17 +113,7 @@ installDevTools() {
 installTools() {
   echo "Installing apps and tools"
   sleep 2
-  yaourt --noconfirm -S \
-    openssh \
-    firefox \
-    dropbox \
-    dropbox-cli \
-    google-chrome \
-    google-talkplugin \
-    spotify \
-    archey3 \
-    franz-bin \
-    keeweb-desktop
+  yaourt --noconfirm -S ./yaourt_tools.txt
 }
 
 installRedshift() {
@@ -246,10 +176,8 @@ installRanger() {
 }
 
 installKhal() { 
-  sudo pip install khal
-  sudo pip install vdirsyncer
-  sudo pip install requests-oauthlib
-  
+  sudo pip install khal vdirsyncer requests-oauthlib
+
   [ -d ${HOME}/.config/khal ] || mkdir -p ${HOME}/.config/khal
   [ -d ${HOME}/.config/vdirsyncer ] || mkdir -p ${HOME}/.config/vdirsyncer
 
@@ -258,10 +186,7 @@ installKhal() {
 }
 
 installAudio() { 
-  yaourt -S --noconfirm \
-    pulseaudio \
-    pulseaudio-ctl \
-    pavucontrol
+  yaourt -S --noconfirm ./yaourt_audio.txt
 }
 
 installCompton() {
