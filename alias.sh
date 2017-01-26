@@ -20,15 +20,15 @@ alias calmonth='gcalcli calw 4 --monday'
 alias calweek='gcalcli calw 1 --monday'
 
 javaProject () { 
-	gradle init --type java-library
-	sed '$itestCompile "org.mockito:mockito-all:1.10.19"' build.gradle >> build.gradle
-	gradle --refresh-dependencies
+  gradle init --type java-library
+  sed '$itestCompile "org.mockito:mockito-all:1.10.19"' build.gradle >> build.gradle
+  gradle --refresh-dependencies
 }
 
 scalaProject () { 
-	 gradle init --type scala-library
+  gradle init --type scala-library
 }
 
 every() {
-	watch -c -n $1 $2
+  watch -c -n $1 $2
 }
