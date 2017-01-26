@@ -32,12 +32,7 @@ set relativenumber
 set numberwidth=5
 
 " Show hidden chars
-if has('gui_running')
-  set listchars=eol:¬,tab:▸␣,nbsp:␣,trail:␣,extends:→,precedes:←
-else
-  set listchars=eol:¬,tab:▸␣,nbsp:␣,trail:␣,extends:→,precedes:←
-  "set listchars=eol:¬,tab:>-,nbsp:.,trail:.,extends:>,precedes:<
-endif
+set listchars=eol:¬,tab:▸␣,nbsp:␣,trail:␣,extends:→,precedes:←
 
 set list
 hi NonText ctermfg=8 guifg=Gray
@@ -51,7 +46,8 @@ set incsearch
 set scrolloff=8
 set sidescrolloff=16
 
-set synmaxcol=512                     " don't syntax highlight long lines
+" don't syntax highlight long lines
+set synmaxcol=512
 
 " NERDTree
 map <C-n> :NERDTreeToggle<CR>
