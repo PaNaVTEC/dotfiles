@@ -12,13 +12,36 @@ endif
 set smartindent
 set tabstop=2
 set shiftwidth=2
+set softtabstop=2
 set expandtab
 set smarttab
+
+let mapleader = ","
+
+" Test vim plugin configuration
+nmap <silent> <leader>t :TestNearest<CR>
+nmap <silent> <leader>T :TestFile<CR>
+nmap <silent> <leader>a :TestSuite<CR>
+nmap <silent> <leader>l :TestLast<CR>
+nmap <silent> <leader>g :TestVisit<CR>
+let test#strategy = "dispatch"
 
 " Line numbers
 set number
 set relativenumber
 set numberwidth=5
+
+" Show hidden chars
+if has('gui_running')
+  set listchars=eol:¬,tab:▸␣,nbsp:␣,trail:␣,extends:→,precedes:←
+else
+  set listchars=eol:¬,tab:▸␣,nbsp:␣,trail:␣,extends:→,precedes:←
+  "set listchars=eol:¬,tab:>-,nbsp:.,trail:.,extends:>,precedes:<
+endif
+
+set list
+hi NonText ctermfg=8 guifg=Gray
+hi SpecialKey ctermfg=8 guifg=Gray
 
 " Set highlight while searching
 set hlsearch

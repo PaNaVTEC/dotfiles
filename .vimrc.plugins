@@ -1,6 +1,5 @@
 call plug#begin('~/.vim/plugged')
 
-" General vim utilities
 Plug 'vim-airline/vim-airline'
 Plug 'scrooloose/nerdtree'
 Plug 'ctrlp.vim'
@@ -18,7 +17,7 @@ Plug 'airblade/vim-gitgutter'
 Plug 'pangloss/vim-javascript'
       \| Plug 'mxw/vim-jsx' "JSX - For react
       \| Plug 'heavenshell/vim-jsdoc'
-      \| Plug 'moll/vim-node', { 'for' : ['js'] } 
+      \| Plug 'moll/vim-node', { 'for' : ['js'] }
 
 " CSS
 Plug 'JulesWang/css.vim'
@@ -32,7 +31,7 @@ Plug 'othree/csscomplete.vim'
 
 " Scala
 Plug 'derekwyatt/vim-scala'
-    \| Plug 'ensime/ensime-vim', { 'for' : ['scala'] }
+    \| Plug 'ensime/ensime-vim'
 " Plug 'ktvoelker/sbt-vim'
 " Plug 'dscleaver/sbt-quickfix'
 
@@ -46,5 +45,7 @@ Plug 'venantius/vim-cljfmt'
 Plug 'tpope/vim-surround'
 Plug 'vim-syntastic/syntastic'
 Plug 'kien/rainbow_parentheses.vim'
+Plug 'janko-m/vim-test'
+Plug 'tpope/vim-dispatch'
 
 call plug#end()
