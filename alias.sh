@@ -29,6 +29,10 @@ scalaProject () {
   gradle init --type scala-library
 }
 
+clojureProject() {
+  lein new $1
+}
+
 every() {
   watch -c -n $1 $2
 }
