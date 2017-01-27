@@ -73,24 +73,12 @@ installThemes() {
 installJava() {
   echo "Installing Java"
   sleep 2 
-  yaourt --noconfirm -S ./yaourt_java.txt
-}
-
-installAndroid() {
-  yaourt --noconfirm -S ./yaourt_android.txt
-}
-
-installScala() {
-  yaourt --noconfirm -S ./yaourt_scala.txt
-}
-
-installClojure() { 
-  yaourt --noconfirm -S ./yaourt_clojure.txt
 }
 
 installGit() {
-  yaourt --noconfirm -S diff-so-fancy
+  yaourt --noconfirm -S ./yaourt_git.txt
   ln -sfn ${dir}/.gitconfig ${HOME}/.gitconfig
+  gibo Vim JetBrains Tags Vagrant Windows macOS Linux Archives >> ~/.gitignore.global
 }
 
 installDevTools() {
@@ -98,10 +86,10 @@ installDevTools() {
   sleep 2
 
   installGit;
-  installJava;
-  installAndroid;
-  installScala;
-  installClojure;
+  yaourt --noconfirm -S ./yaourt_java.txt
+  yaourt --noconfirm -S ./yaourt_android.txt
+  yaourt --noconfirm -S ./yaourt_scala.txt
+  yaourt --noconfirm -S ./yaourt_clojure.txt
 
   yaourt --noconfirm -S ./yaourt_devtools.txt
 
