@@ -252,3 +252,4 @@ __git_complete gbda _git_branch
 __git_complete gbl _git_branch
 __git_complete gbnm _git_branch
 __git_complete gbr _git_branch
+__git_complete gm _git_branch
