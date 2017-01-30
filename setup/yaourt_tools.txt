@@ -1,3 +1,4 @@
+pygmentize
 openssh
 firefox
 dropbox
