@@ -146,14 +146,14 @@ installYaourt() {
 }
 
 installVim() {
-  yaourt -S --noconfirm vim silver-searcher-git
+  yaourt -S --noconfirm vim silver-searcher-git vim-ensime-git
   #Install plugin system 
   curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
   #Configuration	  
   ln -sfn ${dir}/.vimrc ${HOME}/.vimrc
   #ensime scala needed dependencies
-  sudo pip install websocket-client sexpdata
+  # sudo pip install websocket-client sexpdata
   echo "Open vim and run :PlugInstall to complete plugin installation"
 }
 
