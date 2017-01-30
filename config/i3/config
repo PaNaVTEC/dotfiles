@@ -271,12 +271,12 @@ bar {
         tray_output none
         # tray_output primary
         separator_symbol " "
-        height 34
+        height 24
         colors {
               background #282A2E
               statusline #839496
               separator  #586e75
- 				 #border backgr. text
+                         				 #border backgr. text
               focused_workspace  #282A2E #758486 #002b36
               active_workspace   #282A2E #586e75 #002b36
               inactive_workspace #282A2E #282A2E #839496
