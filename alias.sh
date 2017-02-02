@@ -12,8 +12,8 @@ alias yi='yaourt -S'
 alias yin='yi --noconfirm'
 alias pu="sudo pip freeze --local | grep -v '^\-e' | cut -d = -f 1  | xargs -n1 sudo pip install -U"
 alias yu='yaourt -Syua && pu'
-alias yun='yaourt -Syua --noconfirm'
-alias yunf='yun --force'
+alias yun='yu --noconfirm && pu'
+alias yunf='yu --noconfirm --force && pu'
 alias yp='yaourt -Qm'
 alias yr='yaourt -R'
 
