@@ -164,7 +164,7 @@ installRanger() {
 }
 
 installVmail() {
-  sudo gem install vmail
+  gem install vmail
   ln -sfn ${dir}/config/vmail/.vmailrc ${HOME}/.vmailrc
 }
 
