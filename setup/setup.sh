@@ -163,6 +163,11 @@ installRanger() {
   ln -sfn ${dir}/config/ranger/config ${HOME}/.config/ranger/rc.conf
 }
 
+installVmail() {
+  sudo gem install vmail
+  ln -sfn ${dir}/config/vmail/.vmailrc ${HOME}/.vmailrc
+}
+
 installKhal() { 
   sudo pip install khal vdirsyncer requests-oauthlib
 
@@ -229,3 +234,4 @@ ask "Install screensavers?" Y && installScreensavers;
 ask "Install bluetooth resume patch?" Y && installBluetoothResumePatch; 
 ask "Install Ranger" Y && installRanger; 
 ask "Install Khal" Y && installKhal;
+ask "Install Vmail" Y && installVmail;
