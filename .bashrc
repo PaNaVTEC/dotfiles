@@ -23,3 +23,6 @@ export MOZ_USE_OMTC=1
 setxkbmap -layout us -variant altgr-intl -option nodeadkeys
 
 eval $(dircolors ~/.dircolors)
+
+source /etc/profile.d/autojump.bash
+
