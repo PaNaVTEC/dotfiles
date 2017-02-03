@@ -1,4 +1,5 @@
 pygmentize
+autojump
 openssh
 firefox
 dropbox

@@ -24,4 +24,5 @@ dunst
 acpi
 iw
 imagemagick
-i3lock-bl
+i3lock-blur
+avbin
