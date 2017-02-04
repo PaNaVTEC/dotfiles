@@ -39,6 +39,7 @@ Plug 'derekwyatt/vim-scala'
 Plug 'venantius/vim-cljfmt'
   \| Plug 'guns/vim-clojure-static'
   \| Plug 'venantius/vim-eastwood'
+  \| Plug 'tpope/vim-salve'
   \| Plug 'tpope/vim-fireplace', { 'for' : ['clojure'] }
 
 " General programming
