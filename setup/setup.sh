@@ -56,6 +56,11 @@ installi3() {
   sudo cp ${dir}/config/i3status/xrandr.py /usr/lib/python3.6/site-packages/py3status/modules
   sudo cp ${dir}/config/i3status/pomodoro.py /usr/lib/python3.6/site-packages/py3status/modules	
   [ -e /etc/i3status.conf ] && sudo rm /etc/i3status.conf
+  
+  # Install avbin for pygame/pomodor timer sounds
+  wget https://github.com/downloads/AVbin/AVbin/install-avbin-linux-x86-64-v10
+  sudo sh install-avbin-linux-x86-64-v10
+  rm install-avbin-linux-x86-64-v10
 }
 
 installFonts() {

@@ -271,7 +271,7 @@ bar {
   tray_output none
   # tray_output primary
   separator_symbol " "
-  height 24
+  height 34
   colors {
     background #282A2E
     statusline #839496

@@ -25,4 +25,3 @@ acpi
 iw
 imagemagick
 i3lock-blur
-avbin
