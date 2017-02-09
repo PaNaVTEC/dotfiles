@@ -50,8 +50,8 @@ set numberwidth=2
 set listchars=eol:¬,tab:▸␣,nbsp:␣,trail:␣,extends:→,precedes:←
 
 set list
-hi NonText ctermfg=8 guifg=DarkGrey
-hi SpecialKey ctermfg=8 guifg=DarkGrey
+hi NonText ctermfg=8 guifg=Grey39
+hi SpecialKey ctermfg=8 guifg=Grey39
 
 " Set highlight while searching
 set hlsearch
