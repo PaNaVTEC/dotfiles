@@ -1,7 +1,22 @@
 syntax enable
-set nocompatible               " be iMproved
-
+set nocompatible
 source ~/dotfiles/.vimrc.plugins
+
+" Colors
+set tgc
+set background=dark
+colorscheme hybrid_material
+let g:airline_theme = "hybrid"
+" Disable Background Color Erase (BCE) so that color schemes
+" work properly when Vim is used inside tmux and GNU screen.
+set t_ut=
+
+" Display a line at column 80
+if exists('+colorcolumn')
+    set colorcolumn=80
+else
+    au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%80v.\+', -1)
+endif
 
 " Configures Ack.vim to use ag the silver searcher
 if executable('ag')
@@ -28,15 +43,15 @@ let test#strategy = "dispatch"
 
 " Line numbers
 set number
-set relativenumber
-set numberwidth=5
+"set relativenumber
+set numberwidth=2
 
 " Show hidden chars
 set listchars=eol:¬,tab:▸␣,nbsp:␣,trail:␣,extends:→,precedes:←
 
 set list
-hi NonText ctermfg=8 guifg=Gray
-hi SpecialKey ctermfg=8 guifg=Gray
+hi NonText ctermfg=8 guifg=DarkGrey
+hi SpecialKey ctermfg=8 guifg=DarkGrey
 
 " Set highlight while searching
 set hlsearch
@@ -61,10 +76,29 @@ set laststatus=2 " This fixes a bug that prevents the bar not showing with nerdt
 autocmd BufWritePost *.scala silent :EnTypeCheck  "ensine type check after writing
 
 " Toggle rainbow braces on
-au VimEnter * RainbowParenthesesToggle
-au Syntax * RainbowParenthesesLoadRound
-au Syntax * RainbowParenthesesLoadSquare
-au Syntax * RainbowParenthesesLoadBraces
+let g:rainbow_active = 1
+let g:rainbow_conf = {
+    \   'guifgs': ['darkblue', 'darkorange3', 'seagreen3', 'firebrick'],
+    \   'ctermfgs': ['lightblue', 'lightyellow', 'lightcyan', 'lightmagenta'],
+    \   'operators': '_,_',
+    \   'parentheses': ['start=/(/ end=/)/ fold', 'start=/\[/ end=/\]/ fold', 'start=/{/ end=/}/ fold'],
+    \   'separately': {
+    \       '*': {},
+    \       'tex': {
+    \           'parentheses': ['start=/(/ end=/)/', 'start=/\[/ end=/\]/'],
+    \       },
+    \       'lisp': {
+    \           'guifgs': ['royalblue3', 'darkorange3', 'seagreen3', 'firebrick', 'darkorchid3'],
+    \       },
+    \       'vim': {
+    \           'parentheses': ['start=/(/ end=/)/', 'start=/\[/ end=/\]/', 'start=/{/ end=/}/ fold', 'start=/(/ end=/)/ containedin=vimFuncBody', 'start=/\[/ end=/\]/ containedin=vimFuncBody', 'start=/{/ end=/}/ fold containedin=vimFuncBody'],
+    \       },
+    \       'html': {
+    \           'parentheses': ['start=/\v\<((area|base|br|col|embed|hr|img|input|keygen|link|menuitem|meta|param|source|track|wbr)[ >])@!\z([-_:a-zA-Z0-9]+)(\s+[-_:a-zA-Z0-9]+(\=("[^"]*"|'."'".'[^'."'".']*'."'".'|[^ '."'".'"><=`]*))?)*\>/ end=#</\z1># fold'],
+    \       },
+    \       'css': 0,
+    \   }
+    \}
 
 " Allow clipboard outside vim
 set clipboard+=unnamed

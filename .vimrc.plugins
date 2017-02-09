@@ -6,12 +6,16 @@ Plug 'ctrlp.vim'
 Plug 'mileszs/ack.vim'
 Plug 'sjl/gundo.vim'
 
+" Themes and colors
+Plug 'vim-airline/vim-airline-themes'
+    \| Plug 'kristijanhusak/vim-hybrid-material'
+
 " Markdown
 Plug 'plasticboy/vim-markdown'
 
 "Git
 Plug 'tpope/vim-fugitive'
-Plug 'airblade/vim-gitgutter'
+    \| Plug 'airblade/vim-gitgutter'
 
 " JS
 Plug 'pangloss/vim-javascript'
@@ -40,12 +44,17 @@ Plug 'venantius/vim-cljfmt'
   \| Plug 'guns/vim-clojure-static'
   \| Plug 'venantius/vim-eastwood'
   \| Plug 'tpope/vim-salve'
+  \| Plug 'vim-scripts/paredit.vim'
   \| Plug 'tpope/vim-fireplace', { 'for' : ['clojure'] }
+
+" General writing
+Plug 'junegunn/goyo.vim'
+  \| Plug 'junegunn/vim-journal'
 
 " General programming
 Plug 'tpope/vim-surround'
 Plug 'vim-syntastic/syntastic'
-Plug 'kien/rainbow_parentheses.vim'
+Plug 'luochen1990/rainbow'
 Plug 'janko-m/vim-test'
 Plug 'tpope/vim-dispatch'
 
