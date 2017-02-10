@@ -47,12 +47,16 @@ set number
 "set relativenumber
 set numberwidth=2
 
+function OnBufEnter()
+  if (@% == "NERD_tree_1") | set nolist | else | set list | endif
+  if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+endfunction
+
 " Show hidden chars
 set listchars=eol:¬,tab:▸␣,nbsp:␣,trail:␣,extends:→,precedes:←
 hi NonText ctermfg=8 guifg=Grey39
 hi SpecialKey ctermfg=8 guifg=Grey39
-" Show chars when buffer != NERDTree
-autocmd bufenter * if (@% == "NERD_tree_1") | set nolist | else | set list
+autocmd bufenter * call OnBufEnter()
 
 " Set highlight while searching
 set hlsearch
@@ -67,7 +71,6 @@ set synmaxcol=512
 
 " NERDTree
 map <C-n> :NERDTreeToggle<CR>
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 nnoremap <silent> <Leader>v :NERDTreeFind<CR>
 let g:ctrlp_dont_split = 'NERD'
 let g:NERDTreeDirArrowExpandable = ''
