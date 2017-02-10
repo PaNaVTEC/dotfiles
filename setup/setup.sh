@@ -67,6 +67,9 @@ installFonts() {
   echo "Installing fonts"
   sleep 2
   yaourt --noconfirm -S ./yaourt_fonts.txt 
+  mkdir -p ~/.local/share/fonts/
+  sudo cp ${dir}/fonts/*.otf ~/.local/share/fonts/
+  mkfontdir
 }
 
 installThemes() {
@@ -151,7 +154,6 @@ installYaourt() {
 }
 
 installVim() {
-  cp ${dir}/fonts/*.otf /usr/share/fonts/OTF
   yaourt -S --noconfirm vim silver-searcher-git vim-ensime-git
   #Install plugin system 
   curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
