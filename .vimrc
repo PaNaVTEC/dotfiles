@@ -77,6 +77,7 @@ nnoremap <silent> <Leader>v :NERDTreeFind<CR>
 let g:ctrlp_dont_split = 'NERD'
 let g:NERDTreeDirArrowExpandable = ''
 let g:NERDTreeDirArrowCollapsible = ''
+let g:WebDevIconsUnicodeGlyphDoubleWidth = 0
 
 " Airline
 let g:airline_powerline_fonts = 1
