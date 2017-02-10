@@ -5,10 +5,7 @@ Plug 'scrooloose/nerdtree'
 Plug 'ctrlp.vim'
 Plug 'mileszs/ack.vim'
 Plug 'sjl/gundo.vim'
-
-" Themes and colors
-Plug 'vim-airline/vim-airline-themes'
-    \| Plug 'kristijanhusak/vim-hybrid-material'
+Plug 'tpope/vim-unimpaired'
 
 " Markdown
 Plug 'plasticboy/vim-markdown'
@@ -27,11 +24,8 @@ Plug 'pangloss/vim-javascript'
 Plug 'JulesWang/css.vim'
       \| Plug 'hail2u/vim-css3-syntax'
       \| Plug 'cakebaker/scss-syntax.vim', { 'for': ['scss'] }
-
 Plug 'ap/vim-css-color'
-
-" Omnicompletion, this is beta repo, where stables are already in VIMRUNTIME
-Plug 'othree/csscomplete.vim'
+      \| Plug 'othree/csscomplete.vim', { 'for' : 'css' }
 
 " Scala
 Plug 'derekwyatt/vim-scala'
@@ -57,5 +51,11 @@ Plug 'vim-syntastic/syntastic'
 Plug 'luochen1990/rainbow'
 Plug 'janko-m/vim-test'
 Plug 'tpope/vim-dispatch'
+
+" Themes and colors
+Plug 'vim-airline/vim-airline-themes'
+    \| Plug 'kristijanhusak/vim-hybrid-material'
+    \| Plug 'ryanoasis/vim-devicons'
+"    \| Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 
 call plug#end()

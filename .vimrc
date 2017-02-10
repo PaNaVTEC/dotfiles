@@ -2,6 +2,7 @@ syntax enable
 set nocompatible
 source ~/dotfiles/.vimrc.plugins
 
+set encoding=utf8
 " Colors
 set tgc
 set background=dark
@@ -48,10 +49,10 @@ set numberwidth=2
 
 " Show hidden chars
 set listchars=eol:¬,tab:▸␣,nbsp:␣,trail:␣,extends:→,precedes:←
-
-set list
 hi NonText ctermfg=8 guifg=Grey39
 hi SpecialKey ctermfg=8 guifg=Grey39
+" Show chars when buffer != NERDTree
+autocmd bufenter * if (@% == "NERD_tree_1") | set nolist | else | set list
 
 " Set highlight while searching
 set hlsearch
@@ -67,6 +68,10 @@ set synmaxcol=512
 " NERDTree
 map <C-n> :NERDTreeToggle<CR>
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+nnoremap <silent> <Leader>v :NERDTreeFind<CR>
+let g:ctrlp_dont_split = 'NERD'
+let g:NERDTreeDirArrowExpandable = ''
+let g:NERDTreeDirArrowCollapsible = ''
 
 " Airline
 let g:airline_powerline_fonts = 1
@@ -78,7 +83,7 @@ autocmd BufWritePost *.scala silent :EnTypeCheck  "ensine type check after writi
 " Toggle rainbow braces on
 let g:rainbow_active = 1
 let g:rainbow_conf = {
-    \   'guifgs': ['darkblue', 'darkorange3', 'seagreen3', 'firebrick'],
+    \   'guifgs':['#2c89a9', '#7acab0', '#ffaa88', '#28a0e0' , '#CC5875', '#FFCCC8', '#FFC376'],
     \   'ctermfgs': ['lightblue', 'lightyellow', 'lightcyan', 'lightmagenta'],
     \   'operators': '_,_',
     \   'parentheses': ['start=/(/ end=/)/ fold', 'start=/\[/ end=/\]/ fold', 'start=/{/ end=/}/ fold'],
