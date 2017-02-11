@@ -3,6 +3,18 @@ data.location=~/.task
 weekstart=Monday
 include /usr/share/doc/task/rc/solarized-dark-256.theme
 
+# Date format
+dateformat.annotation=d-M-Y H:N
+dateformat=D-M-Y
+dateformat.report=D-M-Y
+
+journal.time=on
+uda.priority.values=H,M,,L
+
+# Holidays
+include ~/dotfiles/config/taskwarrior/holidays.en-GB.rc
+calendar.holidays=full
+
 # Sync settings
 taskd.certificate=~/.gnupg/twsync/private.certificate.pem
 taskd.key=~/.gnupg/twsync/private.key.pem
@@ -15,6 +27,3 @@ taskd.trust=ignore hostname
 uda.totalactivetime.type=duration
 uda.totalactivetime.label=Total active time
 uda.totalactivetime.values=
-
-# 
-uda.priority.values=H,M,,L
