@@ -17,6 +17,8 @@ alias yunf='pu && yu --noconfirm --force'
 alias yp='yaourt -Qm'
 alias yr='yaourt -R'
 
+alias gh='ghi.sh'
+
 alias calmonth='gcalcli calw 4 --monday'
 alias calweek='gcalcli calw 1 --monday'
 
