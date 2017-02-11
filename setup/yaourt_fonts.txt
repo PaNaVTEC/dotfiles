@@ -2,3 +2,4 @@ ttf-font-awesome
 ttf-google-fonts-git
 ttf-ms-fonts
 ttf-droid-sans-mono-dotted-powerline-git
+emojione-color-font

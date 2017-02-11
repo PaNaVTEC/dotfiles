@@ -68,8 +68,9 @@ installFonts() {
   sleep 2
   yaourt --noconfirm -S ./yaourt_fonts.txt 
   mkdir -p ~/.local/share/fonts/
-  sudo cp ${dir}/fonts/*.otf ~/.local/share/fonts/
-  mkfontdir
+  wget "https://github.com/ryanoasis/nerd-fonts/blob/master/patched-fonts/DroidSansMono/complete/Droid%20Sans%20Mono%20for%20Powerline%20Nerd%20Font%20Complete%20Mono.otf"
+  sudo mv *.otf ~/.local/share/fonts/
+  sudo fc-cache -fv
 }
 
 installThemes() {
@@ -195,9 +196,14 @@ installCompton() {
     compton \
     xorg-xwininfo
   mkdir ~/.before_startx
-  echo "compton -c -i 0.9 -b &" >> ~/.before_startx/run.sh	
+  echo "compton -c -i 0.9 -b &" >> ~/.before_startx/run.sh
   chmod a+x ~/.before_startx/run.sh
   ln -sfn ${dir}/config/compton/compton.conf ${HOME}/.config/compton.conf
+}
+
+installTaskWarrior() {
+  yaourt -S --noconfirm task tasksh
+  ln -sfn ${dir}/config/taskwarrior/.taskrc ${HOME}/.taskrc
 }
 
 dir=`pwd`
@@ -240,6 +246,7 @@ ask "Install configuration for dunst?" Y && ln -sfn ${dir}/config/dunst ${HOME}/
 ask "Install configuration for termite?" Y && ln -sfn ${dir}/config/termite ${HOME}/.config/termite && ln -sfn ${dir}/.dircolors ${HOME}/.dircolors;
 ask "Install screensavers?" Y && installScreensavers;
 ask "Install bluetooth resume patch?" Y && installBluetoothResumePatch; 
-ask "Install Ranger" Y && installRanger; 
-ask "Install Khal" Y && installKhal;
-ask "Install Vmail" Y && installVmail;
+ask "Install Ranger?" Y && installRanger; 
+ask "Install Khal?" Y && installKhal;
+ask "Install taskWarrior?" Y && installTaskWarrior;
+ask "Install Vmail?" Y && installVmail;
