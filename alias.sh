@@ -19,6 +19,7 @@ alias yr='yaourt -R'
 
 alias gh='ghi.sh'
 
+alias t='task'
 alias calmonth='gcalcli calw 4 --monday'
 alias calweek='gcalcli calw 1 --monday'
 

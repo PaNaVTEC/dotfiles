@@ -15,3 +15,6 @@ taskd.trust=ignore hostname
 uda.totalactivetime.type=duration
 uda.totalactivetime.label=Total active time
 uda.totalactivetime.values=
+
+# 
+uda.priority.values=H,M,,L
