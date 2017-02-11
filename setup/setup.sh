@@ -204,6 +204,11 @@ installCompton() {
 installTaskWarrior() {
   yaourt -S --noconfirm task tasksh
   ln -sfn ${dir}/config/taskwarrior/.taskrc ${HOME}/.taskrc
+
+  # time tracking hook
+  sudo pip install taskwarrior-time-tracking-hook
+  mkdir -p ~/.task/hooks
+  ln -s `which taskwarrior_time_tracking_hook` ~/.task/hooks/on-modify.timetracking
 }
 
 dir=`pwd`

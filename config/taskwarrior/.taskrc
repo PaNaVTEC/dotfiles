@@ -3,3 +3,15 @@ data.location=~/.task
 weekstart=Monday
 include /usr/share/doc/task/rc/solarized-dark-256.theme
 
+# Sync settings
+taskd.certificate=~/.gnupg/twsync/private.certificate.pem
+taskd.key=~/.gnupg/twsync/private.key.pem
+taskd.ca=~/.gnupg/twsync/ca.cert.pem
+taskd.server=taskwarrior.inthe.am:53589
+taskd.credentials=inthe_am/panavtec/de40f086-966c-4ead-8499-0424cbdb076b
+taskd.trust=ignore hostname
+
+# Time tracking Hook https://github.com/kostajh/taskwarrior-time-tracking-hook
+uda.totalactivetime.type=duration
+uda.totalactivetime.label=Total active time
+uda.totalactivetime.values=
