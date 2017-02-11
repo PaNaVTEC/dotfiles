@@ -174,8 +174,7 @@ installRanger() {
 
 installMutt() {
   yaourt -S --noconfirm neomutt
-  mkdir -p ${HOME}/.mutt
-  ln -sfn ${dir}/config/mutt/.muttrc ${HOME}/.mutt/.muttrc
+  ln -sfn ${dir}/config/mutt/.muttrc ${HOME}/.muttrc
 }
 
 installKhal() { 
