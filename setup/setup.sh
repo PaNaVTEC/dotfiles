@@ -172,9 +172,10 @@ installRanger() {
   ln -sfn ${dir}/config/ranger/config ${HOME}/.config/ranger/rc.conf
 }
 
-installVmail() {
-  gem install vmail
-  ln -sfn ${dir}/config/vmail/.vmailrc ${HOME}/.vmailrc
+installMutt() {
+  yaourt -S --noconfirm neomutt
+  mkdir -p ${HOME}/.mutt
+  ln -sfn ${dir}/config/mutt/.muttrc ${HOME}/.mutt/.muttrc
 }
 
 installKhal() { 
@@ -249,4 +250,4 @@ ask "Install bluetooth resume patch?" Y && installBluetoothResumePatch;
 ask "Install Ranger?" Y && installRanger; 
 ask "Install Khal?" Y && installKhal;
 ask "Install taskWarrior?" Y && installTaskWarrior;
-ask "Install Vmail?" Y && installVmail;
+ask "Install mutt?" Y && installMutt;
