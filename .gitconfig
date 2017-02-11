@@ -1,6 +1,7 @@
 [user]
 	email = panavtec@gmail.com
 	name = Christian Panadero
+	signingkey = 88EF58F88BE619F6
 [credential]
 	helper = cache --timeout 86400
 [color]
