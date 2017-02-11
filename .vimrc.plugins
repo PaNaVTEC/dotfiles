@@ -6,6 +6,7 @@ Plug 'ctrlp.vim'
 Plug 'mileszs/ack.vim'
 Plug 'sjl/gundo.vim'
 Plug 'tpope/vim-unimpaired'
+Plug 'blindFS/vim-taskwarrior'
 
 " Markdown
 Plug 'plasticboy/vim-markdown'
