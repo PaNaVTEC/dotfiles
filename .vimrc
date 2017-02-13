@@ -133,3 +133,6 @@ let g:syntastic_check_on_wq = 0
 "Gundo
 map <C-g> :GundoToggle<CR>
 
+" Backup and tmps in the same folder 
+set backupdir=~/.backup
+set directory=~/.tmp
