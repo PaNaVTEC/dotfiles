@@ -47,7 +47,7 @@ installi3() {
   ln -sfn ${dir}/config/i3 ${HOME}/.config/i3
   
   # gsimplecal configuration
-  [ -d ${HOME}/.config/gsimplecal ] || mkdir -p ${HOME}/.config/gsimplecal
+  mkdir -p ${HOME}/.config/gsimplecal
   ln -sfn ${dir}/config/gsimplecal/config ${HOME}/.config/gsimplecal/config
 
   #py3status
@@ -87,6 +87,7 @@ installJava() {
 installGit() {
   yaourt --noconfirm -S ./yaourt_git.txt
   ln -sfn ${dir}/.gitconfig ${HOME}/.gitconfig
+  gibo -u
   gibo Vim JetBrains Tags Vagrant Windows macOS Linux Archives >> ~/.gitignore.global
 }
 
@@ -117,7 +118,7 @@ installRedshift() {
   echo "Installing redshift"
   sleep 2
   yaourt --noconfirm -S redshift
-  [ -d ${HOME}/.config/redshift ] || mkdir -p ${HOME}/.config/redshift
+  mkdir -p ${HOME}/.config/redshift
   ln -sfn ${dir}/config/redshift/config ${HOME}/.config/redshift/config
 }
 
@@ -163,6 +164,8 @@ installVim() {
   ln -sfn ${dir}/.vimrc ${HOME}/.vimrc
   #ensime scala needed dependencies
   # sudo pip install websocket-client sexpdata
+  mkdir -p ~/.backup
+  mkdir -p ~/.tmp
   echo "Open vim and run :PlugInstall to complete plugin installation"
 }
 
@@ -180,8 +183,8 @@ installMutt() {
 installKhal() { 
   sudo pip install khal vdirsyncer requests-oauthlib
 
-  [ -d ${HOME}/.config/khal ] || mkdir -p ${HOME}/.config/khal
-  [ -d ${HOME}/.config/vdirsyncer ] || mkdir -p ${HOME}/.config/vdirsyncer
+  mkdir -p ${HOME}/.config/khal
+  mkdir -p ${HOME}/.config/vdirsyncer
 
   ln -sfn ${dir}/config/khal/khal.conf ${HOME}/.config/khal/khal.conf
   cp ${dir}/config/khal/vdirsyncerconfig ${HOME}/.config/vdirsyncer/config
@@ -195,7 +198,7 @@ installCompton() {
   yaourt -S --noconfirm \
     compton \
     xorg-xwininfo
-  mkdir ~/.before_startx
+  mkdir -p ~/.before_startx
   echo "compton -c -i 0.9 -b &" >> ~/.before_startx/run.sh
   chmod a+x ~/.before_startx/run.sh
   ln -sfn ${dir}/config/compton/compton.conf ${HOME}/.config/compton.conf
@@ -211,6 +214,10 @@ installTaskWarrior() {
   ln -s `which taskwarrior_time_tracking_hook` ~/.task/hooks/on-modify.timetracking
 }
 
+installBeancount() {
+  sudo pip install beancount beancount-fava setuptools beansoup beancount-plugins
+}
+
 dir=`pwd`
 if [ ! -e "${dir}/${0}" ]; then
   echo "Script not called from within repository directory. Aborting."
@@ -219,10 +226,9 @@ fi
 dir="${dir}/.."
 
 echo "PaNaVTEC dotfiles installer"
-# Makes dir for scrot screenshots
-[ -d ${HOME}/Pictures/Screenshots ] || mkdir -p ${HOME}/Pictures/Screenshots
-[ -d ${HOME}/.data ] || mkdir ${HOME}/.data
-[ -d ${HOME}/.i3 ] || mkdir ${HOME}/.i3
+
+mkdir -p ${HOME}/.data
+mkdir -p ${HOME}/.i3
 
 #Makes binary executable
 chmod a+x ${dir}/bin/*
@@ -254,4 +260,5 @@ ask "Install bluetooth resume patch?" Y && installBluetoothResumePatch;
 ask "Install Ranger?" Y && installRanger; 
 ask "Install Khal?" Y && installKhal;
 ask "Install taskWarrior?" Y && installTaskWarrior;
+ask "Install beancount?" Y && installBeancount;
 ask "Install mutt?" Y && installMutt;
