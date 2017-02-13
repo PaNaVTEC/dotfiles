@@ -39,7 +39,6 @@ Plug 'venantius/vim-cljfmt'
   \| Plug 'guns/vim-clojure-static'
   \| Plug 'venantius/vim-eastwood'
   \| Plug 'tpope/vim-salve'
-  \| Plug 'vim-scripts/paredit.vim'
   \| Plug 'tpope/vim-fireplace', { 'for' : ['clojure'] }
 
 " General writing
