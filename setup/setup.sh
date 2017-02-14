@@ -87,6 +87,15 @@ installJava() {
 installGit() {
   yaourt --noconfirm -S ./yaourt_git.txt
   ln -sfn ${dir}/.gitconfig ${HOME}/.gitconfig
+  
+  # SSH agent
+  mkdir -p ${HOME}/.config/systemd/user
+  ln -sfn ${dir}/config/units/ssh-agent.service ${HOME}/.config/systemd/user/
+  systemctl --user daemon-reload
+  systemctl --user enable ssh-agent
+  systemctl --user start ssh-agent
+
+  # Global git ignores
   gibo -u
   gibo Vim JetBrains Tags Vagrant Windows macOS Linux Archives >> ~/.gitignore.global
 }
@@ -236,6 +245,8 @@ chmod a+x ${dir}/bin/*
 #TODO: this autommagically
 echo "Remember that you need to uncommed the [multilib] repo in /etc/pacman.conf, if you haven't done that, please modify that file, update with pacman -Syua and come back later"
 echo "actionSystem.suspendFocusTransferIfApplicationInactive=false add this into intelliJ to prevent focus lose"
+
+echo "Don't forget to add your Github SSH key with: ssh-add ~/.ssh/id_rsa when you copied it"
 
 ask "install yaourt?" Y && installYaourt;
 ask "install i3?" Y && installi3;
