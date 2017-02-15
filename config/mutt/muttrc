@@ -1,3 +1,4 @@
+source ~/dotfiles/config/mutt/mutt-colors-solarized-dark-256.muttrc
 source "gpg -d ~/dotfiles/config/mutt/passwords.gpg |"
 
 set editor = "vim"
