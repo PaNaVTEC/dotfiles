@@ -24,6 +24,7 @@ taskd.credentials=inthe_am/panavtec/de40f086-966c-4ead-8499-0424cbdb076b
 taskd.trust=ignore hostname
 
 # Time tracking Hook https://github.com/kostajh/taskwarrior-time-tracking-hook
+max_active_tasks=3
 uda.totalactivetime.type=duration
 uda.totalactivetime.label=Total active time
 uda.totalactivetime.values=
