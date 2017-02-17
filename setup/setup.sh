@@ -175,7 +175,7 @@ installVim() {
   # sudo pip install websocket-client sexpdata
   mkdir -p ~/.backup
   mkdir -p ~/.tmp
-  echo "Open vim and run :PlugInstall to complete plugin installation"
+  vim +PlugInstall +qa
 }
 
 installRanger() { 
