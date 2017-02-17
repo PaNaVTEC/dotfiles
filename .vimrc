@@ -7,6 +7,7 @@ set encoding=utf8
 set tgc
 set background=dark
 colorscheme hybrid_material
+
 let g:airline_theme = "hybrid"
 " Disable Background Color Erase (BCE) so that color schemes
 " work properly when Vim is used inside tmux and GNU screen.
@@ -50,7 +51,7 @@ set numberwidth=2
 highlight CursorLine cterm=NONE ctermbg=NONE ctermfg=NONE guibg=NONE guifg=NONE
 set cursorline
 
-function OnBufEnter()
+function! OnBufEnter()
   if (@% == "NERD_tree_1") | set nolist | else | set list | endif
   if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 endfunction
@@ -137,3 +138,9 @@ map <C-g> :GundoToggle<CR>
 " Backup and tmps in the same folder 
 set backupdir=~/.backup
 set directory=~/.tmp
+
+" Multiple cursors keybindings
+let g:multi_cursor_next_key='<C-j>'
+let g:multi_cursor_prev_key='<C-k>'
+let g:multi_cursor_skip_key='<C-x>'
+let g:multi_cursor_quit_key='<Esc>'

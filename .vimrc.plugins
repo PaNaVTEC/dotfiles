@@ -8,6 +8,7 @@ Plug 'sjl/gundo.vim'
 Plug 'tpope/vim-unimpaired'
 Plug 'blindFS/vim-taskwarrior'
 Plug 'nathangrigg/vim-beancount'
+Plug 'terryma/vim-multiple-cursors'
 
 " Markdown
 Plug 'plasticboy/vim-markdown'
