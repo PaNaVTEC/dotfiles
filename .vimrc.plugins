@@ -3,10 +3,11 @@ call plug#begin('~/.vim/plugged')
 Plug 'vim-airline/vim-airline'
 Plug 'scrooloose/nerdtree'
 Plug 'ctrlp.vim'
-Plug 'mileszs/ack.vim'
+Plug 'wincent/ferret'
 Plug 'sjl/gundo.vim'
 Plug 'tpope/vim-unimpaired'
 Plug 'blindFS/vim-taskwarrior'
+Plug 'nathangrigg/vim-beancount'
 
 " Markdown
 Plug 'plasticboy/vim-markdown'

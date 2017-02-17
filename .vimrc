@@ -21,7 +21,8 @@ endif
 
 " Configures Ack.vim to use ag the silver searcher
 if executable('ag')
-  let g:ackprg = 'ag --nogroup --nocolor --column'
+  let g:FerretExecutable='ag,rg'
+  "let g:ackprg = 'ag --nogroup --nocolor --column'
 endif
 
 " Indentation
