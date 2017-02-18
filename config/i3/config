@@ -198,7 +198,7 @@ mode $resize {
   bindsym Escape mode "default"
 }
 #lockscreen
-set $Locker ~/.bin/ilockit && sleep 1
+set $Locker i3lock-wrapper 
 bindsym $mod+Escape exec $Locker
 
 # Shutdown / reboot...
@@ -271,7 +271,7 @@ bar {
   tray_output none
   # tray_output primary
   separator_symbol " "
-  height 34
+  height 24
   colors {
     background #282A2E
     statusline #839496
