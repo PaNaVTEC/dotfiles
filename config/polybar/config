@@ -84,6 +84,13 @@ label-visible = %name%
 label-visible-background = ${self.label-focused-background}
 label-visible-padding = 2 
 
+[module/dropbox]
+type = custom/script
+exec = ~/dotfiles/bin/dropbox_status.sh
+format-underline = #458588
+click-left = thunar ~/Dropbox/ 
+interval=5
+
 [module/backlight]
 type = internal/backlight
 card = intel_backlight
