@@ -169,16 +169,12 @@ label-disconnected-foreground = ${colors.foreground-alt}
 
 [module/date]
 type = internal/date
-interval = 1
+interval = 2
 
 date = "%d-%m-%y"
 time = "%H:%M"
-click-left = gsimplecal
-
-;format-prefix = 
-format-prefix-foreground = ${colors.foreground-alt}
-
 label = %date% %time%
+format-prefix-foreground = ${colors.foreground-alt}
 
 [module/volume]
 type = internal/volume
