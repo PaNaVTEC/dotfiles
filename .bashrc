@@ -16,6 +16,7 @@ source ~/dotfiles/git-alias.sh
 source ~/dotfiles/functions.sh
 source ~/dotfiles/alias.sh
 source ~/dotfiles/paths.sh
+source ~/.env.sh
 
 # Use omtc in firefox (enables html5 youtube hi quality videos)
 export MOZ_USE_OMTC=1

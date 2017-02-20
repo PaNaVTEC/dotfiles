@@ -18,12 +18,12 @@ throttle-input-for = 30
 screenchange-reload = true
 
 [bar/top]
-;monitor = ${env:MONITOR:eDP1}
+monitor = ${env:POLYBAR_MONITOR:DP1}
 monitor-strict = true
-dpi = 72
+dpi = ${env:POLYBAR_DPI:72}
 bottom = false
 width = 100%
-height = 25
+height = ${env:POLYBAR_HEIGHT:25}
 offset-x = 0
 offset-y = 0
 
@@ -95,17 +95,17 @@ interval=5
 type = internal/backlight
 card = intel_backlight
 
-format = <label> <bar>
-label = ""
+format = <label> 
+label = " %percentage%%"
 
 bar-width = 10
 bar-indicator = |
 bar-indicator-foreground = #ff
 bar-indicator-font = 2
-bar-fill = ─
+bar-fill = -
 bar-fill-font = 2
 bar-fill-foreground = #9f78e1
-bar-empty = ─
+bar-empty = -
 bar-empty-font = 2
 bar-empty-foreground = ${colors.foreground-alt}
 
@@ -125,7 +125,7 @@ label =  %percentage_used%%
 
 [module/wlan]
 type = internal/network
-interface = wlp3s0
+interface = ${env:POLYBAR_WIFI_CARD:wlp3s0}
 interval = 5.0
 
 format-connected = <label-connected>
@@ -136,11 +136,6 @@ label-connected = "%{A1:wicd-gtk &:}%essid%%{A}"
 label-disconnected = "%{A1:wicd-gtk &:}%{A}"
 label-disconnected-foreground = #5b
 
-ramp-signal-0 = 
-ramp-signal-1 = 
-ramp-signal-2 = 
-ramp-signal-3 = 
-ramp-signal-4 = 
 ramp-signal-foreground = ${colors.foreground-alt}
 
 [module/pomodoro]
@@ -157,7 +152,7 @@ click-right = if [ -f ~/.pomodoro_session ]; then rm ~/.pomodoro_session; fi
 
 [module/eth]
 type = internal/network
-interface = eno1
+interface = ${env:POLYBAR_ETHERNET_CARD:eno1}
 interval = 5.0
 
 format-connected-prefix = " "
@@ -195,12 +190,10 @@ type = internal/battery
 battery = BAT0
 adapter = AC
 full-at = 98
-time-format = "%H%{F#92}%M%{F-}"
 
-label-discharging = %percentage% %time%
+label-discharging = %percentage%% 
 
 format-charging = <animation-charging> <label-charging>
-
 format-discharging = <ramp-capacity> <label-discharging>
 
 format-full-prefix = " "

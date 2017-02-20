@@ -23,3 +23,6 @@ sudo cp apple.conf /etc/modprobe.d/apple.conf
 #Enable fan service
 sudo systemctl enable mbpfan.service
 sudo systemctl start mbpfan.service
+
+# polybar env vars
+ln -sfn ~/dotfiles/laptops/macbookPro12,1/env.sh ~/.env.sh
