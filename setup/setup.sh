@@ -50,6 +50,10 @@ installi3() {
   mkdir -p ${HOME}/.config/gsimplecal
   ln -sfn ${dir}/config/gsimplecal/config ${HOME}/.config/gsimplecal/config
 
+  #polybar
+  mkdir -p ${HOME}/.config/polybar/
+  ln -sfn ${dir}/config/polybar/config ${HOME}/.config/polybar/config
+
   #py3status
   sudo pip install py3status pygame
   ln -sfn ${dir}/config/i3status/i3status.conf ${HOME}/.i3/i3status.conf
