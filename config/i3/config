@@ -13,7 +13,7 @@ set $WS6 6 
 set $WS7 7 
 set $WS8 8 
 set $WS9 9 
-set $WS0 10 
+set $WS0 10 
 
 # assign gaps to workspaces
 workspace "$WS1" gaps inner 10
