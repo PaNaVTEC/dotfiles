@@ -4,7 +4,9 @@ yaourt --noconfirm -S  \
   kbdlight \
 	bcwc-pcie-git \
 	acpilight \
-	mbpfan-git 
+	mbpfan-git \
+  asoundconf \
+  alsa-plugins
 
 # Fix wifi connection flickering
 sudo cp 40-ipv6.conf /etc/sysctl.d
@@ -26,3 +28,8 @@ sudo systemctl start mbpfan.service
 
 # polybar env vars
 ln -sfn ~/dotfiles/laptops/macbookPro12,1/env.sh ~/.env.sh
+
+# Alsa Audio
+asoundconf set-default-card PCH
+asoundconf set-pulseaudio
+cp sound.conf ~/etc/modprobe.d/sound.conf
