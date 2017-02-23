@@ -113,8 +113,11 @@ installDevTools() {
   yaourt --noconfirm -S ./yaourt_android.txt
   yaourt --noconfirm -S ./yaourt_scala.txt
   yaourt --noconfirm -S ./yaourt_clojure.txt
-
   yaourt --noconfirm -S ./yaourt_devtools.txt
+
+  # clojure lein configuration
+  mkdir -p ${HOME}/.lein/
+  ln -sfn ${dir}/config/lein/profiles.clj ${HOME}/.lein/profiles.clj
 
   #IntelliJ watches in the FS
   sudo bash -c 'echo "fs.inotify.max_user_watches = 524288" > /etc/sysctl.d/99-sysctl.conf'
