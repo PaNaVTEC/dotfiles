@@ -26,6 +26,6 @@ acpi
 iw
 imagemagick
 i3lock-wrapper
-wireless-tools
+wireless_tools
 polybar
 pymodoro-git
