@@ -38,12 +38,6 @@ installi3() {
   sleep 2
   yaourt --noconfirm -S ./yaourt_i3.txt
 
-  # Default thunar to file directories
-  #gvfs-mime --set inode/directory thunar.desktop
-  #xdg-mime default thunar.desktop inode/directory
-  # Window switcher
-  sudo pip install i3-py quickswitch-i3
-
   ln -sfn ${dir}/config/i3 ${HOME}/.config/i3
   
   # gsimplecal configuration
@@ -53,18 +47,6 @@ installi3() {
   #polybar
   mkdir -p ${HOME}/.config/polybar/
   ln -sfn ${dir}/config/polybar/config ${HOME}/.config/polybar/config
-
-  #py3status
-  sudo pip install py3status pygame
-  ln -sfn ${dir}/config/i3status/i3status.conf ${HOME}/.i3/i3status.conf
-  sudo cp ${dir}/config/i3status/xrandr.py /usr/lib/python3.6/site-packages/py3status/modules
-  sudo cp ${dir}/config/i3status/pomodoro.py /usr/lib/python3.6/site-packages/py3status/modules	
-  [ -e /etc/i3status.conf ] && sudo rm /etc/i3status.conf
-  
-  # Install avbin for pygame/pomodor timer sounds
-  wget https://github.com/downloads/AVbin/AVbin/install-avbin-linux-x86-64-v10
-  sudo sh install-avbin-linux-x86-64-v10
-  rm install-avbin-linux-x86-64-v10
 }
 
 installFonts() {

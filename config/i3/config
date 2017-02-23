@@ -50,7 +50,7 @@ new_window 1pixel
 for_window [title="^Nyanyanyanyanyanyanya...$"] mark "STATWIN", fullscreen enable
 
 #layout
-for_window [workspace="$WS3|$WS6"] layout tabbed
+#for_window [workspace="$WS3|$WS6"] layout tabbed
 
 #Sets the modifier to the Windows key
 set $mod Mod4
@@ -260,27 +260,6 @@ set $mode_workspaces Go to workspace... 10+
     bindsym Escape mode "default"
   }
 bindsym $mod+Shift+w mode "$mode_workspaces"
-
-#bar {
-#  position top
-#  status_command py3status
-#  workspace_buttons yes
-#  tray_padding 3
-#  tray_output none
-#  # tray_output primary
-#  separator_symbol " "
-#  height 24
-#  colors {
-#    background #282A2E
-#    statusline #839496
-#    separator  #586e75
-#    #border backgr. text
-#    focused_workspace  #282A2E #758486 #002b36
-#    active_workspace   #282A2E #586e75 #002b36
-#    inactive_workspace #282A2E #282A2E #839496
-#    urgent_workspace   #282A2E #dc322f #fdf6e3
-#  }
-#}
 
 set $mode_gaps Gaps: (o) outer, (i) inner
 set $mode_gaps_outer Outer Gaps: +|-|0 (local), Shift + +|-|0 (global)
