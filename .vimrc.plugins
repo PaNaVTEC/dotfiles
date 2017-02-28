@@ -33,7 +33,7 @@ Plug 'ap/vim-css-color'
 " Scala
 Plug 'derekwyatt/vim-scala'
     \| Plug 'ensime/ensime-vim'
-" Plug 'ktvoelker/sbt-vim'
+    \| Plug 'ktvoelker/sbt-vim'
 " Plug 'dscleaver/sbt-quickfix'
 
 " Clojure
