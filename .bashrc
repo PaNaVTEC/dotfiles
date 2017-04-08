@@ -27,4 +27,4 @@ setxkbmap -layout us -variant altgr-intl -option nodeadkeys
 eval $(dircolors ~/.dircolors)
 
 source /etc/profile.d/autojump.bash
-
+eval $(thefuck --alias)

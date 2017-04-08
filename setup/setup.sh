@@ -110,6 +110,7 @@ installTools() {
   echo "Installing apps and tools"
   sleep 2
   yaourt --noconfirm -S ./yaourt_tools.txt
+  sudo pip install thefuck
 }
 
 installRedshift() {
@@ -164,6 +165,7 @@ installVim() {
   # sudo pip install websocket-client sexpdata
   mkdir -p ~/.backup
   mkdir -p ~/.tmp
+  mkdir -p ~/.vim/undodir
   vim +PlugInstall +qa
 }
 

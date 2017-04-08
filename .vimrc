@@ -147,3 +147,8 @@ let g:multi_cursor_quit_key='<Esc>'
 
 " sudo shutup and write the file
 cmap w!! w !sudo tee % >/dev/null
+
+" persistent undo
+set undofile
+set undodir=~/.vim/undodir
+
