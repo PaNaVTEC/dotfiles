@@ -96,6 +96,7 @@ installDevTools() {
   yaourt --noconfirm -S ./yaourt_scala.txt
   yaourt --noconfirm -S ./yaourt_clojure.txt
   yaourt --noconfirm -S ./yaourt_devtools.txt
+  installJs;
 
   # clojure lein configuration
   mkdir -p ${HOME}/.lein/
@@ -104,6 +105,12 @@ installDevTools() {
   #IntelliJ watches in the FS
   sudo bash -c 'echo "fs.inotify.max_user_watches = 524288" > /etc/sysctl.d/99-sysctl.conf'
   sudo sysctl --system
+}
+
+installjs() {
+  yaourt --noconfirm nodejs
+  sudo npm install -g n
+  sudo n latest
 }
 
 installTools() {
