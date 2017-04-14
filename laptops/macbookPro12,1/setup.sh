@@ -2,7 +2,7 @@
 yaourt --noconfirm -S  \
 	xf86-input-synaptics \
   kbdlight \
-	bcwc-pcie-git \
+	bcwc-pcie-dkms \
 	acpilight \
 	mbpfan-git \
   asoundconf \

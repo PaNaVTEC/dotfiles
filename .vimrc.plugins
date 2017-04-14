@@ -9,6 +9,7 @@ Plug 'tpope/vim-unimpaired'
 Plug 'blindFS/vim-taskwarrior'
 Plug 'nathangrigg/vim-beancount'
 Plug 'terryma/vim-multiple-cursors'
+Plug 'editorconfig/editorconfig-vim'
 
 " Markdown
 Plug 'plasticboy/vim-markdown'

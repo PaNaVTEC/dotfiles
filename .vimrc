@@ -43,6 +43,17 @@ nmap <silent> <leader>a :TestSuite<CR>
 nmap <silent> <leader>l :TestLast<CR>
 nmap <silent> <leader>g :TestVisit<CR>
 let test#strategy = "dispatch"
+let g:test#runner_commands = ['Mocha']
+
+" test-vim js configuration
+"let g:test#javascript#mocha#file_pattern = '\vtests?/.*\.(js|jsx|coffee)$'
+let g:test#javascript#mocha#file_pattern = '.*\.test\.js$'
+
+let test#javascript#mocha#options = {
+  \ 'nearest': '--compilers js:babel-core/register unitTest.config.js',
+  \ 'file':    '--compilers js:babel-core/register unitTest.config.js',
+  \ 'suite':   '--compilers js:babel-core/register unitTest.config.js',
+\}
 
 " Line numbers
 set number
@@ -152,3 +163,6 @@ cmap w!! w !sudo tee % >/dev/null
 set undofile
 set undodir=~/.vim/undodir
 
+" ctrlp ignore non relevant files
+set wildignore+=*/node_modules/*,*/.git/*,*.so,*.swp,*.zip,*.exe,*.dll
+let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn|node_modules)$'
