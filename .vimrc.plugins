@@ -11,6 +11,8 @@ Plug 'nathangrigg/vim-beancount'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'brooth/far.vim'
+Plug 'marijnh/tern_for_vim'
+Plug 'Valloric/YouCompleteMe'
 
 " Markdown
 Plug 'plasticboy/vim-markdown'
@@ -61,6 +63,5 @@ Plug 'vim-scripts/Improved-AnsiEsc'
 Plug 'vim-airline/vim-airline-themes'
     \| Plug 'kristijanhusak/vim-hybrid-material'
     \| Plug 'ryanoasis/vim-devicons'
-"    \| Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 
 call plug#end()

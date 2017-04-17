@@ -171,6 +171,9 @@ installVim() {
   mkdir -p ~/.tmp
   mkdir -p ~/.vim/undodir
   vim +PlugInstall +qa
+  # installs tern for vim
+  (cd ~/.vim/plugged/tern_for_vim && npm install)
+  (cd ~/.vim/plugged/YouCompleteMe && ./install.py --tern-completer)
 }
 
 installRanger() { 
