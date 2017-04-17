@@ -65,11 +65,6 @@ installThemes() {
   yaourt --noconfirm -S ./yaourt_themes.txt
 }
 
-installJava() {
-  echo "Installing Java"
-  sleep 2 
-}
-
 installGit() {
   yaourt --noconfirm -S ./yaourt_git.txt
   ln -sfn ${dir}/.gitconfig ${HOME}/.gitconfig
@@ -94,23 +89,25 @@ installDevTools() {
   yaourt --noconfirm -S ./yaourt_java.txt
   yaourt --noconfirm -S ./yaourt_android.txt
   yaourt --noconfirm -S ./yaourt_scala.txt
-  yaourt --noconfirm -S ./yaourt_clojure.txt
   yaourt --noconfirm -S ./yaourt_devtools.txt
   installJs;
-
-  # clojure lein configuration
-  mkdir -p ${HOME}/.lein/
-  ln -sfn ${dir}/config/lein/profiles.clj ${HOME}/.lein/profiles.clj
+  installClojure;
 
   #IntelliJ watches in the FS
   sudo bash -c 'echo "fs.inotify.max_user_watches = 524288" > /etc/sysctl.d/99-sysctl.conf'
   sudo sysctl --system
 }
 
-installjs() {
+installJs() {
   yaourt --noconfirm nodejs
-  sudo npm install -g n
+  sudo npm install -g n eslint_d
   sudo n latest
+}
+
+installClojure() {
+  yaourt --noconfirm -S ./yaourt_clojure.txt
+  mkdir -p ${HOME}/.lein/
+  ln -sfn ${dir}/config/lein/profiles.clj ${HOME}/.lein/profiles.clj
 }
 
 installTools() {

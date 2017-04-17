@@ -42,7 +42,7 @@ nmap <silent> <leader>T :TestFile<CR>
 nmap <silent> <leader>a :TestSuite<CR>
 nmap <silent> <leader>l :TestLast<CR>
 nmap <silent> <leader>g :TestVisit<CR>
-let test#strategy = "dispatch"
+let test#strategy = "asyncrun"
 let g:test#runner_commands = ['Mocha']
 
 " test-vim js configuration
@@ -50,10 +50,18 @@ let g:test#runner_commands = ['Mocha']
 let g:test#javascript#mocha#file_pattern = '.*\.test\.js$'
 
 let test#javascript#mocha#options = {
-  \ 'nearest': '--compilers js:babel-core/register unitTest.config.js',
-  \ 'file':    '--compilers js:babel-core/register unitTest.config.js',
-  \ 'suite':   '--compilers js:babel-core/register unitTest.config.js',
+  \ 'nearest': '--compilers js:babel-core/register unitTest.config.js -c',
+  \ 'file':    '--compilers js:babel-core/register unitTest.config.js -c',
+  \ 'suite':   '--compilers js:babel-core/register unitTest.config.js -c',
 \}
+
+" AsyncRun
+augroup vimrc
+    " Open quickfix window when start running test
+    autocmd User AsyncRunStart call asyncrun#quickfix_toggle(8, 1)
+    " Focus quickfix and color the output when stop
+    autocmd User AsyncRunStop copen | AnsiEsc 
+augroup END
 
 " Line numbers
 set number
@@ -142,6 +150,10 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
+let g:syntastic_javascript_checkers = ['eslint']
+let s:eslint_path = system('PATH=$(npm bin):$PATH && (which eslint_d)')
+let g:syntastic_javascript_eslint_exec = substitute(s:eslint_path, '^\n*\s*\(.\{-}\)\n*\s*$', '\1', '')
+"let g:syntastic_javascript_eslint_exec = './node_modules/.bin/eslint'
 
 "Gundo
 map <C-g> :GundoToggle<CR>

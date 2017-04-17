@@ -54,7 +54,8 @@ Plug 'tpope/vim-surround'
 Plug 'vim-syntastic/syntastic'
 Plug 'luochen1990/rainbow'
 Plug 'janko-m/vim-test'
-Plug 'tpope/vim-dispatch'
+Plug 'skywind3000/asyncrun.vim'
+Plug 'vim-scripts/Improved-AnsiEsc'
 
 " Themes and colors
 Plug 'vim-airline/vim-airline-themes'
