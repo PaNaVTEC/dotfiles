@@ -10,6 +10,7 @@ Plug 'blindFS/vim-taskwarrior'
 Plug 'nathangrigg/vim-beancount'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'editorconfig/editorconfig-vim'
+Plug 'brooth/far.vim'
 
 " Markdown
 Plug 'plasticboy/vim-markdown'
