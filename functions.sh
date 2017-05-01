@@ -196,12 +196,11 @@ killByName() {
 }
 
 showWifiPassword() {
-  path="/etc/NetworkManager/system-connections/"
+  path='/etc/NetworkManager/system-connections/'
   if [ $# -eq 0 ]; then
     path="$path*"
   else
     path="$path$1"
   fi
-  sudo grep -H '^psk=' $path | \
-    awk -F '/' '{print $5}'
+  sudo grep -H '^psk=' $path | awk -F '/' '{print $5}'
 }
