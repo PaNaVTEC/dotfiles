@@ -194,3 +194,14 @@ cdls() { cd "$@" && ls; }
 killByName() {
   kill $(ps aux | grep $1 | awk '{print $2}')
 }
+
+showWifiPassword() {
+  path="/etc/NetworkManager/system-connections/"
+  if [ $# -eq 0 ]; then
+    path="$path*"
+  else
+    path="$path$1"
+  fi
+  sudo grep -H '^psk=' $path | \
+    awk -F '/' '{print $5}'
+}
