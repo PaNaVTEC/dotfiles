@@ -1,6 +1,10 @@
 alias gpl='git prunelocal'
 alias gdl='git discard'
 
+gblame() { 
+  git log -p -M --follow --stat -- $1
+}
+
 ## Autocompleted alias
 __git_complete gco _git_checkout
 __git_complete gb _git_branch
