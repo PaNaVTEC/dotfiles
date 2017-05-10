@@ -92,10 +92,37 @@ installDevTools() {
   yaourt --noconfirm -S ./yaourt_devtools.txt
   installJs;
   installClojure;
+  installHaskell;
 
   #IntelliJ watches in the FS
   sudo bash -c 'echo "fs.inotify.max_user_watches = 524288" > /etc/sysctl.d/99-sysctl.conf'
   sudo sysctl --system
+}
+
+installHaskell() {
+  haskellCore='[haskell-core]\nServer = http:\/\/xsounds.org\/~haskell\/core\/\$arch\n\n'
+  haskellHappstack='[haskell-happstack]\nServer = http:\/\/noaxiom.org\/\$repo\/\$arch\n\n'
+  sudo sed  "/\[community\]/ { N; s/\[community\]\n/$haskellCore$haskellHappstack&/ }" /etc/pacman.conf > /etc/pacman.conf
+
+  sudo pacman-key -r 4209170B
+  sudo pacman-key --lsign-key 4209170B
+  sudo pacman-key -r B0544167
+  sudo pacman-key --lsign-key B0544167
+  yaourt -Syu
+
+  yaourt -S haskell-stack haskell-stack-tool
+  stack setup
+  stack install ghc-mod hindent stylish-haskell cabal-install
+  cabal update
+  echo "========"
+  echo "Your GHC path will be: $(stack path | grep ghc-paths)"
+  echo "========"
+  ln -sfn ${dir}/ghci ${HOME}/.ghci
+}
+
+addPacmanSource() {
+  sudo bash -c 'echo "['$1']" >> /etc/pacman.conf'
+  sudo bash -c 'echo "Server = '$2'" >> /etc/pacman.conf'
 }
 
 installJs() {
