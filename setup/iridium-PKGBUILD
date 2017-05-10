@@ -1,0 +1,29 @@
+# Maintainer: Det <nimetonmaili g-mail>
+# Contributors: t3ddy, Lex Rivera aka x-demon, ruario
+
+
+pkgname=iridium-bin
+pkgver=58.0
+pkgrel=1
+pkgdesc="An attempt at creating a safer, faster, and more stable browser (Stable Channel)"
+arch=('x86_64')
+url="iridiumrowser.de"
+license=('GPL3')
+depends=('alsa-lib' 'desktop-file-utils' 'flac' 'gconf' 'gnome-themes-standard' 'gtk2' 'harfbuzz' 'harfbuzz-icu'
+         'hicolor-icon-theme' 'icu' 'libpng' 'libxss' 'libxtst' 'nss' 'opus' 'snappy' 'speech-dispatcher'
+         'ttf-font' 'xdg-utils')
+optdepends=('kdebase-kdialog: needed for file dialogs in KDE'
+            'ttf-liberation: fix fonts for some PDFs')
+options=('!emptydirs' '!strip')
+
+source=("https://downloads.iridiumbrowser.de/ubuntu/iridium-browser_current_amd64.deb")
+
+sha256sums=('b40fb9b599234fe2c7ff555f534621043591d06140cd71b5bbe1b5b17194a7f3')
+#sha384sums=('cc6c5359ecf2eb2a52ba39a55dddc66f34134d805a7a7859bb17ff01adf16a296f546a1230a04a1d8afd161ab191ac4c')
+#sha512sums=('dc9f13f50701bbb822f935851269a233a59559f7d226210d213bd23c60f69a61379f6ba31ac164b762a371fcf6f5833e7ffe3eca676119135edd4f0ea2c19297')
+
+package() {
+  msg2 "Extracting the data.tar.xz..."
+  bsdtar -xf data.tar.xz -C "$pkgdir/"
+}
+

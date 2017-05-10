@@ -142,6 +142,7 @@ installTools() {
   sleep 2
   yaourt --noconfirm -S ./yaourt_tools.txt
   sudo pip install thefuck
+  makepkg -si ./iridium-PKGBUILD
 }
 
 installRedshift() {
