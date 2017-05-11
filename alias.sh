@@ -22,6 +22,7 @@ alias gh='ghi.sh'
 alias t='task'
 alias calmonth='gcalcli calw 4 --monday'
 alias calweek='gcalcli calw 1 --monday'
+alias connectvpn='sudo openvpn ~/dotfiles/config/vpn/server.ovpn'
 
 javaProject () { 
   gradle init --type java-library

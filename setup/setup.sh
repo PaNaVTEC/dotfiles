@@ -127,7 +127,7 @@ addPacmanSource() {
 
 installJs() {
   yaourt --noconfirm nodejs
-  sudo npm install -g n eslint_d
+  sudo npm install -g n avn avn-n eslint_d
   sudo n latest
 }
 
@@ -255,6 +255,11 @@ installBeancount() {
   sudo pip install beancount beancount-fava setuptools beansoup beancount-plugins
 }
 
+installPrivacy() {
+  yaourt -S --noconfirm openvpn
+  gpg -d --output ${dir}/config/vpn/server.ovpn ${dir}/config/vpn/server.gpg
+}
+
 dir=`pwd`
 if [ ! -e "${dir}/${0}" ]; then
   echo "Script not called from within repository directory. Aborting."
@@ -301,3 +306,5 @@ ask "Install Khal?" Y && installKhal;
 ask "Install taskWarrior?" Y && installTaskWarrior;
 ask "Install beancount?" Y && installBeancount;
 ask "Install mutt?" Y && installMutt;
+ask "Install privacy?" Y && installPrivacy;
+
