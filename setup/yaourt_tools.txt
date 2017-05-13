@@ -4,7 +4,7 @@ openssh
 firefox
 dropbox
 dropbox-cli
-google-chrome
+inox-bin
 google-talkplugin
 spotify
 archey3
