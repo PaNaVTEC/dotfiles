@@ -256,8 +256,11 @@ installBeancount() {
 
 installPrivacy() {
   yaourt -S --noconfirm openvpn wireguard-dkms
-  gpg -d --output ${dir}/config/vpn/server.ovpn ${dir}/config/vpn/server.gpg
-  gpg -d --output /etc/wireguard/wg0-client.conf ${dir}/config/vpn/wg0-client.gpg
+  sudo mkdir -p /etc/openvpn/
+  sudo mkdir -p /etc/wireguard/
+  sudo gpg -d --output /etc/openvpn/server.ovpn ${dir}/config/vpn/server.gpg
+  sudo cp ${dir}/config/vpn/update-resolv-conf.sh /etc/openvpn
+  sudo gpg -d --output /etc/wireguard/wg0-client.conf ${dir}/config/vpn/wg0-client.gpg
   sudo chown -v root:root /etc/wireguard/wg0-client.conf
 }
 
