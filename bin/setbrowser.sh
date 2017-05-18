@@ -1,5 +1,5 @@
 #!/bin/bash
-NEWBROWSER=google-chrome-stable.desktop
+NEWBROWSER=inox.desktop
 
 xdg-mime default $NEWBROWSER x-scheme-handler/http
 xdg-mime default $NEWBROWSER x-scheme-handler/https
