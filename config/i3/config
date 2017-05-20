@@ -21,6 +21,7 @@ workspace "$WS1" gaps inner 10
 # Apps assigned to workspaces
 assign [instance="urxvt|ws1_termite|gnome-terminal"] $WS1
 assign [instance="franz"] $WS4
+assign [instance="rambox"] $WS4
 assign [instance="SmartGit"] $WS7
 assign [instance="nylas n1"] $WS5
 assign [class="Code"] $WS6
