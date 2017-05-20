@@ -87,6 +87,7 @@ installDevTools() {
 
   installGit;
   yaourt --noconfirm -S ./yaourt_java.txt
+  sudo archlinux-java set java-8-jdk
   yaourt --noconfirm -S ./yaourt_android.txt
   yaourt --noconfirm -S ./yaourt_scala.txt
   yaourt --noconfirm -S ./yaourt_devtools.txt
@@ -126,7 +127,7 @@ addPacmanSource() {
 }
 
 installJs() {
-  yaourt --noconfirm nodejs
+  yaourt --noconfirm -S nodejs npm
   sudo npm install -g n avn avn-n eslint_d
   sudo n latest
 }
@@ -186,7 +187,7 @@ installYaourt() {
 }
 
 installVim() {
-  yaourt -S --noconfirm vim silver-searcher-git vim-ensime-git
+  yaourt -S --noconfirm vim silver-searcher-git vim-ensime-git cmake
   #Install plugin system 
   curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
