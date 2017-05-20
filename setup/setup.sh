@@ -226,8 +226,6 @@ installKhal() {
 
 installAudio() { 
   yaourt -S --noconfirm ./yaourt_audio.txt
-  asoundconf set-default-card PCH
-  echo "pcm.dsp { type plug  slave.pcm \"dmix\" }" >> ${HOME}/.asoundrc.asoundconf
 }
 
 installCompton() {
@@ -255,7 +253,7 @@ installBeancount() {
 }
 
 installPrivacy() {
-  yaourt -S --noconfirm openvpn wireguard-dkms
+  yaourt -S --noconfirm openvpn wireguard-dkms wireguard-tools
   sudo mkdir -p /etc/openvpn/
   sudo mkdir -p /etc/wireguard/
   sudo gpg -d --output /etc/openvpn/server.ovpn ${dir}/config/vpn/server.gpg

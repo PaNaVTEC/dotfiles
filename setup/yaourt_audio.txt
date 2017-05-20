@@ -1,3 +1,3 @@
-alsa-utils
-asoundconf
-gnome-alsamixer
+pulseaudio
+pulseaudio-ctl
+
