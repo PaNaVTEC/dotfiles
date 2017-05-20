@@ -1,5 +1,6 @@
 [options]
 font = DroidSansMonoForPowerline Nerd Font 12
+scrollback_lines = 10000
 
 [colors]
 # Base16 Default
