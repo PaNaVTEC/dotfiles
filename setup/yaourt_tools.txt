@@ -7,6 +7,8 @@ dropbox-cli
 inox-bin
 google-talkplugin
 spotify
-archey3
-franz-bin
 keeweb-desktop
+unzip
+unrar
+jq
+neofetch
