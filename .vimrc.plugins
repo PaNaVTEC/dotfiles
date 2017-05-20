@@ -2,11 +2,10 @@ call plug#begin('~/.vim/plugged')
 
 Plug 'vim-airline/vim-airline'
 Plug 'scrooloose/nerdtree'
-Plug 'ctrlp.vim'
+Plug 'ctrlpvim/ctrlp.vim'
 Plug 'wincent/ferret'
 Plug 'sjl/gundo.vim'
 Plug 'tpope/vim-unimpaired'
-Plug 'blindFS/vim-taskwarrior'
 Plug 'nathangrigg/vim-beancount'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'editorconfig/editorconfig-vim'
