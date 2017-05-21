@@ -4,11 +4,11 @@ __powerline() {
 
   # Hack here: 
   # http://stackoverflow.com/questions/7112774/how-to-escape-unicode-characters-in-bash-prompt-correctly
-  escapeUnicode3bytes() {
+  escapeUnicode3() {
     echo '\['"`tput sc`"'\]   \['"`tput rc`"$1'\]'
   }
   
-  escapeUnicode4bytes() {
+  escapeUnicode4() {
     echo '\['"`tput sc`"'\]    \['"`tput rc`"$1'\]'
   }
 
