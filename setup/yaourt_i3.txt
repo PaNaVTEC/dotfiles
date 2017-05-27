@@ -3,6 +3,7 @@ xorg-xinit
 xorg-xinput
 xorg-xprop
 xorg-xkill
+arandr
 i3-gaps
 j4-dmenu-desktop
 xtitle

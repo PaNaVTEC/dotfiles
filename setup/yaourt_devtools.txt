@@ -1,3 +1,4 @@
 virtualbox
 linux-headers
-smartgit 
+smartgit
+docker
