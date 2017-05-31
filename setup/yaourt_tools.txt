@@ -13,3 +13,5 @@ unrar
 jq
 neofetch
 evince
+speedtest-cli
+
