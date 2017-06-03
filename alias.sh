@@ -25,6 +25,7 @@ alias calweek='gcalcli calw 1 --monday'
 alias connectvpn='sudo openvpn /etc/openvpn/server.ovpn'
 alias wireup='sudo wg-quick up wg0-client'
 alias wiredown='sudo wg-quick down wg0-client'
+alias dotfiles='(cd ~/dotfiles && vim)'
 
 javaProject () { 
   gradle init --type java-library
