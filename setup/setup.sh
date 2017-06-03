@@ -79,6 +79,7 @@ installGit() {
   # Global git ignores
   gibo -u
   gibo Vim JetBrains Tags Vagrant Windows macOS Linux Archives >> ~/.gitignore.global
+  echo ".ensime*" >> ~/.gitignore.global
 }
 
 installDevTools() {
