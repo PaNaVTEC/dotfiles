@@ -187,11 +187,15 @@ installYaourt() {
 }
 
 installVim() {
-  yaourt -S --noconfirm vim silver-searcher-git vim-ensime-git cmake
+  yaourt -S --noconfirm vim silver-searcher-git cmake
+  #Ensime 
+  yaourt -S --noconfirm python2-sexpdata python2-websocket-client
+  mkdir -p ~/.sbt/0.13/plugins/
+  echo 'addSbtPlugin("org.ensime" % "sbt-ensime" % "1.12.12")' > ~/.sbt/0.13/plugins/plugins.sbt
   #Install plugin system 
   curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-  #Configuration	  
+  #Configuration
   ln -sfn ${dir}/.vimrc ${HOME}/.vimrc
   #ensime scala needed dependencies
   # sudo pip install websocket-client sexpdata

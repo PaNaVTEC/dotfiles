@@ -106,6 +106,7 @@ set laststatus=2 " This fixes a bug that prevents the bar not showing with nerdt
 
 " Scala config
 autocmd BufWritePost *.scala silent :EnTypeCheck  "ensine type check after writing
+let ensime_server_v2=1
 
 " Toggle rainbow braces on
 let g:rainbow_active = 1
