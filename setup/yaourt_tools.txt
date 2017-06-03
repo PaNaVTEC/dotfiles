@@ -12,3 +12,6 @@ unzip
 unrar
 jq
 neofetch
+evince
+speedtest-cli
+

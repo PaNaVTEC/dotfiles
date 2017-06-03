@@ -87,7 +87,6 @@ installDevTools() {
 
   installGit;
   yaourt --noconfirm -S ./yaourt_java.txt
-  sudo archlinux-java set java-8-jdk
   yaourt --noconfirm -S ./yaourt_android.txt
   yaourt --noconfirm -S ./yaourt_scala.txt
   yaourt --noconfirm -S ./yaourt_devtools.txt
@@ -136,6 +135,7 @@ installClojure() {
   yaourt --noconfirm -S ./yaourt_clojure.txt
   mkdir -p ${HOME}/.lein/
   ln -sfn ${dir}/config/lein/profiles.clj ${HOME}/.lein/profiles.clj
+  lein > /dev/null
 }
 
 installTools() {

@@ -204,3 +204,14 @@ showWifiPassword() {
   fi
   sudo grep -H '^psk=' $path | awk -F '/' '{print $5}'
 }
+
+showPublicIp() {
+  IP=$(curl -s ipinfo.io/ip)
+  CITY=$(curl -s ipinfo.io/city)
+  echo $IP "-" $CITY
+}
+
+checkListeningPorts() {
+  sudo netstat -tulpn | grep LISTEN
+}
+
