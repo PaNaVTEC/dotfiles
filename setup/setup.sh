@@ -166,7 +166,17 @@ installBluetoothResumePatch() {
   sudo cat 'ACTION=="add", KERNEL=="hci0", RUN+="/usr/bin/hciconfig hci0 up"' >> /etc/udev/rules.d/10-local.rules
 }
 
+installPacman() {
+  sudo rm /etc/pacman.conf
+  ln -sfn ${dir}/config/pacman/pacman.conf /etc/pacman.conf
+  sudo pacman-key --init
+  sudo pacman-key --populate archlinux
+  sudo pacman -Syu
+}
+
 installYaourt() {
+  installPacman;
+
   sudo pacman -S --needed base-devel git wget yajl
   wget https://aur.archlinux.org/cgit/aur.git/snapshot/package-query.tar.gz
   tar xvfz package-query.tar.gz
@@ -182,9 +192,6 @@ installYaourt() {
   cd ..
   rm -rf yaourt
   rm yaourt.tar.gz
-  #init keyring
-  sudo pacman-key --init 
-  sudo pacman-key --populate archlinux
 }
 
 installVim() {
@@ -283,13 +290,10 @@ mkdir -p ${HOME}/.i3
 #Makes binary executable
 chmod a+x ${dir}/bin/*
 
-#TODO: this autommagically
-echo "Remember that you need to uncommed the [multilib] repo in /etc/pacman.conf, if you haven't done that, please modify that file, update with pacman -Syua and come back later"
 echo "actionSystem.suspendFocusTransferIfApplicationInactive=false add this into intelliJ to prevent focus lose"
-
 echo "Don't forget to add your Github SSH key with: ssh-add ~/.ssh/id_rsa when you copied it"
 
-ask "install yaourt?" Y && installYaourt;
+ask "install pacman/yaourt?" Y && installYaourt;
 ask "install i3?" Y && installi3;
 ask "install compton?" Y && installCompton;
 ask "install fonts?" Y && installFonts;
