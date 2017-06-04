@@ -101,10 +101,6 @@ installDevTools() {
 }
 
 installHaskell() {
-  haskellCore='[haskell-core]\nServer = http:\/\/xsounds.org\/~haskell\/core\/\$arch\n\n'
-  haskellHappstack='[haskell-happstack]\nServer = http:\/\/noaxiom.org\/\$repo\/\$arch\n\n'
-  sudo sed  "/\[community\]/ { N; s/\[community\]\n/$haskellCore$haskellHappstack&/ }" /etc/pacman.conf > /etc/pacman.conf
-
   sudo pacman-key -r 4209170B
   sudo pacman-key --lsign-key 4209170B
   sudo pacman-key -r B0544167
@@ -169,6 +165,15 @@ installBluetoothResumePatch() {
 installPacman() {
   sudo rm /etc/pacman.conf
   ln -sfn ${dir}/config/pacman/pacman.conf /etc/pacman.conf
+  # Update mirrorlist
+  sudo rm /etc/pacman.d/mirrorlist
+  MIRRORLIST=$(curl -s \
+    "https://www.archlinux.org/mirrorlist/?country=GB&protocol=http&protocol=https&ip_version=4")
+  echo "$MIRRORLIST" | \
+    sed 's/#Server/Server/g' | \
+    sudo tee /etc/pacman.d/mirrorlist
+  sudo pacman -Syy
+  #Init keyring
   sudo pacman-key --init
   sudo pacman-key --populate archlinux
   sudo pacman -Syu
