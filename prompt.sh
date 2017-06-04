@@ -2,24 +2,15 @@
 
 __powerline() {
 
-  # Hack here: 
-  # http://stackoverflow.com/questions/7112774/how-to-escape-unicode-characters-in-bash-prompt-correctly
-  escapeUnicode3() {
-    echo '\['"`tput sc`"'\]   \['"`tput rc`"$1'\]'
-  }
-  
-  escapeUnicode4() {
-    echo '\['"`tput sc`"'\]    \['"`tput rc`"$1'\]'
-  }
-
-  # Unicode symbols, 
-  # Number of bytes calculated with: echo character | hexdump -C
-  readonly PS_SYMBOL_LINUX=$(escapeUnicode3 'λ')
-  readonly GIT_BRANCH_SYMBOL=$(escapeUnicode4 '')
+  # Unicode symbols
+  readonly PS_SYMBOL_DARWIN=''
+  readonly PS_SYMBOL_LINUX='$'
+  readonly PS_SYMBOL_OTHER='%'
+  readonly GIT_BRANCH_SYMBOL=' '
   readonly GIT_BRANCH_CHANGED_SYMBOL='+'
-  readonly GIT_NEED_PUSH_SYMBOL=$(escapeUnicode4 '⇡')
-  readonly GIT_NEED_PULL_SYMBOL=$(escapeUnicode4 '⇣')
-  readonly SEPARATOR=$(escapeUnicode4 '')
+  readonly GIT_NEED_PUSH_SYMBOL='⇡'
+  readonly GIT_NEED_PULL_SYMBOL='⇣'
+  readonly SEPARATOR=""
 
   # Solarized colorscheme
   readonly FG_BASE03="\[$(tput setaf 8)\]"
@@ -112,17 +103,17 @@ __powerline() {
 
     local GIT_INFO=$(__git_info)
 
-   PS1="$BG_RED$FG_BASE3 \w $RESET"
-   if [ -n "$GIT_INFO" ]; then
-     PS1+="$FG_RED$BG_BLUE$SEPARATOR$RESET"
-     PS1+="$BG_BLUE$FG_BASE3$GIT_INFO$RESET"
-     PS1+="$FG_BLUE$BG_EXIT$SEPARATOR$RESET"
-   else
-     PS1+="$FG_RED$BG_EXIT$SEPARATOR$RESET"
-   fi
-   PS1+="$BG_EXIT$FG_BASE3 $PS_SYMBOL $RESET"
-   PS1+="$FG_EXIT$SEPARATOR $RESET"
- }
+    PS1="$BG_RED$FG_BASE3 \w $RESET"
+    if [ -n "$GIT_INFO" ]; then
+      PS1+="$FG_RED$BG_BLUE$SEPARATOR$RESET"
+      PS1+="$BG_BLUE$FG_BASE3$GIT_INFO$RESET"
+      PS1+="$FG_BLUE$BG_EXIT$SEPARATOR$RESET"
+    else
+      PS1+="$FG_RED$BG_EXIT$SEPARATOR$RESET"
+    fi
+    PS1+="$BG_EXIT$FG_BASE3 $PS_SYMBOL $RESET"
+    PS1+="$FG_EXIT$SEPARATOR$RESET "
+  }
 
   PROMPT_COMMAND=ps1
 }
