@@ -2,15 +2,21 @@
 
 __powerline() {
 
-  # Unicode symbols
-  readonly PS_SYMBOL_DARWIN=''
-  readonly PS_SYMBOL_LINUX='$'
-  readonly PS_SYMBOL_OTHER='%'
-  readonly GIT_BRANCH_SYMBOL=' '
-  readonly GIT_BRANCH_CHANGED_SYMBOL='+'
-  readonly GIT_NEED_PUSH_SYMBOL='⇡'
-  readonly GIT_NEED_PULL_SYMBOL='⇣'
-  readonly SEPARATOR=""
+  readonly PS_SYMBOL='$'
+
+  if [[ $(tty | grep tty) == "" ]]; then
+    readonly GIT_BRANCH_SYMBOL=' '
+    readonly GIT_BRANCH_CHANGED_SYMBOL='+'
+    readonly GIT_NEED_PUSH_SYMBOL='⇡'
+    readonly GIT_NEED_PULL_SYMBOL='⇣'
+    readonly SEPARATOR=""
+  else 
+    readonly GIT_BRANCH_SYMBOL='T '
+    readonly GIT_BRANCH_CHANGED_SYMBOL='+'
+    readonly GIT_NEED_PUSH_SYMBOL='^'
+    readonly GIT_NEED_PULL_SYMBOL='v'
+    readonly SEPARATOR=""
+  fi
 
   # Solarized colorscheme
   readonly FG_BASE03="\[$(tput setaf 8)\]"
@@ -53,18 +59,6 @@ __powerline() {
   readonly REVERSE="\[$(tput rev)\]"
   readonly RESET="\[$(tput sgr0)\]"
   readonly BOLD="\[$(tput bold)\]"
-
-  # what OS?
-  case "$(uname)" in
-    Darwin)
-      readonly PS_SYMBOL=$PS_SYMBOL_DARWIN
-      ;;
-    Linux)
-      readonly PS_SYMBOL=$PS_SYMBOL_LINUX
-      ;;
-    *)
-      readonly PS_SYMBOL=$PS_SYMBOL_OTHER
-  esac
 
   __git_info() { 
     [ -x "$(which git)" ] || return    # git not found
