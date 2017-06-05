@@ -194,12 +194,39 @@ installYaourt() {
   rm yaourt.tar.gz
 }
 
+compileVim() {
+  VIM_BUILD_DIR='~'
+  cd "$VIM_BUILD_DIR"
+  if [[ ! -d vim ]]; then
+    git clone https://github.com/vim/vim.git --recursive
+  else
+    cd vim
+    git pull
+    git submodule update --init --recursive
+    cd ..
+  fi
+  cd vim
+  ./configure --with-features=huge \
+    --enable-multibyte \
+    --enable-rubyinterp \
+    --enable-python3interp=yes \
+    --enable-luainterp \
+    --enable-gui=no \
+    --enable-cscope \
+    --enable-pythoninterp \
+    --enable-python3interp
+  make -j`nproc`
+  sudo make install
+}
+
 installVim() {
-  yaourt -S --noconfirm vim silver-searcher-git cmake
+  yaourt -S --noconfirm silver-searcher-git cmake
   #Ensime 
   yaourt -S --noconfirm python2-sexpdata python2-websocket-client
   mkdir -p ~/.sbt/0.13/plugins/
   echo 'addSbtPlugin("org.ensime" % "sbt-ensime" % "1.12.12")' > ~/.sbt/0.13/plugins/plugins.sbt
+  (compileVim;)
+
   #Install plugin system 
   curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim

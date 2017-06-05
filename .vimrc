@@ -3,6 +3,8 @@ set nocompatible
 source ~/dotfiles/.vimrc.plugins
 
 set encoding=utf8
+set backspace=indent,eol,start
+
 " Colors
 set tgc
 set background=dark
