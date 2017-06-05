@@ -200,7 +200,7 @@ installYaourt() {
 }
 
 compileVim() {
-  VIM_BUILD_DIR='~'
+  VIM_BUILD_DIR=~
   cd "$VIM_BUILD_DIR"
   if [[ ! -d vim ]]; then
     git clone https://github.com/vim/vim.git --recursive
