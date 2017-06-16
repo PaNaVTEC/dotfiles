@@ -139,7 +139,6 @@ installTools() {
   echo "Installing apps and tools"
   sleep 2
   yaourt --noconfirm -S ./yaourt_tools.txt
-  sudo pip install thefuck
 }
 
 installRedshift() {
@@ -238,7 +237,6 @@ installVim() {
   #Configuration
   ln -sfn ${dir}/.vimrc ${HOME}/.vimrc
   #ensime scala needed dependencies
-  # sudo pip install websocket-client sexpdata
   mkdir -p ~/.backup
   mkdir -p ~/.tmp
   mkdir -p ~/.vim/undodir
@@ -259,8 +257,8 @@ installMutt() {
   ln -sfn ${dir}/config/mutt/.muttrc ${HOME}/.muttrc
 }
 
-installKhal() { 
-  sudo pip install khal vdirsyncer requests-oauthlib
+installKhal() {
+  yaourt -S --noconfirm khal vdirsyncer
 
   mkdir -p ${HOME}/.config/khal
   mkdir -p ${HOME}/.config/vdirsyncer
@@ -294,7 +292,7 @@ installTaskWarrior() {
 }
 
 installBeancount() {
-  sudo pip install beancount beancount-fava setuptools beansoup beancount-plugins
+  yaourt -S --noconfirm beancount fava
 }
 
 installPrivacy() {
