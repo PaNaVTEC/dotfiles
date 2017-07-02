@@ -12,6 +12,9 @@ Plug 'editorconfig/editorconfig-vim'
 Plug 'brooth/far.vim'
 Plug 'marijnh/tern_for_vim'
 Plug 'Valloric/YouCompleteMe'
+Plug 'garbas/vim-snipmate'
+    \| Plug 'MarcWeber/vim-addon-mw-utils'
+    \| Plug 'tomtom/tlib_vim'
 
 " Markdown
 Plug 'plasticboy/vim-markdown'
@@ -45,6 +48,11 @@ Plug 'venantius/vim-cljfmt'
   \| Plug 'venantius/vim-eastwood'
   \| Plug 'tpope/vim-salve'
   \| Plug 'tpope/vim-fireplace', { 'for' : ['clojure'] }
+
+" Haskell 
+Plug 'eagletmt/neco-ghc'
+  \| Plug 'eagletmt/ghcmod-vim'
+Plug 'Shougo/vimproc.vim', {'do' : 'make'}
 
 " General writing
 Plug 'junegunn/goyo.vim'

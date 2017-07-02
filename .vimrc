@@ -148,6 +148,12 @@ au BufReadPost Jenkinsfile set filetype=groovy
 " Clojure
 filetype plugin indent on
 
+" Haskell
+let g:necoghc_enable_detailed_browse = 1
+let g:ycm_semantic_triggers = {'haskell' : ['.']}
+let g:haskellmode_completion_ghc = 0
+autocmd FileType haskell setlocal omnifunc=necoghc#omnifunc
+
 " Syntastic
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
@@ -180,7 +186,8 @@ set undodir=~/.vim/undodir
 
 " ctrlp ignore non relevant files
 set wildignore+=*/node_modules/*,*/.git/*,*.so,*.swp,*.zip,*.exe,*.dll
-let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn|node_modules)$'
+set wildignore+=*\\tmp\\*,*.swo,.cabal-sandbox
+let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn|node_modules|dist)$'
 " ctrlp don't open files in plugins/other windows
 let g:ctrlp_dont_split = 'NERD_tree_2|help|quickfix'
 
@@ -195,3 +202,6 @@ command! Wqa wqa
 command! W w
 command! Q q
 
+" snipets vim
+imap <leader>j <Plug>snipMateNextOrTrigger
+imap <leader>L <Plug>snipMateShow

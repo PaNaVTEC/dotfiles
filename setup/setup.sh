@@ -109,7 +109,7 @@ installHaskell() {
 
   yaourt -S haskell-stack haskell-stack-tool
   stack setup
-  stack install ghc-mod hindent stylish-haskell cabal-install
+  stack install ghc-mod hindent stylish-haskell cabal-install hoogle hlint ghc-mod
   cabal update
   echo "========"
   echo "Your GHC path will be: $(stack path | grep ghc-paths)"
@@ -230,6 +230,13 @@ installVim() {
   mkdir -p ~/.sbt/0.13/plugins/
   echo 'addSbtPlugin("org.ensime" % "sbt-ensime" % "1.12.12")' > ~/.sbt/0.13/plugins/plugins.sbt
   (compileVim;)
+
+  # Haskell-Vim
+  wget https://raw.githubusercontent.com/sdiehl/haskell-vim-proto/master/vim/syntax/cabal.vim -P ~/.vim/syntax/
+  wget https://raw.githubusercontent.com/sdiehl/haskell-vim-proto/master/vim/syntax/haskell.vim -P ~/.vim/syntax/
+
+  #YouComplete me workarround for ncurses new version
+  sudo ln -s /usr/lib/libtinfo.so.6 /usr/lib/libtinfo.so.5
 
   #Install plugin system 
   curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
