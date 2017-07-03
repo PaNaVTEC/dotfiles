@@ -14,4 +14,5 @@ jq
 neofetch
 evince
 speedtest-cli
+pinta
 

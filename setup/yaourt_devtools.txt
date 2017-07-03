@@ -2,3 +2,5 @@ virtualbox
 linux-headers
 smartgit
 docker
+vagrant
+
