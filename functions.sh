@@ -211,7 +211,7 @@ showPublicIp() {
   echo $IP "-" $CITY
 }
 
-checkListeningPorts() {
+showListeningPorts() {
   sudo netstat -tulpn | grep LISTEN
 }
 
