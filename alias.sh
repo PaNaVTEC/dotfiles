@@ -14,6 +14,7 @@ alias yun='yu --noconfirm'
 alias yunf='yu --noconfirm --force'
 alias yp='yaourt -Qm'
 alias yr='yaourt -R'
+alias v='vim'
 
 alias gh='ghi.sh'
 
