@@ -4,6 +4,8 @@ source ~/dotfiles/.vimrc.plugins
 
 set encoding=utf8
 set backspace=indent,eol,start
+" When pressing <C-A> in 007 you wil get 008 instead of 010
+set nrformats-=octal
 
 " Colors
 set tgc
@@ -205,3 +207,4 @@ command! Q q
 " snipets vim
 imap <leader>j <Plug>snipMateNextOrTrigger
 imap <leader>L <Plug>snipMateShow
+
