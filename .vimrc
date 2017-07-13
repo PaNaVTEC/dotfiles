@@ -59,7 +59,7 @@ let test#javascript#mocha#options = {
   \ 'suite':   '--compilers js:babel-core/register unitTest.config.js -c',
 \}
 
-let g:javascript_conceal_function             = "ƒ"
+let g:javascript_conceal_function             = "λ"
 let g:javascript_conceal_null                 = "ø"
 let g:javascript_conceal_this                 = "@"
 let g:javascript_conceal_return               = "⇚"
@@ -72,6 +72,8 @@ let g:javascript_conceal_arrow_function       = "⇒"
 let g:javascript_conceal_noarg_arrow_function = "🞅"
 let g:javascript_conceal_underscore_arrow_function = "🞅"
 set conceallevel=1
+"hi Conceal guibg=#263238
+hi Conceal guibg=black
 
 " AsyncRun
 augroup vimrc
