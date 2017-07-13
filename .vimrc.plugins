@@ -4,12 +4,9 @@ Plug 'vim-airline/vim-airline'
 Plug 'scrooloose/nerdtree'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'wincent/ferret'
-Plug 'sjl/gundo.vim'
 Plug 'tpope/vim-unimpaired'
-Plug 'nathangrigg/vim-beancount'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'editorconfig/editorconfig-vim'
-Plug 'brooth/far.vim'
 Plug 'marijnh/tern_for_vim'
 Plug 'Valloric/YouCompleteMe'
 Plug 'garbas/vim-snipmate'
@@ -25,7 +22,7 @@ Plug 'tpope/vim-fugitive'
 
 " JS
 Plug 'pangloss/vim-javascript'
-      \| Plug 'mxw/vim-jsx' "JSX - For react
+      \| Plug 'mxw/vim-jsx'
       \| Plug 'heavenshell/vim-jsdoc'
       \| Plug 'moll/vim-node', { 'for' : ['js'] }
 
@@ -56,7 +53,6 @@ Plug 'Shougo/vimproc.vim', {'do' : 'make'}
 
 " General writing
 Plug 'junegunn/goyo.vim'
-  \| Plug 'junegunn/vim-journal'
 
 " General programming
 Plug 'tpope/vim-surround'
