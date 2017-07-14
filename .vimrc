@@ -85,7 +85,7 @@ augroup END
 
 " Line numbers
 set number
-"set relativenumber
+set relativenumber
 set numberwidth=2
 highlight CursorLine cterm=NONE ctermbg=NONE ctermfg=NONE guibg=NONE guifg=NONE
 set cursorline
