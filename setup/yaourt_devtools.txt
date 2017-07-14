@@ -2,5 +2,6 @@ virtualbox
 linux-headers
 smartgit
 docker
+docker-compose-bin
 vagrant
 
