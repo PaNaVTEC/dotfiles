@@ -9,9 +9,10 @@ Plug 'terryma/vim-multiple-cursors'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'marijnh/tern_for_vim'
 Plug 'Valloric/YouCompleteMe'
-Plug 'garbas/vim-snipmate'
-    \| Plug 'MarcWeber/vim-addon-mw-utils'
-    \| Plug 'tomtom/tlib_vim'
+
+" Snippets engine + snippets
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
 
 " Markdown
 Plug 'plasticboy/vim-markdown'

@@ -223,6 +223,8 @@ command! W w
 command! Q q
 
 " snipets vim
-imap <leader>j <Plug>snipMateNextOrTrigger
-imap <leader>L <Plug>snipMateShow
+let g:UltiSnipsExpandTrigger="<leader>n"
+let g:UltiSnipsJumpForwardTrigger="<leader>n"
+let g:UltiSnipsJumpBackwardTrigger="<leader>N"
+let g:UltiSnipsEditSplit="vertical"
 
