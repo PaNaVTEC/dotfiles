@@ -71,9 +71,8 @@ let g:javascript_conceal_super                = "Ω"
 let g:javascript_conceal_arrow_function       = "⇒"
 let g:javascript_conceal_noarg_arrow_function = "🞅"
 let g:javascript_conceal_underscore_arrow_function = "🞅"
-set conceallevel=1
-"hi Conceal guibg=#263238
-hi Conceal guibg=black
+set conceallevel=0
+hi Conceal guibg=#263238
 
 " AsyncRun
 augroup vimrc
@@ -91,7 +90,13 @@ highlight CursorLine cterm=NONE ctermbg=NONE ctermfg=NONE guibg=NONE guifg=NONE
 set cursorline
 
 function! OnBufEnter()
-  if (@% == "NERD_tree_1") | set nolist | else | set list | endif
+  if (@% =~ "vim.*/doc/")
+    set nolist
+  elseif (@% == "NERD_tree_1")
+    set nolist
+  else 
+    set list
+  endif
   if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 endfunction
 
@@ -181,9 +186,6 @@ let g:syntastic_javascript_checkers = ['eslint']
 let s:eslint_path = system('PATH=$(npm bin):$PATH && (which eslint_d)')
 let g:syntastic_javascript_eslint_exec = substitute(s:eslint_path, '^\n*\s*\(.\{-}\)\n*\s*$', '\1', '')
 "let g:syntastic_javascript_eslint_exec = './node_modules/.bin/eslint'
-
-"Gundo
-map <C-g> :GundoToggle<CR>
 
 " Backup and tmps in the same folder 
 set backupdir=~/.backup
