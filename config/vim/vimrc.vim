@@ -1,6 +1,6 @@
 syntax enable
 set nocompatible
-source ~/dotfiles/.vimrc.plugins
+source ~/dotfiles/config/vim/vimrc.plugins.vim
 
 set encoding=utf8
 set backspace=indent,eol,start

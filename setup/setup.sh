@@ -242,7 +242,7 @@ installVim() {
   curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
   #Configuration
-  ln -sfn ${dir}/.vimrc ${HOME}/.vimrc
+  ln -sfn ${dir}/config/vim/vimrc.vim ${HOME}/.vimrc
   #ensime scala needed dependencies
   mkdir -p ~/.backup
   mkdir -p ~/.tmp
