@@ -42,7 +42,11 @@ set softtabstop=2
 set expandtab
 set smarttab
 
+" Leader key
 let mapleader = ","
+set tm=2000
+" Allow the normal use of "," by pressing it twice
+noremap ,, ,
 
 " Test vim plugin configuration
 nmap <silent> <leader>t :TestNearest<CR>
