@@ -218,3 +218,8 @@ showListeningPorts() {
 docker_stop_all() {
   docker stop $(docker ps -a -q)
 }
+
+backupSystem() {
+  rsync -aAXv --exclude={"/dev/*","/proc/*","/sys/*","/tmp/*","/run/*","/mnt/*","/media/*","/lost+found"} / $1
+}
+
