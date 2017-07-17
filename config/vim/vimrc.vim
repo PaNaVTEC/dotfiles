@@ -179,15 +179,18 @@ let g:ycm_semantic_triggers = {'haskell' : ['.']}
 let g:haskellmode_completion_ghc = 0
 autocmd FileType haskell setlocal omnifunc=necoghc#omnifunc
 
-" Syntastic
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-let g:syntastic_javascript_checkers = ['eslint']
-let s:eslint_path = system('PATH=$(npm bin):$PATH && (which eslint_d)')
-let g:syntastic_javascript_eslint_exec = substitute(s:eslint_path, '^\n*\s*\(.\{-}\)\n*\s*$', '\1', '')
-"let g:syntastic_javascript_eslint_exec = './node_modules/.bin/eslint'
+" Linting
+let g:ale_lint_on_text_changed="never"
+"" Use quickfix
+let g:ale_set_loclist = 0
+let g:ale_set_quickfix = 1
+"" Severity formatter
+let g:ale_echo_msg_error_str = 'E'
+let g:ale_echo_msg_warning_str = 'W'
+let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
+"" Signs symbols
+let g:ale_sign_error = '✖'
+let g:ale_sign_warning = '⚠'
 
 " Backup and tmps in the same folder 
 set backupdir=~/.backup
@@ -223,6 +226,7 @@ command! Wq wq
 command! Wqa wqa
 command! W w
 command! Q q
+command! Qa qa
 
 " snipets vim
 let g:UltiSnipsExpandTrigger="<leader>n"

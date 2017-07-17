@@ -56,9 +56,11 @@ Plug 'Shougo/vimproc.vim', {'do' : 'make'}
 " General writing
 Plug 'junegunn/goyo.vim'
 
+" Linting
+Plug 'w0rp/ale'
+
 " General programming
 Plug 'tpope/vim-surround'
-Plug 'vim-syntastic/syntastic'
 Plug 'luochen1990/rainbow'
 Plug 'janko-m/vim-test'
 Plug 'skywind3000/asyncrun.vim'
