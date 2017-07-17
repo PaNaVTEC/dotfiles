@@ -215,3 +215,6 @@ showListeningPorts() {
   sudo netstat -tulpn | grep LISTEN
 }
 
+docker_stop_all() {
+  docker stop $(docker ps -a -q)
+}
