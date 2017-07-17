@@ -4,8 +4,12 @@ source ~/dotfiles/config/vim/vimrc.plugins.vim
 
 set encoding=utf8
 set backspace=indent,eol,start
+
 " When pressing <C-A> in 007 you wil get 008 instead of 010
 set nrformats-=octal
+
+" History of executed commands
+set history=200
 
 " Colors
 set tgc
