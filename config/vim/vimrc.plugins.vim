@@ -26,6 +26,7 @@ Plug 'pangloss/vim-javascript'
       \| Plug 'mxw/vim-jsx'
       \| Plug 'heavenshell/vim-jsdoc'
       \| Plug 'moll/vim-node', { 'for' : ['js'] }
+Plug 'jungomi/vim-mdnquery'
 
 " CSS
 Plug 'JulesWang/css.vim'

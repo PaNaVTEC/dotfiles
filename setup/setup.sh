@@ -251,6 +251,8 @@ installVim() {
   # installs tern for vim
   (cd ~/.vim/plugged/tern_for_vim && npm install)
   (cd ~/.vim/plugged/YouCompleteMe && ./install.py --tern-completer)
+  # MDN Query plugin dependencies
+  gem install mdn_query
 }
 
 installRanger() { 
