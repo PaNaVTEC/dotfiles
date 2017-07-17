@@ -94,6 +94,8 @@ function! OnBufEnter()
     set nolist
   elseif (@% == "NERD_tree_1")
     set nolist
+  elseif (@% == "mdnquery-buffer")
+    set nolist
   else 
     set list
   endif
