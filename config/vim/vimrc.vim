@@ -222,7 +222,7 @@ set wildignore+=*/node_modules/*,*/.git/*,*.so,*.swp,*.zip,*.exe,*.dll
 set wildignore+=*\\tmp\\*,*.swo,.cabal-sandbox
 let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn|node_modules|dist)$'
 " ctrlp don't open files in plugins/other windows
-let g:ctrlp_dont_split = 'NERD_tree_2|help|quickfix'
+let g:ctrlp_dont_split = 'NERD_tree_1|NERD_tree_2|help|quickfix'
 
 " Cursor shape to vertical bar while in insert mode
 let &t_SI = "\<Esc>[5 q"

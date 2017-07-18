@@ -223,3 +223,35 @@ backupSystem() {
   rsync -aAXv --exclude={"/dev/*","/proc/*","/sys/*","/tmp/*","/run/*","/mnt/*","/media/*","/lost+found"} / $1
 }
 
+nUse() {
+  if [ -e package.json ]; then
+    sudo n $(cat package.json | jq .engines.node -r)
+  else
+    echo "No package.json found"
+  fi
+}
+
+nScripts() {
+  if [ -e package.json ]; then
+    cat package.json | jq .scripts
+  else
+    echo "No package.json found"
+  fi
+}
+
+nDependencies() {
+  if [ -e package.json ]; then
+    cat package.json | jq .dependencies
+  else
+    echo "No package.json found"
+  fi
+}
+
+nDevDependencies() {
+  if [ -e package.json ]; then
+    cat package.json | jq .devDependencies
+  else
+    echo "No package.json found"
+  fi
+}
+
