@@ -17,6 +17,7 @@ set background=dark
 colorscheme hybrid_material
 
 let g:airline_theme = "hybrid"
+let g:airline#extensions#ale#enabled = 1
 " Disable Background Color Erase (BCE) so that color schemes
 " work properly when Vim is used inside tmux and GNU screen.
 set t_ut=
@@ -130,7 +131,6 @@ set synmaxcol=512
 " NERDTree
 map <C-n> :NERDTreeToggle<CR>
 nnoremap <silent> <Leader>v :NERDTreeFind<CR>
-let g:ctrlp_dont_split = 'NERD'
 let g:NERDTreeDirArrowExpandable = ''
 let g:NERDTreeDirArrowCollapsible = ''
 let g:WebDevIconsUnicodeGlyphDoubleWidth = 0
@@ -190,8 +190,8 @@ autocmd FileType haskell setlocal omnifunc=necoghc#omnifunc
 " Linting
 let g:ale_lint_on_text_changed="never"
 "" Use quickfix
-let g:ale_set_loclist = 0
-let g:ale_set_quickfix = 1
+let g:ale_set_loclist = 1
+let g:ale_set_quickfix = 0
 "" Severity formatter
 let g:ale_echo_msg_error_str = 'E'
 let g:ale_echo_msg_warning_str = 'W'
@@ -199,6 +199,11 @@ let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
 "" Signs symbols
 let g:ale_sign_error = '✖'
 let g:ale_sign_warning = '⚠'
+let g:ale_linters = {
+\   'javascript': ['standard'],
+\}
+nmap <silent> <F2> <Plug>(ale_previous_wrap)
+nmap <silent> <S-F2> <Plug>(ale_next_wrap)
 
 " Backup and tmps in the same folder 
 set backupdir=~/.backup
@@ -222,7 +227,7 @@ set wildignore+=*/node_modules/*,*/.git/*,*.so,*.swp,*.zip,*.exe,*.dll
 set wildignore+=*\\tmp\\*,*.swo,.cabal-sandbox
 let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn|node_modules|dist)$'
 " ctrlp don't open files in plugins/other windows
-let g:ctrlp_dont_split = 'NERD_tree_1|NERD_tree_2|help|quickfix'
+let g:ctrlp_dont_split = 'NERD\|help\|quickfix'
 
 " Cursor shape to vertical bar while in insert mode
 let &t_SI = "\<Esc>[5 q"

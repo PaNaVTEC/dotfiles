@@ -124,7 +124,7 @@ addPacmanSource() {
 
 installJs() {
   yaourt --noconfirm -S nodejs npm
-  sudo npm install -g n avn avn-n eslint_d
+  sudo npm install -g n
   sudo n latest
 }
 
