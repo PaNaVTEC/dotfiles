@@ -29,8 +29,11 @@ javaProject () {
   gradle --refresh-dependencies
 }
 
-scalaProject () { 
-  gradle init --type scala-library
+scalaProject () {
+  sbt new scala/hello-world.g8 --name=$1
+  echo 'libraryDependencies += "org.scalactic" %% "scalactic" % "3.0.1"' >> $1/build.sbt
+  echo 'libraryDependencies += "org.scalatest" %% "scalatest" % "3.0.1" % "test"' >> $1/build.sbt
+  (cd $1 && sbt ~run)
 }
 
 clojureProject() {
