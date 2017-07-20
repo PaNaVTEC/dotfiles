@@ -10,6 +10,9 @@ Plug 'editorconfig/editorconfig-vim'
 Plug 'marijnh/tern_for_vim'
 Plug 'Valloric/YouCompleteMe'
 
+" Repl suppoprt
+Plug 'jpalardy/vim-slime'
+
 " Snippets engine + snippets
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
@@ -39,6 +42,7 @@ Plug 'ap/vim-css-color'
 Plug 'derekwyatt/vim-scala'
     \| Plug 'ensime/ensime-vim'
     \| Plug 'ktvoelker/sbt-vim'
+"    \| Plug 'vim-syntastic/syntastic'
 " Plug 'dscleaver/sbt-quickfix'
 
 " Clojure
@@ -58,6 +62,7 @@ Plug 'junegunn/goyo.vim'
 
 " Linting
 Plug 'w0rp/ale'
+Plug 'zmre/vim-scala-async-integration'
 
 " General programming
 Plug 'tpope/vim-surround'

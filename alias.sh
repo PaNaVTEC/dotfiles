@@ -15,6 +15,7 @@ alias yunf='yu --noconfirm --force'
 alias yp='yaourt -Qm'
 alias yr='yaourt -R'
 alias v='vim'
+alias vimScala='vim --servername VIM'
 
 alias gh='ghi.sh'
 

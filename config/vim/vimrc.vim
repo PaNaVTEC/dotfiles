@@ -1,6 +1,7 @@
 syntax enable
 set nocompatible
 source ~/dotfiles/config/vim/vimrc.plugins.vim
+source ~/dotfiles/config/vim/scala-ale-sbt.vim
 
 set encoding=utf8
 set backspace=indent,eol,start
@@ -140,7 +141,7 @@ let g:airline_powerline_fonts = 1
 set laststatus=2 " This fixes a bug that prevents the bar not showing with nerdtree
 
 " Scala config
-autocmd BufWritePost *.scala silent :EnTypeCheck  "ensine type check after writing
+" autocmd BufWritePost *.scala silent :EnTypeCheck  "ensine type check after writing
 let ensime_server_v2=1
 
 " Toggle rainbow braces on
@@ -201,7 +202,14 @@ let g:ale_sign_error = '✖'
 let g:ale_sign_warning = '⚠'
 let g:ale_linters = {
 \   'javascript': ['standard'],
+\   'scala': ['sbtlogs']
 \}
+" let g:syntastic_scala_checkers = ['ensime']
+" let g:syntastic_always_populate_loc_list = 1
+" let g:syntastic_auto_loc_list = 1
+" let g:syntastic_check_on_open = 1
+" let g:syntastic_check_on_wq = 0
+
 nmap <silent> <F2> <Plug>(ale_previous_wrap)
 nmap <silent> <S-F2> <Plug>(ale_next_wrap)
 

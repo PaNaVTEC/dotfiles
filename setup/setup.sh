@@ -224,11 +224,18 @@ compileVim() {
 }
 
 installVim() {
-  yaourt -S --noconfirm silver-searcher-git cmake
-  #Ensime 
+  yaourt -S --noconfirm silver-searcher-git cmake sbt
+
+  # Ensime
   yaourt -S --noconfirm python2-sexpdata python2-websocket-client
   mkdir -p ~/.sbt/0.13/plugins/
   echo 'addSbtPlugin("org.ensime" % "sbt-ensime" % "1.12.12")' > ~/.sbt/0.13/plugins/plugins.sbt
+
+  # Scala compilation errors with sbt
+  git clone git@github.com:PaNaVTEC/sbt-vim-async-integration.git
+  (cd sbt-vim-async-integration.git && sbt publishLocal)
+  echo 'addSbtPlugin("zmre" % "sbt-vim-async-integration" % "1.0-LOCAL")' >> ~/.sbt/0.13/plugins/plugins.sbt
+
   (compileVim;)
 
   # Haskell-Vim
@@ -241,18 +248,22 @@ installVim() {
   #Install plugin system 
   curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+
   #Configuration
   ln -sfn ${dir}/config/vim/vimrc.vim ${HOME}/.vimrc
-  #ensime scala needed dependencies
+
   mkdir -p ~/.backup
   mkdir -p ~/.tmp
   mkdir -p ~/.vim/undodir
-  vim +PlugInstall +qa
+
   # installs tern for vim
   (cd ~/.vim/plugged/tern_for_vim && npm install)
   (cd ~/.vim/plugged/YouCompleteMe && ./install.py --tern-completer)
+
   # MDN Query plugin dependencies
   gem install mdn_query
+
+  vim +PlugInstall +qa
 }
 
 installRanger() { 
