@@ -235,6 +235,8 @@ installVim() {
   git clone git@github.com:PaNaVTEC/sbt-vim-async-integration.git
   (cd sbt-vim-async-integration && sbt publishLocal)
   echo 'addSbtPlugin("zmre" % "sbt-vim-async-integration" % "1.0-LOCAL")' >> ~/.sbt/0.13/plugins/plugins.sbt
+  mkdir -p ${HOME}/.vim/plugged/ale/ale_linters/scala
+  ln -sfn ${dir}/config/vim/sbtlogs.vim ${HOME}/.vim/plugged/ale/ale_linters/scala/sbtlogs.vim
 
   (compileVim;)
 
@@ -257,8 +259,8 @@ installVim() {
   mkdir -p ~/.vim/undodir
 
   # installs tern for vim
-  (cd ~/.vim/plugged/tern_for_vim && npm install)
-  (cd ~/.vim/plugged/YouCompleteMe && ./install.py --tern-completer)
+  (cd ${HOME}/.vim/plugged/tern_for_vim && npm install)
+  (cd ${HOME}/.vim/plugged/YouCompleteMe && ./install.py --tern-completer)
 
   # MDN Query plugin dependencies
   gem install mdn_query
