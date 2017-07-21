@@ -233,7 +233,7 @@ installVim() {
 
   # Scala compilation errors with sbt
   git clone git@github.com:PaNaVTEC/sbt-vim-async-integration.git
-  (cd sbt-vim-async-integration.git && sbt publishLocal)
+  (cd sbt-vim-async-integration && sbt publishLocal)
   echo 'addSbtPlugin("zmre" % "sbt-vim-async-integration" % "1.0-LOCAL")' >> ~/.sbt/0.13/plugins/plugins.sbt
 
   (compileVim;)

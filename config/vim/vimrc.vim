@@ -203,11 +203,6 @@ let g:ale_linters = {
 \   'javascript': ['standard'],
 \   'scala': ['sbtlogs']
 \}
-" let g:syntastic_scala_checkers = ['ensime']
-" let g:syntastic_always_populate_loc_list = 1
-" let g:syntastic_auto_loc_list = 1
-" let g:syntastic_check_on_open = 1
-" let g:syntastic_check_on_wq = 0
 
 nmap <silent> <F2> <Plug>(ale_previous_wrap)
 nmap <silent> <S-F2> <Plug>(ale_next_wrap)

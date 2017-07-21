@@ -42,7 +42,8 @@ Plug 'ap/vim-css-color'
 Plug 'derekwyatt/vim-scala'
     \| Plug 'ensime/ensime-vim'
     \| Plug 'ktvoelker/sbt-vim'
-"    \| Plug 'vim-syntastic/syntastic'
+    "\| Plug 'zmre/vim-scala-async-integration'
+    "\| Plug 'vim-syntastic/syntastic'
 " Plug 'dscleaver/sbt-quickfix'
 
 " Clojure
@@ -62,7 +63,6 @@ Plug 'junegunn/goyo.vim'
 
 " Linting
 Plug 'w0rp/ale'
-Plug 'zmre/vim-scala-async-integration'
 
 " General programming
 Plug 'tpope/vim-surround'
