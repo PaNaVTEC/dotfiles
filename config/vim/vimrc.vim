@@ -1,7 +1,6 @@
 syntax enable
 set nocompatible
 source ~/dotfiles/config/vim/vimrc.plugins.vim
-source ~/dotfiles/config/vim/scala-ale-sbt.vim
 
 set encoding=utf8
 set backspace=indent,eol,start
