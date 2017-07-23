@@ -9,6 +9,7 @@ Plug 'terryma/vim-multiple-cursors'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'marijnh/tern_for_vim'
 Plug 'Valloric/YouCompleteMe'
+Plug 'Chiel92/vim-autoformat'
 
 " Repl suppoprt
 Plug 'jpalardy/vim-slime'
