@@ -1,3 +1,4 @@
+terminus-font
 ttf-font-awesome
 ttf-google-fonts-git
 ttf-ms-fonts

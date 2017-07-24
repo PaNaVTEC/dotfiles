@@ -57,6 +57,11 @@ installFonts() {
   wget "https://github.com/ryanoasis/nerd-fonts/blob/master/patched-fonts/DroidSansMono/complete/Droid%20Sans%20Mono%20for%20Powerline%20Nerd%20Font%20Complete%20Mono.otf"
   sudo mv *.otf ~/.local/share/fonts/
   sudo fc-cache -fv
+
+  # Install vcconsole.font
+  sudo echo -e "KEYMAP=us\nFONT=Lat2-Terminus16" > /etc/vconsole.conf
+  # TODO : ADD consolefont to the HOOKS in /etc/mkinitcpio.conf
+  sudo mkinitcpio -p linux
 }
 
 installThemes() {
