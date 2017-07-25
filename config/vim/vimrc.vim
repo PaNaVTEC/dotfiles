@@ -62,14 +62,14 @@ let test#strategy = "asyncrun"
 let g:test#runner_commands = ['Mocha']
 
 " test-vim js configuration
-"let g:test#javascript#mocha#file_pattern = '\vtests?/.*\.(js|jsx|coffee)$'
-let g:test#javascript#mocha#file_pattern = '.*\.test\.js$'
-
-let test#javascript#mocha#options = {
-  \ 'nearest': '--compilers js:babel-core/register unitTest.config.js -c',
-  \ 'file':    '--compilers js:babel-core/register unitTest.config.js -c',
-  \ 'suite':   '--compilers js:babel-core/register unitTest.config.js -c',
-\}
+let g:test#javascript#mocha#file_pattern = '\vtests?/.*\.(js|jsx|coffee)$'
+" let g:test#javascript#mocha#file_pattern = '.*\.test\.js$'
+" 
+" let test#javascript#mocha#options = {
+"   \ 'nearest': '--compilers js:babel-core/register unitTest.config.js -c',
+"   \ 'file':    '--compilers js:babel-core/register unitTest.config.js -c',
+"   \ 'suite':   '--compilers js:babel-core/register unitTest.config.js -c',
+" \}
 
 let g:javascript_conceal_function             = "λ"
 let g:javascript_conceal_null                 = "ø"

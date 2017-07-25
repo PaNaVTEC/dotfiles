@@ -6,7 +6,6 @@ function! ale_linters#scala#sbtlogs#Handle(buffer, lines) abort
   let l:output = []
 
   for l:match in ale#util#GetMatches(a:lines, l:pattern)
-    echo l:match[1]
     let l:type = l:match[1] ==# 'error' ? 'E' : 'W'
     let l:lnum = l:match[2]
     let l:text = l:match[3]
