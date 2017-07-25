@@ -32,12 +32,13 @@ javaProject () {
 
 scalaProject () {
   mkdir -p $1
-  cd $1
   sbt new scala/hello-world.g8 --name=$1
   echo 'libraryDependencies += "org.scalactic" %% "scalactic" % "3.0.1"' >> $1/build.sbt
   echo 'libraryDependencies += "org.scalatest" %% "scalatest" % "3.0.1" % "test"' >> $1/build.sbt
+  echo 'addSbtPlugin("org.scalastyle" %% "scalastyle-sbt-plugin" % "0.9.0")' >> $1/project/plugins.sbt
+  cd $1
   sbt ensimeConfig
-  cd $1 sbt ~run
+  sbt scalastyleGenerateConfig
 }
 
 clojureProject() {

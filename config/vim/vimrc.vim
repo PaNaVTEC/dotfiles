@@ -99,14 +99,10 @@ highlight CursorLine cterm=NONE ctermbg=NONE ctermfg=NONE guibg=NONE guifg=NONE
 set cursorline
 
 function! OnBufEnter()
-  if (@% =~ "vim.*/doc/")
-    set nolist
-  elseif (@% == "NERD_tree_1")
-    set nolist
-  elseif (@% == "mdnquery-buffer")
-    set nolist
-  else 
-    set list
+  if (@% =~ "vim.*/doc/") | set nolist
+  elseif (@% == "NERD_tree_1") | set nolist
+  elseif (@% == "mdnquery-buffer") | set nolist
+  else | set list
   endif
   if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 endfunction
@@ -201,11 +197,16 @@ let g:ale_sign_error = '✖'
 let g:ale_sign_warning = '⚠'
 let g:ale_linters = {
 \   'javascript': ['standard'],
-\   'scala': ['sbtlogs']
+\   'scala': ['sbtlogs', 'scalastyle']
 \}
 
-nmap <silent> <F2> <Plug>(ale_previous_wrap)
-nmap <silent> <S-F2> <Plug>(ale_next_wrap)
+nmap <silent> <F2> <Plug>(ale_next_wrap)
+
+" Fromatting
+noremap <leader>f :Autoformat<CR>
+let g:formatdef_scalafmt = "'scalafmt --stdin'"
+let g:formatters_scala = ['scalafmt']
+let g:formatters_javascript = ['standard']
 
 " Backup and tmps in the same folder 
 set backupdir=~/.backup
