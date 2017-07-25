@@ -49,6 +49,9 @@ set tm=2000
 " Allow the normal use of "," by pressing it twice
 noremap ,, ,
 
+" Clean screen + noh
+nnoremap <silent> <C-l> : <C-u>nohlsearch<CR><C-l>
+
 " Test vim plugin configuration
 nmap <silent> <leader>t :TestNearest<CR>
 nmap <silent> <leader>T :TestFile<CR>
