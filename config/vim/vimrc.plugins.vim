@@ -29,8 +29,10 @@ Plug 'tpope/vim-fugitive'
 Plug 'pangloss/vim-javascript'
       \| Plug 'mxw/vim-jsx'
       \| Plug 'heavenshell/vim-jsdoc'
+      \| Plug 'jungomi/vim-mdnquery'
       \| Plug 'moll/vim-node', { 'for' : ['js'] }
-Plug 'jungomi/vim-mdnquery'
+
+Plug 'fatih/vim-go', { 'for' : ['go'] }
 
 " CSS
 Plug 'JulesWang/css.vim'
