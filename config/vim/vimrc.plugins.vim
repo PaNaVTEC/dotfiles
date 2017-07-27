@@ -31,6 +31,8 @@ Plug 'pangloss/vim-javascript'
       \| Plug 'heavenshell/vim-jsdoc'
       \| Plug 'jungomi/vim-mdnquery'
       \| Plug 'moll/vim-node', { 'for' : ['js'] }
+" Hbs
+Plug 'mustache/vim-mustache-handlebars'
 
 Plug 'fatih/vim-go', { 'for' : ['go'] }
 
