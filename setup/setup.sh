@@ -109,6 +109,7 @@ installDevTools() {
 installGo() {
   yaourt --noconfirm -S go
   mkdir -p ${HOME}/go/{bin,src}
+  go get -u github.com/golang/lint/golint
 }
 
 installHaskell() {
