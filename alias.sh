@@ -16,6 +16,7 @@ alias yp='yaourt -Qm'
 alias yr='yaourt -R'
 alias v='vim'
 alias vimScala='vim --servername VIM'
+alias grep="grep --color=auto"
 
 alias gh='ghi.sh'
 
