@@ -1,5 +1,4 @@
 terminus-font-td1
 ttf-twemoji-color
-ttf-font-awesome
 ttf-google-fonts-git
 ttf-ms-fonts
