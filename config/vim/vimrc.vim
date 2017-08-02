@@ -200,7 +200,8 @@ let g:ale_sign_error = '✖'
 let g:ale_sign_warning = '⚠'
 let g:ale_linters = {
 \   'javascript': ['standard'],
-\   'scala': ['sbtlogs', 'scalastyle']
+\   'scala': ['sbtlogs', 'scalastyle'],
+\   'go': ['gofmt', 'golint', 'go vet', 'staticcheck']
 \}
 
 nmap <silent> <F2> <Plug>(ale_next_wrap)
@@ -252,4 +253,10 @@ let g:UltiSnipsExpandTrigger="<leader>n"
 let g:UltiSnipsJumpForwardTrigger="<leader>n"
 let g:UltiSnipsJumpBackwardTrigger="<leader>N"
 let g:UltiSnipsEditSplit="vertical"
+
+" Git gutter keys
+nmap ]h <Plug>GitGutterNextHunk
+nmap [h <Plug>GitGutterPrevHunk
+nmap <Leader>ha <Plug>GitGutterStageHunk
+nmap <Leader>hr <Plug>GitGutterUndoHunk
 
