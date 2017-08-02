@@ -52,10 +52,18 @@ installi3() {
 installFonts() {
   echo "Installing fonts"
   sleep 2
-  yaourt --noconfirm -S ./yaourt_fonts.txt 
+  yaourt --noconfirm -S ./yaourt_fonts.txt
+
   mkdir -p ~/.local/share/fonts/
+  mkdir -p ~/.config/fontconfig/conf.d/ 
+
+  # Download Nerd Font (for glyphs)
   wget "https://github.com/ryanoasis/nerd-fonts/blob/master/patched-fonts/DroidSansMono/complete/Droid%20Sans%20Mono%20for%20Powerline%20Nerd%20Font%20Complete%20Mono.otf"
   sudo mv *.otf ~/.local/share/fonts/
+
+  # Set font fallback configuration in place
+  ln -sfn ${dir}/config/fontconfig/10-icons.conf ${HOME}/.config/fontconfig/conf.d/10-icons.conf
+
   sudo fc-cache -fv
 
   # Install vcconsole.font
