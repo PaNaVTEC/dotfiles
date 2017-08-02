@@ -75,15 +75,16 @@ let g:javascript_conceal_function             = "λ"
 let g:javascript_conceal_null                 = "ø"
 let g:javascript_conceal_this                 = "@"
 let g:javascript_conceal_return               = "⇚"
-let g:javascript_conceal_undefined            = "¿"
+"let g:javascript_conceal_undefined            = "¿"
 let g:javascript_conceal_NaN                  = "ℕ"
-let g:javascript_conceal_prototype            = "¶"
-let g:javascript_conceal_static               = "•"
-let g:javascript_conceal_super                = "Ω"
+"let g:javascript_conceal_prototype            = "¶"
+"let g:javascript_conceal_static               = "•"
+"let g:javascript_conceal_super                = "Ω"
 let g:javascript_conceal_arrow_function       = "⇒"
 let g:javascript_conceal_noarg_arrow_function = "🞅"
 let g:javascript_conceal_underscore_arrow_function = "🞅"
-set conceallevel=0
+set conceallevel=1
+set concealcursor=nvc
 hi Conceal guibg=#263238
 
 " AsyncRun
@@ -204,7 +205,8 @@ let g:ale_linters = {
 \   'go': ['gofmt', 'golint', 'go vet', 'staticcheck']
 \}
 
-nmap <silent> <F2> <Plug>(ale_next_wrap)
+nmap <silent> ]w <Plug>(ale_next_wrap)
+nmap <silent> [w <Plug>(ale_previous_wrap)
 
 " Fromatting
 noremap <leader>f :Autoformat<CR>
