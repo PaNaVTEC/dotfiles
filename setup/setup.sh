@@ -67,8 +67,8 @@ installFonts() {
   sudo fc-cache -fv
 
   # Install vcconsole.font
-  sudo echo -e "KEYMAP=us\nFONT=Lat2-Terminus16" > /etc/vconsole.conf
-  # TODO : ADD consolefont to the HOOKS in /etc/mkinitcpio.conf
+  sudo bash -c 'echo -e "KEYMAP=us\nFONT=Lat2-Terminus16" > /etc/vconsole.conf'
+  sudo sed -i /etc/mkinitcpio.conf -e 's/^\(HOOKS=\"[^\"]\+\)\"/\1 consolefont"/'
   sudo mkinitcpio -p linux
 }
 
