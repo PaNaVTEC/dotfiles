@@ -262,3 +262,11 @@ nmap [h <Plug>GitGutterPrevHunk
 nmap <Leader>ha <Plug>GitGutterStageHunk
 nmap <Leader>hr <Plug>GitGutterUndoHunk
 
+function! DiffBuffer()
+  !git cat-file blob HEAD:% > /tmp/compare.tmp
+  diffthis
+  belowright vertical new
+  edit /tmp/compare.tmp
+  diffthis
+endfunction
+
