@@ -1,6 +1,7 @@
 alias ls='ls --color=auto'
 alias ll='ls -la --color=auto'
 alias la='ll'
+alias exa='exa -bghlaU --git --group-directories-first'
 alias ccat='pygmentize -g'
 alias ccatl='pygmentize -g -O style=colorful,linenos=1'
 alias wear_emulator='adb -d forward tcp:5601 tcp:5601'
