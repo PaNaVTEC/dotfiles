@@ -15,4 +15,4 @@ neofetch
 evince
 speedtest-cli
 pinta
-
+exa

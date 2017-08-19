@@ -52,10 +52,15 @@ installi3() {
 installFonts() {
   echo "Installing fonts"
   sleep 2
-  yaourt --noconfirm -S ./yaourt_fonts.txt
 
+  # Enable emojis on terminal, Qt and Gtk apps
   mkdir -p ~/.local/share/fonts/
-  mkdir -p ~/.config/fontconfig/conf.d/ 
+  mkdir -p ~/.config/fontconfig/conf.d/
+
+  yaourt -Rdd cairo && yaourt --noconfirm -S cairo-coloredemoji
+  cp ${dir}/config/fonts/51-noto-color-emoji.conf /etc/fonts/conf/avail/ 
+  cp ${dir}/config/fonts/fonts.conf ~/.config/fontconfig/
+  yaourt --noconfirm -S ./yaourt_fonts.txt
 
   # Download Nerd Font (for glyphs)
   wget "https://github.com/ryanoasis/nerd-fonts/blob/master/patched-fonts/DroidSansMono/complete/Droid%20Sans%20Mono%20for%20Powerline%20Nerd%20Font%20Complete%20Mono.otf"
@@ -64,6 +69,8 @@ installFonts() {
   # Set font fallback configuration in place
   ln -sfn ${dir}/config/fontconfig/10-icons.conf ${HOME}/.config/fontconfig/conf.d/10-icons.conf
 
+  # Refresh user and global font paths
+  fc-cache -fv
   sudo fc-cache -fv
 
   # Install vcconsole.font
