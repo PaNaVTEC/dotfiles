@@ -19,9 +19,6 @@ alias v='vim --servername VIM'
 alias vi='vim --servername VIM'
 alias vim='vim --servername VIM'
 alias grep="grep --color=auto"
-
-alias gh='ghi.sh'
-
 alias connectvpn='sudo openvpn /etc/openvpn/server.ovpn'
 alias wireup='sudo wg-quick up wg0-client'
 alias wiredown='sudo wg-quick down wg0-client'
