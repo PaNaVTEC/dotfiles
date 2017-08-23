@@ -247,6 +247,7 @@ command! WQ wq
 command! Wq wq
 command! Wqa wqa
 command! W w
+command! Wa wa
 command! Q q
 command! Qa qa
 
