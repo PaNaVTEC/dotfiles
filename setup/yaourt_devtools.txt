@@ -1,4 +1,5 @@
 virtualbox
+hub
 linux-headers
 smartgit
 docker
