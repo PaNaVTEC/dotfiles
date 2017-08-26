@@ -58,13 +58,13 @@ installFonts() {
   mkdir -p ~/.config/fontconfig/conf.d/
 
   yaourt -Rdd cairo && yaourt --noconfirm -S cairo-coloredemoji
-  cp ${dir}/config/fonts/51-noto-color-emoji.conf /etc/fonts/conf/avail/ 
-  cp ${dir}/config/fonts/fonts.conf ~/.config/fontconfig/
+  cp ${dir}/config/fonts/51-noto-color-emoji.conf /etc/fonts/conf.avail/
+  cp ${dir}/config/fonts/fonts.conf ${HOME}/.config/fontconfig/
   yaourt --noconfirm -S ./yaourt_fonts.txt
 
   # Download Nerd Font (for glyphs)
   wget "https://github.com/ryanoasis/nerd-fonts/blob/master/patched-fonts/DroidSansMono/complete/Droid%20Sans%20Mono%20for%20Powerline%20Nerd%20Font%20Complete%20Mono.otf"
-  sudo mv *.otf ~/.local/share/fonts/
+  sudo mv *.otf ${HOME}/.local/share/fonts/
 
   # Set font fallback configuration in place
   ln -sfn ${dir}/config/fontconfig/10-icons.conf ${HOME}/.config/fontconfig/conf.d/10-icons.conf
