@@ -87,6 +87,9 @@ set conceallevel=1
 set concealcursor=nvc
 hi Conceal guibg=#263238
 
+" Jsx
+let g:jsx_ext_required = 0
+
 " AsyncRun
 augroup vimrc
     " Open quickfix window when start running test
