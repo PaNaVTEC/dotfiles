@@ -116,6 +116,11 @@ installDevTools() {
   installHaskell;
   installGo;
 
+  # Docker
+  rm -rf /var/lib/docker
+  mkdir -p ${HOME}/.dockerlib
+  sudo ln -sfn ${HOME}/.dockerlib /var/lib/docker
+
   #IntelliJ watches in the FS
   sudo bash -c 'echo "fs.inotify.max_user_watches = 524288" > /etc/sysctl.d/99-sysctl.conf'
   sudo sysctl --system
