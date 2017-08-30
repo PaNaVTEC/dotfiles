@@ -39,7 +39,7 @@ installi3() {
   yaourt --noconfirm -S ./yaourt_i3.txt
 
   ln -sfn ${dir}/config/i3 ${HOME}/.config/i3
-  
+
   # gsimplecal configuration
   mkdir -p ${HOME}/.config/gsimplecal
   ln -sfn ${dir}/config/gsimplecal/config ${HOME}/.config/gsimplecal/config
@@ -88,7 +88,7 @@ installThemes() {
 installGit() {
   yaourt --noconfirm -S ./yaourt_git.txt
   ln -sfn ${dir}/.gitconfig ${HOME}/.gitconfig
-  
+
   # SSH agent
   mkdir -p ${HOME}/.config/systemd/user
   ln -sfn ${dir}/config/units/ssh-agent.service ${HOME}/.config/systemd/user/
@@ -115,6 +115,11 @@ installDevTools() {
   installClojure;
   installHaskell;
   installGo;
+
+  # Docker
+  rm -rf /var/lib/docker
+  mkdir -p ${HOME}/.dockerlib
+  sudo ln -sfn ${HOME}/.dockerlib /var/lib/docker
 
   #IntelliJ watches in the FS
   sudo bash -c 'echo "fs.inotify.max_user_watches = 524288" > /etc/sysctl.d/99-sysctl.conf'
