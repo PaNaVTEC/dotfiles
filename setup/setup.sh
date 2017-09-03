@@ -280,8 +280,11 @@ installVim() {
   sudo ln -s /usr/lib/libtinfo.so.6 /usr/lib/libtinfo.so.5
 
   #Install plugin system 
-  curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+  curl -fLo ${HOME}/.vim/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+
+  #Vimwiki
+  ln -sfn ${HOME}/Dropbox/vimwiki/ ${HOME}/vimwiki
 
   #Configuration
   ln -sfn ${dir}/config/vim/vimrc.vim ${HOME}/.vimrc
