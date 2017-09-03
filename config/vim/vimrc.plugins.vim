@@ -11,6 +11,9 @@ Plug 'marijnh/tern_for_vim'
 Plug 'Valloric/YouCompleteMe'
 Plug 'Chiel92/vim-autoformat'
 
+" Vimwiki
+Plug 'vimwiki/vimwiki'
+
 " Repl suppoprt
 Plug 'jpalardy/vim-slime'
 
