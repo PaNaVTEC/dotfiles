@@ -2,3 +2,4 @@ terminus-font-td1
 ttf-twemoji-color
 ttf-google-fonts-git
 ttf-ms-fonts
+noto-fonts-emoji
