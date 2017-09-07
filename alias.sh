@@ -1,5 +1,5 @@
 alias ls='ls --color=auto'
-alias ll='ls -la --color=auto'
+alias ll='exa'
 alias la='ll'
 alias exa='exa -bghlaU --git --group-directories-first'
 alias ccat='pygmentize -g'
@@ -22,6 +22,10 @@ alias wireup='sudo wg-quick up wg0-client'
 alias wiredown='sudo wg-quick down wg0-client'
 alias dotfiles='(cd ~/dotfiles && vim -c NERDTree)'
 alias ffs='sudo $(fc -ln -1)'
+
+ya () {
+  yarn $@ --emoji
+}
 
 javaProject () { 
   gradle init --type java-library
