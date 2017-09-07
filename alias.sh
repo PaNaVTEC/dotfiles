@@ -1,3 +1,4 @@
+dotfilesLocation=~/dotfiles
 alias ls='ls --color=auto'
 alias ll='exa'
 alias la='ll'
@@ -8,7 +9,7 @@ alias y='yaourt'
 alias ys='yaourt -Ss'
 alias yi='yaourt -S'
 alias yin='yi --noconfirm'
-alias yu='yaourt -Syua'
+alias yu="(cd $dotfilesLocation && git pull) && yaourt -Syua"
 alias yun='yu --noconfirm'
 alias yunf='yu --noconfirm --force'
 alias yp='yaourt -Qm'
@@ -20,7 +21,7 @@ alias grep="grep --color=auto"
 alias connectvpn='sudo openvpn /etc/openvpn/server.ovpn'
 alias wireup='sudo wg-quick up wg0-client'
 alias wiredown='sudo wg-quick down wg0-client'
-alias dotfiles='(cd ~/dotfiles && vim -c NERDTree)'
+alias dotfiles="(cd $dotfilesLocation && vim -c NERDTree)"
 alias ffs='sudo $(fc -ln -1)'
 
 ya () {
