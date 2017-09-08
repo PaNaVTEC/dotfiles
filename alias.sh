@@ -45,6 +45,21 @@ scalaProject () {
   sbt scalastyleGenerateConfig
 }
 
+alias jsProject='javascriptProject;'
+javascriptProject () {
+  mkdir -p $1
+  cd $1
+  yarn init -y
+  yarn add mocha chai standard
+  cp ~/dotfiles/config/vim/.tern-project .
+  mv package.json init.json
+  jq -r '.scripts |= . + {"start": "node index.js", "test": "mocha ./src/**.test.js"}' init.json > package.json
+  rm init.json
+  mkdir -p src
+  touch src/index.js
+  yarn
+}
+
 clojureProject() {
   lein new $1
 }
