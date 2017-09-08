@@ -12,15 +12,20 @@ set nrformats-=octal
 set history=200
 
 " Colors
-set tgc
 set background=dark
-colorscheme hybrid_material
+if &t_Co > 255
+  set tgc
+  colorscheme hybrid_material
+  " Disable Background Color Erase (BCE) so that color schemes
+  " work properly when Vim is used inside tmux and GNU screen.
+  set t_ut=
+else
+  let base16colorspace=256
+  colorscheme base16-material-darker
+endif
 
 let g:airline_theme = "hybrid"
 let g:airline#extensions#ale#enabled = 1
-" Disable Background Color Erase (BCE) so that color schemes
-" work properly when Vim is used inside tmux and GNU screen.
-set t_ut=
 
 " Display a line at column 80
 if exists('+colorcolumn')
