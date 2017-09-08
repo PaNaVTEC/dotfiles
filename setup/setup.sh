@@ -73,9 +73,11 @@ installFonts() {
   fc-cache -fv
   sudo fc-cache -fv
 
-  # Install vcconsole.font
-  sudo bash -c 'echo -e "KEYMAP=us\nFONT=Lat2-Terminus16" > /etc/vconsole.conf'
-  sudo sed -i /etc/mkinitcpio.conf -e 's/^\(HOOKS=\"[^\"]\+\)\"/\1 consolefont"/'
+  # Install vcconsole.font & colors
+  yaourt --noconfirm -S setcolors-git
+  cp ${dir}/config/fontconfig/vconsole.conf /etc/
+
+  sudo sed -i /etc/mkinitcpio.conf -e 's/^\\\(HOOKS=\"base\s\)\([^\"]\+\)\"/\1colors consolefont \2"/'
   sudo mkinitcpio -p linux
 }
 
