@@ -7,6 +7,7 @@ export EDITOR=vim
 export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
 export ANDROID_HOME=~/Android/Sdk
 
+source ~/dotfiles/fb_colors.sh
 source ~/dotfiles/prompt.sh
 source ~/dotfiles/git-completion.bash
 source ~/dotfiles/git-alias.sh
