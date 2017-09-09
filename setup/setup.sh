@@ -74,8 +74,8 @@ installFonts() {
   sudo fc-cache -fv
 
   # Install vcconsole.font & colors
-  yaourt --noconfirm -S setcolors-git
   sudo cp ${dir}/config/fontconfig/vconsole.conf /etc/
+  yaourt --noconfirm -S mkinitcpio-colors-git
 
   sudo sed -i /etc/mkinitcpio.conf -e 's/^\\\(HOOKS=\"base\s\)\([^\"]\+\)\"/\1colors consolefont \2"/'
   sudo mkinitcpio -p linux

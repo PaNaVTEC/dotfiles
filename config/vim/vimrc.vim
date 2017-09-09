@@ -80,11 +80,7 @@ let g:javascript_conceal_function             = "λ"
 let g:javascript_conceal_null                 = "ø"
 let g:javascript_conceal_this                 = "@"
 let g:javascript_conceal_return               = "⇚"
-"let g:javascript_conceal_undefined            = "¿"
 let g:javascript_conceal_NaN                  = "ℕ"
-"let g:javascript_conceal_prototype            = "¶"
-"let g:javascript_conceal_static               = "•"
-"let g:javascript_conceal_super                = "Ω"
 let g:javascript_conceal_arrow_function       = "⇒"
 let g:javascript_conceal_noarg_arrow_function = "🞅"
 let g:javascript_conceal_underscore_arrow_function = "🞅"
@@ -120,7 +116,11 @@ function! OnBufEnter()
 endfunction
 
 " Show hidden chars
-set listchars=eol:¬,tab:▸␣,nbsp:␣,trail:␣,extends:→,precedes:←
+if &term=~'linux' 
+  set listchars=eol:¬,tab:>·,nbsp:.,trail:.,extends:>,precedes:<
+else
+  set listchars=eol:¬,tab:▸␣,nbsp:␣,trail:␣,extends:→,precedes:←
+endif
 hi NonText ctermfg=8 guifg=Grey39
 hi SpecialKey ctermfg=8 guifg=Grey39
 autocmd bufenter * call OnBufEnter()
@@ -139,8 +139,13 @@ set synmaxcol=512
 " NERDTree
 map <C-n> :NERDTreeToggle<CR>
 nnoremap <silent> <Leader>v :NERDTreeFind<CR>
-let g:NERDTreeDirArrowExpandable = ''
-let g:NERDTreeDirArrowCollapsible = ''
+if &term=~'linux' 
+  let g:NERDTreeDirArrowExpandable = '+'
+  let g:NERDTreeDirArrowCollapsible = '-'
+else
+  let g:NERDTreeDirArrowExpandable = ''
+  let g:NERDTreeDirArrowCollapsible = ''
+endif
 let g:WebDevIconsUnicodeGlyphDoubleWidth = 0
 
 " Airline
@@ -205,8 +210,13 @@ let g:ale_echo_msg_error_str = 'E'
 let g:ale_echo_msg_warning_str = 'W'
 let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
 "" Signs symbols
-let g:ale_sign_error = '✖'
-let g:ale_sign_warning = '⚠'
+if &term=~'linux' 
+  let g:ale_sign_error = 'X'
+  let g:ale_sign_warning = '!'
+else
+  let g:ale_sign_error = '✖'
+  let g:ale_sign_warning = '⚠'
+endif
 let g:ale_linters = {
 \   'javascript': ['standard'],
 \   'scala': ['sbtlogs', 'scalastyle'],
