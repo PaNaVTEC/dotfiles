@@ -29,25 +29,17 @@ values."
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
    '(
-     ;; ----------------------------------------------------------------
-     ;; Example of useful layers you may want to use right away.
-     ;; Uncomment some layer names and press <SPC f e R> (Vim style) or
-     ;; <M-m f e R> (Emacs style) to install them.
-     ;; ----------------------------------------------------------------
-     helm
-     scala
-     javascript
+     ;; <SPC f e R> or <M-m f e R> to Reload 
      auto-completion
-     ;; better-defaults
      emacs-lisp
-     ;; git
-     ;; org
+     haskell
+     helm
+     org
+     javascript
+     scala
      (shell :variables
             shell-default-shell 'eshell
             shell-default-position 'bottom)
-     ;; spell-checking
-     ;; syntax-checking
-     ;; version-control
       yaml
      )
    ;; List of additional packages that will be installed without being
