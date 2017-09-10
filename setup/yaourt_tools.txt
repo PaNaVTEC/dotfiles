@@ -8,6 +8,8 @@ inox-bin
 google-talkplugin
 spotify
 keeweb-desktop
+keepass
+keepass-plugin-http
 unzip
 unrar
 jq
