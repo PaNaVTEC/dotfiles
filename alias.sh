@@ -53,7 +53,7 @@ javascriptProject () {
   yarn add mocha chai standard
   cp ~/dotfiles/config/vim/.tern-project .
   mv package.json init.json
-  jq -r '.scripts |= . + {"start": "node index.js", "test": "mocha ./src/**.test.js"}' init.json > package.json
+  jq -r '.scripts |= . + {"start": "node src/index.js", "test": "mocha ./src/**.test.js"}' init.json > package.json
   rm init.json
   mkdir -p src
   touch src/index.js
