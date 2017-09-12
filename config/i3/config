@@ -181,7 +181,7 @@ bindsym XF86Tools exec "synclient TouchpadOff=$(synclient | awk '/TouchpadOff/ {
 
 #Monitor
 bindsym XF86Display exec "arandr"
-bindsym $mod+F11 exec toggle-external-monitor.sh
+bindsym $mod+Shift+F12 exec toggle-external-monitor.sh
 
 # resize window (you can also use the mouse for that)
 set $resize "  "
