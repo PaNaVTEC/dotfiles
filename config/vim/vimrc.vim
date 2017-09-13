@@ -220,7 +220,8 @@ endif
 let g:ale_linters = {
 \   'javascript': ['standard'],
 \   'scala': ['sbtlogs', 'scalastyle'],
-\   'go': ['gofmt', 'golint', 'go vet', 'staticcheck']
+\   'go': ['gofmt', 'golint', 'go vet', 'staticcheck'],
+\   'sh': ['shellcheck', 'shell']
 \}
 
 nmap <silent> ]w <Plug>(ale_next_wrap)
