@@ -130,7 +130,7 @@ installDevTools() {
 }
 
 installBash() {
-  yaourt --noconfirm -S shellcheck shunit2
+  yaourt --noconfirm -S shellcheck-static shunit2
 }
 
 installGo() {
