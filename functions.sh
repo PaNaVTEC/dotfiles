@@ -219,6 +219,11 @@ docker_stop_all() {
   docker stop $(docker ps -a -q)
 }
 
+docker_prune() {
+  docker system prune
+  docker rmi $(docker images -a -q)
+}
+
 backupSystem() {
   rsync -aAXv --exclude={"/dev/*","/proc/*","/sys/*","/tmp/*","/run/*","/mnt/*","/media/*","/lost+found"} / $1
 }
