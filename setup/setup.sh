@@ -38,15 +38,15 @@ installi3() {
   sleep 2
   yaourt --noconfirm -S ./yaourt_i3.txt
 
-  ln -sfn ${dir}/config/i3 ${HOME}/.config/i3
+  ln -sfn "$dir/config/i3" "$HOME/.config/i3"
 
   # gsimplecal configuration
-  mkdir -p ${HOME}/.config/gsimplecal
-  ln -sfn ${dir}/config/gsimplecal/config ${HOME}/.config/gsimplecal/config
+  mkdir -p "$HOME/.config/gsimplecal"
+  ln -sfn "$dir/config/gsimplecal/config" "$HOME/.config/gsimplecal/config"
 
   #polybar
-  mkdir -p ${HOME}/.config/polybar/
-  ln -sfn ${dir}/config/polybar/config ${HOME}/.config/polybar/config
+  mkdir -p "$HOME/.config/polybar/"
+  ln -sfn "$dir/config/polybar/config" "$HOME/.config/polybar/config"
 }
 
 installFonts() {
@@ -58,23 +58,23 @@ installFonts() {
   mkdir -p ~/.config/fontconfig/conf.d/
 
   yaourt -Rdd cairo && yaourt --noconfirm -S cairo-coloredemoji
-  cp ${dir}/config/fonts/51-noto-color-emoji.conf /etc/fonts/conf.avail/
-  cp ${dir}/config/fonts/fonts.conf ${HOME}/.config/fontconfig/
+  cp "$dir/config/fonts/51-noto-color-emoji.conf" "/etc/fonts/conf.avail/"
+  cp "$dir/config/fonts/fonts.conf" "$HOME/.config/fontconfig/"
   yaourt --noconfirm -S ./yaourt_fonts.txt
 
   # Download Nerd Font (for glyphs)
   wget "https://github.com/ryanoasis/nerd-fonts/blob/master/patched-fonts/DroidSansMono/complete/Droid%20Sans%20Mono%20for%20Powerline%20Nerd%20Font%20Complete%20Mono.otf"
-  sudo mv *.otf ${HOME}/.local/share/fonts/
+  sudo mv "*.otf" "$HOME/.local/share/fonts/"
 
   # Set font fallback configuration in place
-  ln -sfn ${dir}/config/fontconfig/10-icons.conf ${HOME}/.config/fontconfig/conf.d/10-icons.conf
+  ln -sfn "$dir/config/fontconfig/10-icons.conf" "$HOME/.config/fontconfig/conf.d/10-icons.conf"
 
   # Refresh user and global font paths
   fc-cache -fv
   sudo fc-cache -fv
 
   # Install vcconsole.font & colors
-  sudo cp ${dir}/config/fontconfig/vconsole.conf /etc/
+  sudo cp "$dir/config/fontconfig/vconsole.conf" "/etc/"
   yaourt --noconfirm -S mkinitcpio-colors-git
 
   sudo sed -i /etc/mkinitcpio.conf -e 's/^\\\(HOOKS=\"base\s\)\([^\"]\+\)\"/\1colors consolefont \2"/'
@@ -89,11 +89,11 @@ installThemes() {
 
 installGit() {
   yaourt --noconfirm -S ./yaourt_git.txt
-  ln -sfn ${dir}/.gitconfig ${HOME}/.gitconfig
+  ln -sfn "$dir/.gitconfig" "$HOME/.gitconfig"
 
   # SSH agent
-  mkdir -p ${HOME}/.config/systemd/user
-  ln -sfn ${dir}/config/units/ssh-agent.service ${HOME}/.config/systemd/user/
+  mkdir -p "$HOME/.config/systemd/user"
+  ln -sfn "$dir/config/units/ssh-agent.service" "$HOME/.config/systemd/user/"
   systemctl --user daemon-reload
   systemctl --user enable ssh-agent
   systemctl --user start ssh-agent
@@ -121,8 +121,8 @@ installDevTools() {
 
   # Docker
   rm -rf /var/lib/docker
-  mkdir -p ${HOME}/.dockerlib
-  sudo ln -sfn ${HOME}/.dockerlib /var/lib/docker
+  mkdir -p "$HOME/.dockerlib"
+  sudo ln -sfn "$HOME/.dockerlib" "/var/lib/docker"
 
   #IntelliJ watches in the FS
   sudo bash -c 'echo "fs.inotify.max_user_watches = 524288" > /etc/sysctl.d/99-sysctl.conf'
@@ -135,7 +135,7 @@ installBash() {
 
 installGo() {
   yaourt --noconfirm -S go
-  mkdir -p ${HOME}/go/{bin,src}
+  mkdir -p "$HOME/go/{bin,src}"
   go get -u github.com/golang/lint/golint
 }
 
@@ -153,12 +153,7 @@ installHaskell() {
   echo "========"
   echo "Your GHC path will be: $(stack path | grep ghc-paths)"
   echo "========"
-  ln -sfn ${dir}/ghci ${HOME}/.ghci
-}
-
-addPacmanSource() {
-  sudo bash -c 'echo "['$1']" >> /etc/pacman.conf'
-  sudo bash -c 'echo "Server = '$2'" >> /etc/pacman.conf'
+  ln -sfn "$dir/ghci" "$HOME/.ghci"
 }
 
 installJs() {
@@ -170,8 +165,8 @@ installJs() {
 
 installClojure() {
   yaourt --noconfirm -S ./yaourt_clojure.txt
-  mkdir -p ${HOME}/.lein/
-  ln -sfn ${dir}/config/lein/profiles.clj ${HOME}/.lein/profiles.clj
+  mkdir -p "$HOME/.lein/"
+  ln -sfn "$dir/config/lein/profiles.clj" "$HOME/.lein/profiles.clj"
   lein > /dev/null
 }
 
@@ -185,8 +180,8 @@ installRedshift() {
   echo "Installing redshift"
   sleep 2
   yaourt --noconfirm -S redshift
-  mkdir -p ${HOME}/.config/redshift
-  ln -sfn ${dir}/config/redshift/config ${HOME}/.config/redshift/config
+  mkdir -p "$HOME/.config/redshift"
+  ln -sfn "$dir/config/redshift/config" "$HOME/.config/redshift/config"
 }
 
 installScreensavers() {
@@ -195,15 +190,9 @@ installScreensavers() {
   yaourt --noconfirm -S nyancat
 }
 
-installBluetoothResumePatch() {
-  echo "Installing resume patch"
-  sleep 2
-  sudo cat 'ACTION=="add", KERNEL=="hci0", RUN+="/usr/bin/hciconfig hci0 up"' >> /etc/udev/rules.d/10-local.rules
-}
-
 installPacman() {
   sudo rm /etc/pacman.conf
-  ln -sfn ${dir}/config/pacman/pacman.conf /etc/pacman.conf
+  ln -sfn "$dir/config/pacman/pacman.conf" "/etc/pacman.conf"
   # Update mirrorlist
   sudo rm /etc/pacman.d/mirrorlist
   MIRRORLIST=$(curl -s \
@@ -241,13 +230,15 @@ installYaourt() {
 compileVim() {
   VIM_BUILD_DIR=~
   cd "$VIM_BUILD_DIR"
+  (
   if [[ ! -d vim ]]; then
     git clone https://github.com/vim/vim.git --recursive
   else
     cd vim
+    (
     git pull
     git submodule update --init --recursive
-    cd ..
+    )
   fi
   cd vim
   ./configure --with-features=huge \
@@ -259,8 +250,9 @@ compileVim() {
     --enable-cscope \
     --enable-pythoninterp \
     --enable-python3interp
-  make -j`nproc`
+  make "-j$(nproc)"
   sudo make install
+  )
 }
 
 installVim() {
@@ -275,8 +267,8 @@ installVim() {
   git clone git@github.com:PaNaVTEC/sbt-vim-async-integration.git
   (cd sbt-vim-async-integration && sbt publishLocal)
   echo 'addSbtPlugin("zmre" % "sbt-vim-async-integration" % "1.0-LOCAL")' >> ~/.sbt/0.13/plugins/plugins.sbt
-  mkdir -p ${HOME}/.vim/plugged/ale/ale_linters/scala
-  ln -sfn ${dir}/config/vim/sbtlogs.vim ${HOME}/.vim/plugged/ale/ale_linters/scala/sbtlogs.vim
+  mkdir -p "$HOME/.vim/plugged/ale/ale_linters/scala"
+  ln -sfn "$dir/config/vim/sbtlogs.vim" "$HOME/.vim/plugged/ale/ale_linters/scala/sbtlogs.vim"
 
   (compileVim;)
 
@@ -288,22 +280,22 @@ installVim() {
   sudo ln -s /usr/lib/libtinfo.so.6 /usr/lib/libtinfo.so.5
 
   #Install plugin system 
-  curl -fLo ${HOME}/.vim/autoload/plug.vim --create-dirs \
+  curl -fLo "$HOME/.vim/autoload/plug.vim" --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
   #Vimwiki
-  ln -sfn ${HOME}/Dropbox/vimwiki/ ${HOME}/vimwiki
+  ln -sfn "$HOME/Dropbox/vimwiki/" "$HOME/vimwiki"
 
   #Configuration
-  ln -sfn ${dir}/config/vim/vimrc.vim ${HOME}/.vimrc
+  ln -sfn "$dir/config/vim/vimrc.vim" "$HOME/.vimrc"
 
   mkdir -p ~/.backup
   mkdir -p ~/.tmp
   mkdir -p ~/.vim/undodir
 
   # installs tern for vim
-  (cd ${HOME}/.vim/plugged/tern_for_vim && npm install)
-  (cd ${HOME}/.vim/plugged/YouCompleteMe && ./install.py --tern-completer)
+  (cd "$HOME/.vim/plugged/tern_for_vim" && npm install)
+  (cd "$HOME/.vim/plugged/YouCompleteMe" && ./install.py --tern-completer)
 
   # MDN Query plugin dependencies
   gem install mdn_query
@@ -313,29 +305,29 @@ installVim() {
 
 installEmacs() {
   yaourt -S --noconfirm emacs
-  git clone https://github.com/syl20bnr/spacemacs ~/.emacs.d
-  ln -sfn ${dir}/config/emacs/spacemacs ${HOME}/.spacemacs
+  mkdir -p "$HOME/.emacs.d/"
+  ln -sfn "$dir/config/emacs/init.el" "$HOME/.emacs.d/"
 }
 
 installRanger() { 
   yaourt -S ranger --noconfirm
   ranger --copy-config=scope
-  ln -sfn ${dir}/config/ranger/config ${HOME}/.config/ranger/rc.conf
+  ln -sfn "$dir/config/ranger/config" "$HOME/.config/ranger/rc.conf"
 }
 
 installMutt() {
   yaourt -S --noconfirm neomutt
-  ln -sfn ${dir}/config/mutt/.muttrc ${HOME}/.muttrc
+  ln -sfn "$dir/config/mutt/.muttrc" "$HOME/.muttrc"
 }
 
 installKhal() {
   yaourt -S --noconfirm khal vdirsyncer
 
-  mkdir -p ${HOME}/.config/khal
-  mkdir -p ${HOME}/.config/vdirsyncer
+  mkdir -p "$HOME/.config/khal"
+  mkdir -p "$HOME/.config/vdirsyncer"
 
-  ln -sfn ${dir}/config/khal/khal.conf ${HOME}/.config/khal/khal.conf
-  cp ${dir}/config/khal/vdirsyncerconfig ${HOME}/.config/vdirsyncer/config
+  ln -sfn "$dir/config/khal/khal.conf" "$HOME/.config/khal/khal.conf"
+  cp "$dir/config/khal/vdirsyncerconfig" "$HOME/.config/vdirsyncer/config"
 }
 
 installAudio() { 
@@ -349,17 +341,17 @@ installCompton() {
   mkdir -p ~/.before_startx
   echo "compton -c -i 0.9 -b &" >> ~/.before_startx/run.sh
   chmod a+x ~/.before_startx/run.sh
-  ln -sfn ${dir}/config/compton/compton.conf ${HOME}/.config/compton.conf
+  ln -sfn "$dir/config/compton/compton.conf" "$HOME/.config/compton.conf"
 }
 
 installTaskWarrior() {
   yaourt -S --noconfirm task tasksh
-  ln -sfn ${dir}/config/taskwarrior/.taskrc ${HOME}/.taskrc
+  ln -sfn "$dir/config/taskwarrior/.taskrc" "$HOME/.taskrc"
 
   # time tracking hook
   sudo pip install taskwarrior-time-tracking-hook
   mkdir -p ~/.task/hooks
-  ln -s `which taskwarrior_time_tracking_hook` ~/.task/hooks/on-modify.timetracking
+  ln -s "$(which taskwarrior_time_tracking_hook)" ~/.task/hooks/on-modify.timetracking
 }
 
 installBeancount() {
@@ -370,13 +362,13 @@ installPrivacy() {
   yaourt -S --noconfirm openvpn wireguard-dkms wireguard-tools
   sudo mkdir -p /etc/openvpn/
   sudo mkdir -p /etc/wireguard/
-  sudo gpg -d --output /etc/openvpn/server.ovpn ${dir}/config/vpn/server.gpg
-  sudo cp ${dir}/config/vpn/update-resolv-conf.sh /etc/openvpn
-  sudo gpg -d --output /etc/wireguard/wg0-client.conf ${dir}/config/vpn/wg0-client.gpg
+  sudo gpg -d --output /etc/openvpn/server.ovpn "$dir/config/vpn/server.gpg"
+  sudo cp "${dir}/config/vpn/update-resolv-conf.sh" /etc/openvpn
+  sudo gpg -d --output /etc/wireguard/wg0-client.conf "$dir/config/vpn/wg0-client.gpg"
   sudo chown -v root:root /etc/wireguard/wg0-client.conf
 }
 
-dir=`pwd`
+dir=$(pwd)
 if [ ! -e "${dir}/${0}" ]; then
   echo "Script not called from within repository directory. Aborting."
   exit 2
@@ -385,14 +377,13 @@ dir="${dir}/.."
 
 echo "PaNaVTEC dotfiles installer"
 
-mkdir -p ${HOME}/.data
-mkdir -p ${HOME}/.i3
+mkdir -p "$HOME/.data"
+mkdir -p "$HOME/.i3"
 
 #Makes binary executable
-chmod a+x ${dir}/bin/*
+chmod a+x "$dir/bin/*"
 
 echo "actionSystem.suspendFocusTransferIfApplicationInactive=false add this into intelliJ to prevent focus lose"
-echo "Don't forget to add your Github SSH key with: ssh-add ~/.ssh/id_rsa when you copied it"
 
 ask "install pacman/yaourt?" Y && installYaourt;
 ask "install i3?" Y && installi3;
@@ -406,15 +397,14 @@ ask "install emacs?" Y && installEmacs;
 ask "install audio?" Y && installAudio;
 
 ask "Install redshift + config?" Y && installRedshift
-ask "Install symlink for .xinitrc?" Y && ln -sfn ${dir}/.xinitrc ${HOME}/.xinitrc
-ask "Install symlink for .bashrc?" Y && ln -sfn ${dir}/.bashrc ${HOME}/.bashrc
-ask "Install symlink for .bash_profile?" Y && ln -sfn ${dir}/.bash_profile ${HOME}/.bash_profile
+ask "Install symlink for .xinitrc?" Y && ln -sfn "$dir/.xinitrc" "$HOME/.xinitrc"
+ask "Install symlink for .bashrc?" Y && ln -sfn "$dir/.bashrc" "${HOME}/.bashrc"
+ask "Install symlink for .bash_profile?" Y && ln -sfn "$dir/.bash_profile" "$HOME/.bash_profile"
 
-ask "Install configuration for bin?" Y && ln -sfn ${dir}/bin ${HOME}/.bin
-ask "Install configuration for dunst?" Y && ln -sfn ${dir}/config/dunst ${HOME}/.config/dunst
-ask "Install configuration for termite?" Y && ln -sfn ${dir}/config/termite ${HOME}/.config/termite && ln -sfn ${dir}/.dircolors ${HOME}/.dircolors;
+ask "Install configuration for bin?" Y && ln -sfn "$dir/bin" "$HOME/.bin"
+ask "Install configuration for dunst?" Y && ln -sfn "$dir/config/dunst" "$HOME/.config/dunst"
+ask "Install configuration for termite?" Y && ln -sfn "${dir}/config/termite" "$HOME/.config/termite" && ln -sfn "$dir/.dircolors" "$HOME/.dircolors;"
 ask "Install screensavers?" Y && installScreensavers;
-ask "Install bluetooth resume patch?" Y && installBluetoothResumePatch; 
 ask "Install Ranger?" Y && installRanger; 
 ask "Install Khal?" Y && installKhal;
 ask "Install taskWarrior?" Y && installTaskWarrior;
