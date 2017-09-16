@@ -213,24 +213,20 @@ installYaourt() {
   sudo pacman -S --needed base-devel git wget yajl
   wget https://aur.archlinux.org/cgit/aur.git/snapshot/package-query.tar.gz
   tar xvfz package-query.tar.gz
-  cd package-query
-  makepkg -si
-  cd ..
+  (cd package-query && makepkg -si)
   rm -rf package-query
   rm package-query.tar.gz
   wget https://aur.archlinux.org/cgit/aur.git/snapshot/yaourt.tar.gz
   tar xvfz yaourt.tar.gz
-  cd yaourt
-  makepkg -si
-  cd ..
+  (cd yaourt && makepkg -si)
   rm -rf yaourt
   rm yaourt.tar.gz
 }
 
 compileVim() {
   VIM_BUILD_DIR=~
-  cd "$VIM_BUILD_DIR"
   (
+  cd "$VIM_BUILD_DIR"
   if [[ ! -d vim ]]; then
     git clone https://github.com/vim/vim.git --recursive
   else
@@ -270,7 +266,7 @@ installVim() {
   mkdir -p "$HOME/.vim/plugged/ale/ale_linters/scala"
   ln -sfn "$dir/config/vim/sbtlogs.vim" "$HOME/.vim/plugged/ale/ale_linters/scala/sbtlogs.vim"
 
-  (compileVim;)
+  compileVim;
 
   # Haskell-Vim
   wget https://raw.githubusercontent.com/sdiehl/haskell-vim-proto/master/vim/syntax/cabal.vim -P ~/.vim/syntax/
@@ -368,47 +364,51 @@ installPrivacy() {
   sudo chown -v root:root /etc/wireguard/wg0-client.conf
 }
 
-dir=$(pwd)
-if [ ! -e "${dir}/${0}" ]; then
-  echo "Script not called from within repository directory. Aborting."
-  exit 2
+if [[ "${BASH_SOURCE[0]}" = "$0" ]]; then
+
+  echo "PaNaVTEC dotfiles installer"
+
+  dir=$(pwd)
+  if [ ! -e "${dir}/${0}" ]; then
+    echo "Script not called from within repository directory. Aborting."
+    exit 2
+  fi
+  dir="${dir}/.."
+
+
+  mkdir -p "$HOME/.data"
+  mkdir -p "$HOME/.i3"
+
+  #Makes binary executable
+  chmod a+x "$dir/bin/*"
+
+  echo "actionSystem.suspendFocusTransferIfApplicationInactive=false add this into intelliJ to prevent focus lose"
+
+  ask "install pacman/yaourt?" Y && installYaourt;
+  ask "install i3?" Y && installi3;
+  ask "install compton?" Y && installCompton;
+  ask "install fonts?" Y && installFonts;
+  ask "install dev tools?" Y && installDevTools;
+  ask "install apps and tools?" Y && installTools;
+  ask "install themes?" Y && installThemes;
+  ask "install vim config?" Y && installVim;
+  ask "install emacs?" Y && installEmacs;
+  ask "install audio?" Y && installAudio;
+
+  ask "Install redshift + config?" Y && installRedshift
+  ask "Install symlink for .xinitrc?" Y && ln -sfn "$dir/.xinitrc" "$HOME/.xinitrc"
+  ask "Install symlink for .bashrc?" Y && ln -sfn "$dir/.bashrc" "${HOME}/.bashrc"
+  ask "Install symlink for .bash_profile?" Y && ln -sfn "$dir/.bash_profile" "$HOME/.bash_profile"
+
+  ask "Install configuration for bin?" Y && ln -sfn "$dir/bin" "$HOME/.bin"
+  ask "Install configuration for dunst?" Y && ln -sfn "$dir/config/dunst" "$HOME/.config/dunst"
+  ask "Install configuration for termite?" Y && ln -sfn "${dir}/config/termite" "$HOME/.config/termite" && ln -sfn "$dir/.dircolors" "$HOME/.dircolors;"
+  ask "Install screensavers?" Y && installScreensavers;
+  ask "Install Ranger?" Y && installRanger; 
+  ask "Install Khal?" Y && installKhal;
+  ask "Install taskWarrior?" Y && installTaskWarrior;
+  ask "Install beancount?" Y && installBeancount;
+  ask "Install mutt?" Y && installMutt;
+  ask "Install privacy?" Y && installPrivacy;
 fi
-dir="${dir}/.."
-
-echo "PaNaVTEC dotfiles installer"
-
-mkdir -p "$HOME/.data"
-mkdir -p "$HOME/.i3"
-
-#Makes binary executable
-chmod a+x "$dir/bin/*"
-
-echo "actionSystem.suspendFocusTransferIfApplicationInactive=false add this into intelliJ to prevent focus lose"
-
-ask "install pacman/yaourt?" Y && installYaourt;
-ask "install i3?" Y && installi3;
-ask "install compton?" Y && installCompton;
-ask "install fonts?" Y && installFonts;
-ask "install dev tools?" Y && installDevTools;
-ask "install apps and tools?" Y && installTools;
-ask "install themes?" Y && installThemes;
-ask "install vim config?" Y && installVim;
-ask "install emacs?" Y && installEmacs;
-ask "install audio?" Y && installAudio;
-
-ask "Install redshift + config?" Y && installRedshift
-ask "Install symlink for .xinitrc?" Y && ln -sfn "$dir/.xinitrc" "$HOME/.xinitrc"
-ask "Install symlink for .bashrc?" Y && ln -sfn "$dir/.bashrc" "${HOME}/.bashrc"
-ask "Install symlink for .bash_profile?" Y && ln -sfn "$dir/.bash_profile" "$HOME/.bash_profile"
-
-ask "Install configuration for bin?" Y && ln -sfn "$dir/bin" "$HOME/.bin"
-ask "Install configuration for dunst?" Y && ln -sfn "$dir/config/dunst" "$HOME/.config/dunst"
-ask "Install configuration for termite?" Y && ln -sfn "${dir}/config/termite" "$HOME/.config/termite" && ln -sfn "$dir/.dircolors" "$HOME/.dircolors;"
-ask "Install screensavers?" Y && installScreensavers;
-ask "Install Ranger?" Y && installRanger; 
-ask "Install Khal?" Y && installKhal;
-ask "Install taskWarrior?" Y && installTaskWarrior;
-ask "Install beancount?" Y && installBeancount;
-ask "Install mutt?" Y && installMutt;
-ask "Install privacy?" Y && installPrivacy;
 
