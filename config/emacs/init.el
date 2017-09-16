@@ -48,6 +48,9 @@
   :config
   (load-theme 'sanityinc-tomorrow-eighties t))
 
+(set-default-font "xos4 Terminus")
+(set-face-attribute 'default nil :height 130)
+
 ;; Evil mode
 (pkg
   evil
