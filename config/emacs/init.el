@@ -90,7 +90,7 @@
   (define-key evil-normal-state-map (kbd "gk") 'evil-previous-visual-line)
   (define-key evil-normal-state-map (kbd "g <up>") 'evil-previous-visual-line))
 
-(pkg company :ensure t)
+(pkg company :ensure t :diminish company-mode)
 
 ;; Haskell mode
 (pkg
