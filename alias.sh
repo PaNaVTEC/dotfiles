@@ -25,7 +25,6 @@ alias ffs='sudo $(fc -ln -1)'
 alias yu='systemUpdate;'
 alias yun='systemUpdate "--noconfirm";'
 systemUpdate () {
-  set -x
   echo "Updating dotfiles"
   (cd "$dotfilesLocation" && git pull)
   yaourt -Syua "$1"
