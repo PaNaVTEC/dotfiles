@@ -73,8 +73,7 @@
     :config
     (global-evil-leader-mode)
     (evil-leader/set-leader ",")
-    (evil-leader/set-key "e" 'find-file)
-    )
+    (evil-leader/set-key "e" 'find-file))
 
   (pkg
     evil-surround
@@ -88,7 +87,16 @@
   (define-key evil-normal-state-map (kbd "gj") 'evil-next-visual-line)
   (define-key evil-normal-state-map (kbd "g <down>") 'evil-next-visual-line)
   (define-key evil-normal-state-map (kbd "gk") 'evil-previous-visual-line)
-  (define-key evil-normal-state-map (kbd "g <up>") 'evil-previous-visual-line))
+  (define-key evil-normal-state-map (kbd "g <up>") 'evil-previous-visual-line)
+
+  ;; Typo avoider
+  (evil-ex-define-cmd "WQ" 'evil-save-and-quit)
+  (evil-ex-define-cmd "Wq" 'evil-save-and-quit)
+  (evil-ex-define-cmd "W" 'evil-write)
+  (evil-ex-define-cmd "Wa" 'evil-write-all)
+  (evil-ex-define-cmd "Q" 'evil-quit)
+  (evil-ex-define-cmd "Qa" 'evil-quit-all))
+
 
 (pkg company :ensure t :diminish company-mode)
 
