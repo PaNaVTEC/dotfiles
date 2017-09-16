@@ -1,10 +1,9 @@
+(add-to-list 'package-archives '("melpa-stable" . "https://stable.melpa.org/packages/"))
+(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
+
 ;; Bootstrap `use-package'
 (require 'package)
 (setq package-enable-at-startup nil)
-(add-to-list
-  'package-archives
-  '("melpa" . "https://melpa.org/packages/"))
-
 (package-initialize)
 
 (unless
@@ -26,7 +25,6 @@
 (savehist-mode 1)
 
 ;; Appearance
-
 (pkg
   powerline
   :ensure t
@@ -41,7 +39,6 @@
 (pkg leuven-theme :ensure t)
 
 ;; Evil mode
-
 (pkg
   evil
   :ensure t
@@ -69,18 +66,78 @@
   (define-key evil-normal-state-map (kbd "gj") 'evil-next-visual-line)
   (define-key evil-normal-state-map (kbd "gk") 'evil-previous-visual-line))
 
-(pkg company-mode :ensure t)
+(pkg company :ensure t)
 
 ;; Haskell mode
-(pkg haskell-mode
-     :ensure t
-     :config
-     (pkg company-ghci :defer t))
+(pkg
+  haskell-mode
+  :ensure t
+  :config
+  (pkg company-ghci :defer t))
 
-(pkg intero
-     :ensure t
-     :config
-     (add-hook 'haskell-mode-hook 'intero-mode))
+(pkg
+  intero
+  :ensure t
+  :config
+  (add-hook 'haskell-mode-hook 'intero-mode))
+
+;; Scala mode
+(pkg
+  scala-mode
+  :ensure t
+  :init
+  (progn
+    (dolist (ext '(".cfe" ".cfs" ".si" ".gen" ".lock"))
+      (add-to-list 'completion-ignored-extensions ext)))
+  :config
+
+  ;; Automatically replace arrows with unicode ones when enabled
+  (defconst scala-unicode-arrows-alist
+            '(("=>" . "⇒")
+              ("->" . "→")
+              ("<-" . "←")))
+
+  (defun scala/replace-arrow-at-point ()
+    "Replace the arrow before the point (if any) with unicode ones.
+    An undo boundary is inserted before doing the replacement so that
+    it can be undone."
+    (let* ((end (point))
+           (start (max (- end 2) (point-min)))
+           (x (buffer-substring start end))
+           (arrow (assoc x scala-unicode-arrows-alist)))
+      (when arrow
+        (undo-boundary)
+        (backward-delete-char 2)
+        (insert (cdr arrow)))))
+
+    (defun scala/gt ()
+      "Insert a `>' to the buffer. If it's part of a right arrow (`->' or `=>'),
+      replace it with the corresponding unicode arrow."
+      (interactive)
+      (insert ">")
+      (scala/replace-arrow-at-point))
+
+      (defun scala/hyphen ()
+        "Insert a `-' to the buffer. If it's part of a left arrow (`<-'),
+        replace it with the unicode arrow."
+        (interactive)
+        (insert "-")
+        (scala/replace-arrow-at-point))
+
+        (defconst scala-use-unicode-arrows t)
+        (when scala-use-unicode-arrows
+          (define-key scala-mode-map
+                      (kbd ">") 'scala/gt)
+          (define-key scala-mode-map
+                      (kbd "-") 'scala/hyphen))
+
+        ;; Ensime
+        (pkg
+          ensime
+          :ensure t
+          :init
+          (add-hook 'scala-mode-hook 'scala/maybe-start-ensime))
+        (pkg sbt-mode :ensure t))
 
 (pkg markdown-mode :ensure t)
 (pkg yaml-mode :ensure t)
@@ -126,7 +183,7 @@
 
 ;; helm settings (TAB in helm window for actions over selected items,
 ;; C-SPC to select items)
-(pkg helm 
+(pkg helm
      :ensure t
      :init (pkg helm-projectile :ensure t)
      :config
@@ -156,17 +213,17 @@
 (provide 'init)
 
 (custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(package-selected-packages
-   (quote
-    (neotree yaml-mode markdown-mode intero haskell-mode evil-indent-textobject evil-surround evil-leader evil use-package powerline leuven-theme flycheck-color-mode-line))))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
+  ;; custom-set-variables was added by Custom.
+  ;; If you edit it by hand, you could mess it up, so be careful.
+  ;; Your init file should contain only one such instance.
+  ;; If there is more than one, they won't work right.
+  '(package-selected-packages
+     (quote
+       (helm-projectile helm smooth-scrolling restclient zeal-at-point ensime scala-mode company-mode neotree yaml-mode markdown-mode intero haskell-mode evil-indent-textobject evil-surround evil-leader evil use-package powerline leuven-theme flycheck-color-mode-line))))
 
+(custom-set-faces
+  ;; custom-set-faces was added by Custom.
+  ;; If you edit it by hand, you could mess it up, so be careful.
+  ;; Your init file should contain only one such instance.
+  ;; If there is more than one, they won't work right.
+  )
