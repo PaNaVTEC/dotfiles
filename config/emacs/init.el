@@ -86,7 +86,9 @@
 
   ;; Visual line navigation
   (define-key evil-normal-state-map (kbd "gj") 'evil-next-visual-line)
-  (define-key evil-normal-state-map (kbd "gk") 'evil-previous-visual-line))
+  (define-key evil-normal-state-map (kbd "g <down>") 'evil-next-visual-line)
+  (define-key evil-normal-state-map (kbd "gk") 'evil-previous-visual-line)
+  (define-key evil-normal-state-map (kbd "g <up>") 'evil-previous-visual-line))
 
 (pkg company :ensure t)
 
