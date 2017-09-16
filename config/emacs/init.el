@@ -97,6 +97,14 @@
   (evil-ex-define-cmd "Q" 'evil-quit)
   (evil-ex-define-cmd "Qa" 'evil-quit-all))
 
+(defun insert-cursor () (send-string-to-terminal "\e[6 q"))
+(defun box-cursor () (send-string-to-terminal "\e[2 q"))
+(unless (and (null (getenv "TMUX")) (display-graphic-p))
+  (add-hook 'evil-insert-state-entry-hook 'insert-cursor)
+  (add-hook 'evil-insert-state-exit-hook 'box-cursor)
+  (add-hook 'kill-emacs-hook 'box-cursor)
+  (add-hook 'evil-normal-state-entry-hook 'box-cursor)
+  (add-hook 'evil-motion-state-entry-hook 'box-cursor))
 
 (pkg company :ensure t :diminish company-mode)
 
