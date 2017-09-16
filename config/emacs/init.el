@@ -87,6 +87,24 @@
   :config
   (add-hook 'haskell-mode-hook 'intero-mode))
 
+(defun customize/scala-mode ()
+  "Enables scala customization as a hook"
+  ((defconst
+     scala--prettify-symbols-alist
+     '(("->" . ?→)
+       ("<-" . ?←)
+       ("=>" . ?⇒)
+       ("==>" . ?⟹)
+       ("<=" . ?≤)
+       (">=" . ?≥)
+       ("==" . ?≡)
+       ("!=" . ?≠)
+       ("???" . ?⊥)))
+
+   (set (make-local-variable 'prettify-symbols-alist)
+        scala--prettify-symbols-alist)
+   (prettify-symbols-mode)))
+
 ;; Scala mode
 (pkg
   scala-mode
@@ -96,23 +114,8 @@
   (progn
     (dolist (ext '(".cfe" ".cfs" ".si" ".gen" ".lock"))
       (add-to-list 'completion-ignored-extensions ext)))
+  (add-hook 'scala-mode-hook 'customize/scala-mode)
   :config
-
-  (defconst
-    scala--prettify-symbols-alist
-    '(("->" . ?→)
-      ("<-" . ?←)
-      ("=>" . ?⇒)
-      ("==>" . ?⟹)
-      ("<=" . ?≤)
-      (">=" . ?≥)
-      ("==" . ?≡)
-      ("!=" . ?≠)
-      ("???" . ?⊥)))
-
-  (set (make-local-variable 'prettify-symbols-alist)
-       scala--prettify-symbols-alist)
-  (prettify-symbols-mode)
 
   ;; Ensime
   (pkg
@@ -123,6 +126,8 @@
               ensime-startup-notification nil
               ensime-startup-snapshot-notification nil
               ensime-use-helm t))
+
+  ;; Sbt
   (pkg sbt-mode :ensure t))
 
 (pkg markdown-mode :ensure t)
