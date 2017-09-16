@@ -20,6 +20,15 @@
 (setq indent-line-function 'insert-tab)
 (add-to-list 'default-frame-alist '(fullscreen . maximized))
 
+;; No scrollbars
+(set-fringe-mode -1)
+(scroll-bar-mode -1)
+(tool-bar-mode -1)
+
+;; Initial mode in text avoids lag
+(setq initial-major-mode 'text-mode)
+(setq initial-scratch-message nil)
+
 ;; prefer utf-8
 (setq locale-coding-system 'utf-8)
 (set-terminal-coding-system 'utf-8)
@@ -171,7 +180,13 @@
 (pkg restclient :ensure t)
 
 ;; Emacs line number
-(global-linum-mode t)
+(pkg
+  linum-relative
+  :diminish linum-relative-mode
+  :ensure t
+  :config
+  (linum-relative-global-mode)
+  (setq linum-relative-current-symbol ""))
 
 (pkg smooth-scrolling
      :ensure t
