@@ -42,7 +42,11 @@
        :config
        (add-hook 'flycheck-mode-hook 'flycheck-color-mode-line-mode)))
 
-(pkg leuven-theme :ensure t)
+(pkg
+  color-theme-sanityinc-tomorrow
+  :ensure t
+  :config
+  (load-theme 'sanityinc-tomorrow-eighties t))
 
 ;; Evil mode
 (pkg
@@ -203,8 +207,6 @@
 
 ;; Emacs global
 (global-set-key (kbd "C-l") 'evil-search-highlight-persist-remove-all)
-(global-set-key (kbd "]b") 'evil-next-buffer)
-(global-set-key (kbd "[b") 'evil-prev-buffer)
 (setq browse-url-browser-function 'browse-url-generic
       browse-url-generic-program "inox")
 
