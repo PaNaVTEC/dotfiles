@@ -99,34 +99,29 @@
 (pkg js2-refactor :ensure t)
 
 ;; Scala
-(defun customize/scala-mode ()
-  "Enables scala customization as a hook"
-  ((defconst
-     scala--prettify-symbols-alist
-     '(("->" . ?→)
-       ("<-" . ?←)
-       ("=>" . ?⇒)
-       ("==>" . ?⟹)
-       ("<=" . ?≤)
-       (">=" . ?≥)
-       ("==" . ?≡)
-       ("!=" . ?≠)
-       ("???" . ?⊥)))
-
-   (set (make-local-variable 'prettify-symbols-alist)
-        scala--prettify-symbols-alist)
-   (prettify-symbols-mode)))
-
+(global-prettify-symbols-mode)
+(setq prettify-symbols-unprettify-at-point 'right-edge)
 (pkg
   scala-mode
   :ensure t
   :pin melpa-stable
-  :init
-  (progn
-    (dolist (ext '(".cfe" ".cfs" ".si" ".gen" ".lock"))
-      (add-to-list 'completion-ignored-extensions ext)))
-  (add-hook 'scala-mode-hook 'customize/scala-mode)
+  :defer t
   :config
+
+  ;; Prettify symbols
+  (add-hook 'scala-mode-hook
+            (lambda ()
+              (push '("->" . ?→) prettify-symbols-alist)
+              (push '("def" . ?ƒ) prettify-symbols-alist)
+              (push '("<-" . ?←) prettify-symbols-alist)
+              (push '("=>" . ?⇒) prettify-symbols-alist)
+              (push '("==>" . ?⟹) prettify-symbols-alist)
+              (push '("<=" . ?≤) prettify-symbols-alist)
+              (push '(">=" . ?≥) prettify-symbols-alist)
+              (push '("::" . ?∷) prettify-symbols-alist)
+              (push '("==" . ?≡) prettify-symbols-alist)
+              (push '("!=" . ?≠) prettify-symbols-alist)
+              (push '("???" . ?⊥) prettify-symbols-alist)))
 
   ;; Ensime
   (pkg
