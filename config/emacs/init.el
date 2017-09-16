@@ -87,6 +87,11 @@
   :config
   (add-hook 'haskell-mode-hook 'intero-mode))
 
+;; Javascript
+(pkg js2-mode :ensure t)
+(pkg js2-refactor :ensure t)
+
+;; Scala
 (defun customize/scala-mode ()
   "Enables scala customization as a hook"
   ((defconst
@@ -105,7 +110,6 @@
         scala--prettify-symbols-alist)
    (prettify-symbols-mode)))
 
-;; Scala mode
 (pkg
   scala-mode
   :ensure t
@@ -138,7 +142,9 @@
   flycheck
   :ensure t
   :config
-  (global-flycheck-mode))
+  (global-flycheck-mode)
+  (define-key evil-normal-state-map (kbd "]w") 'flycheck-next-error)
+  (define-key evil-normal-state-map (kbd "[w") 'flycheck-previous-error))
 
 ;; Zeal setup
 (pkg zeal-at-point :ensure t)
