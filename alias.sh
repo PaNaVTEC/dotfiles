@@ -27,6 +27,9 @@ alias yun='systemUpdate "--noconfirm";'
 systemUpdate () {
   echo "Updating dotfiles"
   (cd "$dotfilesLocation" && git pull)
+  echo "Upgrading global Js packages"
+  yarn global upgrade
+  echo "Upgrading system packages"
   yaourt -Syua "$1"
 }
 

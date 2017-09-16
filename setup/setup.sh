@@ -158,9 +158,9 @@ installHaskell() {
 
 installJs() {
   yaourt --noconfirm -S nodejs npm yarn
-  sudo npm install -g n
+  yarn global add n
   sudo n latest
-  sudo npm install -g tern
+  yarn global add tern standard create-react-app js-beautify
 }
 
 installClojure() {
