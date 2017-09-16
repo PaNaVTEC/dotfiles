@@ -1,8 +1,7 @@
-(add-to-list 'package-archives '("melpa-stable" . "https://stable.melpa.org/packages/"))
-(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
-
 ;; Bootstrap `use-package'
 (require 'package)
+(add-to-list 'package-archives '("melpa-stable" . "https://stable.melpa.org/packages/"))
+(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
 (setq package-enable-at-startup nil)
 (package-initialize)
 
@@ -85,6 +84,7 @@
 (pkg
   scala-mode
   :ensure t
+  :pin melpa-stable
   :init
   (progn
     (dolist (ext '(".cfe" ".cfs" ".si" ".gen" ".lock"))
