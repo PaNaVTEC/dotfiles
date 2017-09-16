@@ -9,8 +9,6 @@ alias y='yaourt'
 alias ys='yaourt -Ss'
 alias yi='yaourt -S'
 alias yin='yi --noconfirm'
-alias yu="(cd $dotfilesLocation && git pull) && yaourt -Syua"
-alias yun='yu --noconfirm'
 alias yunf='yu --noconfirm --force'
 alias yp='yaourt -Qm'
 alias yr='yaourt -R'
@@ -21,14 +19,23 @@ alias grep="grep --color=auto"
 alias connectvpn='sudo openvpn /etc/openvpn/server.ovpn'
 alias wireup='sudo wg-quick up wg0-client'
 alias wiredown='sudo wg-quick down wg0-client'
-alias dotfiles="(cd $dotfilesLocation && vim -c NERDTree)"
+alias dotfiles='(cd "$dotfilesLocation" && vim -c NERDTree)'
 alias ffs='sudo $(fc -ln -1)'
+
+alias yu='systemUpdate;'
+alias yun='systemUpdate "--noconfirm";'
+systemUpdate () {
+  set -x
+  echo "Updating dotfiles"
+  (cd "$dotfilesLocation" && git pull)
+  yaourt -Syua "$1"
+}
 
 ya () {
   yarn "$@" --emoji
 }
 
-javaProject () { 
+javaProject () {
   gradle init --type java-library
   sed '$itestCompile "org.mockito:mockito-all:1.10.19"' build.gradle >> build.gradle
   gradle --refresh-dependencies
