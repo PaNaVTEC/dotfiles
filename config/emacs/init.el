@@ -213,12 +213,15 @@
      (setq helm-bookmark-show-location t)
      (setq helm-buffers-fuzzy-matching t)
 
-     ;; Ctrlp like
-     (global-set-key (kbd "C-p") 'projectile--find-file)
-     (define-key evil-normal-state-map (kbd "C-p") 'projectile--find-file)
-
      ;; Override default command launcher
      (global-set-key (kbd "M-x") 'helm-M-x))
+
+(pkg
+  helm-projectile
+     :ensure t
+     :config
+     (global-set-key (kbd "C-p") 'helm-projectile-find-file)
+     (define-key evil-normal-state-map (kbd "C-p") 'helm-projectile-find-file))
 
 ;; Emacs global
 (global-set-key (kbd "C-l") 'evil-search-highlight-persist-remove-all)
