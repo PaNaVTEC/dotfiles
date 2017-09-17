@@ -1,3 +1,5 @@
+(require 'prettify)
+
 (pkg
   js2-mode
   :ensure t
