@@ -9,8 +9,7 @@
     :ensure t
     :config
     (global-evil-leader-mode)
-    (evil-leader/set-leader ",")
-    (evil-leader/set-key "e" 'find-file))
+    (evil-leader/set-leader ","))
 
   (pkg
     evil-surround

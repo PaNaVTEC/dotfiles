@@ -6,7 +6,6 @@
   :defer t
   :config
 
-  ;; Prettify symbols
   (defun scala/prettify ()
     (prettify
       '(("->" . ?→)
