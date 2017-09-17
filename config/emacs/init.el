@@ -19,6 +19,8 @@
 (setq-default tab-width 2)
 (setq indent-line-function 'insert-tab)
 (add-to-list 'default-frame-alist '(fullscreen . maximized))
+; Changes Yes/no with y/n
+(defalias 'yes-or-no-p 'y-or-n-p)
 
 ;; No scrollbars
 (set-fringe-mode -1)
