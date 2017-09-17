@@ -25,6 +25,9 @@
 (tool-bar-mode -1)
 (savehist-mode 1)
 
+;;Persistent undo history
+(setq undo-tree-auto-save-history t)
+
 (global-set-key (kbd "C-l") 'evil-search-highlight-persist-remove-all)
 (setq browse-url-browser-function 'browse-url-generic
       browse-url-generic-program "inox")
