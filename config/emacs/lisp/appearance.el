@@ -10,10 +10,10 @@
        (add-hook 'flycheck-mode-hook 'flycheck-color-mode-line-mode)))
 
 (pkg
-  color-theme-sanityinc-tomorrow
+  zenburn-theme
   :ensure t
   :config
-  (load-theme 'sanityinc-tomorrow-eighties t))
+  (load-theme 'zenburn))
 
 (set-default-font "xos4 Terminus")
 (set-face-attribute 'default nil :height 150)
