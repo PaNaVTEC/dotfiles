@@ -28,8 +28,8 @@
 (tool-bar-mode -1)
 
 ;; Initial mode in text avoids lag
-(setq initial-major-mode 'text-mode)
-(setq initial-scratch-message nil)
+(setq initial-major-mode 'text-mode
+      initial-scratch-message nil)
 
 ;; prefer utf-8
 (setq locale-coding-system 'utf-8)
@@ -139,10 +139,10 @@
      :mode "\\.js\\'"
      :interpreter "node"
      :config
-     (setq js-indent-level 2)
-     (setq evil-shift-width 2)
-     (setq js2-basic-offset 2)
-     (setq js2-strict-missing-semi-warning nil)
+     (setq js-indent-level 2
+           evil-shift-width 2
+           js2-basic-offset 2
+           js2-strict-missing-semi-warning nil)
      ;(setq js2-mode-show-strict-warnings nil)
      ;(setq js2-mode-show-parse-errors nil)
      (add-hook 'flycheck-mode-hook
@@ -161,44 +161,49 @@
      (add-hook 'js2-mode-hook
                (lambda () (add-to-list 'company-backends 'company-tern))))
 
-;; Scala
-(global-prettify-symbols-mode)
+;; Prettify symbols
 (setq prettify-symbols-unprettify-at-point 'right-edge)
+(defun prettify (symbols)
+  (dolist (sym symbols)
+    (push sym prettify-symbols-alist)))
+
+;; Scala
 (pkg
   scala-mode
   :ensure t
-  :pin melpa-stable
   :defer t
   :config
 
   ;; Prettify symbols
-  (add-hook 'scala-mode-hook
-            (lambda ()
-              (push '("->" . ?→) prettify-symbols-alist)
-              (push '("def" . ?ƒ) prettify-symbols-alist)
-              (push '("<-" . ?←) prettify-symbols-alist)
-              (push '("=>" . ?⇒) prettify-symbols-alist)
-              (push '("==>" . ?⟹) prettify-symbols-alist)
-              (push '("<=" . ?≤) prettify-symbols-alist)
-              (push '(">=" . ?≥) prettify-symbols-alist)
-              (push '("::" . ?∷) prettify-symbols-alist)
-              (push '("==" . ?≡) prettify-symbols-alist)
-              (push '("!=" . ?≠) prettify-symbols-alist)
-              (push '("???" . ?⊥) prettify-symbols-alist)))
+  (defun scala/prettify ()
+    (prettify
+      '(("->" . ?→)
+        ("def" . ?ƒ)
+        ("<-" . ?←)
+        ("=>" . ?⇒)
+        ("==>" . ?⟹)
+        ("<=" . ?≤)
+        (">=" . ?≥)
+        ("::" . ?∷)
+        ("==" . ?≡)
+        ("!=" . ?≠)
+        ("???" . ?⊥))))
+  (add-hook 'scala-mode-hook 'prettify-symbols-mode)
+  (add-hook 'scala-mode-hook 'scala/prettify))
 
-  ;; Ensime
-  (pkg
-    ensime
-    :ensure t
-    :init (add-hook 'scala-mode-hook 'ensime-scala-mode-hook)
-    :config (setq
-              ensime-startup-notification nil
-              ensime-startup-snapshot-notification nil
-              ensime-use-helm t))
+(pkg
+  ensime
+  :ensure t
+  :pin melpa-stable
+  :config
+  (setq
+    ensime-startup-notification nil
+    ensime-startup-snapshot-notification nil
+    ensime-use-helm t)
+  (add-hook 'scala-mode-hook 'ensime))
+(pkg sbt-mode :ensure t)
 
-  ;; Sbt
-  (pkg sbt-mode :ensure t))
-
+;; Misc
 (pkg markdown-mode :ensure t)
 (pkg yaml-mode :ensure t)
 
@@ -263,9 +268,10 @@
      (require 'helm-locate)
      (helm-mode 1)
      (define-key evil-normal-state-map " " 'helm-mini)
-     (setq helm-quick-update t)
-     (setq helm-bookmark-show-location t)
-     (setq helm-buffers-fuzzy-matching t)
+     (setq
+       helm-quick-update t
+       helm-bookmark-show-location t
+       helm-buffers-fuzzy-matching t)
 
      ;; Override default command launcher
      (global-set-key (kbd "M-x") 'helm-M-x))
