@@ -135,9 +135,18 @@
 (pkg js2-mode
      :ensure t
      :mode "\\.js\\'"
+     :interpreter "node"
      :config
      (setq js-indent-level 2)
-     (add-to-list 'interpreter-mode-alist '("node" . js2-mode)))
+     (setq evil-shift-width 2)
+     (setq js2-basic-offset 2)
+     (setq js2-strict-missing-semi-warning nil)
+     ;(setq js2-mode-show-strict-warnings nil)
+     ;(setq js2-mode-show-parse-errors nil)
+     (add-hook 'flycheck-mode-hook
+               (lambda () (flycheck-add-mode 'javascript-standard 'js2-mode))))
+
+(pkg rjsx-mode :ensure t :mode "\\.jsx$" :mode "components/.+\\.js$")
 (pkg tern :defer t :init (add-hook 'js2-mode-hook 'tern-mode))
 (pkg js2-refactor :ensure t)
 (pkg json-mode
@@ -274,17 +283,17 @@
 (provide 'init)
 
 (custom-set-variables
-  ;; custom-set-variables was added by Custom.
-  ;; If you edit it by hand, you could mess it up, so be careful.
-  ;; Your init file should contain only one such instance.
-  ;; If there is more than one, they won't work right.
-  '(package-selected-packages
-     (quote
-       (helm-projectile helm smooth-scrolling restclient zeal-at-point ensime scala-mode company-mode neotree yaml-mode markdown-mode intero haskell-mode evil-indent-textobject evil-surround evil-leader evil use-package powerline leuven-theme flycheck-color-mode-line))))
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(package-selected-packages
+   (quote
+    (helm-projectile helm smooth-scrolling restclient zeal-at-point ensime scala-mode company-mode neotree yaml-mode markdown-mode intero haskell-mode evil-indent-textobject evil-surround evil-leader evil use-package powerline leuven-theme flycheck-color-mode-line))))
 
 (custom-set-faces
-  ;; custom-set-faces was added by Custom.
-  ;; If you edit it by hand, you could mess it up, so be careful.
-  ;; Your init file should contain only one such instance.
-  ;; If there is more than one, they won't work right.
-  )
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
