@@ -112,7 +112,11 @@
   (add-hook 'evil-normal-state-entry-hook 'box-cursor)
   (add-hook 'evil-motion-state-entry-hook 'box-cursor))
 
-(pkg company :ensure t :diminish company-mode)
+(pkg company
+     :ensure t
+     :diminish company-mode
+     :config
+     (add-hook 'js2-mode-hook 'company-mode))
 
 ;; Haskell mode
 (pkg
@@ -128,8 +132,23 @@
   (add-hook 'haskell-mode-hook 'intero-mode))
 
 ;; Javascript
-(pkg js2-mode :ensure t)
+(pkg js2-mode
+     :ensure t
+     :mode "\\.js\\'"
+     :config
+     (setq js-indent-level 2)
+     (add-to-list 'interpreter-mode-alist '("node" . js2-mode)))
+(pkg tern :defer t :init (add-hook 'js2-mode-hook 'tern-mode))
 (pkg js2-refactor :ensure t)
+(pkg json-mode
+     :ensure t
+     :mode "\\.json\\'")
+(pkg company-tern
+     :ensure t
+     :defer t
+     :init
+     (add-hook 'js2-mode-hook
+               (lambda () (add-to-list 'company-backends 'company-tern))))
 
 ;; Scala
 (global-prettify-symbols-mode)
@@ -255,17 +274,17 @@
 (provide 'init)
 
 (custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(package-selected-packages
-   (quote
-    (helm-projectile helm smooth-scrolling restclient zeal-at-point ensime scala-mode company-mode neotree yaml-mode markdown-mode intero haskell-mode evil-indent-textobject evil-surround evil-leader evil use-package powerline leuven-theme flycheck-color-mode-line))))
+  ;; custom-set-variables was added by Custom.
+  ;; If you edit it by hand, you could mess it up, so be careful.
+  ;; Your init file should contain only one such instance.
+  ;; If there is more than one, they won't work right.
+  '(package-selected-packages
+     (quote
+       (helm-projectile helm smooth-scrolling restclient zeal-at-point ensime scala-mode company-mode neotree yaml-mode markdown-mode intero haskell-mode evil-indent-textobject evil-surround evil-leader evil use-package powerline leuven-theme flycheck-color-mode-line))))
 
 (custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
+  ;; custom-set-faces was added by Custom.
+  ;; If you edit it by hand, you could mess it up, so be careful.
+  ;; Your init file should contain only one such instance.
+  ;; If there is more than one, they won't work right.
+  )
