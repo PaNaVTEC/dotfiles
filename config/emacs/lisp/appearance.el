@@ -13,7 +13,7 @@
   zenburn-theme
   :ensure t
   :config
-  (load-theme 'zenburn))
+  (load-theme 'zenburn t))
 
 (set-default-font "xos4 Terminus")
 (set-face-attribute 'default nil :height 150)
