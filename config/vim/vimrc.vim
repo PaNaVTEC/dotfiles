@@ -11,6 +11,9 @@ set nrformats-=octal
 " History of executed commands
 set history=200
 
+" Eliminates delay when pressing <ESC> in Insert mode to go to normal mode
+set ttimeoutlen=0
+
 " Colors
 set background=dark
 if &t_Co > 255
