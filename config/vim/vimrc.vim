@@ -255,7 +255,7 @@ set undodir=~/.vim/undodir
 
 " ctrlp ignore non relevant files
 set wildignore+=*/node_modules/*,*/.git/*,*.so,*.swp,*.zip,*.exe,*.dll
-set wildignore+=*\\tmp\\*,*.swo,.cabal-sandbox
+set wildignore+=*\\tmp\\*,*.swo,.cabal-sandbox,\#*\#
 let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn|node_modules|dist)$'
 " ctrlp don't open files in plugins/other windows
 let g:ctrlp_dont_split = 'NERD\|help\|quickfix'
