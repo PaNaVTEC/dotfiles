@@ -4,21 +4,6 @@
   :config
   (evil-mode 1)
 
-  (pkg
-    evil-leader
-    :ensure t
-    :config
-    (global-evil-leader-mode)
-    (evil-leader/set-leader ","))
-
-  (pkg
-    evil-surround
-    :ensure t
-    :config
-    (global-evil-surround-mode))
-
-  (pkg evil-indent-textobject :ensure t)
-
   ;; Visual line navigation
   (define-key evil-normal-state-map (kbd "gj") 'evil-next-visual-line)
   (define-key evil-normal-state-map (kbd "g <down>") 'evil-next-visual-line)
@@ -39,6 +24,30 @@
   (evil-ex-define-cmd "Q" 'evil-quit)
   (evil-ex-define-cmd "Qa" 'evil-quit-all))
 
+(pkg
+  evil-surround
+  :ensure t
+  :config
+  (global-evil-surround-mode))
+
+(pkg evil-indent-textobject :ensure t)
+
+(pkg
+  evil-leader
+  :ensure t
+  :config
+  (global-evil-leader-mode)
+  (evil-leader/set-leader ","))
+
+(pkg
+  evil-numbers
+  :ensure t
+  :config
+
+  (define-key evil-normal-state-map (kbd "C-a") 'evil-numbers/inc-at-pt)
+  (define-key evil-normal-state-map (kbd "C-x") 'evil-numbers/dec-at-pt))
+
+;; Cursor shape in insert/visual mode
 (defun insert-cursor () (send-string-to-terminal "\e[6 q"))
 (defun box-cursor () (send-string-to-terminal "\e[2 q"))
 (unless (and (null (getenv "TMUX")) (display-graphic-p))
