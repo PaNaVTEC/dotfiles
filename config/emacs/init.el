@@ -16,6 +16,7 @@
 (dolist (module '(general-config
                    appearance
                    vim-mode
+                   acklike
                    auto-complete
                    haskell
                    javascript
