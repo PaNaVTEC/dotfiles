@@ -100,7 +100,7 @@ installGit() {
 
   # Global git ignores
   gibo --upgrade
-  gibo Vim JetBrains Ensime Tags Vagrant Windows macOS Linux Archives >> ~/.gitignore.global
+  gibo Emacs Vim JetBrains Ensime Tags Vagrant Windows macOS Linux Archives >> ~/.gitignore.global
   echo ".tern-project" >> ~/.gitignore.global
 }
 
