@@ -7,6 +7,7 @@
   (evil-define-key 'normal neotree-mode-map (kbd "q") 'neotree-hide)
   (evil-define-key 'normal neotree-mode-map (kbd "RET") 'neotree-enter)
   (global-set-key (kbd "C-n") 'neotree-toggle)
-  (define-key evil-normal-state-map (kbd "C-n") 'neotree-toggle))
+  (define-key evil-normal-state-map (kbd "C-n") 'neotree-toggle)
+  (setq-default neo-show-hidden-files t))
 
 (provide 'file-explorer)
