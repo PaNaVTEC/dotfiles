@@ -21,9 +21,9 @@
 
 (defun neotree-modify-mode-menu (option)
   "Asks for a mode and execute associated Neotree command"
-  (interactive "c(a)dd node | (d)elete node | (r)ename node")
+  (interactive "c(a)dd node | (d)elete node | (c)opy node | (r)ename node")
   (cond
-    ((eq option ?a) (neotree-create-node option))
+    ((eq option ?a) (neotree-create-node))
     ((eq option ?d) (neotree-delete-node))
     ((eq option ?c) (neotree-copy-node))
     ((eq option ?r) (neotree-rename-node))
