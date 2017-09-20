@@ -32,11 +32,36 @@
 (setq browse-url-browser-function 'browse-url-generic
       browse-url-generic-program "inox")
 
-(pkg smooth-scrolling
-     :ensure t
-     :init
-     (setq scroll-margin 5
-           scroll-conservatively 9999
-           scroll-step 1))
+(pkg
+  smooth-scrolling
+  :ensure t
+  :init
+  (setq scroll-margin 5
+        scroll-conservatively 9999
+        scroll-step 1))
 
+;; Fixes Ansi colors on compilation buffer
+(pkg ansi-color :ensure t)
+(defun endless/colorize-compilation ()
+  "Colorize from `compilation-filter-start' to `point'."
+  (let ((inhibit-read-only t))
+    (ansi-color-apply-on-region
+      compilation-filter-start (point))))
+
+(add-hook 'compilation-filter-hook #'endless/colorize-compilation)
+
+;; No more # ... # files in the project
+(setq backup-directory-alist `(("." . "~/.emacs.d/.saves")))
+
+;(pkg
+;  blank-mode
+;  :ensure t
+;  :config
+;  (global-blank-mode)
+;  (custom-set-faces
+;    '(blank-hspace ((t (:background "grey24" :foreground "gray40")))))
+;  (progn
+;    (custom-set-variables
+;      '(blank-chars '(tabs spaces trailing lines space-before-tab newline empty space-after-tab))
+;      '(blank-line-column 120))))
 (provide 'general-config)
