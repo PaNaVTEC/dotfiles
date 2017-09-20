@@ -52,6 +52,7 @@
 
 ;; No more # ... # files in the project
 (setq backup-directory-alist `(("." . "~/.emacs.d/.saves")))
+(setq undo-tree-history-directory-alist '(("." . "~/.emacs.d/.undo/")))
 
 ;(pkg
 ;  blank-mode

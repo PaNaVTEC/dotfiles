@@ -302,6 +302,8 @@ installVim() {
 installEmacs() {
   yaourt -S --noconfirm emacs
   mkdir -p "$HOME/.emacs.d/.saves"
+  mkdir -p "$HOME/.emacs.d/.undo"
+
   ln -sfn "$dir/config/emacs/init.el" "$HOME/.emacs.d/"
   ln -sfn "$dir/config/emacs/lisp/" "$HOME/.emacs.d/lisp"
 }
