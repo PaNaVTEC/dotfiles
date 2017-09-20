@@ -16,21 +16,24 @@
   (define-key evil-normal-state-map (kbd "C-w <left>") 'evil-window-left)
   (define-key evil-normal-state-map (kbd "C-w <right>") 'evil-window-right)
 
+
   ;; Typo avoider
-  (evil-ex-define-cmd "WQ" 'evil-save-and-quit)
-  (evil-ex-define-cmd "Wq" 'evil-save-and-quit)
-  (evil-ex-define-cmd "W" 'evil-write)
+  (evil-ex-define-cmd "WQ" "wq")
+  (evil-ex-define-cmd "Wq" "wq")
+  (evil-ex-define-cmd "wqa" "xall")
+  (evil-ex-define-cmd "Wqa" "xall")
+  (evil-ex-define-cmd "WQa" "xall")
+  (evil-ex-define-cmd "WQA" "xall")
+  (evil-ex-define-cmd "W" "w")
   (evil-ex-define-cmd "Wa" 'evil-write-all)
-  (evil-ex-define-cmd "Q" 'evil-quit)
-  (evil-ex-define-cmd "Qa" 'evil-quit-all))
+  (evil-ex-define-cmd "Q" "q")
+  (evil-ex-define-cmd "Qa" "qa"))
 
 (pkg
   evil-surround
   :ensure t
   :config
   (global-evil-surround-mode))
-
-(pkg evil-indent-textobject :ensure t)
 
 (pkg
   evil-leader
