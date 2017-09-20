@@ -10,12 +10,15 @@
   (define-key evil-normal-state-map (kbd "gk") 'evil-previous-visual-line)
   (define-key evil-normal-state-map (kbd "g <up>") 'evil-previous-visual-line)
 
-  ;; Buffer navigation
+  ;; Window navigation
   (define-key evil-normal-state-map (kbd "C-w <up>") 'evil-window-up)
   (define-key evil-normal-state-map (kbd "C-w <down>") 'evil-window-down)
   (define-key evil-normal-state-map (kbd "C-w <left>") 'evil-window-left)
   (define-key evil-normal-state-map (kbd "C-w <right>") 'evil-window-right)
 
+  ;; Buffer navigation
+  (define-key evil-normal-state-map (kbd "[ b") 'evil-prev-buffer)
+  (define-key evil-normal-state-map (kbd "] b") 'evil-next-buffer)
 
   ;; Typo avoider
   (evil-ex-define-cmd "WQ" "wq")
