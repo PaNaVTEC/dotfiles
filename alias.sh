@@ -25,6 +25,10 @@ alias et='emacs -nw'
 alias ew='emacs'
 alias e='emacs'
 
+autogeneratePassword () {
+  LC_CTYPE=C tr -dc "[:alnum:]" < /dev/urandom | fold "-w${1:-32}" | head -1
+}
+
 alias yu='systemUpdate;'
 alias yun='systemUpdate "--noconfirm";'
 systemUpdate () {
@@ -93,3 +97,5 @@ clojureProject() {
 every() {
   watch -c -n "$1" "$2"
 }
+
+alias trayer='trayer --width 30 --widthtype pixel --SetDockType false --edge top --align center'
