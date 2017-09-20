@@ -51,8 +51,8 @@
 (add-hook 'compilation-filter-hook #'endless/colorize-compilation)
 
 ;; No more # ... # files in the project
-(setq backup-directory-alist `(("." . "~/.emacs.d/.saves")))
-(setq undo-tree-history-directory-alist '(("." . "~/.emacs.d/.undo/")))
+(setq backup-directory-alist `(("." . "~/.emacs.saves/")))
+(setq undo-tree-history-directory-alist '(("." . "~/.emacs.undo/")))
 
 ;(pkg
 ;  blank-mode
