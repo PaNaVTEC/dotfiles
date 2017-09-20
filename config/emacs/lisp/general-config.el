@@ -54,6 +54,8 @@
 (setq backup-directory-alist `(("." . "~/.emacs.saves/")))
 (setq undo-tree-history-directory-alist '(("." . "~/.emacs.undo/")))
 
+(setq vc-follow-symlinks t)
+
 ;(pkg
 ;  blank-mode
 ;  :ensure t
