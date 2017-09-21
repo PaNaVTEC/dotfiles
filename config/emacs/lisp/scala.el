@@ -1,5 +1,6 @@
 (require 'prettify)
 (require 'proper-gutter-mode)
+(require 'invisible-chars)
 
 (pkg
   scala-mode
@@ -20,6 +21,7 @@
         ("==" . ?≡)
         ("!=" . ?≠)
         ("???" . ?⊥))))
+  (add-hook 'scala-mode-hook 'whitespace-mode)
   (add-hook 'scala-mode-hook 'prettify-symbols-mode)
   (add-hook 'scala-mode-hook 'proper-gutter-mode)
   (add-hook 'scala-mode-hook 'scala/prettify))

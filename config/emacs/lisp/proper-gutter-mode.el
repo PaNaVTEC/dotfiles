@@ -13,7 +13,7 @@
     :config
     (setq
       linum-relative-current-symbol ""
-      linum-relative-format "%3s ")) ;; Add \u2502 for more separation
+      linum-relative-format "%3s "))
 
   ;; Configures git-gutter
   (pkg

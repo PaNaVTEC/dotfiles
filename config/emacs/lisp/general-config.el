@@ -46,15 +46,4 @@
 
 (setq vc-follow-symlinks t)
 
-;(pkg
-;  blank-mode
-;  :ensure t
-;  :config
-;  (global-blank-mode)
-;  (custom-set-faces
-;    '(blank-hspace ((t (:background "grey24" :foreground "gray40")))))
-;  (progn
-;    (custom-set-variables
-;      '(blank-chars '(tabs spaces trailing lines space-before-tab newline empty space-after-tab))
-;      '(blank-line-column 120))))
 (provide 'general-config)
