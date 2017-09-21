@@ -14,11 +14,6 @@
   (add-hook mode-hook 'prettify-symbols-mode)
   (add-hook mode-hook 'javascript/prettify))
 
-(defun flycheck-for (mode)
-  (add-hook
-    'flycheck-mode-hook
-    (lambda () (flycheck-add-mode 'javascript-standard 'mode))))
-
 (pkg
   js2-mode
   :ensure t
@@ -33,7 +28,9 @@
 
   (add-hook 'js2-mode-hook 'company-mode)
   (prettify-js-for 'js2-mode-hook)
-  (flycheck-for 'js2-mode))
+  (add-hook
+    'flycheck-mode-hook
+    (lambda () (progn (flycheck-add-mode 'javascript-standard 'js2-mode)))))
 
 (pkg
   web-mode
@@ -45,13 +42,22 @@
   (setq web-mode-code-indent-offset 2)
   (add-hook 'web-mode-hook 'company-mode)
   (prettify-js-for 'web-mode-hook)
-  (flycheck-for 'web-mode))
+  (add-hook
+    'flycheck-mode-hook
+    (lambda () (progn (flycheck-add-mode 'javascript-standard 'web-mode)))))
 
-(pkg tern :defer t :init (add-hook 'js2-mode-hook 'tern-mode))
+(pkg tern
+     :defer t
+     :init
+     (progn
+       (add-hook 'js2-mode-hook 'tern-mode)
+       (add-hook 'web-mode-hook 'tern-mode)))
+
 (pkg
   js2-refactor
   :ensure t
   :config
+
   (evil-leader/set-key "v" 'js2r-extract-var)
   (evil-leader/set-key "m" 'js2r-extract-method)
   (evil-leader/set-key "f" 'js2r-extract-function)
