@@ -67,7 +67,13 @@
   (evil-leader/set-key "n" 'js2r-inline-var)
   (evil-leader/set-key "r" 'js2r-rename-var))
 
-(pkg json-mode :ensure t :mode "\\.json\\'")
+(pkg
+  json-mode
+  :ensure t
+  :mode "\\.json\\'"
+  :config
+  (add-hook 'json-mode-hook 'proper-gutter-mode))
+
 (pkg
   company-tern
   :ensure t
