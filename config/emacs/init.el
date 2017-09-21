@@ -23,7 +23,6 @@
                    scala
                    syntax-check
                    file-explorer
-                   relative-lines
                    helm-fw
                    ctrlp
                    markdown

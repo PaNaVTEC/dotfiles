@@ -3,9 +3,6 @@
   :ensure t
   :init
 
-  (defun hide-linum-mode (_) (linum-mode -1))
-  (add-hook 'neo-after-create-hook 'hide-linum-mode)
-
   (evil-define-key
     'normal neotree-mode-map
     (kbd "TAB") 'neotree-enter

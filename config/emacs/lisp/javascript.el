@@ -1,4 +1,5 @@
 (require 'prettify)
+(require 'proper-gutter-mode)
 
 (defun prettify-js-for (mode-hook)
   (defun javascript/prettify ()
@@ -27,6 +28,7 @@
         js2-strict-missing-semi-warning nil)
 
   (add-hook 'js2-mode-hook 'company-mode)
+  (add-hook 'js2-mode-hook 'proper-gutter-mode)
   (prettify-js-for 'js2-mode-hook)
   (add-hook
     'flycheck-mode-hook
@@ -41,6 +43,7 @@
   :config
   (setq web-mode-code-indent-offset 2)
   (add-hook 'web-mode-hook 'company-mode)
+  (add-hook 'web-mode-hook 'proper-gutter-mode)
   (prettify-js-for 'web-mode-hook)
   (add-hook
     'flycheck-mode-hook
