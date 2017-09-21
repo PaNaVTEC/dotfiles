@@ -24,6 +24,8 @@ alias ffs='sudo $(fc -ln -1)'
 alias et='emacs -nw'
 alias ew='emacs'
 alias e='emacs'
+alias yarn='yarn --emoji'
+alias ya='yarn --emoji'
 
 autogeneratePassword () {
   LC_CTYPE=C tr -dc "[:alnum:]" < /dev/urandom | fold "-w${1:-32}" | head -1
@@ -38,10 +40,6 @@ systemUpdate () {
   yarn global upgrade
   echo "Upgrading system packages"
   yaourt -Syua "$1"
-}
-
-ya () {
-  yarn "$@" --emoji
 }
 
 javaProject () {

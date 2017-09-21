@@ -5,20 +5,20 @@
   (evil-mode 1)
 
   ;; Visual line navigation
-  (define-key evil-normal-state-map (kbd "gj") 'evil-next-visual-line)
-  (define-key evil-normal-state-map (kbd "g <down>") 'evil-next-visual-line)
-  (define-key evil-normal-state-map (kbd "gk") 'evil-previous-visual-line)
-  (define-key evil-normal-state-map (kbd "g <up>") 'evil-previous-visual-line)
+  (define-key evil-motion-state-map (kbd "gj") 'evil-next-visual-line)
+  (define-key evil-motion-state-map (kbd "g <down>") 'evil-next-visual-line)
+  (define-key evil-motion-state-map (kbd "gk") 'evil-previous-visual-line)
+  (define-key evil-motion-state-map (kbd "g <up>") 'evil-previous-visual-line)
 
   ;; Window navigation
-  (define-key evil-normal-state-map (kbd "C-w <up>") 'evil-window-up)
-  (define-key evil-normal-state-map (kbd "C-w <down>") 'evil-window-down)
-  (define-key evil-normal-state-map (kbd "C-w <left>") 'evil-window-left)
-  (define-key evil-normal-state-map (kbd "C-w <right>") 'evil-window-right)
+  (define-key evil-motion-state-map (kbd "C-w <up>") 'evil-window-up)
+  (define-key evil-motion-state-map (kbd "C-w <down>") 'evil-window-down)
+  (define-key evil-motion-state-map (kbd "C-w <left>") 'evil-window-left)
+  (define-key evil-motion-state-map (kbd "C-w <right>") 'evil-window-right)
 
   ;; Buffer navigation
-  (define-key evil-normal-state-map (kbd "[ b") 'evil-prev-buffer)
-  (define-key evil-normal-state-map (kbd "] b") 'evil-next-buffer)
+  (define-key evil-motion-state-map (kbd "[ b") 'evil-prev-buffer)
+  (define-key evil-motion-state-map (kbd "] b") 'evil-next-buffer)
 
   ;; Typo avoider
   (evil-ex-define-cmd "WQ" "wq")
