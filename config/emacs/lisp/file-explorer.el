@@ -26,7 +26,7 @@
   "Asks for a mode and execute associated Neotree command"
   (interactive "c(a)dd node | (d)elete node | (c)opy node | (r)ename node")
   (cond
-    ((eq option ?a) (neotree-create-node))
+    ((eq option ?a) (call-interactively #'neotree-create-node))
     ((eq option ?d) (neotree-delete-node))
     ((eq option ?c) (neotree-copy-node))
     ((eq option ?r) (neotree-rename-node))
