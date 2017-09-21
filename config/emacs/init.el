@@ -28,6 +28,7 @@
                    ctrlp
                    markdown
                    yaml
+                   compile-mode
                    rest))
   (require module))
 
