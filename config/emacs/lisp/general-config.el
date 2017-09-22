@@ -22,11 +22,11 @@
 (set-selection-coding-system 'utf-8)
 (prefer-coding-system 'utf-8)
 
-(tool-bar-mode -1)
 (savehist-mode 1)
 
 ;;Persistent undo history
 (setq undo-tree-auto-save-history t)
+(setq undo-tree-history-directory-alist '(("." . "~/.emacs.undo/")))
 
 (global-set-key (kbd "C-l") 'evil-search-highlight-persist-remove-all)
 (setq browse-url-browser-function 'browse-url-generic
@@ -40,9 +40,9 @@
         scroll-conservatively 9999
         scroll-step 1))
 
-;; No more # ... # files in the project
-(setq backup-directory-alist `(("." . "~/.emacs.saves/")))
-(setq undo-tree-history-directory-alist '(("." . "~/.emacs.undo/")))
+;; No more ....~ (backup) or # ... # (auto-save) files in the project
+(setq backup-directory-alist `(("." . "~/.emacs.d/.saves")))
+(setq auto-save-file-name-transforms `((".*" , "~/.emacs.d/.saves" t)))
 
 (setq vc-follow-symlinks t)
 
