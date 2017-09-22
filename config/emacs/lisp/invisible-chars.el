@@ -7,4 +7,6 @@
     (setq
       whitespace-display-mappings
       '((newline-mark 10 [172 10])))))
+  :config
+    (evil-leader/set-key "w" 'whitespace-cleanup)
 (provide 'invisible-chars)
