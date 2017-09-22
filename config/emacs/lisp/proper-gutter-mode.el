@@ -23,14 +23,11 @@
     :config
     (custom-set-variables
       '(git-gutter:window-width 1)
-      ; Live update
-      ;'(git-gutter:update-interval 2)
-      '(git-gutter:modified-sign "~")
-      ; No logs, set to 4 while debugging
-      '(git-gutter:verbosity 0)
-      '(git-gutter:added-sign "+")
-      '(git-gutter:visual-line t)
-      '(git-gutter:deleted-sign "-"))
+      '(git-gutter:added-sign " ")
+      '(git-gutter:deleted-sign " ")
+      '(git-gutter:modified-sign " ")
+      '(git-gutter:verbosity 0) ; No logs, set to 4 while debugging
+      '(git-gutter:visual-line t))
 
     ;; Hunk navigation
     (define-key evil-normal-state-map (kbd "[h") 'git-gutter:previous-hunk)
