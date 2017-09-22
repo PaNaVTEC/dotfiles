@@ -30,7 +30,7 @@ function git_current_branch() {
   fi
   echo ${ref#refs/heads/}
 }
-
+alias gcam='git add . && git commit -a -m'
 
 ## Autocompleted alias
 __git_complete gco _git_checkout
