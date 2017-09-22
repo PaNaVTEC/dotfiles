@@ -28,7 +28,8 @@
                    markdown
                    yaml
                    compile-mode
-                   rest))
+                   rest
+                   vimscript))
   (require module))
 
 (provide 'init)
