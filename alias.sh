@@ -33,11 +33,23 @@ autogeneratePassword () {
 
 alias yu='systemUpdate;'
 alias yun='systemUpdate "--noconfirm";'
+vimUpdate () {
+  echo "Upgrade VIM"
+  (source "$dotfilesLocation/setup/setup.sh" && compileVim;)
+
+  echo "Upgrading vim plugins"
+  vim +PlugClean +PlugUpgrade +PlugUpdate +qa
+}
+
 systemUpdate () {
   echo "Updating dotfiles"
   (cd "$dotfilesLocation" && git pull)
+
   echo "Upgrading global Js packages"
-  yarn global upgrade
+  sudo yarn global upgrade
+
+  vimUpdate;
+
   echo "Upgrading system packages"
   yaourt -Syua "$1"
 }
