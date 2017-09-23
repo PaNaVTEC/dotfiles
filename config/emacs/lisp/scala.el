@@ -1,13 +1,10 @@
-(require 'prettify)
-(require 'proper-gutter-mode)
-(require 'invisible-chars)
+(require 'programming-mode)
 
 (pkg
   scala-mode
   :ensure t
   :defer t
   :config
-
   (defun scala/prettify ()
     (prettify
       '(("->" . ?→)
@@ -21,9 +18,7 @@
         ("==" . ?≡)
         ("!=" . ?≠)
         ("???" . ?⊥))))
-  (add-hook 'scala-mode-hook 'whitespace-mode)
-  (add-hook 'scala-mode-hook 'prettify-symbols-mode)
-  (add-hook 'scala-mode-hook 'proper-gutter-mode)
+  (add-hook 'scala-mode-hook 'programming-mode)
   (add-hook 'scala-mode-hook 'scala/prettify))
 
 (pkg

@@ -1,6 +1,4 @@
-(require 'prettify)
-(require 'proper-gutter-mode)
-(require 'invisible-chars)
+(require 'programming-mode)
 
 (defun prettify-js-for (mode-hook)
   (defun javascript/prettify ()
@@ -13,7 +11,6 @@
         ("<=" . ?≤)
         (">=" . ?≥)
         ("!=" . ?≠))))
-  (add-hook mode-hook 'prettify-symbols-mode)
   (add-hook mode-hook 'javascript/prettify))
 
 (pkg
@@ -26,11 +23,11 @@
         evil-shift-width 2
         js2-basic-offset 2
         js2-bounce-indent-p t
+        js2-assume-strict t
         js2-strict-missing-semi-warning nil)
 
   (add-hook 'js2-mode-hook 'company-mode)
-  (add-hook 'js2-mode-hook 'whitespace-mode)
-  (add-hook 'js2-mode-hook 'proper-gutter-mode)
+  (add-hook 'js2-mode-hook 'programming-mode)
   (prettify-js-for 'js2-mode-hook)
   (add-hook
     'flycheck-mode-hook
@@ -45,8 +42,7 @@
   :config
   (setq web-mode-code-indent-offset 2)
   (add-hook 'web-mode-hook 'company-mode)
-  (add-hook 'web-mode-hook 'whitespace-mode)
-  (add-hook 'web-mode-hook 'proper-gutter-mode)
+  (add-hook 'web-mode-hook 'programming-mode)
   (prettify-js-for 'web-mode-hook)
   (add-hook
     'flycheck-mode-hook
