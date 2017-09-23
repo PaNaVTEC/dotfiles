@@ -228,10 +228,10 @@ compileVim() {
   (
   cd "$VIM_BUILD_DIR"
   if [[ ! -d vim ]]; then
-    git clone https://github.com/vim/vim.git --recursive
+    git clone https://github.com/vim/vim.git --recursive 
   else
-    cd vim
     (
+    cd vim
     git pull
     git submodule update --init --recursive
     )
