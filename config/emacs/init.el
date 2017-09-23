@@ -29,7 +29,8 @@
                    yaml
                    compile-mode
                    rest
-                   vimscript))
+                   vimscript
+                   clipboard))
   (require module))
 
 (provide 'init)
