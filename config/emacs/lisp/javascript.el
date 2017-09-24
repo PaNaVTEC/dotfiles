@@ -13,6 +13,7 @@
         ("!=" . ?≠))))
   (add-hook mode-hook 'javascript/prettify))
 
+(pkg indium :ensure t)
 (pkg
   js2-mode
   :ensure t
