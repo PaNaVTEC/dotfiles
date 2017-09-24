@@ -2,6 +2,7 @@
 
 relativePath="$DOTFILES_LOCATION/system"
 source "$relativePath/update.sh"
+source "$relativePath/prompt.sh"
 
 alias ls='ls --color=auto'
 alias ll='exa'
