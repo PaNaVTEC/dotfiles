@@ -89,7 +89,7 @@ installThemes() {
 
 installGit() {
   yaourt --noconfirm -S ./yaourt_git.txt
-  ln -sfn "$dir/.gitconfig" "$HOME/.gitconfig"
+  ln -sfn "$dir/config/git/gitconfig" "$HOME/.gitconfig"
 
   # SSH agent
   mkdir -p "$HOME/.config/systemd/user"

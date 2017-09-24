@@ -2,7 +2,6 @@
 
 export XDG_CONFIG_HOME=$HOME/.config
 export BROWSER=inox
-export EDITOR=vim
 export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
 export DOTFILES_LOCATION=~/dotfiles
 
@@ -15,4 +14,3 @@ setxkbmap -layout us -variant altgr-intl -option nodeadkeys
 
 eval $(dircolors ~/.dircolors)
 
-source /etc/profile.d/autojump.bash
