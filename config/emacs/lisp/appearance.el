@@ -1,3 +1,5 @@
+(require 'cycle-theme)
+
 (pkg
   powerline
   :ensure t
@@ -17,13 +19,7 @@
                                         (window-height   . 0.33))))
 
 ;; Personalization
-(defcustom available-themes '(zenburn spacemacs-light) "Available themes to cycle")
-(set-default-font "xos4 Terminus")
-(set-face-attribute 'default nil :height 150)
-(pkg nord-theme :ensure t)
-(pkg spacemacs-theme :ensure t)
-(pkg nord-theme :ensure t)
-
-(require 'cycle-theme)
+(set-default-font my-font)
+(set-face-attribute 'default nil :height my-font-height)
 
 (provide 'appearance)

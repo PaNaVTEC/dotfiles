@@ -17,7 +17,8 @@
 
 ;; Load modules
 (add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
-(dolist (module '(general-config
+(dolist (module '(mysetup
+                   general-config
                    appearance
                    vim-mode
                    acklike
