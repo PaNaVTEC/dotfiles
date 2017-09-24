@@ -12,7 +12,6 @@ source ~/dotfiles/prompt.sh
 source ~/dotfiles/git-completion.bash
 source ~/dotfiles/git-alias.sh
 source ~/dotfiles/git-alias-custom.sh
-source ~/dotfiles/functions.sh
 source "$DOTFILES_LOCATION/programming/index.sh"
 source "$DOTFILES_LOCATION/system/index.sh"
 source ~/dotfiles/paths.sh

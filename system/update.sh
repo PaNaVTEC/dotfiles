@@ -29,3 +29,11 @@ systemUpdate () {
   echo "Upgrading system packages"
   yaourt -Syua "$1"
 }
+
+orphans() {
+  if [[ ! -n $(pacman -Qdt) ]]; then
+    echo "No orphans to remove."
+  else
+    sudo pacman -Rns $(pacman -Qdtq)
+  fi
+}
