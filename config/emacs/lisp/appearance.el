@@ -15,6 +15,14 @@
   :config
   (load-theme 'zenburn t))
 
+(defun location-list-buffer (regex)
+  (add-to-list 'display-buffer-alist `(,regex
+                                       (display-buffer-reuse-window
+                                        display-buffer-in-side-window)
+                                       (side            . bottom)
+                                       (reusable-frames . visible)
+                                       (window-height   . 0.33))))
+
 (set-default-font "xos4 Terminus")
 (set-face-attribute 'default nil :height 150)
 
