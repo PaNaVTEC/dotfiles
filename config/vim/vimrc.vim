@@ -18,16 +18,16 @@ set ttimeoutlen=0
 set background=dark
 if &t_Co > 255
   set tgc
-  colorscheme hybrid_material
+  colorscheme nord
   " Disable Background Color Erase (BCE) so that color schemes
   " work properly when Vim is used inside tmux and GNU screen.
   set t_ut=
 else
   let base16colorspace=256
-  colorscheme base16-material-darker
+  colorscheme nord
 endif
 
-let g:airline_theme = "hybrid"
+let g:airline_theme = "nord"
 let g:airline#extensions#ale#enabled = 1
 
 " Display a line at column 80

@@ -81,7 +81,7 @@ Plug 'vim-scripts/Improved-AnsiEsc'
 
 " Themes and colors
 Plug 'vim-airline/vim-airline-themes'
-    \| Plug 'kristijanhusak/vim-hybrid-material'
+    \| Plug 'arcticicestudio/nord-vim'
     \| Plug 'ryanoasis/vim-devicons'
     \| Plug 'chriskempson/base16-vim'
 call plug#end()

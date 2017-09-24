@@ -3,42 +3,37 @@
 font = xos4 Terminus 13
 scrollback_lines = 10000
 
+# ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+# title      Nord Termite                                    +
+# project    nord-termite                                    +
+# version    0.2.0                                           +
+# repository https://github.com/arcticicestudio/nord-termite +
+# author     Arctic Ice Studio                               +
+# email      development@arcticicestudio.com                 +
+# copyright  Copyright (C) 2016                              +
+# ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
 [colors]
-# Base16 Default
-# Scheme: Chris Kempson (http://chriskempson.com)
-foreground = #839496
-foreground_bold = #eee8d5
-background = #282A2E
-cursor = #93a1a1
+foreground = #D8DEE9
+background = #2E3440
+foreground_bold = #D8DEE9
+cursor = #D8DEE9
+cursor_foreground = #2E3440
+highlight = #4C566A
 
-# black
-color0  = #282a2e
-color8  = #373b41
-
-# red
-color1  = #a54242
-color9  = #cc6666
-
-# green
-color2  = #8c9440
-color10 = #b5bd68
-
-# yellow
-color3  = #de935f
-color11 = #f0c674
-
-# blue
-color4  = #5f819d
-color12 = #81a2be
-
-# magenta
-color5  = #85678f
-color13 = #b294bb
-
-# cyan
-color6  = #5e8d87
-color14 = #8abeb7
-
-# white
-color7  = #707880
-color15 = #c5c8c6
+color0  = #3B4252
+color1  = #BF616A
+color2  = #A3BE8C
+color3  = #EBCB8B
+color4  = #81A1C1
+color5  = #B48EAD
+color6  = #88C0D0
+color7  = #E5E9F0
+color8  = #4C566A
+color9  = #BF616A
+color10 = #A3BE8C
+color11 = #EBCB8B
+color12 = #81A1C1
+color13 = #B48EAD
+color14 = #8FBCBB
+color15 = #ECEFF4
