@@ -35,7 +35,8 @@
                    rest
                    vimscript
                    clipboard
-                   el))
+                   el
+                   sh))
   (require module))
 
 (provide 'init)
