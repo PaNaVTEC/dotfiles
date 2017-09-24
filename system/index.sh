@@ -8,8 +8,6 @@ alias ls='ls --color=auto'
 alias ll='exa'
 alias la='ll'
 alias exa='exa -bghlaU --git --group-directories-first'
-alias ccat='pygmentize -g'
-alias ccatl='pygmentize -g -O style=colorful,linenos=1'
 alias grep="grep --color=auto"
 alias connectvpn='sudo openvpn /etc/openvpn/server.ovpn'
 alias wireup='sudo wg-quick up wg0-client'
