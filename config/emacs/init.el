@@ -11,7 +11,7 @@
   (package-install 'use-package))
 (defalias 'pkg 'use-package)
 
-; Custom file
+;; Custom file
 (setq custom-file "~/.emacs.d/custom.el")
 (load custom-file)
 
