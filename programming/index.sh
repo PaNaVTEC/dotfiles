@@ -14,3 +14,5 @@ source "$relativePath/editors.sh"
 source "$relativePath/git-completion.bash"
 source "$relativePath/git-alias.sh"
 source "$relativePath/git-alias-custom.sh"
+
+source /etc/profile.d/autojump.bash
