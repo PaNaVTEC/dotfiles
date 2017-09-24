@@ -21,6 +21,9 @@
   (define-key evil-motion-state-map (kbd "[ b") 'evil-prev-buffer)
   (define-key evil-motion-state-map (kbd "] b") 'evil-next-buffer)
 
+  ;; Reload config
+  (evil-ex-define-cmd "ReloadConfig" '(lambda () (interactive) (load-file "~/.emacs.d/init.el")))
+
   ;; Typo avoider
   (evil-ex-define-cmd "WQ" "wq")
   (evil-ex-define-cmd "Wq" "wq")
