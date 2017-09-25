@@ -3,6 +3,7 @@
 (require 'invisible-chars)
 (require 'syntax-check)
 (require 'rainbow-parenthesis)
+(require 'paren)
 
 (define-minor-mode
   programming-mode
