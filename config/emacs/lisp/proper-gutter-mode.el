@@ -10,6 +10,7 @@
     linum-relative
     :diminish linum-relative-mode
     :ensure t
+    :defer t
     :config
     (setq
       linum-relative-current-symbol ""
@@ -34,16 +35,29 @@
     (define-key evil-normal-state-map (kbd "]h") 'git-gutter:next-hunk)
 
     ;; Hunk edition
-    (evil-leader/set-key "z" 'git-gutter:revert-hunk)
+    (evil-leader/set-key "z" 'git-gutter:revert-hunk))
 
-    (git-gutter:linum-setup))
+  (defun proper-gutter-mode-on ()
+    (if (>= emacs-major-version 26)
+      (progn
+        (setq display-line-numbers-type 'relative)
+        (set-face-foreground 'line-number-current-line "gold3")
+        (display-line-numbers-mode +1)
+        (git-gutter-mode +1))
+      (progn
+        (git-gutter:linum-setup)
+        (git-gutter-mode +1)
+        (linum-relative-mode +1))))
 
-  (if proper-gutter-mode
-    (progn
-      (git-gutter-mode +1)
-      (linum-relative-mode +1))
-    (progn
-      (git-gutter-mode -1)
-      (linum-relative-mode -1))))
+  (defun proper-gutter-mode-off ()
+    (if (>= emacs-major-version 26)
+      (progn
+        (display-line-numbers-mode -1)
+        (git-gutter-mode -1))
+      (progn 
+        (git-gutter-mode -1)
+        (linum-relative-mode -1))))
+
+  (if proper-gutter-mode (proper-gutter-mode-on) (proper-gutter-mode-off)))
 
 (provide 'proper-gutter-mode)
