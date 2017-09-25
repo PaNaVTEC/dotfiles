@@ -54,7 +54,7 @@
       (progn
         (display-line-numbers-mode -1)
         (git-gutter-mode -1))
-      (progn 
+      (progn
         (git-gutter-mode -1)
         (linum-relative-mode -1))))
 
