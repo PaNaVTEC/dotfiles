@@ -28,7 +28,7 @@ javascriptProject () {
 
 nUse() {
   if [ -e package.json ]; then
-    sudo n $(cat package.json | jq .engines.node -r)
+    sudo n "$(jq .engines.node -r package.json)"
   else
     echo "No package.json found"
   fi
@@ -36,7 +36,7 @@ nUse() {
 
 nScripts() {
   if [ -e package.json ]; then
-    cat package.json | jq .scripts
+    jq .scripts package.json
   else
     echo "No package.json found"
   fi
@@ -44,7 +44,7 @@ nScripts() {
 
 nDependencies() {
   if [ -e package.json ]; then
-    cat package.json | jq .dependencies
+    jq .dependencies package.json
   else
     echo "No package.json found"
   fi
@@ -52,7 +52,7 @@ nDependencies() {
 
 nDevDependencies() {
   if [ -e package.json ]; then
-    cat package.json | jq .devDependencies
+    jq .devDependencies package.json
   else
     echo "No package.json found"
   fi
