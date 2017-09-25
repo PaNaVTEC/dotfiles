@@ -9,18 +9,22 @@
   :lighter " P"
   :group 'programming
 
+  (setq show-paren-delay 0)
+
   (if programming-mode
     (progn
       (prettify-symbols-mode +1)
       (whitespace-mode +1)
       (proper-gutter-mode +1)
       (rainbow-delimiters-mode +1)
+      (show-parent-mode +1)
       (flycheck-mode +1))
     (progn
       (prettify-symbols-mode -1)
       (whitespace-mode -1)
       (proper-gutter-mode -1)
       (rainbow-delimiters-mode -1)
+      (show-parent-mode -1)
       (flycheck-mode -1))))
 
 (provide 'programming-mode)
