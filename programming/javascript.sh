@@ -1,7 +1,7 @@
 #!/bin/bash -e
 
-alias yarn='yarn --emoji'
-alias ya='yarn --emoji'
+alias yarn='yarn --emoji $_'
+alias ya='yarn --emoji $_'
 alias jsProject='javascriptProject;'
 javascriptProject () {
   TAB="  "
