@@ -1,11 +1,11 @@
 [colors]
 background = #2E3440
-background-alt = #444444
+background-alt = #4C566A
 foreground = #D8DEE9
 foreground-alt = #839496
 primary = #ffb52a
 secondary = #e60053
-alert = #bd2c40
+alert = #BF616A
 
 [global/wm]
 margin-top = 5
