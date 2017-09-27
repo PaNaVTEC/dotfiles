@@ -28,7 +28,6 @@
 (setq undo-tree-auto-save-history t)
 (setq undo-tree-history-directory-alist '(("." . "~/.emacs.undo/")))
 
-(global-set-key (kbd "C-l") 'evil-search-highlight-persist-remove-all)
 (setq browse-url-browser-function 'browse-url-generic
       browse-url-generic-program "inox")
 

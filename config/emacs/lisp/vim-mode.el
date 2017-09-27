@@ -21,6 +21,8 @@
   (define-key evil-motion-state-map (kbd "[ b") 'evil-prev-buffer)
   (define-key evil-motion-state-map (kbd "] b") 'evil-next-buffer)
 
+  (global-set-key (kbd "C-l") 'evil-search-highlight-persist-remove-all)
+
   ;; Reload config
   (evil-ex-define-cmd "ReloadConfig" '(lambda () (interactive) (load-file "~/.emacs.d/init.el")))
 
