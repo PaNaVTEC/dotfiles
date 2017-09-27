@@ -22,6 +22,10 @@
     :ensure t
     :diminish git-gutter-mode
     :config
+    (set-face-background 'git-gutter:modified "blue")
+    (set-face-background 'git-gutter:added "green")
+    (set-face-background 'git-gutter:deleted "red")
+
     (custom-set-variables
       '(git-gutter:window-width 1)
       '(git-gutter:added-sign " ")
