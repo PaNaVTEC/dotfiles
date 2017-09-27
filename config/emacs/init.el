@@ -36,6 +36,7 @@
                    rest
                    vimscript
                    clipboard
+                   key-helper
                    el
                    sh))
   (require module))
