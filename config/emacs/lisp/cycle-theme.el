@@ -13,6 +13,9 @@
     (mapcar #'disable-theme (remove theme custom-enabled-themes))
     (message "Unable to find theme file for ‘%s’" theme)))
 
-(evil-leader/set-key "\\" 'cycle-theme)
+(with-eval-after-load
+  'evil-leader
+  (evil-leader/set-key "\\" 'cycle-theme))
+
 (cycle-theme)
 (provide 'cycle-theme)
