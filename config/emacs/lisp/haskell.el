@@ -146,6 +146,7 @@
 (pkg
   haskell-mode
   :ensure t
+  :mode "\\.hs$"
   :config
   (custom-set-variables '(haskell-stylish-on-save t))
   (add-hook 'haskell-mode-hook 'programming-mode)
@@ -154,6 +155,7 @@
 (pkg
   intero
   :ensure t
+  :mode "\\.hs$"
   :config
   (add-hook 'haskell-mode-hook 'intero-mode))
 

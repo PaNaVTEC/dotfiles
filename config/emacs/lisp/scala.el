@@ -4,6 +4,7 @@
   scala-mode
   :ensure t
   :defer t
+  :mode "\\.scala$"
   :config
   (defun scala/prettify ()
     (prettify
@@ -24,6 +25,7 @@
 (pkg
   ensime
   :ensure t
+  :mode "\\.scala$"
   :pin melpa-stable
   :config
   (setq
