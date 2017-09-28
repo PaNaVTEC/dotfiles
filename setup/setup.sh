@@ -146,10 +146,9 @@ installHaskell() {
   sudo pacman-key --lsign-key B0544167
   yaourt -Syu
 
-  yaourt -S haskell-stack haskell-stack-tool
+  yaourt -S haskell-stack-tool
   stack setup
-  stack install ghc-mod hindent stylish-haskell cabal-install hoogle hlint ghc-mod
-  cabal update
+  stack install ghc-mod hindent stylish-haskell cabal-install hoogle hlint
   echo "========"
   echo "Your GHC path will be: $(stack path | grep ghc-paths)"
   echo "========"
