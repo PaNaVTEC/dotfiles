@@ -1,4 +1,5 @@
 #!/bin/bash -e
+alias sbt='TERM=xterm-256colors sbt'
 
 scalaProject () {
   projectDirectory="$1"
