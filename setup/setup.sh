@@ -256,7 +256,7 @@ installVim() {
   # Ensime
   yaourt -S --noconfirm python2-sexpdata python2-websocket-client
   mkdir -p ~/.sbt/0.13/plugins/
-  echo 'addSbtPlugin("org.ensime" % "sbt-ensime" % "1.12.14")' > ~/.sbt/0.13/plugins/plugins.sbt
+  echo 'addSbtPlugin("org.ensime" % "sbt-ensime" % "2.0.0")' > ~/.sbt/0.13/plugins/plugins.sbt
 
   # Scala compilation errors with sbt
   git clone git@github.com:PaNaVTEC/sbt-vim-async-integration.git
