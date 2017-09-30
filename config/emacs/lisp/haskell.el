@@ -150,14 +150,9 @@
   :config
   (custom-set-variables '(haskell-stylish-on-save t))
   (add-hook 'haskell-mode-hook 'programming-mode)
-  (add-hook 'haskell-mode-hook 'haskell/prettify))
+  (add-hook 'haskell-mode-hook 'haskell/prettify)
 
-(pkg
-  intero
-  :ensure t
-  :mode "\\.hs$"
-  :config
-  (add-hook 'haskell-mode-hook 'intero-mode))
+  (pkg intero :ensure t :config (intero-mode)))
 
 ;; Zeal setup
 (pkg zeal-at-point :ensure t)
