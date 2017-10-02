@@ -50,14 +50,11 @@ new_window 1pixel
 #Nyan saver full screen always
 for_window [title="^Nyanyanyanyanyanyanya...$"] mark "STATWIN", fullscreen enable
 
-#layout
-#for_window [workspace="$WS3|$WS6"] layout tabbed
-
 #Sets the modifier to the Windows key
 set $mod Mod4
 
 # fonts
-font pango:Roboto 10, FontAwesome Regular 10
+#font pango:Roboto 10, FontAwesome Regular 10
 
 # Move windows with mouse+$mod
 floating_modifier $mod
@@ -66,7 +63,7 @@ floating_modifier $mod
 bindsym $mod+Return exec termite
 bindsym $mod+Shift+q kill
 bindsym $mod+Shift+Alt+q exec --no-startup-id kill $(xprop -id `xdotool getwindowfocus` | grep '_NET_WM_PID' | grep -oE '[[:digit:]]*$')
-bindsym $mod+d exec --no-startup-id j4-dmenu-desktop --dmenu="dmenu -i -fn 'Roboto-10'"
+bindsym $mod+d exec --no-startup-id j4-dmenu-desktop --dmenu="dmenu -i -fn 'xos4 Terminus-13'"
 bindsym $mod+Tab exec --no-startup-id quickswitch.py -d "dmenu -b -i -l 20 -nb \#002b36 -nf \#FFFFFF -sb \#839496 -sf \#3E719F"
 bindsym --release Control+Shift+Print exec --no-startup-id scrot -s
 bindsym Shift+Print exec --no-startup-id scrot
@@ -263,44 +260,6 @@ set $mode_workspaces Go to workspace... 10+
     bindsym Escape mode "default"
   }
 bindsym $mod+Shift+w mode "$mode_workspaces"
-
-set $mode_gaps Gaps: (o) outer, (i) inner
-set $mode_gaps_outer Outer Gaps: +|-|0 (local), Shift + +|-|0 (global)
-set $mode_gaps_inner Inner Gaps: +|-|0 (local), Shift + +|-|0 (global)
-bindsym $mod+Shift+g mode "$mode_gaps"
-
-mode "$mode_gaps" {
-  bindsym o      mode "$mode_gaps_outer"
-  bindsym i      mode "$mode_gaps_inner"
-  bindsym Return mode "default"
-  bindsym Escape mode "default"
-}
-
-mode "$mode_gaps_inner" {
-  bindsym plus  gaps inner current plus 5
-  bindsym minus gaps inner current minus 5
-  bindsym 0     gaps inner current set 0
-
-  bindsym Shift+plus  gaps inner all plus 5
-  bindsym Shift+minus gaps inner all minus 5
-  bindsym Shift+0     gaps inner all set 0
-
-  bindsym Return mode "default"
-  bindsym Escape mode "default"
-}
-mode "$mode_gaps_outer" {
-  bindsym plus  gaps outer current plus 5
-  bindsym minus gaps outer current minus 5
-  bindsym 0     gaps outer current set 0
-
-  bindsym Shift+plus  gaps outer all plus 5
-  bindsym Shift+minus gaps outer all minus 5
-  bindsym Shift+0     gaps outer all set 0
-
-  bindsym Return mode "default"
-  bindsym Escape mode "default"
-}
-
 
 #other
 focus_follows_mouse no
