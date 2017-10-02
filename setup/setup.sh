@@ -305,6 +305,8 @@ installEmacs() {
   mkdir -p "$HOME/.emacs.undo"
   touch "$HOME/.emacs.d/custom.el"
 
+  yaourt -S --noconfirm xsel # Fixes clipboard
+
   ln -sfn "$dir/config/emacs/init.el" "$HOME/.emacs.d/"
   ln -sfn "$dir/config/emacs/lisp/" "$HOME/.emacs.d/lisp"
 
