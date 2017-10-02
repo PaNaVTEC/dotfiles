@@ -13,7 +13,12 @@
         ("!=" . ?≠))))
   (add-hook mode-hook 'javascript/prettify))
 
-(pkg indium :ensure t)
+(pkg 
+  indium 
+  :ensure t
+  :config
+  (setq indium-chrome-executable "inox"))
+
 (pkg
   js2-mode
   :ensure t
