@@ -152,6 +152,7 @@ installHaskell() {
   echo "========"
   echo "Your GHC path will be: $(stack path | grep ghc-paths)"
   echo "========"
+  hoogle generate
   ln -sfn "$dir/ghci" "$HOME/.ghci"
 }
 
