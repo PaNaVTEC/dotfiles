@@ -63,8 +63,10 @@ nb () {
 }
 
 nBumpMinor () {
-  local version=$(jq -r '.version' package.json)
-  local newVersion=$(echo "$version" | awk -F. '{$NF = $NF + 1;} 1' | sed 's/ /./g')
+  local version=''
+  local newVersion=''
+  version=$(jq -r '.version' package.json)
+  newVersion=$(echo "$version" | awk -F. '{$NF = $NF + 1;} 1' | sed 's/ /./g')
   jq -r ".version |= \"$newVersion\"" package.json > .newPackage.json
   rm package.json
   mv .newPackage.json package.json
