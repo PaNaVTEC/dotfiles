@@ -26,6 +26,10 @@ javascriptProject () {
   ya
 }
 
+jsonPrettyPrintNonStrict () {
+  cat $1 | node <<< "var o = $(cat); console.log(JSON.stringify(o, null, 4));"
+}
+
 nUse() {
   if [ -e package.json ]; then
     sudo n "$(jq .engines.node -r package.json)"
