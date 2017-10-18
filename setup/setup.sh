@@ -390,9 +390,6 @@ if [[ "${BASH_SOURCE[0]}" = "$0" ]]; then
   mkdir -p "$HOME/.data"
   mkdir -p "$HOME/.i3"
 
-  #Makes binary executable
-  chmod a+x "$dir/bin/*"
-
   echo "actionSystem.suspendFocusTransferIfApplicationInactive=false add this into intelliJ to prevent focus lose"
 
   ask "install pacman/yaourt?" Y && installYaourt;
