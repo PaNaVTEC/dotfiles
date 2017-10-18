@@ -4,7 +4,7 @@ __powerline() {
 
   readonly PS_SYMBOL='$'
 
-  if [[ $(tty | grep tty) == "" ]]; then
+  if [[ $(tty | grep tty) == "" ]] || [[ $(uname) == "Darwin" ]]; then
     readonly GIT_BRANCH_SYMBOL=' '
     readonly GIT_BRANCH_CHANGED_SYMBOL='+'
     readonly GIT_NEED_PUSH_SYMBOL='⇡'
