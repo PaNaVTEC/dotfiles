@@ -4,7 +4,11 @@ relativePath="$DOTFILES_LOCATION/system"
 source "$relativePath/update.sh"
 source "$relativePath/prompt.sh"
 
-alias ls='ls --color=auto'
+if [[ $(uname) == "Darwin" ]]; then
+  alias ls='ls -G'
+else
+  alias ls='ls --color=auto'
+fi
 alias ll='exa'
 alias la='ll'
 alias exa='exa -bghlaU --git --group-directories-first'

@@ -10,7 +10,7 @@ source "$DOTFILES_LOCATION/system/index.sh"
 source "$DOTFILES_LOCATION/paths.sh"
 source ~/.env.sh
 
-setxkbmap -layout us -variant altgr-intl -option nodeadkeys
-
-eval $(dircolors ~/.dircolors)
-
+if [[ $(uname) == "Linux" ]]; then
+  setxkbmap -layout us -variant altgr-intl -option nodeadkeys
+  eval $(dircolors ~/.dircolors)
+fi

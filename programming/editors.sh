@@ -2,9 +2,9 @@
 
 export EDITOR=vim
 
-alias v='vim --servername VIM'
-alias vi='vim --servername VIM'
-alias vim='vim --servername VIM'
+alias v='vim'
+alias vi='vim'
+alias vim='vim'
 alias et='emacsclient -nw'
 alias ew='emacsclient'
 alias e='emacsclient'
