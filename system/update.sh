@@ -32,6 +32,9 @@ systemUpdate () {
   echo "Upgrading global Js packages"
   sudo yarn global upgrade
 
+  echo "Upgrade yarn completion package"
+  curl -o ~/dotfiles/programming/yarn-completion.bash https://raw.githubusercontent.com/dsifford/yarn-completion/master/yarn-completion.bash
+
   vimUpdate;
 
   echo "Upgrading system packages"

@@ -1,8 +1,12 @@
 #!/bin/bash -e
 
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+source "$DIR/yarn-completion.bash"
+
 alias yarn='yarn --emoji $_'
 alias ya='yarn --emoji $_'
 alias jsProject='javascriptProject;'
+
 javascriptProject () {
   TAB="  "
   mkdir -p "$1"
