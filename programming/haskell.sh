@@ -2,6 +2,7 @@
 
 alias ghc='stack exec ghc --'
 alias ghci='stack exec ghci --'
+alias si='stack install'
 
 createHaskellProject () {
   local projectDirectory=$1
@@ -18,4 +19,7 @@ createHaskellProject () {
     -p "category:katas" \
     -p "copyright:Apache2" \
     -p "github-username:$username"
+
+  (cd "$projectDirectory" && \
+    gibo Haskell JetBrains Vim Emacs macOS Linux Windows > .gitignore)
 }

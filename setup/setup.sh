@@ -146,7 +146,7 @@ installHaskell() {
   sudo pacman-key --lsign-key B0544167
   yaourt -Syu
 
-  yaourt -S haskell-stack-tool
+  yaourt -S haskell-stack-tool ncurses5-compat-libs
   stack setup
   stack install ghc-mod hindent stylish-haskell cabal-install hoogle hlint
   echo "========"
@@ -273,7 +273,7 @@ installVim() {
   wget https://raw.githubusercontent.com/sdiehl/haskell-vim-proto/master/vim/syntax/haskell.vim -P ~/.vim/syntax/
 
   #YouComplete me workarround for ncurses new version
-  sudo ln -s /usr/lib/libtinfo.so.6 /usr/lib/libtinfo.so.5
+  sudo ln -sfn /usr/lib/libtinfo.so.6 /usr/lib/libtinfo.so.5
 
   #Install plugin system 
   curl -fLo "$HOME/.vim/autoload/plug.vim" --create-dirs \
