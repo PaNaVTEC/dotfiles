@@ -3,11 +3,13 @@
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 source "$DIR/yarn-completion.bash"
 
+NO_PKG_JSON="No package.json found"
+
 alias yarn='yarn --emoji $_'
 alias ya='yarn --emoji $_'
 alias jsProject='javascriptProject;'
 
-javascriptProject () {
+createJavascriptProject () {
   TAB="  "
   mkdir -p "$1"
   cd "$1" || return
@@ -35,35 +37,19 @@ jsonPrettyPrintNonStrict () {
 }
 
 nUse() {
-  if [ -e package.json ]; then
-    sudo n "$(jq .engines.node -r package.json)"
-  else
-    echo "No package.json found"
-  fi
+  [ -e package.json ] && sudo n "$(jq .engines.node -r package.json)" || echo "$NO_PKG_JSON"
 }
 
 nScripts() {
-  if [ -e package.json ]; then
-    jq .scripts package.json
-  else
-    echo "No package.json found"
-  fi
+  [ -e package.json ] && jq .scripts package.json || echo "$NO_PKG_JSON"
 }
 
 nDependencies() {
-  if [ -e package.json ]; then
-    jq .dependencies package.json
-  else
-    echo "No package.json found"
-  fi
+  [ -e package.json ] && jq .dependencies package.json || echo "$NO_PKG_JSON"
 }
 
 nDevDependencies() {
-  if [ -e package.json ]; then
-    jq .devDependencies package.json
-  else
-    echo "No package.json found"
-  fi
+  [ -e package.json ] && jq .devDependencies package.json || echo "$NO_PKG_JSON"
 }
 
 nb () {
