@@ -1,7 +1,7 @@
 #!/bin/bash -e
 alias sbt='TERM=xterm-256colors sbt'
 
-scalaProject () {
+createProjectScala () {
   projectDirectory="$1"
   mkdir -p "$projectDirectory"
   sbt new scala/hello-world.g8 --name="$projectDirectory"

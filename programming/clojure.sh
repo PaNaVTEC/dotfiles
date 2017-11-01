@@ -1,6 +1,6 @@
 #!/bin/bash -e
 
-clojureProject() {
+projectCreateClojure() {
   lein new "$1"
 }
 
