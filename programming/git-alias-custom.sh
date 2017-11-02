@@ -43,3 +43,4 @@ __git_complete gbnm _git_branch
 __git_complete gbr _git_branch
 __git_complete gm _git_branch
 __git_complete gd _git_branch
+__git_complete gda _git_branch
