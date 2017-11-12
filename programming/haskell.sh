@@ -4,7 +4,7 @@ alias ghc='stack exec ghc --'
 alias ghci='stack exec ghci --'
 alias si='stack install'
 
-createHaskellProject () {
+createProjectHaskell () {
   local projectDirectory=$1
   local name=''
   local email=''
