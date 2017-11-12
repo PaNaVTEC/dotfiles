@@ -22,6 +22,7 @@ workspace "$WS1" gaps inner 10
 assign [instance="urxvt|ws1_termite|gnome-terminal"] $WS1
 assign [instance="franz"] $WS4
 assign [instance="rambox"] $WS4
+assign [instance="slack"] $WS4
 assign [instance="SmartGit"] $WS7
 assign [instance="nylas n1"] $WS5
 assign [class="Code"] $WS6
@@ -103,6 +104,7 @@ for_window [class="Wicd-client.py"] floating enable
 for_window [class="Wicd-client.py"] floating enable
 for_window [instance="sun-awt-X11-XDialogPeer"] floating enable
 for_window [title="^floatme$"] floating enable move position 25px 10px
+for_window [instance="Slack Call Minipanel"] floating enable
 
 # split in horizontal orientation
 bindsym $mod+h split h
