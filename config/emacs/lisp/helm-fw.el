@@ -15,6 +15,7 @@
        helm-bookmark-show-location t
        helm-buffers-fuzzy-matching t)
 
+     (location-list-buffer (rx bos "*helm M-x"))
      ;; Override default command launcher
      (global-set-key (kbd "M-x") 'helm-M-x))
 
