@@ -1,4 +1,5 @@
 (require 'programming-mode)
+(require 'compile)
 
 (defun prettify-js-for (mode-hook)
   (defun javascript/prettify ()
@@ -33,6 +34,8 @@
         js2-assume-strict t
         sgml-basic-offset 2
         js2-strict-missing-semi-warning nil)
+
+  (set-compile-for 'js-mode-hook "yarn:test unit")
 
   (add-hook 'js2-mode-hook 'company-mode)
   (add-hook 'js2-mode-hook 'programming-mode)

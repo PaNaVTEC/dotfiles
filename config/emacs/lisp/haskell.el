@@ -1,4 +1,5 @@
 (require 'programming-mode)
+(require 'compile)
 
 (defun haskell/prettify ()
   (prettify
@@ -150,6 +151,7 @@
   :init (pkg intero :ensure t)
   :config
   (custom-set-variables '(haskell-stylish-on-save t))
+  (set-compile-for 'haskell-mode-hook "stack test")
   (add-hook 'haskell-mode-hook 'programming-mode)
   (add-hook 'haskell-mode-hook 'haskell/prettify)
   (add-hook 'haskell-mode-hook 'intero-mode))
