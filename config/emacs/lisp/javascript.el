@@ -22,7 +22,8 @@
 (pkg
   js2-mode
   :ensure t
-  :mode "\\.js$"
+  :mode ("\\.js$" . js2-mode )
+  :mode ("\\.jsx$" . js2-jsx-mode )
   :interpreter "node"
   :config
   (setq js-indent-level 2
@@ -30,6 +31,7 @@
         js2-basic-offset 2
         js2-bounce-indent-p t
         js2-assume-strict t
+        sgml-basic-offset 2
         js2-strict-missing-semi-warning nil)
 
   (add-hook 'js2-mode-hook 'company-mode)
@@ -37,29 +39,36 @@
   (prettify-js-for 'js2-mode-hook)
   (add-hook
     'flycheck-mode-hook
-    (lambda () (progn (flycheck-add-mode 'javascript-standard 'js2-mode)))))
+    (lambda () (progn
+                 (flycheck-add-mode 'javascript-standard 'js2-mode)
+                 (flycheck-add-mode 'javascript-standard 'js2-jsx-mode))))
+
+
+  (add-hook 'js2-jsx-mode-hook 'company-mode)
+  (add-hook 'js2-jsx-mode-hook 'programming-mode)
+  (prettify-js-for 'js2-jsx-mode-hook)
+  (add-hook
+    'flycheck-mode-hook
+    (lambda () (progn (flycheck-add-mode 'javascript-standard 'js2-jsx-mode))))
+  (add-to-list 'flycheck-disabled-checkers 'javascript-eslint))
 
 (pkg
   web-mode
   :ensure t
-  :mode "\\.jsx$"
-  :mode "components/.+\\.js$"
-  :interpreter "node"
+  :mode "\\.x?html$"
   :config
-  (setq web-mode-code-indent-offset 2)
-  (add-hook 'web-mode-hook 'company-mode)
-  (add-hook 'web-mode-hook 'programming-mode)
-  (prettify-js-for 'web-mode-hook)
-  (add-hook
-    'flycheck-mode-hook
-    (lambda () (progn (flycheck-add-mode 'javascript-standard 'web-mode)))))
+  (setq
+    web-mode-markup-indent-offset 2
+    web-mode-code-indent-offset 2)
+  (add-hook 'web-mode-hook 'programming-mode))
 
-(pkg tern
-     :defer t
-     :init
-     (progn
-       (add-hook 'js2-mode-hook 'tern-mode)
-       (add-hook 'web-mode-hook 'tern-mode)))
+(pkg
+  tern
+  :defer t
+  :init
+  (progn
+    (add-hook 'js2-mode-hook 'tern-mode)
+    (add-hook 'web-mode-hook 'tern-mode)))
 
 (pkg
   js2-refactor
@@ -86,7 +95,7 @@
   :defer t
   :init
   (add-hook
-    'web-mode-hook
+    'js2-jsx-mode
     (lambda () (add-to-list 'company-backends 'company-tern)))
   (add-hook
     'js2-mode-hook
