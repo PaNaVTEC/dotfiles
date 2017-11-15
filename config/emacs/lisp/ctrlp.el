@@ -1,7 +1,3 @@
-;; Don't change directory after navigating
-(add-hook 'find-file-hook
-          (lambda ()
-            (setq default-directory command-line-default-directory)))
 (pkg
   helm-projectile
   :ensure t
