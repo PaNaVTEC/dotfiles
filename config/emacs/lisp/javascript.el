@@ -35,30 +35,22 @@
         sgml-basic-offset 2
         js2-strict-missing-semi-warning nil)
 
-  (set-compile-for 'js-mode-hook "yarn:test unit")
+  (set-compile-for 'js-mode-hook "yarn test:unit")
 
-  (add-hook 'js2-mode-hook 'company-mode)
-  (add-hook 'js2-mode-hook 'programming-mode)
-  (prettify-js-for 'js2-mode-hook)
+  (add-hook 'js-mode-hook 'programming-mode)
+  (add-hook 'js-mode-hook 'company-mode)
+  (prettify-js-for 'js-mode-hook)
   (add-hook
     'flycheck-mode-hook
     (lambda () (progn
                  (flycheck-add-mode 'javascript-standard 'js2-mode)
                  (flycheck-add-mode 'javascript-standard 'js2-jsx-mode))))
-
-
-  (add-hook 'js2-jsx-mode-hook 'company-mode)
-  (add-hook 'js2-jsx-mode-hook 'programming-mode)
-  (prettify-js-for 'js2-jsx-mode-hook)
-  (add-hook
-    'flycheck-mode-hook
-    (lambda () (progn (flycheck-add-mode 'javascript-standard 'js2-jsx-mode))))
-  (add-to-list 'flycheck-disabled-checkers 'javascript-eslint))
+   (append flycheck-disabled-checkers 'javascript-eslint))
 
 (pkg
   web-mode
   :ensure t
-  :mode "\\.x?html$"
+  :mode "\\.x?html?$"
   :config
   (setq
     web-mode-markup-indent-offset 2
