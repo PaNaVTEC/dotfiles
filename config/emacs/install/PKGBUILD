@@ -38,7 +38,7 @@ NOGZ="YES"        # Don't compress el files. Info and man pages are
 
 #######################################################################
 pkgname=emacs-26
-pkgver=26.0.90.130813
+pkgver=26.0.90.131025
 pkgrel=1
 pkgdesc="GNU Emacs. Master development branch."
 arch=('i686' 'x86_64')
