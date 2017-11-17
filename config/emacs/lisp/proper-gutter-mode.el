@@ -5,18 +5,15 @@
   :lighter " Gutter"
   :group 'proper-gutter
 
-  ;; Configures relative mode
-  (pkg
-    linum-relative
-    :diminish linum-relative-mode
-    :ensure t
-    :defer t
-    :config
-    (setq
-      linum-relative-current-symbol ""
-      linum-relative-format "%3s "))
+  (if (<= emacs-major-version 26)
+    (pkg
+      linum-relative
+      :diminish linum-relative-mode
+      :ensure t
+      :defer t
+      :config
+      (setq linum-relative-current-symbol "" linum-relative-format "%3s ")))
 
-  ;; Configures git-gutter
   (pkg
     git-gutter
     :ensure t
