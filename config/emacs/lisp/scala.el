@@ -43,8 +43,9 @@
 
     ;; Run
     (evil-leader/set-key "r" 'ensime-db-run)
+    (lambda () (progn
+                 (add-to-list 'flycheck-disabled-checkers 'scala)))
 
-    (add-to-list 'flycheck-disabled-checkers 'scala)
     (ensime))
 
   (add-hook 'scala-mode-hook 'programming-mode)

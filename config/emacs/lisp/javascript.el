@@ -14,8 +14,8 @@
         ("!=" . ?≠))))
   (add-hook mode-hook 'javascript/prettify))
 
-(pkg 
-  indium 
+(pkg
+  indium
   :ensure t
   :config
   (setq indium-chrome-executable my-browser))
@@ -44,8 +44,8 @@
     'flycheck-mode-hook
     (lambda () (progn
                  (flycheck-add-mode 'javascript-standard 'js2-mode)
-                 (flycheck-add-mode 'javascript-standard 'js2-jsx-mode))))
-   (append flycheck-disabled-checkers 'javascript-eslint))
+                 (flycheck-add-mode 'javascript-standard 'js2-jsx-mode)
+                 (add-to-list 'flycheck-disabled-checkers 'javascript-eslint)))))
 
 (pkg
   web-mode
