@@ -18,7 +18,7 @@
   indium 
   :ensure t
   :config
-  (setq indium-chrome-executable "inox"))
+  (setq indium-chrome-executable my-browser))
 
 (pkg
   js2-mode
@@ -57,13 +57,7 @@
     web-mode-code-indent-offset 2)
   (add-hook 'web-mode-hook 'programming-mode))
 
-(pkg
-  tern
-  :defer t
-  :init
-  (progn
-    (add-hook 'js2-mode-hook 'tern-mode)
-    (add-hook 'web-mode-hook 'tern-mode)))
+(pkg tern :defer t :config (add-hook 'js-mode-hook 'tern-mode))
 
 (pkg
   js2-refactor
@@ -88,12 +82,8 @@
   company-tern
   :ensure t
   :defer t
-  :init
-  (add-hook
-    'js2-jsx-mode
-    (lambda () (add-to-list 'company-backends 'company-tern)))
-  (add-hook
-    'js2-mode-hook
+  :config
+  (add-hook 'js-mode-hook
     (lambda () (add-to-list 'company-backends 'company-tern))))
 
 (provide 'javascript)

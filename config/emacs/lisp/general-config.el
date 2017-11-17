@@ -30,7 +30,7 @@
 (setq undo-tree-history-directory-alist `((".*" . ,temporary-file-directory)))
 
 (setq browse-url-browser-function 'browse-url-generic
-      browse-url-generic-program "inox")
+      browse-url-generic-program my-browser)
 
 (pkg
   smooth-scrolling
