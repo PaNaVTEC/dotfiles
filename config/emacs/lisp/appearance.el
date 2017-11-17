@@ -18,10 +18,13 @@
                                         (reusable-frames . visible)
                                         (window-height   . 0.33))))
 
-;; Changes vertical separator to be a proper line
 (set-display-table-slot
   standard-display-table
   'vertical-border (make-glyph-code ?│))
+
+
+(set-display-table-slot standard-display-table 'truncation (make-glyph-code ?→))
+(set-display-table-slot standard-display-table 'wrap (make-glyph-code ?⤸))
 
 ;; Personalization
 (set-default-font my-font)
