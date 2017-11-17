@@ -26,6 +26,7 @@
                    auto-complete
                    haskell
                    javascript
+                   init-python
                    scala
                    syntax-check
                    file-explorer
