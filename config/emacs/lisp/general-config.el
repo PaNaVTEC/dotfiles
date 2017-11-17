@@ -27,7 +27,7 @@
 
 ;;Persistent undo history
 (setq undo-tree-auto-save-history t)
-(setq undo-tree-history-directory-alist '(("." . "~/.emacs.undo/")))
+(setq undo-tree-history-directory-alist `((".*" . ,temporary-file-directory)))
 
 (setq browse-url-browser-function 'browse-url-generic
       browse-url-generic-program "inox")
@@ -40,9 +40,15 @@
         scroll-conservatively 9999
         scroll-step 1))
 
-;; No more ....~ (backup) or # ... # (auto-save) files in the project
-(setq backup-directory-alist `(("." . "~/.emacs.d/.saves")))
-(setq auto-save-file-name-transforms `((".*" , "~/.emacs.d/.saves" t)))
+; Backup files
+(setq
+   backup-by-copying t
+   delete-old-versions t
+   kept-new-versions 6
+   kept-old-versions 2
+   version-control t)
+(setq backup-directory-alist `((".*" . ,temporary-file-directory)))
+(setq auto-save-file-name-transforms `((".*" ,temporary-file-directory t)))
 
 (setq vc-follow-symlinks t)
 
