@@ -16,6 +16,7 @@
        helm-buffers-fuzzy-matching t)
 
      (location-list-buffer (rx bos "*helm M-x"))
+     (location-list-buffer (rx bos "*helm mini"))
      (location-list-buffer (rx bos "*helm-ag"))
      ;; Override default command launcher
      (global-set-key (kbd "M-x") 'helm-M-x))
