@@ -36,7 +36,8 @@
     (define-key evil-normal-state-map (kbd "]h") 'git-gutter:next-hunk)
 
     ;; Hunk edition
-    (evil-leader/set-key "z" 'git-gutter:revert-hunk))
+    (evil-leader/set-key "z" 'git-gutter:revert-hunk)
+    (location-list-buffer (rx bos "*git-gutter:diff*")))
 
   (defun proper-gutter-mode-on ()
     (if (>= emacs-major-version 26)
