@@ -14,7 +14,8 @@ vimUpdate () {
   (
   cd ~/vim
   git fetch
-  local commitsBehind=$(git rev-list \
+  local commitsBehind
+  commitsBehind=$(git rev-list \
     --left-right \
     --count master...origin/master | awk '{print $2}')
   if [ "$commitsBehind" -gt 50 ]; then
@@ -42,9 +43,5 @@ systemUpdate () {
 }
 
 orphans() {
-  if [[ ! -n $(pacman -Qdt) ]]; then
-    echo "No orphans to remove."
-  else
-    sudo pacman -Rns "$(pacman -Qdtq)"
-  fi
+  yaourt -Qdt
 }
