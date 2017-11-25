@@ -1,4 +1,5 @@
 syntax enable
+syntax on " For vimwiki
 set nocompatible
 source ~/dotfiles/config/vim/vimrc.plugins.vim
 
