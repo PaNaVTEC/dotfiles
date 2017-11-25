@@ -6,8 +6,10 @@
 #Dropbox is running: "Up to date..."
 STATUS="$(echo `dropbox-cli status`)"
 DROPBOX_ICON=""
-if [[ $STATUS = \Syncing* ]]; then
-  echo "$DROPBOX_ICON $(echo $STATUS | awk '{print $1}')"
+if [[ $STATUS = "Up to date" ]]; then
+  echo "$DROPBOX_ICON ✓"
+elif [[ $STATUS = \Syncing* ]]; then
+  echo "$DROPBOX_ICON "
 else
-  echo "$DROPBOX_ICON $STATUS"
+  echo "$DROPBOX_ICON x"
 fi
