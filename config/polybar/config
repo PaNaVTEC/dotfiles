@@ -49,7 +49,7 @@ font-1 = DroidSansMonoForPowerline Nerd Font:pixelsize=21;4
 
 modules-left = i3
 modules-center = date
-modules-right = pomodoro cpu memory backlight volume dropbox wlan battery powermenu
+modules-right = pomodoro cpu memory backlight volume dropbox openvpn wlan battery powermenu
 
 tray-position = none
 tray-padding = 4
@@ -119,6 +119,12 @@ interval = 2
 format = <label>
 format-prefix-foreground = ${colors.foreground-alt}
 label =  %percentage_used%%
+
+[module/openvpn]
+type = custom/script
+interval = 5
+exec = ~/dotfiles/bin/vpn_status.sh
+format-underline = #458588
 
 [module/wlan]
 type = internal/network
