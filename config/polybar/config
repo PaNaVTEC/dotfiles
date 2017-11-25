@@ -136,7 +136,7 @@ format-connected-prefix = " "
 format-connected-prefix-foreground = #5b
 
 label-connected = "%{A1:wicd-gtk &:}%essid%%{A}"
-label-disconnected = "%{A1:wicd-gtk &:}%{A}"
+label-disconnected = "%{A1:wicd-gtk &:}%{A} x"
 label-disconnected-foreground = #5b
 
 ramp-signal-foreground = ${colors.foreground-alt}
@@ -144,7 +144,7 @@ ramp-signal-foreground = ${colors.foreground-alt}
 [module/pomodoro]
 type = custom/script
 ; Use pomodoro glyphs in Nerd fonts
-exec = pymodoro --break-prefix " " --pomodoro-prefix " " --pomodoro  --empty " " --break  --length 5 -sp ~/dotfiles/config/i3status/navi.mp3 -sb ~/dotfiles/config/i3status/navi.mp3 
+exec = pymodoro --break-prefix " " --pomodoro-prefix " " --pomodoro  --empty " " --break  --length 5 -sp ~/dotfiles/config/i3status/navi.mp3 -sb ~/dotfiles/config/i3status/navi.mp3
 label = %output%
 tail = true
 interval = 1
