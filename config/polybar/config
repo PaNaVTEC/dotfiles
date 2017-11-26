@@ -124,8 +124,7 @@ label =  %percentage_used%%
 type = custom/script
 interval = 5
 exec = ~/dotfiles/bin/vpn_status.sh
-click-left = xfsudo openvpn /etc/openvpn/server.ovpn &
-click-right = xfsudo kill $(pgrep openvpn)
+click-left = xfsudo toggle-openvpn.sh
 format-underline = #458588
 
 [module/wlan]

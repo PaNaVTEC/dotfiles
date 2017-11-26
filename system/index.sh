@@ -13,7 +13,7 @@ alias ll='exa'
 alias la='ll'
 alias exa='exa -bghlaU --git --group-directories-first'
 alias grep="grep --color=auto"
-alias connectvpn='sudo openvpn /etc/openvpn/server.ovpn'
+alias connectvpn='sudo toggle-openvpn.sh'
 alias wireup='sudo wg-quick up wg0-client'
 alias wiredown='sudo wg-quick down wg0-client'
 alias dotfiles='(cd "$DOTFILES_LOCATION" && vim -c NERDTree)'
