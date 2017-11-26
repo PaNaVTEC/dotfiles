@@ -54,23 +54,21 @@ done
 }
 
 killByName() {
-  kill $(ps aux | grep $1 | awk '{print $2}')
+  kill "$(pgrep $1)"
 }
 
 showWifiPassword() {
-  path='/etc/NetworkManager/system-connections/'
-  if [ $# -eq 0 ]; then
-    path="$path*"
-  else
-    path="$path$1"
-  fi
-  sudo grep -H '^psk=' $path | awk -F '/' '{print $5}'
+  local path='/etc/NetworkManager/system-connections/'
+
+  sudo grep -rH '^psk=' $path | awk -F '/' '{print $5}'
 }
 
 showPublicIp() {
-  IP=$(curl -s ipinfo.io/ip)
-  CITY=$(curl -s ipinfo.io/city)
-  echo $IP "-" $CITY
+  local content=$(curl -s ipinfo.io/)
+  local ip=$(echo $content | jq -r .ip)
+  local city=$(echo $content | jq -r .city)
+  local country=$(echo $content | jq -r .country)
+  echo "$ip - $city ($country)"
 }
 
 showListeningPorts() {
