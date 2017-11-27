@@ -49,10 +49,18 @@ font-1 = DroidSansMonoForPowerline Nerd Font:pixelsize=21;4
 
 modules-left = i3
 modules-center = date
-modules-right = pomodoro cpu memory backlight volume dropbox openvpn wlan battery powermenu
+modules-right = bitcoin pomodoro cpu memory backlight volume dropbox openvpn wlan battery powermenu
 
 tray-position = none
 tray-padding = 4
+
+[module/bitcoin]
+type = custom/script
+interval = 10
+format = <label>
+format-prefix = " "
+tail = true
+exec = printf "%.2f" $(curl -s https://api.kraken.com/0/public/Ticker?pair=XXBTZUSD | jq -r .result.XXBTZUSD.c[0])
 
 [module/i3]
 type = internal/i3
