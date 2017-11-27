@@ -79,21 +79,21 @@ label-focused-background = ${colors.background-alt}
 label-focused-padding = 2
 
 label-unfocused = %name%
-label-unfocused-padding = 2 
+label-unfocused-padding = 2
 
 label-urgent = %name%!
 label-urgent-background = ${colors.alert}
-label-urgent-padding = 2 
+label-urgent-padding = 2
 
 label-visible = %name%
 label-visible-background = ${self.label-focused-background}
-label-visible-padding = 2 
+label-visible-padding = 2
 
 [module/dropbox]
 type = custom/script
 exec = ~/dotfiles/bin/dropbox_status.sh
 format-underline = #458588
-click-left = thunar ~/Dropbox/ 
+click-left = thunar ~/Dropbox/
 interval=5
 
 [module/backlight]
@@ -119,14 +119,14 @@ type = internal/cpu
 interval = 2
 format = <label>
 format-prefix-foreground = ${colors.foreground-alt}
-label =  %percentage%%
+label =  %percentage:2%%
 
 [module/memory]
 type = internal/memory
 interval = 2
 format = <label>
 format-prefix-foreground = ${colors.foreground-alt}
-label =  %percentage_used%%
+label =  %percentage_used:2%%
 
 [module/openvpn]
 type = custom/script
