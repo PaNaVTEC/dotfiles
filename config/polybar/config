@@ -60,7 +60,7 @@ interval = 10
 format = <label>
 format-prefix = " "
 tail = true
-exec = printf "%.2f" $(curl -s https://api.kraken.com/0/public/Ticker?pair=XXBTZUSD | jq -r .result.XXBTZUSD.c[0])
+exec = ~/dotfiles/bin/bitcoin_ticker.sh
 
 [module/i3]
 type = internal/i3
