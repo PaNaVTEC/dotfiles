@@ -61,6 +61,8 @@ format = <label>
 format-prefix = " "
 tail = true
 exec = ~/dotfiles/bin/bitcoin_ticker.sh
+click-left = ~/dotfiles/bin/navigate_to_ticket.sh "COINBASE:BTCUSD"
+click-right = ~/dotfiles/bin/navigate_to_ticket.sh "COINBASE:BTCEUR"
 
 [module/i3]
 type = internal/i3
