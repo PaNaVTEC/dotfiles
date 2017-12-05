@@ -49,10 +49,19 @@ font-1 = DroidSansMonoForPowerline Nerd Font:pixelsize=21;4
 
 modules-left = i3
 modules-center = date
-modules-right = bitcoin pomodoro cpu memory backlight volume dropbox openvpn wlan battery powermenu
+modules-right = bitcoin pomodoro cpu memory backlight volume dropbox openvpn dockerd wlan battery powermenu
 
 tray-position = none
 tray-padding = 4
+
+[module/dockerd]
+type = custom/script
+interval = 20
+format = <label>
+format-prefix = " "
+exec = ~/dotfiles/bin/docker_status.sh
+click-left = xfsudo dockerd &
+click-right = xfsudo pkill dockerd
 
 [module/bitcoin]
 type = custom/script
