@@ -18,11 +18,15 @@
                                         (reusable-frames . visible)
                                         (window-height   . 0.33))))
 
-(set-display-table-slot
-  standard-display-table
-  'vertical-border (make-glyph-code ?│))
+; Buffer dividers
+(defun custom-window-divider ()
+  (let ((display-table (or buffer-display-table standard-display-table)))
+    (set-display-table-slot display-table 5 ?│)
+    (set-window-display-table (selected-window) display-table)))
 
+(add-hook 'window-configuration-change-hook 'custom-window-divider)
 
+; Line wrapping
 (set-display-table-slot standard-display-table 'truncation (make-glyph-code ?→))
 (set-display-table-slot standard-display-table 'wrap (make-glyph-code ?⤸))
 
