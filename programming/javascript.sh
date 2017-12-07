@@ -13,6 +13,7 @@ projectCreateJavascript () {
   TAB="  "
   mkdir -p "$1"
   cd "$1" || return
+  gibo Node JetBrains Vim Emacs macOS Linux Windows > .gitignore
   ya init -y
   ya add mocha chai standard
   ya add babel-core babel-preset-es2015 --dev

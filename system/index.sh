@@ -54,7 +54,7 @@ done
 }
 
 killByName() {
-  kill "$(pgrep $1)"
+  pkill "$1"
 }
 
 showWifiPassword() {
@@ -64,10 +64,14 @@ showWifiPassword() {
 }
 
 showPublicIp() {
-  local content=$(curl -s ipinfo.io/)
-  local ip=$(echo $content | jq -r .ip)
-  local city=$(echo $content | jq -r .city)
-  local country=$(echo $content | jq -r .country)
+  local content
+  local ip
+  local city
+  local country
+  content=$(curl -s ipinfo.io/)
+  ip=$(echo "$content" | jq -r .ip)
+  city=$(echo "$content" | jq -r .city)
+  country=$(echo "$content" | jq -r .country)
   echo "$ip - $city ($country)"
 }
 
@@ -80,3 +84,7 @@ backupSystem() {
 }
 
 alias trayer='trayer --width 30 --widthtype pixel --SetDockType false --edge top --align center'
+
+cpuDrainers() {
+  ps aux --sort %cpu | tail -5 | cut -c 22-150
+}
