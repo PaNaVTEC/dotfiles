@@ -39,6 +39,7 @@
 
   (add-hook 'js-mode-hook 'programming-mode)
   (add-hook 'js-mode-hook 'company-mode)
+  (add-hook 'js-mode-hook 'js-doc)
   (prettify-js-for 'js-mode-hook)
   (add-hook
     'flycheck-mode-hook
@@ -85,5 +86,9 @@
   :config
   (add-hook 'js-mode-hook
     (lambda () (add-to-list 'company-backends 'company-tern))))
+
+(defun js-doc ()
+  (interactive)
+  (setq-local helm-dash-docsets '("JavaScript" "NodeJS" "React" "Sinon")))
 
 (provide 'javascript)
