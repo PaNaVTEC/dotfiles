@@ -1,5 +1,4 @@
 (require 'programming-mode)
-(require 'compile)
 
 (defun haskell/prettify ()
   (prettify

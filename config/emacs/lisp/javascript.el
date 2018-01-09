@@ -1,5 +1,4 @@
 (require 'programming-mode)
-(require 'compile)
 
 (defun prettify-js-for (mode-hook)
   (defun javascript/prettify ()
@@ -52,6 +51,7 @@
   web-mode
   :ensure t
   :mode "\\.x?html?$"
+  :mode "\\.hbs$"
   :config
   (setq
     web-mode-markup-indent-offset 2
