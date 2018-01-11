@@ -23,3 +23,11 @@ createProjectHaskell () {
   (cd "$projectDirectory" && \
     gibo Haskell JetBrains Vim Emacs macOS Linux Windows > .gitignore)
 }
+
+createScriptHaskell () {
+  cat >$1.hs <<EOL
+#!/usr/bin/env stack
+-- stack --resolver lts-10.0 script
+<code here>
+EOL
+}
