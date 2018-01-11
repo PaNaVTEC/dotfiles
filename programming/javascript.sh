@@ -9,7 +9,7 @@ alias yarn='yarn --emoji $_'
 alias ya='yarn --emoji $_'
 alias jsProject='javascriptProject;'
 
-projectCreateJavascript () {
+createJavascriptProject () {
   TAB="  "
   mkdir -p "$1"
   cd "$1" || return
