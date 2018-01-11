@@ -1,4 +1,5 @@
 (use-package dumb-jump
+  :pin melpa-stable
   :bind (("M-g o" . dumb-jump-go-other-window)
          ("M-g j" . dumb-jump-go)
          ("M-g i" . dumb-jump-go-prompt)

@@ -1,5 +1,6 @@
 (pkg
   helm-dash
+  :pin melpa-stable
   :ensure t
   :config
   (setq helm-dash-docsets-path "~/.local/share/Zeal/Zeal/docsets")
