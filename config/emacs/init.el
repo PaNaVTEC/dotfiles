@@ -44,4 +44,7 @@
                    sh))
   (require module))
 
+(defun display-startup-echo-area-message ()
+  (message (format "Emacs started in %s" (emacs-init-time))))
+
 (provide 'init)
