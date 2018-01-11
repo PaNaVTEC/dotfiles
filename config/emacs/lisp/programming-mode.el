@@ -9,6 +9,7 @@
 (require 'code-snippets)
 (require 'gotodefinition)
 (require 'init-documentation)
+(require 'init-code-folding)
 
 (define-minor-mode
   programming-mode
@@ -26,7 +27,8 @@
       (show-paren-mode +1)
       (yas-minor-mode +1)
       (flycheck-mode +1)
-      (dumb-jump-mode +1))
+      (dumb-jump-mode +1)
+      (origami-mode +1))
     (progn
       (prettify-symbols-mode -1)
       (whitespace-mode -1)
@@ -35,7 +37,8 @@
       (show-paren-mode -1)
       (yas-minor-mode -1)
       (flycheck-mode -1)
-      (dumb-jump-mode -1))))
+      (dumb-jump-mode -1)
+      (origami-mode -1))))
 
 (defun set-compile-for (mode command)
   (add-hook mode
