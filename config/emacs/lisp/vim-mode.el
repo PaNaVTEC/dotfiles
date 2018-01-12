@@ -63,12 +63,14 @@
 (pkg
   evil-surround
   :ensure t
+  :defer t
   :config
   (global-evil-surround-mode))
 
 (pkg
   evil-leader
   :ensure t
+  :defer t
   :config
   (global-evil-leader-mode)
   (evil-leader/set-leader ","))
@@ -76,6 +78,7 @@
 (pkg
   evil-numbers
   :ensure t
+  :defer t
   :config
 
   (define-key evil-normal-state-map (kbd "C-a") 'evil-numbers/inc-at-pt)

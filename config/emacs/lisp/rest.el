@@ -1,2 +1,2 @@
-(pkg restclient :ensure t)
+(pkg restclient :ensure t :defer t)
 (provide 'rest)

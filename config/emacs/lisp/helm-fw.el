@@ -3,6 +3,7 @@
 (pkg helm
      :ensure t
      :init (pkg helm-projectile :ensure t)
+     :defer t
      :config
      (require 'helm-config)
      (require 'helm-misc)

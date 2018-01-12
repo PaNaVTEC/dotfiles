@@ -1,3 +1,3 @@
-(use-package origami :ensure t)
+(use-package origami :ensure t :defer t)
 
 (provide 'init-code-folding)

@@ -23,6 +23,7 @@
     ensime
     :ensure t
     :pin melpa-stable
+    :mode "\\.scala$"
     :config
     (setq
       ensime-startup-notification nil
@@ -51,6 +52,6 @@
   (add-hook 'scala-mode-hook 'programming-mode)
   (add-hook 'scala-mode-hook 'scala/prettify))
 
-(pkg sbt-mode :ensure t)
+(pkg sbt-mode :ensure t :mode "\\.scala$")
 
 (provide 'scala)

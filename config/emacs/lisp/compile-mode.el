@@ -1,7 +1,7 @@
 (require 'vim-mode)
 
 ;; Fixes Ansi colors on compilation buffer
-(pkg ansi-color :ensure t)
+(pkg ansi-color :ensure t :defer t)
 (defun endless/colorize-compilation ()
   "Colorize from `compilation-filter-start' to `point'."
   (let ((inhibit-read-only t))
