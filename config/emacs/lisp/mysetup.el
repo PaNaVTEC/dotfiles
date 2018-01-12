@@ -14,7 +14,13 @@
   ;; nord9
   (set-face-attribute 'font-lock-comment-face nil :foreground "#81A1C1")
   ;; nord13
-  (set-face-attribute 'vertical-border nil :foreground "#EBCB8B"))
+  (set-face-attribute 'vertical-border nil :foreground "#EBCB8B")
 
+  ;; configure smerge colors
+  (add-hook 'smerge-mode-hook
+  (lambda ()
+    (set-face-background 'smerge-lower "green")
+    (set-face-background 'smerge-markers "brightblack")
+    (set-face-background 'smerge-upper "red"))))
 
 (provide 'mysetup)
