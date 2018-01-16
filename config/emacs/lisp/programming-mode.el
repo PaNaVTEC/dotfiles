@@ -1,20 +1,21 @@
 ;; -*- lexical-binding: t -*-
+(require 'prettify)
+(require 'proper-gutter-mode)
+(require 'invisible-chars)
+(require 'syntax-check)
+(require 'rainbow-parenthesis)
+(require 'paren)
+(require 'compile)
+(require 'code-snippets)
+(require 'gotodefinition)
+(require 'init-documentation)
+(require 'init-code-folding)
+
 (define-minor-mode
   programming-mode
   :lighter " λ"
   :group 'programming
 
-  (require 'prettify)
-  (require 'proper-gutter-mode)
-  (require 'invisible-chars)
-  (require 'syntax-check)
-  (require 'rainbow-parenthesis)
-  (require 'paren)
-  (require 'compile)
-  (require 'code-snippets)
-  (require 'gotodefinition)
-  (require 'init-documentation)
-  (require 'init-code-folding)
 
   (setq show-paren-delay 0)
 
