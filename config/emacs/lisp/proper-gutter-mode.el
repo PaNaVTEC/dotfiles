@@ -2,7 +2,7 @@
   proper-gutter-mode
   "This mode defines the relative numbers + linum mode + git gutter at the
   left side. Ideal for programming, not needed for another buffers"
-  :lighter " Gutter"
+  :lighter nil
   :group 'proper-gutter
 
   (if (<= emacs-major-version 26)
@@ -17,7 +17,7 @@
   (pkg
     git-gutter
     :ensure t
-    :diminish git-gutter-mode
+    :diminish ""
     :config
     (set-face-background 'git-gutter:modified "blue")
     (set-face-background 'git-gutter:added "green")

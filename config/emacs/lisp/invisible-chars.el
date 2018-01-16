@@ -1,7 +1,7 @@
 (pkg
   whitespace
   :ensure t
-  :diminish whitespace-mode
+  :diminish (whitespace-mode . "")
   :config
   (progn
     (setq whitespace-line-column 80)

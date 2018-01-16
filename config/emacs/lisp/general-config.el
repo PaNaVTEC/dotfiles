@@ -52,4 +52,6 @@
 
 (setq vc-follow-symlinks t)
 
+(pkg diminish :ensure t)
+
 (provide 'general-config)

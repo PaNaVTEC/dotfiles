@@ -8,4 +8,3 @@
         which-key-popup-type 'minibuffer))
 
 (provide 'key-helper)
-

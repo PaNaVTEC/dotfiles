@@ -3,6 +3,7 @@
 (pkg helm
      :ensure t
      :init (pkg helm-projectile :ensure t)
+     :diminish (helm-mode . "")
      :defer t
      :config
      (require 'helm-config)
