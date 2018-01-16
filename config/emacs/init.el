@@ -26,6 +26,7 @@
                    auto-complete
                    haskell
                    javascript
+                   init-groovy
                    init-python
                    scala
                    syntax-check
