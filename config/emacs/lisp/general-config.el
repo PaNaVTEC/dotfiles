@@ -12,10 +12,6 @@
 (tool-bar-mode -1)
 (menu-bar-mode -1)
 
-;; Initial mode in text avoids lag
-(setq initial-major-mode 'text-mode
-      initial-scratch-message nil)
-
 ;; prefer utf-8
 (setq locale-coding-system 'utf-8)
 (set-terminal-coding-system 'utf-8)
