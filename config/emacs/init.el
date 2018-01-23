@@ -29,6 +29,7 @@
                    javascript
                    init-groovy
                    init-python
+                   init-golang
                    scala
                    syntax-check
                    file-explorer
