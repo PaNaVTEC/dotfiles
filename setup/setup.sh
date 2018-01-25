@@ -161,6 +161,7 @@ installJs() {
   sudo yarn global add n
   sudo n latest
   sudo yarn global add tern standard create-react-app js-beautify
+  sudo yarn global add typescript tslint
 }
 
 installClojure() {
