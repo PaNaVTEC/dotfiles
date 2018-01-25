@@ -30,6 +30,7 @@
                    init-groovy
                    init-python
                    init-golang
+                   init-typescript
                    scala
                    syntax-check
                    file-explorer
