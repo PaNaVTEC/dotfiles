@@ -29,6 +29,7 @@
   :config
   (setq js-indent-level 2
         evil-shift-width 2
+        js-switch-indent-offset 2
         js2-basic-offset 2
         js2-bounce-indent-p t
         js2-assume-strict t
