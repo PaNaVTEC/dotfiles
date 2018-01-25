@@ -10,6 +10,8 @@
   (eldoc-mode +1)
   (tide-hl-identifier-mode +1)
   (setq company-tooltip-align-annotations t)
+  (setq
+    tide-format-options '(:indentSize 2 :tabSize 2))
   (add-hook
     'flycheck-mode-hook
     (lambda () (progn
