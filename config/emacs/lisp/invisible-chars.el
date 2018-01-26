@@ -1,4 +1,4 @@
-(pkg
+(use-package
   whitespace
   :ensure t
   :diminish (whitespace-mode . "")

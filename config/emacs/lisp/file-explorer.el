@@ -1,4 +1,4 @@
-(pkg
+(use-package
   neotree
   :ensure t
   :init

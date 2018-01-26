@@ -1,8 +1,8 @@
 ;; helm settings (TAB in helm window for actions over selected items,
 ;; C-SPC to select items)
-(pkg helm
+(use-package helm
      :ensure t
-     :init (pkg helm-projectile :ensure t)
+     :init (use-package helm-projectile :ensure t)
      :diminish (helm-mode . "")
      :defer t
      :config

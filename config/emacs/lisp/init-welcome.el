@@ -2,11 +2,9 @@
 (setq ;initial-major-mode 'text-mode
   initial-scratch-message nil)
 
-(pkg
-  page-break-lines
-  :ensure t)
+(use-package page-break-lines :ensure t)
 
-(pkg
+(use-package
   dashboard
   :ensure t
   :after page-break-lines

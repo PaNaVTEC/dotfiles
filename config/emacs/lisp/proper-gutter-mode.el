@@ -6,7 +6,7 @@
   :group 'proper-gutter
 
   (if (<= emacs-major-version 26)
-    (pkg
+    (use-package
       linum-relative
       :diminish linum-relative-mode
       :ensure t
@@ -14,7 +14,7 @@
       :config
       (setq linum-relative-current-symbol "" linum-relative-format "%3s ")))
 
-  (pkg
+  (use-package
     git-gutter
     :ensure t
     :diminish ""

@@ -28,7 +28,7 @@
 (setq browse-url-browser-function 'browse-url-generic
       browse-url-generic-program my-browser)
 
-(pkg
+(use-package
   smooth-scrolling
   :ensure t
   :init
@@ -48,6 +48,6 @@
 
 (setq vc-follow-symlinks t)
 
-(pkg diminish :ensure t)
+(use-package diminish :ensure t)
 
 (provide 'general-config)

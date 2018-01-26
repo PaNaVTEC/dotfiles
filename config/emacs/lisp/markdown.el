@@ -1,2 +1,2 @@
-(pkg markdown-mode :ensure t :mode "\\.md$")
+(use-package markdown-mode :ensure t :mode "\\.md$")
 (provide 'markdown)

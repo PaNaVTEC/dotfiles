@@ -1,6 +1,6 @@
 (require 'programming-mode)
 
-(pkg
+(use-package
   groovy-mode
   :ensure t
   :mode "\\.groovy$"

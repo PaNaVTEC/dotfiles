@@ -6,8 +6,8 @@
 
 ;; Themes
 (defcustom available-themes '(nord spacemacs-light) "Available themes to cycle")
-(pkg spacemacs-theme :ensure t :defer t)
-(pkg
+(use-package spacemacs-theme :ensure t :defer t)
+(use-package
   nord-theme
   :ensure t
   :config

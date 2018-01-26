@@ -13,14 +13,14 @@
         ("!=" . ?≠))))
   (add-hook mode-hook 'javascript/prettify))
 
-(pkg
+(use-package
   indium
   :ensure t
   :mode "\\.jsx?$"
   :config
   (setq indium-chrome-executable my-browser))
 
-(pkg
+(use-package
   js2-mode
   :ensure t
   :mode ("\\.js$" . js2-mode )
@@ -49,7 +49,7 @@
                  (flycheck-add-mode 'javascript-standard 'js2-jsx-mode)
                  (add-to-list 'flycheck-disabled-checkers 'javascript-eslint)))))
 
-(pkg
+(use-package
   web-mode
   :ensure t
   :mode "\\.x?html?$"
@@ -60,9 +60,9 @@
     web-mode-code-indent-offset 2)
   (add-hook 'web-mode-hook 'programming-mode))
 
-(pkg tern :defer t :config (add-hook 'js-mode-hook 'tern-mode))
+(use-package tern :defer t :config (add-hook 'js-mode-hook 'tern-mode))
 
-(pkg
+(use-package
   js2-refactor
   :ensure t
   :defer t
@@ -74,7 +74,7 @@
   (evil-leader/set-key "n" 'js2r-inline-var)
   (evil-leader/set-key "r" 'js2r-rename-var))
 
-(pkg
+(use-package
   json-mode
   :ensure t
   :mode "\\.json\\'"
@@ -82,7 +82,7 @@
   (add-hook 'json-mode-hook 'whitespace-mode)
   (add-hook 'json-mode-hook 'proper-gutter-mode))
 
-(pkg
+(use-package
   company-tern
   :ensure t
   :defer t

@@ -10,7 +10,6 @@
   (package-installed-p 'use-package)
   (package-refresh-contents)
   (package-install 'use-package))
-(defalias 'pkg 'use-package)
 
 ;; Custom file
 (setq custom-file "~/.emacs.d/custom.el")

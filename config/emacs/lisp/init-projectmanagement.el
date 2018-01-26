@@ -1,9 +1,9 @@
-(pkg
+(use-package
   projectile
   :ensure t)
 
 ;; CtrlP like
-(pkg
+(use-package
   helm-projectile
   :ensure t
   :defer t

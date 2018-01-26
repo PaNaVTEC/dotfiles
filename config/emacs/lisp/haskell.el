@@ -135,13 +135,13 @@
       ("..." . ?…)
       ("\\" . ?λ))))
 
-(pkg company-ghci :ensure t :defer t)
+(use-package company-ghci :ensure t :defer t)
 
-(pkg
+(use-package
   haskell-mode
   :ensure t
   :mode "\\.hs$"
-  :init (pkg intero :ensure t)
+  :init (use-package intero :ensure t)
   :config
   (custom-set-variables '(haskell-stylish-on-save t))
   (set-compile-for 'haskell-mode-hook "stack test")

@@ -1,4 +1,4 @@
-(pkg
+(use-package
   helm-dash
   :pin melpa-stable
   :ensure t

@@ -1,3 +1,3 @@
-(pkg rainbow-delimiters :ensure t :defer t)
+(use-package rainbow-delimiters :ensure t :defer t)
 
 (provide 'rainbow-parenthesis)

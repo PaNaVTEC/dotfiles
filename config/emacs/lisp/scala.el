@@ -1,6 +1,6 @@
 (require 'programming-mode)
 
-(pkg
+(use-package
   scala-mode
   :ensure t
   :mode "\\.scala$"
@@ -19,7 +19,7 @@
         ("!=" . ?≠)
         ("???" . ?⊥))))
 
-  (pkg
+  (use-package
     ensime
     :ensure t
     :pin melpa-stable
@@ -52,6 +52,6 @@
   (add-hook 'scala-mode-hook 'programming-mode)
   (add-hook 'scala-mode-hook 'scala/prettify))
 
-(pkg sbt-mode :ensure t :mode "\\.scala$")
+(use-package sbt-mode :ensure t :mode "\\.scala$")
 
 (provide 'scala)

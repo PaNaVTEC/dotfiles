@@ -1,4 +1,4 @@
-(pkg magit :ensure t :defer t)
-(pkg evil-magit :ensure t :defer t)
+(use-package magit :ensure t :defer t)
+(use-package evil-magit :ensure t :defer t)
 
 (provide 'git)

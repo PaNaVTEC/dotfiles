@@ -1,4 +1,4 @@
-(pkg
+(use-package
   which-key
   :ensure t
   :defer t
