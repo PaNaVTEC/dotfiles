@@ -308,6 +308,11 @@ installEmacs() {
   touch "$HOME/.emacs.d/custom.el"
 
   yaourt -S --noconfirm xsel # Fixes clipboard
+  git clone https://github.com/jdee-emacs/jdee-server.git ~/.jdee-server
+  (
+    cd ~/.jdee-server
+    mvn -Dmaven.test.skip=true package
+  )
 
   ln -sfn "$dir/config/emacs/init.el" "$HOME/.emacs.d/"
   ln -sfn "$dir/config/emacs/lisp/" "$HOME/.emacs.d/lisp"
