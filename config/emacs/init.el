@@ -26,6 +26,7 @@
                    auto-complete
                    haskell
                    javascript
+                   init-java
                    init-groovy
                    init-python
                    init-golang
