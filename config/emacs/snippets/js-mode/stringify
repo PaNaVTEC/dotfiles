@@ -1,0 +1,4 @@
+# -*- mode: snippet -*-
+#name : stringify
+# --
+console.log(JSON.stringify($0, null, 2))

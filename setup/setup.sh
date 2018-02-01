@@ -316,6 +316,7 @@ installEmacs() {
 
   ln -sfn "$dir/config/emacs/init.el" "$HOME/.emacs.d/"
   ln -sfn "$dir/config/emacs/lisp/" "$HOME/.emacs.d/lisp"
+  ln -sfn "$dir/config/emacs/snippets/" "$HOME/.emacs.d/snippets"
 
   mkdir -p "$HOME/.config/systemd/user"
   ln -sfn "$dir/config/units/emacs.service" "$HOME/.config/systemd/user/emacs.service"
