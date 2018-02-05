@@ -14,11 +14,13 @@
     company-tooltip-align-annotations t
     tide-format-options '(:indentSize 2 :tabSize 2))
 
-  (add-hook 'before-save-hook 'tide-format-before-save)
+;  (add-hook 'before-save-hook 'tide-format-before-save)
   (add-hook
     'flycheck-mode-hook
     (lambda () (progn
                  (flycheck-add-mode 'typescript-tslint 'typescript-mode)))))
+
+(setq c-default-style "bsd" c-basic-offset 2)
 
 (use-package
   typescript-mode
@@ -26,6 +28,9 @@
   :pin melpa-stable
   :mode ("\\.tsx?" . typescript-mode)
   :config
+
+  (setq typescript-indent-level 4)
+  (set-compile-for 'typescript-mode "yarn test")
 
   (use-package
     tide

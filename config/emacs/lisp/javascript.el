@@ -31,7 +31,7 @@
         evil-shift-width 2
         js-switch-indent-offset 2
         js2-basic-offset 2
-        js2-bounce-indent-p t
+        js2-bounce-indent-p -1
         js2-assume-strict t
         sgml-basic-offset 2
         js2-strict-missing-semi-warning nil)
