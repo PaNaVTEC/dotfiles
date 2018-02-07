@@ -20,8 +20,6 @@
     (lambda () (progn
                  (flycheck-add-mode 'typescript-tslint 'typescript-mode)))))
 
-(setq c-default-style "bsd" c-basic-offset 2)
-
 (use-package
   typescript-mode
   :ensure t
@@ -29,7 +27,7 @@
   :mode ("\\.tsx?" . typescript-mode)
   :config
 
-  (setq typescript-indent-level 4)
+  (setq typescript-indent-level 2)
   (set-compile-for 'typescript-mode "yarn test")
 
   (use-package
