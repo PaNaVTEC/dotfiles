@@ -15,6 +15,8 @@
     (kbd "s") 'neotree-enter-vertical-split
     (kbd "m") 'neotree-modify-mode-menu)
 
+  (evil-leader/set-key "f" 'neotree-find)
+
   (global-set-key (kbd "C-n") 'neotree-toggle)
   (define-key evil-normal-state-map (kbd "C-n") 'neotree-toggle)
   (setq-default neo-show-hidden-files t))
