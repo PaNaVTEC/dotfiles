@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+#name : describe
+# --
+describe('$0', () => {
+  it('$1', () => {
+    $2
+  })
+})
