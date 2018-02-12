@@ -17,4 +17,5 @@ source "$relativePath/git-alias.sh"
 source "$relativePath/git-alias-custom.sh"
 
 [ -f /usr/local/etc/profile.d/autojump.sh ] && . /usr/local/etc/profile.d/autojump.sh
+[ -f /usr/share/autojump/autojump.bash ] && . /usr/share/autojump/autojump.bash
 [ -f /etc/profile.d/autojump.bash ] && . /etc/profile.d/autojump.bash
