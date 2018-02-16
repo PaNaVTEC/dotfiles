@@ -16,6 +16,7 @@
   :lighter " λ"
   :group 'programming
 
+  (evil-leader/set-key "r" 'recompile)
 
   (setq show-paren-delay 0)
 
