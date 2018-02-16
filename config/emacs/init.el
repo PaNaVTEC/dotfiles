@@ -18,7 +18,6 @@
 ;; Load modules
 (add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
 (dolist (module '(mysetup
-                   init-welcome
                    general-config
                    appearance
                    vim-mode
