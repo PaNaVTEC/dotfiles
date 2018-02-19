@@ -1,6 +1,7 @@
 #!/bin/bash -e
 
 export EDITOR=vim
+export VISUAL=vim
 
 alias v='vim'
 alias vi='vim'
