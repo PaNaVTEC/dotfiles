@@ -30,11 +30,14 @@ systemUpdate () {
   echo "Updating dotfiles"
   (cd "$DOTFILES_LOCATION" && git pull)
 
+  echo "Update inox extensions"
+  sudo maninex -u
+
   echo "Upgrading global Js packages"
   sudo yarn global upgrade
 
   echo "Upgrade yarn completion package"
-  curl -o ~/dotfiles/programming/yarn-completion.bash https://raw.githubusercontent.com/dsifford/yarn-completion/master/yarn-completion.bash
+  curl -o "$DOTFILES_LOCATION/programming/yarn-completion.bash" https://raw.githubusercontent.com/dsifford/yarn-completion/master/yarn-completion.bash
 
   vimUpdate;
 

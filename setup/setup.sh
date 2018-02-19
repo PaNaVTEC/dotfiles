@@ -175,6 +175,12 @@ installTools() {
   echo "Installing apps and tools"
   sleep 2
   yaourt --noconfirm -S ./yaourt_tools.txt
+
+  # setup inox
+  sudo pip install maninex
+  sudo mkdir -p /usr/share/inox/extensions
+  sudo mkdir -p ~/.config/inox/extensions
+  ln -sfn "$dir/config/inox/maninex.conf" "$HOME/.config/maninex.conf"
 }
 
 installRedshift() {
