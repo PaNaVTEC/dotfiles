@@ -42,14 +42,14 @@
   (defun proper-gutter-mode-on ()
     (if (>= emacs-major-version 26)
       (progn
-        (setq display-line-numbers-type 'relative)
+        (if (equal my-lines-mode 'relative) (setq display-line-numbers-type 'relative))
         (set-face-foreground 'line-number-current-line "gold3")
         (display-line-numbers-mode +1)
         (git-gutter-mode +1))
       (progn
         (git-gutter:linum-setup)
         (git-gutter-mode +1)
-        (linum-relative-mode +1))))
+        (if (equal my-lines-mode 'relative) (linum-relative-mode +1)))))
 
   (defun proper-gutter-mode-off ()
     (if (>= emacs-major-version 26)

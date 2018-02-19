@@ -1,5 +1,7 @@
 (defcustom my-browser "inox" "Current browser")
 
+(defcustom my-lines-mode 'normal "Type of lines. 'normal or 'relative")
+
 ;; Fonts
 (defcustom my-font "xos4 Terminus" "Emacs font")
 (defcustom my-font-height 150 "Emacs font height")
