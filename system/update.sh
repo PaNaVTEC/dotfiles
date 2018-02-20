@@ -38,6 +38,7 @@ systemUpdate () {
 
   echo "Upgrade yarn completion package"
   curl -o "$DOTFILES_LOCATION/programming/yarn-completion.bash" https://raw.githubusercontent.com/dsifford/yarn-completion/master/yarn-completion.bash
+  curl -o "$DOTFILES_LOCATION/programming/git-completion.bash" https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash
 
   vimUpdate;
 
