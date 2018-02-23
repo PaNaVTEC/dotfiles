@@ -9,4 +9,11 @@
   'grep-find-ignored-directories
   (list "SCCS" "RCS" "CVS" "MCVS" ".svn" ".git" ".hg" ".bzr" "_MTN" "_darcs" "{arch}" "objects" "build" "bin" "out" "lib" "dist" "node_modules" ".nyc_output"))
 
+(use-package
+  xah-find
+  :ensure t
+  :defer t
+  :config
+  (location-list-buffer (rx bos "*xah-find output*")))
+
 (provide 'acklike)
