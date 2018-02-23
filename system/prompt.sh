@@ -60,6 +60,14 @@ __powerline() {
   readonly RESET="\[$(tput sgr0)\]"
   readonly BOLD="\[$(tput bold)\]"
 
+  __bg_jobs() {
+    local jobs=$(jobs | wc -l)
+
+    if [ $jobs -gt 0 ]; then
+      printf "[$jobs]"
+    fi
+  }
+
   __git_info() { 
     [ -x "$(which git)" ] || return    # git not found
 
@@ -95,12 +103,13 @@ __powerline() {
       local FG_EXIT="$FG_RED"
     fi
 
-    local GIT_INFO=$(__git_info)
+    local MIDDLE_INFO=$(__bg_jobs)
+    MIDDLE_INFO+=$(__git_info)
 
     PS1="$BG_RED$FG_BASE3 \w $RESET"
-    if [ -n "$GIT_INFO" ]; then
+    if [ -n "$MIDDLE_INFO" ]; then
       PS1+="$FG_RED$BG_BLUE$SEPARATOR$RESET"
-      PS1+="$BG_BLUE$FG_BASE3$GIT_INFO$RESET"
+      PS1+="$BG_BLUE$FG_BASE3$MIDDLE_INFO$RESET"
       PS1+="$FG_BLUE$BG_EXIT$SEPARATOR$RESET"
     else
       PS1+="$FG_RED$BG_EXIT$SEPARATOR$RESET"
