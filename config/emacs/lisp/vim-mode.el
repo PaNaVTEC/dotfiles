@@ -61,6 +61,8 @@
   (evil-ex-define-cmd "Qa" "qa")
   (evil-ex-define-cmd "E" "e"))
 
+  (location-list-buffer (rx bos "*evil-registers*"))
+
 (use-package
   evil-surround
   :ensure t
