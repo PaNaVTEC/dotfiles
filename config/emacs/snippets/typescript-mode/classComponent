@@ -1,0 +1,13 @@
+# -*- mode: snippet -*-
+#name : classcomponent
+# --
+import * as React from 'react'
+
+interface Props {
+}
+
+export default class $0 extends React.Component<Props, {}> {
+  render () {
+    return <div>$1</div>
+  }
+}

@@ -1,0 +1,11 @@
+# -*- mode: snippet -*-
+#name : testObject
+# --
+class $0TO {
+  wrapper: Enzyme.ReactWrapper<$0>
+
+  constructor (wrapper: Enzyme.ReactWrapper<$0>) {
+    this.wrapper = wrapper
+  }
+}
+
