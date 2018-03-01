@@ -11,7 +11,7 @@
      (require 'helm-projectile)
      (require 'helm-locate)
      (helm-mode 1)
-     (define-key evil-normal-state-map " " 'helm-mini)
+     (define-key evil-normal-state-map (kbd "<backtab>") 'helm-mini)
      (setq
        helm-quick-update t
        helm-bookmark-show-location t
