@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 
+export PROMPT_DIRTRIM=2
 __powerline() {
 
   readonly PS_SYMBOL='$'
