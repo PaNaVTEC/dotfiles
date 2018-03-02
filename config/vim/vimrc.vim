@@ -18,7 +18,9 @@ set ttimeoutlen=0
 " Colors
 set background=dark
 if &t_Co > 255
-  set tgc
+  if $TERM != 'rxvt-unicode-256color'
+    set tgc
+  endif
   colorscheme nord
   " Disable Background Color Erase (BCE) so that color schemes
   " work properly when Vim is used inside tmux and GNU screen.

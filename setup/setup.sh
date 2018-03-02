@@ -177,6 +177,9 @@ installTools() {
   sleep 2
   yaourt --noconfirm -S ./yaourt_tools.txt
 
+  #urxvt
+  yaourt --noconfirm -S rxvt-unicode rxvt-unicode-terminfo urxvt-perls
+
   # setup inox
   sudo pip install maninex
   sudo mkdir -p /usr/share/inox/extensions

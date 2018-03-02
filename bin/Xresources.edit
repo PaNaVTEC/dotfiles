@@ -1,0 +1,56 @@
+#!/bin/sh
+
+# Xresources.edit
+#
+# Some operating systems do not use cpp when loading ~/.Xresources at session
+# startup (they run xrdb with the -nocpp option).
+# This script is a wrapper around your $EDITOR that allows you to use cpp
+# directives for your ~/.Xresources.src and will automatically rebuild
+# ~/.Xresources when you save the file.
+#
+# Author: Olivier Mengué <dolmen@cpan.org>
+# https://github.com/dolmen/Xresources.edit
+#
+# To install:
+#    chmod u+x .Xresources.edit
+#    ln -s Xresources.edit ~/.Xresources.edit
+#    ~/.Xresources.edit
+
+
+# Running as called as 'cpp' by 'xrdb'
+if [ $# -gt 0 ]; then
+	# Run cpp and save the result as ~/.Xresources
+	[ -e "$HOME/.Xresources" ] && chmod u+w "$HOME/.Xresources"
+	cpp "$@" | tee "$HOME/.Xresources"
+	res=$?
+	chmod a-wx "$HOME/.Xresources"
+	exit $res
+fi
+
+ext=src
+
+if [ ! -f "$HOME/.Xresources.$ext" ]; then
+	# Initial setup: move .Xresources to .Xresources.$ext
+	# and insert the warning
+	{
+		echo '! *************************************************'
+		echo "! Do not edit ~/.Xresources, but ~/.Xresources.$ext"
+		echo '! Use $HOME/.Xresources.edit to edit this file'
+		echo '! *************************************************'
+		echo '! vim:set ft=xdefaults:'
+		echo '!'
+		cat "$HOME/.Xresources"
+	} > "$HOME/.Xresources.$ext"
+	# Make .Xresources non-writable to discourage direct editing
+	chmod a-wx "$HOME/.Xresources"
+elif [ -f "$HOME/.Xresources" -a "$HOME/.Xresources" -nt "$HOME/.Xresources.$ext" ]; then
+	{
+		echo "~/.Xresources is more recent than ~/.Xresources.$ext"
+		echo "You have to fix this manually. Sorry :("
+	} >&2
+	exit 1
+fi
+
+${EDITOR:-vi} "$HOME/.Xresources.$ext"
+# Reload resources and call ourself as a wrapper around cpp (to create .Xresources)
+[ ! -f "$HOME/.Xresources" -o "$HOME/.Xresources.$ext" -nt "$HOME/.Xresources" ] && xrdb -cpp "$0" "$HOME/.Xresources.$ext"
