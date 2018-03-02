@@ -31,7 +31,8 @@ systemUpdate () {
   (cd "$DOTFILES_LOCATION" && git pull)
 
   echo "Update inox extensions"
-  sudo maninex -u
+  sudo maninex -i # Installs new extensions
+  sudo maninex -u # Upgrade already installed extensions
 
   echo "Upgrading global Js packages"
   sudo yarn global upgrade
