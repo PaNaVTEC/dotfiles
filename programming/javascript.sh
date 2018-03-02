@@ -5,8 +5,6 @@ source "$DIR/yarn-completion.bash"
 
 NO_PKG_JSON="No package.json found"
 
-alias yarn='yarn --emoji $_'
-alias ya='yarn --emoji $_'
 alias jsProject='javascriptProject;'
 
 createJavascriptProject () {

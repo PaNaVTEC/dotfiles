@@ -158,6 +158,7 @@ installHaskell() {
 
 installJs() {
   yaourt --noconfirm -S nodejs npm yarn
+  yarn config set -- --emoji true
   sudo yarn global add n
   sudo n latest
   yarn global add tern standard create-react-app js-beautify
