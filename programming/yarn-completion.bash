@@ -1,7 +1,7 @@
 # shellcheck shell=bash
 #
-# Version: 0.5.1
-# Yarn Version: 1.3.2
+# Version: 0.6.1
+# Yarn Version: 1.5.0
 #
 # bash completion for Yarn (https://github.com/yarnpkg/yarn)
 #
@@ -22,7 +22,7 @@
 # @param $1 parentField  The first-level property of interest.
 #
 __yarn_get_package_fields() {
-    local OPTIND opt fields package parentField
+    local OPTIND opt package parentField
     package="$(pwd)/package.json"
 
     while getopts ":g" opt; do
@@ -30,21 +30,23 @@ __yarn_get_package_fields() {
             g)
                 package="$HOME/.config/yarn/global/package.json"
                 ;;
+            *)
+                ;;
         esac
     done
     shift $(( OPTIND - 1 ))
 
     parentField="$1"
 
-    [[ ! -e $package || ! $parentField ]] && return
+    [[ ! -f $package || ! $parentField ]] && return
 
-    fields=$(
-        sed -n "/\"$parentField\": {/,/\},/p" < "$package" |
-        tail -n +2 |
-        grep -Eo '"[[:alnum:]@:./_-]+?"' |
-        grep -Eo '[[:alnum:]@:./_-]+'
-    )
-    echo "$fields"
+    sed -n '/"'"$parentField"'":[[:space:]]*{/,/^[[:space:]]*}/{
+        # exclude start and end patterns
+        //!{
+            # extract the text between the first pair of double quotes
+            s/^[[:space:]]*"\([^"]*\).*/\1/p
+        }
+    }' "$package"
 }
 
 # bash-completion _filedir backwards compatibility
@@ -190,6 +192,11 @@ _yarn_global() {
             COMPREPLY=( $( compgen -W "${subcommands[*]}" -- "$cur" ) )
             ;;
     esac
+}
+
+_yarn_help() {
+    [[ "$prev" != help ]] && return
+    COMPREPLY=( $( compgen -W "${commands[*]}" -- "$cur" ) )
 }
 
 _yarn_info() {
@@ -435,6 +442,14 @@ _yarn_version() {
     esac
 }
 
+_yarn_workspaces() {
+    [[ "$prev" != workspaces ]] && return
+    local subcommands=(
+        info
+    )
+    COMPREPLY=( $( compgen -W "${subcommands[*]}" -- "$cur" ) )
+}
+
 _yarn_why() {
     local modules_folder
     local modules
@@ -489,6 +504,7 @@ _yarn() {
         check
         config
         create
+        exec
         generate-lock-entry
         global
         help
@@ -501,6 +517,7 @@ _yarn() {
         list
         login
         logout
+        node
         outdated
         owner
         pack
@@ -513,6 +530,9 @@ _yarn() {
         upgrade
         upgrade-interactive
         version
+        versions
+        workspace
+        workspaces
         why
         $( __yarn_get_package_fields scripts )
     )
