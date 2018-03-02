@@ -2,6 +2,8 @@
 
 relativePath="$DOTFILES_LOCATION/system"
 source "$relativePath/update.sh"
+#source /usr/bin/liquidprompt
+
 source "$relativePath/prompt.sh"
 
 if [[ $(uname) == "Darwin" ]]; then
@@ -87,4 +89,21 @@ alias trayer='trayer --width 30 --widthtype pixel --SetDockType false --edge top
 
 cpuDrainers() {
   ps aux --sort %cpu | tail -5 | cut -c 22-150
+}
+
+setTermiteTitle() {
+  echo `tput tsl` $1  `tput fsl`
+}
+
+dockerHotReloading() {
+  # directory in /lib/modules
+#  sudo depmod 4.15.6-1-ARCH
+#  sudo modprobe --set-version=4.15.6-1-ARCH overlay bridge br_netfilter nf_nat xt_conntrack
+
+#  uname () {
+#    echo "4.15.6-1-ARCH"
+#  }
+  modprobe () {
+    builtin modprobe --set-version=4.15.6-1-ARCH
+  }
 }
