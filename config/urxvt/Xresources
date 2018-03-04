@@ -5,11 +5,12 @@
 ! vim:set ft=xdefaults:
 
 URxvt.intensityStyles: false
-URxvt.background: [90]#2E3440
-URxvt.depth: 32
+URxvt.background: #2E3440
+!URxvt.depth: 24
 URxvt.font: xft:xos4 Terminus:size=13, xft:Symbola:size=13, xft:DroidSansMonoForPowerline Nerd Font:size=13
 URxvt.scrollBar: false
 URxvt.cursorColor: #D8DEE9
+URxvt*skipBuiltinGlyphs: true
 
 !! Extensions
 URxvt.perl-ext-common: default,matcher,resize-font,url-select,keyboard-select,clipboard
@@ -26,8 +27,6 @@ URxvt.iso14755_52: false
 !! keyboard-select:
 URxvt.keysym.M-Escape: perl:keyboard-select:activate
 !! resize-font
-!URxvt.keysym.C-minus: resize-font:smaller
-!URxvt.keysym.C-plus: resize-font:bigger
 URxvt.resize-font.smaller: C-minus
 URxvt.resize-font.bigger: C-plus
 URxvt.resize-font.reset: C-equal
@@ -35,12 +34,7 @@ URxvt.resize-font.reset: C-equal
 URxvt.url-launcher: /usr/bin/xdg-open
 URxvt.matcher.button: 1
 
-################
-##            ##
-##   COLORS   ##
-##            ##
-################
-
+!! Nord theme colors
 #define nord0 #22242D
 #define nord1 #383C4A
 #define nord2 #434C5E
