@@ -3,6 +3,21 @@
   :ensure t
   :config
   (evil-mode 1)
+
+  (unless (display-graphic-p)
+    (use-package
+      evil-terminal-cursor-changer
+      :ensure t
+      :init
+      (setq
+        evil-motion-state-cursor 'box
+        evil-visual-state-cursor 'box
+        evil-normal-state-cursor 'box
+        evil-insert-state-cursor 'bar
+        evil-emacs-state-cursor  'hbar)
+      :config
+      (evil-terminal-cursor-changer-activate)))
+
   (define-key evil-motion-state-map (kbd "C-z") 'suspend-emacs)
 
   ;; Visual line navigation
@@ -89,15 +104,5 @@
 
   (define-key evil-normal-state-map (kbd "C-a") 'evil-numbers/inc-at-pt)
   (define-key evil-normal-state-map (kbd "C-x") 'evil-numbers/dec-at-pt))
-
-;; Cursor shape in insert/visual mode
-(defun insert-cursor () (send-string-to-terminal "\e[6 q"))
-(defun box-cursor () (send-string-to-terminal "\e[2 q"))
-(unless (and (null (getenv "TMUX")) (display-graphic-p))
-  (add-hook 'evil-insert-state-entry-hook 'insert-cursor)
-  (add-hook 'evil-insert-state-exit-hook 'box-cursor)
-  (add-hook 'kill-emacs-hook 'box-cursor)
-  (add-hook 'evil-normal-state-entry-hook 'box-cursor)
-  (add-hook 'evil-motion-state-entry-hook 'box-cursor))
 
 (provide 'vim-mode)
