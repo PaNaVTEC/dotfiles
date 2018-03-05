@@ -179,6 +179,7 @@ installTools() {
 
   #urxvt
   yaourt --noconfirm -S rxvt-unicode rxvt-unicode-terminfo urxvt-perls
+  ln -sfn "$dir/config/urxvt/Xresources" "$HOME/.Xresources.src"
 
   # setup inox
   sudo pip install maninex
