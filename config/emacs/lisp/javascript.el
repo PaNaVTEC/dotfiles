@@ -34,6 +34,8 @@
         js2-bounce-indent-p -1
         js2-assume-strict t
         sgml-basic-offset 2
+        c-basic-offset 2
+        js2-pretty-multiline-declarations 'all
         js2-strict-missing-semi-warning nil)
 
   (set-compile-for 'js-mode-hook "yarn test:unit")
