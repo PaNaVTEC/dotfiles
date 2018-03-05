@@ -183,7 +183,7 @@ installTools() {
 
   # Patcher matcher as described in 
   # https://wiki.archlinux.org/index.php/Rxvt-unicode#Very_long_lines_cause_slowdown
-  mkdir -p "$HOME/.urxvt"
+  mkdir -p "$HOME/.urxvt/ext"
   ln -sfn "$dir/config/urxvt/matcher" "$HOME/.urxvt/ext/matcher"
 
   # setup inox
