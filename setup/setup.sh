@@ -181,6 +181,11 @@ installTools() {
   yaourt --noconfirm -S rxvt-unicode rxvt-unicode-terminfo urxvt-perls
   ln -sfn "$dir/config/urxvt/Xresources" "$HOME/.Xresources.src"
 
+  # Patcher matcher as described in 
+  # https://wiki.archlinux.org/index.php/Rxvt-unicode#Very_long_lines_cause_slowdown
+  mkdir -p "$HOME/.urxvt"
+  ln -sfn "$dir/config/urxvt/matcher" "$HOME/.urxvt/ext/matcher"
+
   # setup inox
   sudo pip install maninex
   sudo mkdir -p /usr/share/inox/extensions
