@@ -42,13 +42,14 @@
 
 ; Backup files
 (setq
-   backup-by-copying t
-   delete-old-versions t
-   kept-new-versions 6
-   kept-old-versions 2
-   version-control t)
-(setq backup-directory-alist `((".*" . ,temporary-file-directory)))
-(setq auto-save-file-name-transforms `((".*" ,temporary-file-directory t)))
+  backup-by-copying t
+  create-lockfiles nil
+  backup-directory-alist `((".*" . ,temporary-file-directory))
+  auto-save-file-name-transform `((".*" ,temporary-file-directory t))
+  delete-old-versions t
+  kept-new-versions 6
+  kept-old-versions 2
+  make-backup-files t)
 
 (setq vc-follow-symlinks t)
 
