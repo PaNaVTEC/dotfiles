@@ -3,5 +3,6 @@ android-studio
 android-apktool
 android-sdk-build-tools
 android-udev
+android-tools
 dex2jar
 genymotion
