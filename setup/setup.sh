@@ -179,7 +179,7 @@ installTools() {
 
   #urxvt
   yaourt --noconfirm -S rxvt-unicode rxvt-unicode-terminfo urxvt-perls
-  ln -sfn "$dir/config/urxvt/Xresources" "$HOME/.Xresources.src"
+  ln -sfn "$dir/config/urxvt/Xresources" "$HOME/.Xresources"
 
   # Patcher matcher as described in 
   # https://wiki.archlinux.org/index.php/Rxvt-unicode#Very_long_lines_cause_slowdown
