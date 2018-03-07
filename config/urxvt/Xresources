@@ -1,38 +1,4 @@
-! *************************************************
-! Do not edit ~/.Xresources, but ~/.Xresources.src
-! Use $HOME/.Xresources.edit to edit this file
-! *************************************************
 ! vim:set ft=xdefaults:
-
-URxvt.intensityStyles: false
-URxvt.background: #2E3440
-!URxvt.depth: 24
-URxvt.font: xft:xos4 Terminus:size=13, xft:Symbola:size=13, xft:DroidSansMonoForPowerline Nerd Font:size=13
-URxvt.scrollBar: false
-URxvt.cursorColor: #D8DEE9
-URxvt*skipBuiltinGlyphs: true
-
-!! Extensions
-URxvt.perl-ext-common: default,matcher,resize-font,url-select,keyboard-select,clipboard
-URxvt.colorUL: nord10
-!! url-select
-URxvt.keysym.M-u: perl:url-select:select_next
-URxvt.url-select.launcher: /usr/bin/xdg-open
-URxvt.url-select.underline: true
-!! Clipboard
-URxvt.keysym.Shift-Control-V: perl:clipboard:paste
-URxvt.keysym.Shift-Control-C: perl:clipboard:copy
-URxvt.iso14755: false
-URxvt.iso14755_52: false
-!! keyboard-select:
-URxvt.keysym.M-Escape: perl:keyboard-select:activate
-!! resize-font
-URxvt.resize-font.smaller: C-minus
-URxvt.resize-font.bigger: C-plus
-URxvt.resize-font.reset: C-equal
-!! Matcher
-URxvt.url-launcher: /usr/bin/xdg-open
-URxvt.matcher.button: 1
 
 !! Nord theme colors
 #define nord0 #22242D
@@ -65,7 +31,7 @@ URxvt.matcher.button: 1
 *.color4: nord9
 *.color5: nord15
 *.color6: nord8
-*.color7: nord
+*.color7: nord7
 *.color8: nord3
 *.color9: nord11
 *.color10: nord14
@@ -75,3 +41,42 @@ URxvt.matcher.button: 1
 *.color14: nord7
 *.color15: nord6
 
+URxvt.intensityStyles: false
+URxvt.background: #2E3440
+!URxvt.depth: 24
+URxvt.font: xft:xos4 Terminus:size=13, xft:Symbola:size=13, xft:DroidSansMonoForPowerline Nerd Font:size=13
+URxvt.scrollBar: false
+URxvt.cursorColor: #D8DEE9
+URxvt*skipBuiltinGlyphs: true
+
+!! Extensions
+URxvt.perl-ext-common: default,matcher,resize-font,url-select,keyboard-select,clipboard
+URxvt.colorUL: #5E81AC
+!! url-select
+URxvt.keysym.M-u: perl:url-select:select_next
+URxvt.url-select.launcher: /usr/bin/xdg-open
+URxvt.url-select.underline: true
+!! Clipboard
+URxvt.keysym.Shift-Control-V: perl:clipboard:paste
+URxvt.keysym.Shift-Control-C: perl:clipboard:copy
+URxvt.iso14755: false
+URxvt.iso14755_52: false
+!! keyboard-select:
+URxvt.keysym.M-Escape: perl:keyboard-select:activate
+!! resize-font
+URxvt.resize-font.smaller: C-minus
+URxvt.resize-font.bigger: C-plus
+URxvt.resize-font.reset: C-equal
+Urxvt*saveLines: 4096
+
+!! Matcher
+URxvt.url-launcher: /usr/bin/xdg-open
+URxvt.matcher.button: 1
+
+!!!Simple terminal
+st.font: xos4 Terminus:pixelsize=18:antialias=true:autohint=true;Symbola:pixelsize=18:antialias=true:autohint=true;DroidSansMonoForPowerline Nerd Font:pixelsize=18:antialias=true:autohint=true;
+st.termname: xterm-256color
+st.bold_font: 0
+!st.xfps:         120
+!st.actionfps:    60
+  
