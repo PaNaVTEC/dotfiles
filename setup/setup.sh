@@ -428,7 +428,9 @@ if [[ "${BASH_SOURCE[0]}" = "$0" ]]; then
 
   ask "Install redshift + config?" Y && installRedshift
   ask "Install symlink for .xinitrc?" Y && ln -sfn "$dir/.xinitrc" "$HOME/.xinitrc"
-  ask "Install symlink for .bashrc?" Y && ln -sfn "$dir/.bashrc" "${HOME}/.bashrc"
+  ask "Install symlink for .bashrc?" Y && \
+    ln -sfn "$dir/.bashrc" "$HOME/.bashrc" && \
+    ln -sfn "$dir/inputrc" "$HOME/.inputrc"
   ask "Install symlink for .bash_profile?" Y && ln -sfn "$dir/.bash_profile" "$HOME/.bash_profile"
 
   ask "Install configuration for bin?" Y && ln -sfn "$dir/bin" "$HOME/.bin"
