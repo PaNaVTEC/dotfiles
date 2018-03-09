@@ -106,6 +106,7 @@ for_window [class="Wicd-client.py"] floating enable
 for_window [instance="sun-awt-X11-XDialogPeer"] floating enable
 for_window [title="^floatme$"] floating enable move position 25px 10px
 for_window [instance="Slack Call Minipanel"] floating enable
+for_window [title="Authy"] floating enable
 
 # split in horizontal orientation
 bindsym $mod+h split h
