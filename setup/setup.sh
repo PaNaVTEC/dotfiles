@@ -185,6 +185,11 @@ installTools() {
   mkdir -p "$HOME/.urxvt/ext"
   ln -sfn "$dir/config/urxvt/matcher" "$HOME/.urxvt/ext/matcher"
 
+  # setup qutebrowser
+  yaourt --noconfirm -S qutebrowser
+  mkdir -p "$HOME/.config/qutebrowser"
+  ln -sfn "$dir/config/qutebrowser/config.py" "$HOME/.config/qutebrowser/config.py"
+
   # setup inox
   sudo pip install maninex
   sudo mkdir -p /usr/share/inox/extensions
