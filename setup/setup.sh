@@ -179,7 +179,6 @@ installTools() {
 
   #urxvt
   yaourt --noconfirm -S rxvt-unicode rxvt-unicode-terminfo urxvt-perls
-  ln -sfn "$dir/config/urxvt/Xresources" "$HOME/.Xresources"
 
   # Patcher matcher as described in 
   # https://wiki.archlinux.org/index.php/Rxvt-unicode#Very_long_lines_cause_slowdown
@@ -398,6 +397,14 @@ installPrivacy() {
   sudo chown -v root:root /etc/wireguard/wg0-client.conf
 }
 
+installXresources() {
+  ln -sfn "$dir/config/Xresources/Xresources" "$HOME/.Xresources"
+  ln -sfn "$dir/config/Xresources/Xdefaults" "$HOME/.Xdefaults"
+  ln -sfn "$dir/config/Xresources/xcolors" "$HOME/.xcolors"
+  ln -sfn "$dir/config/urxvt/xurxvt" "$HOME/.xurxvt"
+  ln -sfn "$dir/config/simpleterminal/xst" "$HOME/.xst"
+}
+
 if [[ "${BASH_SOURCE[0]}" = "$0" ]]; then
 
   echo "PaNaVTEC dotfiles installer"
@@ -415,6 +422,7 @@ if [[ "${BASH_SOURCE[0]}" = "$0" ]]; then
 
   echo "actionSystem.suspendFocusTransferIfApplicationInactive=false add this into intelliJ to prevent focus lose"
 
+  installXresources;
   ask "install pacman/yaourt?" Y && installYaourt;
   ask "install i3?" Y && installi3;
   ask "install compton?" Y && installCompton;

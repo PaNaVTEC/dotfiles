@@ -1,0 +1,3 @@
+#include ".xurxvt"
+#include ".xst"
+#include ".xcolors"

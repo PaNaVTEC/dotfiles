@@ -1,0 +1,32 @@
+! vim:set ft=xdefaults:
+URxvt.intensityStyles: false
+URxvt.background: #2E3440
+!URxvt.depth: 24
+URxvt.font: xft:xos4 Terminus:size=13, xft:Symbola:size=13, xft:DroidSansMonoForPowerline Nerd Font:size=13
+URxvt.scrollBar: false
+URxvt.cursorColor: #D8DEE9
+URxvt*skipBuiltinGlyphs: true
+
+!! Extensions
+URxvt.perl-ext-common: default,matcher,resize-font,url-select,keyboard-select,clipboard
+URxvt.colorUL: #5E81AC
+!! url-select
+URxvt.keysym.M-u: perl:url-select:select_next
+URxvt.url-select.launcher: /usr/bin/xdg-open
+URxvt.url-select.underline: true
+!! Clipboard
+URxvt.keysym.Shift-Control-V: perl:clipboard:paste
+URxvt.keysym.Shift-Control-C: perl:clipboard:copy
+URxvt.iso14755: false
+URxvt.iso14755_52: false
+!! keyboard-select:
+URxvt.keysym.M-Escape: perl:keyboard-select:activate
+!! resize-font
+URxvt.resize-font.smaller: C-minus
+URxvt.resize-font.bigger: C-plus
+URxvt.resize-font.reset: C-equal
+Urxvt*saveLines: 4096
+
+!! Matcher
+URxvt.url-launcher: /usr/bin/xdg-open
+URxvt.matcher.button: 1
