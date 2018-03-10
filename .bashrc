@@ -1,3 +1,5 @@
+#!/bin/bash
+
 [[ $- != *i* ]] && return
 set -o vi
 
