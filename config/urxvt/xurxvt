@@ -25,6 +25,7 @@ URxvt.matcher.button: 1
 Urxvt*saveLines: 4096
 
 !! Clipboard
+URxvt.clipboard.autocopy: true
 URxvt.keysym.Shift-Control-V: perl:clipboard:paste
 URxvt.keysym.Shift-Control-C: perl:clipboard:copy
 URxvt.iso14755: false
