@@ -1,7 +1,7 @@
 #!/bin/bash -e
 
-export ANDROID_HOME=~/Android/Sdk
-export JAVA8_HOME=/usr/lib/jvm/java-8-jdk/
+export ANDROID_HOME="$HOME/Android/Sdk"
+export JAVA8_HOME="/usr/lib/jvm/java-8-jdk/"
 
 relativePath="$DOTFILES_LOCATION/programming"
 
@@ -15,6 +15,7 @@ source "$relativePath/editors.sh"
 source "$relativePath/git-completion.bash"
 source "$relativePath/git-alias.sh"
 source "$relativePath/git-alias-custom.sh"
+source "$relativePath/ssl.sh"
 
 [ -f /usr/local/etc/profile.d/autojump.sh ] && . /usr/local/etc/profile.d/autojump.sh
 [ -f /usr/share/autojump/autojump.bash ] && . /usr/share/autojump/autojump.bash
