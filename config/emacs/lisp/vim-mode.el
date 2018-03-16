@@ -83,11 +83,11 @@
   :ensure t
   :config
   (evilem-default-keybindings "SPC")
-  (evilem-define (kbd "SPC <up>") 'evilem-motion-previous-line)
-  (evilem-define (kbd "SPC <down>") 'evilem-motion-next-line)
+  (evilem-define (kbd "SPC <up>") #'evilem-motion-previous-line)
+  (evilem-define (kbd "SPC <down>") #'evilem-motion-next-line)
 
-  (evilem-define (kbd "SPC g <up>") 'evilem-motion-previous-visual-line)
-  (evilem-define (kbd "SPC g <down>") 'evilem-motion-next-visual-line))
+  (evilem-define (kbd "SPC g <up>") #'evilem-motion-previous-visual-line)
+  (evilem-define (kbd "SPC g <down>") #'evilem-motion-next-visual-line))
 
 (use-package
   evil-surround
