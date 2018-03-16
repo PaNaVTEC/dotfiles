@@ -95,6 +95,12 @@ setTermiteTitle() {
   echo `tput tsl` $1  `tput fsl`
 }
 
+forceHwClock() {
+  #$1 = 2018-03-15
+  sudo hwclock --set --date "$1"
+  sudo systemctl restart systemd-timesyncd.service
+}
+
 dockerHotReloading() {
   # directory in /lib/modules
 #  sudo depmod 4.15.6-1-ARCH
