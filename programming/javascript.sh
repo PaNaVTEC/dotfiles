@@ -64,3 +64,7 @@ nBumpMinor () {
   rm package.json
   mv .newPackage.json package.json
 }
+
+nLastVersion() {
+  npm show "$1@*" version | tail -1
+}
