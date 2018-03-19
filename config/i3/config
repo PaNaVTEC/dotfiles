@@ -270,5 +270,6 @@ focus_follows_mouse no
 smart_borders on
 smart_gaps on
 
+exec --no-startup-id i3-msg "workspace number 3; layout tabbed"
 exec --no-startup-id set-wallpaper.sh
 exec --no-startup-id ~/dotfiles/config/polybar/launch.sh 
