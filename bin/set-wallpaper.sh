@@ -1,3 +1,4 @@
 #!/bin/bash -ex
-feh --bg-scale ~/Pictures/pict.png
 
+output "*" background ~/Pictures/pict.png
+feh --bg-scale ~/Pictures/pict.png
