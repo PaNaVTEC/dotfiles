@@ -178,9 +178,9 @@ installTools() {
   yaourt --noconfirm -S ./yaourt_tools.txt
 
   #urxvt
-  yaourt --noconfirm -S rxvt-unicode rxvt-unicode-terminfo urxvt-perls
+  yaourt --noconfirm -S rxvt-unicode rxvt-unicode-terminfo urxvt-perls urxvt-resize-font-git
 
-  # Patcher matcher as described in 
+  # Patcher matcher as described in
   # https://wiki.archlinux.org/index.php/Rxvt-unicode#Very_long_lines_cause_slowdown
   mkdir -p "$HOME/.urxvt/ext"
   ln -sfn "$dir/config/urxvt/matcher" "$HOME/.urxvt/ext/matcher"
@@ -296,7 +296,7 @@ installVim() {
   #YouComplete me workarround for ncurses new version
   sudo ln -sfn /usr/lib/libtinfo.so.6 /usr/lib/libtinfo.so.5
 
-  #Install plugin system 
+  #Install plugin system
   curl -fLo "$HOME/.vim/autoload/plug.vim" --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
@@ -343,7 +343,7 @@ installEmacs() {
   systemctl --user enable --now emacs
 }
 
-installRanger() { 
+installRanger() {
   yaourt -S ranger --noconfirm
   ranger --copy-config=scope
   ln -sfn "$dir/config/ranger/config" "$HOME/.config/ranger/rc.conf"
@@ -364,7 +364,7 @@ installKhal() {
   cp "$dir/config/khal/vdirsyncerconfig" "$HOME/.config/vdirsyncer/config"
 }
 
-installAudio() { 
+installAudio() {
   yaourt -S --noconfirm ./yaourt_audio.txt
 }
 
@@ -450,11 +450,10 @@ if [[ "${BASH_SOURCE[0]}" = "$0" ]]; then
   ask "Install configuration for dunst?" Y && ln -sfn "$dir/config/dunst" "$HOME/.config/dunst"
   ask "Install configuration for termite?" Y && ln -sfn "${dir}/config/termite" "$HOME/.config/termite" && ln -sfn "$dir/.dircolors" "$HOME/.dircolors;"
   ask "Install screensavers?" Y && installScreensavers;
-  ask "Install Ranger?" Y && installRanger; 
+  ask "Install Ranger?" Y && installRanger;
   ask "Install Khal?" Y && installKhal;
   ask "Install taskWarrior?" Y && installTaskWarrior;
   ask "Install beancount?" Y && installBeancount;
   ask "Install mutt?" Y && installMutt;
   ask "Install privacy?" Y && installPrivacy;
 fi
-
