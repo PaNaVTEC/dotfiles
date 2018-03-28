@@ -55,4 +55,14 @@
 
 (use-package diminish :ensure t)
 
+(defun set-terminal-title ()
+  (interactive)
+  (send-string-to-terminal (concat "\033]1; " (buffer-name) "\007"))
+  (if buffer-file-name
+      (send-string-to-terminal (concat "\033]2; " (buffer-file-name) "\007"))
+    (send-string-to-terminal (concat "\033]2; " (buffer-name) "\007"))))
+
+(if (not window-system)
+    (add-hook 'post-command-hook 'set-terminal-title))
+
 (provide 'general-config)
