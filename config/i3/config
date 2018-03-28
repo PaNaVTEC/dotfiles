@@ -200,7 +200,7 @@ mode $resize {
   bindsym Escape mode "default"
 }
 #lockscreen
-set $Locker i3lock-wrapper 
+set $Locker i3lock-wrapper
 bindsym $mod+Escape exec $Locker
 
 # Shutdown / reboot...
@@ -246,30 +246,11 @@ mode "$mode_monitor" {
 }
 bindsym $mod+F12 mode "$mode_monitor"
 
-set $mode_workspaces Go to workspace... 10+
-  mode "$mode_workspaces" {
-    bindsym 1 exec i3-msg workspace 11, mode "default"
-    bindsym 2 exec i3-msg workspace 12, mode "default"
-    bindsym 3 exec i3-msg workspace 13, mode "default"
-    bindsym 4 exec i3-msg workspace 14, mode "default"
-    bindsym 5 exec i3-msg workspace 15, mode "default"
-    bindsym 6 exec i3-msg workspace 16, mode "default"
-    bindsym 7 exec i3-msg workspace 17, mode "default"
-    bindsym 8 exec i3-msg workspace 18, mode "default"
-    bindsym 9 exec i3-msg workspace 19, mode "default"
-    bindsym 0 exec i3-msg workspace 20, mode "default"
-
-    # back to normal: Enter or Escape
-    bindsym Return mode "default"
-    bindsym Escape mode "default"
-  }
-bindsym $mod+Shift+w mode "$mode_workspaces"
-
 #other
 focus_follows_mouse no
 smart_borders on
 smart_gaps on
 
-exec --no-startup-id i3-msg "workspace number 3; layout tabbed"
+exec --no-startup-id i3-msg workspace $WS3, layout tabbed
 exec --no-startup-id set-wallpaper.sh
 exec --no-startup-id ~/dotfiles/config/polybar/launch.sh 
