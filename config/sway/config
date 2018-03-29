@@ -263,7 +263,7 @@ bar {
     statusline #D8DEE9
     # name ## border # background # text ##
     focused_workspace #4C566A #4C566A #D8DEE9
-    active_workspace #ffb52a #2d2d2d #D8DEE9
+    active_workspace #2d2d2d #2d2d2d #D8DEE9
     inactive_workspace #2E3440 #2E3440 #D8DEE9
     urgent_workspace #e60053 #e60053 #D8DEE9
   }
