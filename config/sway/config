@@ -254,9 +254,12 @@ bar {
   position top
   status_command i3blocks
   workspace_buttons yes
-  separator_symbol |
-  # tray_padding 3
-  # tray_output primary
+  separator_symbol ''
+  height 25
+  tray_padding 3
+  tray_output primary
+  font pango: xos4 Terminus, FontAwesome Regular 10
+
   colors {
     separator #D8DEE9
     background #2E3440
