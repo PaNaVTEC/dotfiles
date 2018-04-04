@@ -1,0 +1,84 @@
+# i3blocks config file
+#
+# Please see man i3blocks for a complete reference!
+# The man page is also hosted at http://vivien.github.io/i3blocks
+#
+# List of valid properties:
+#
+# align
+# color
+# command
+# full_text
+# instance
+# interval
+# label
+# min_width
+# name
+# separator
+# separator_block_width
+# short_text
+# signal
+# urgent
+
+# Global properties
+#
+# The top properties below are applied to every block, but can be overridden.
+# Each block command defaults to the script name to avoid boilerplate.
+#command=/usr/lib/i3blocks/$BLOCK_NAME
+command=~/dotfiles/config/i3blocks/scripts/$BLOCK_NAME
+separator_block_width=15
+markup=none
+
+[bitcoin]
+label=
+command=bitcoin_ticker.sh
+interval=20
+
+[audio]
+instance=Master
+interval=3
+signal=10
+
+[cpu_usage]
+label=
+interval=2
+min_width= 100.00%
+
+[memory]
+label=
+interval=2
+min_width= 100.00%
+
+[openvpn]
+command=vpn_status.sh
+interval=2
+
+[dockerd]
+label=
+command=docker_status.sh
+interval=2
+
+[disk]
+label=HOME
+#instance=/mnt/data
+interval=30
+
+[wifi]
+label=
+command=iwgetid -r
+interval=10
+separator=false
+
+[bandwidth]
+interval=5
+
+[battery]
+label=BAT
+label=⚡
+#instance=1
+interval=30
+
+[time]
+label=
+command=date '+%d-%m-%Y %H:%M'
+interval=5
