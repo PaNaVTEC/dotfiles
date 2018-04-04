@@ -56,7 +56,7 @@ for_window [title="^Nyanyanyanyanyanyanya...$"] mark "STATWIN", fullscreen enabl
 set $mod Mod4
 
 # fonts
-#font pango:Roboto 10, FontAwesome Regular 10
+font pango:xos4 Terminus, FontAwesome Regular 12
 
 # Move windows with mouse+$mod
 floating_modifier $mod
@@ -244,7 +244,28 @@ mode "$mode_monitor" {
   bindsym Return mode "default"
   bindsym Escape mode "default" 
 }
+
 bindsym $mod+F12 mode "$mode_monitor"
+
+bar {
+  position top
+  status_command i3blocks
+  workspace_buttons yes
+  separator_symbol |
+  # tray_padding 3
+  # tray_output primary
+  colors {
+    separator #D8DEE9
+    background #2E3440
+    statusline #D8DEE9
+    # name ## border # background # text ##
+    focused_workspace #4C566A #4C566A #D8DEE9
+    active_workspace #ffb52a #2d2d2d #D8DEE9
+    inactive_workspace #2E3440 #2E3440 #D8DEE9
+    urgent_workspace #e60053 #e60053 #D8DEE9
+  }
+}
+  
 
 #other
 focus_follows_mouse no
@@ -253,4 +274,4 @@ smart_gaps on
 
 exec --no-startup-id i3-msg workspace $WS3, layout tabbed
 exec --no-startup-id set-wallpaper.sh
-exec --no-startup-id ~/dotfiles/config/polybar/launch.sh 
+#exec --no-startup-id ~/dotfiles/config/polybar/launch.sh 
