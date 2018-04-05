@@ -251,9 +251,9 @@ bar {
   position top
   status_command i3blocks
   workspace_buttons yes
-  separator_symbol |
-  # tray_padding 3
-  # tray_output primary
+  separator_symbol ''
+  tray_padding 3
+  tray_output primary
   colors {
     separator #D8DEE9
     background #2E3440
