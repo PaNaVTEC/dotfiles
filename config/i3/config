@@ -251,21 +251,21 @@ bar {
   position top
   status_command i3blocks
   workspace_buttons yes
-  separator_symbol ''
+  separator_symbol " "
   tray_padding 3
   tray_output primary
+  height 24
   colors {
     separator #D8DEE9
     background #2E3440
     statusline #D8DEE9
-    # name ## border # background # text ##
-    focused_workspace #4C566A #4C566A #D8DEE9
-    active_workspace #ffb52a #2d2d2d #D8DEE9
+    #name              #border #bg     #text
+    focused_workspace  #4C566A #4C566A #D8DEE9
+    active_workspace   #ffb52a #2d2d2d #D8DEE9
     inactive_workspace #2E3440 #2E3440 #D8DEE9
-    urgent_workspace #e60053 #e60053 #D8DEE9
+    urgent_workspace   #e60053 #e60053 #D8DEE9
   }
 }
-  
 
 #other
 focus_follows_mouse no
