@@ -61,7 +61,8 @@ installFonts() {
   mkdir -p ~/.local/share/fonts/
   mkdir -p ~/.config/fontconfig/conf.d/
 
-  yaourt -Rdd cairo && yaourt --noconfirm -S cairo-coloredemoji
+  # cairo-coloredemoji is not maintained anymore. So no emojis :(
+  #yaourt -Rdd cairo && yaourt --noconfirm -S cairo-coloredemoji
   cp "$dir/config/fonts/51-noto-color-emoji.conf" "/etc/fonts/conf.avail/"
   cp "$dir/config/fonts/fonts.conf" "$HOME/.config/fontconfig/"
   yaourt --noconfirm -S ./yaourt_fonts.txt
