@@ -67,11 +67,7 @@ NOGZ=             # Don't compress el files.
 #######################################################################
 
 #######################################################################
-if [[ BRANCH = "emacs-26" ]]; then
-  pkgname=emacs26-git
-else
-  pkgname=emacs-git
-fi
+pkgname=emacs26-git
 pkgver=26.0.92
 pkgrel=1
 pkgdesc="GNU Emacs. Development."
