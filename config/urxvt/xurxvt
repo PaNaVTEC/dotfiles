@@ -25,7 +25,7 @@ URxvt.url-select.launcher: /usr/bin/xdg-open
 URxvt.url-select.underline: true
 URxvt.url-launcher: /usr/bin/xdg-open
 URxvt.matcher.button: 1
-Urxvt*saveLines: 4096
+Urxvt*saveLines: 20480
 
 !! Clipboard
 URxvt.clipboard.autocopy: true
