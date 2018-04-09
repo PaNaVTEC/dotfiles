@@ -113,3 +113,7 @@ dockerHotReloading() {
     builtin modprobe --set-version=4.15.6-1-ARCH
   }
 }
+
+portOfProcessNamed() {
+  netstat -tlpn  | grep "$1"
+}
