@@ -81,6 +81,8 @@
   :ensure t
   :mode "\\.json\\'"
   :config
+  (setq json-reformat:indent-width 2
+        js-indent-level 2)
   (add-hook 'json-mode-hook 'whitespace-mode)
   (add-hook 'json-mode-hook 'proper-gutter-mode))
 
