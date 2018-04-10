@@ -40,16 +40,22 @@
 (setq initial-major-mode 'text-mode
       initial-scratch-message my-initial-msg)
 
-; Backup files
+; Temporary files
+(setq temporary-file-directory "/tmp/emacs")
+(when (not (file-exists-p temporary-file-directory))
+  (mkdir temporary-file-directory))
 (setq
-  backup-by-copying t
-  create-lockfiles nil
-  backup-directory-alist `((".*" . ,temporary-file-directory))
-  auto-save-file-name-transform `((".*" ,temporary-file-directory t))
-  delete-old-versions t
-  kept-new-versions 6
-  kept-old-versions 2
-  make-backup-files t)
+  ; Files with the sape of: '#filename#'
+  auto-save-file-name-transforms `((".*" ,temporary-file-directory t))
+  backup-by-copying             t
+  ; Files with the sape of: '~filename'
+  backup-directory-alist        `((".*" . ,temporary-file-directory))
+  delete-old-versions           t
+  kept-new-versions             6
+  kept-old-versions             2
+  version-control               t
+  ; Files with the sape of: '.#filename'
+  create-lockfiles              nil)
 
 (setq vc-follow-symlinks t)
 
