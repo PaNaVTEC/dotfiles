@@ -1,4 +1,7 @@
 #!/bin/bash -ex
 
-output "*" background ~/Pictures/pict.png
-feh --bg-scale ~/Pictures/pict.png
+if [[ $(pgrep Xorg) ]]; then
+  feh --bg-scale ~/Pictures/pict.png
+else
+  output "*" background ~/Pictures/pict.png
+fi
