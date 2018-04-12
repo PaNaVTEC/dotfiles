@@ -10,5 +10,4 @@ else
     xrandr --output "$extern" --auto
 fi
 
-~/dotfiles/config/polybar/launch.sh
 set-wallpaper.sh

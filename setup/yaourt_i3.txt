@@ -29,5 +29,4 @@ iw
 imagemagick
 i3lock-wrapper
 wireless_tools
-polybar
 pymodoro-git
