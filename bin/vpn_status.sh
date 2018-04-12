@@ -5,4 +5,3 @@ if [ "$STATUS" ]; then
 else
   echo ' x'
 fi
-
