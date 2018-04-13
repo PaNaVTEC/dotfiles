@@ -1,10 +1,22 @@
 (evil-define-command
-  evil-ack (arg)
+  evil-ack (to-search)
   (interactive "<a>")
+  (my-ack to-search (projectile-project-root)))
+
+(evil-define-command
+  evil-ack-in (to-search path)
+  (interactive "<a>\n"  (list (read-file-name (projectile-project-root))))
+  (my-ack to-search path))
+(location-list-buffer (rx bos "*helm-mode-evil-ack-in*"))
+
+(defun my-ack (arg path-to-search)
   (progn (grep-compute-defaults)
-         (rgrep arg "*.*" (projectile-project-root)))) ; In linux (getenv "PWD") works
+         (rgrep arg "*.*" path-to-search)))
 
 (evil-ex-define-cmd "Ack" 'evil-ack)
+(evil-ex-define-cmd "ack" 'evil-ack)
+(evil-ex-define-cmd "ackin" 'evil-ack-in)
+
 (customize-set-variable
   'grep-find-ignored-directories
   (list "SCCS" "RCS" "CVS" "MCVS" ".svn" "coverage" ".git" ".hg" ".bzr" "_MTN" "_darcs" "{arch}" "objects" "build" "bin" "out" "lib" "dist" "node_modules" ".nyc_output" ".awcache"))

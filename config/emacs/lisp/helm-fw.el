@@ -20,6 +20,7 @@
      (location-list-buffer (rx bos "*helm M-x"))
      (location-list-buffer (rx bos "*helm mini"))
      (location-list-buffer (rx bos "*helm-ag"))
+     (location-list-buffer (rx bos "*helm-mode-completion-at-point*"))
      ;; Override default command launcher
      (global-set-key (kbd "M-x") 'helm-M-x))
 
