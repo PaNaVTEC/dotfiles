@@ -15,6 +15,10 @@
 (setq custom-file "~/.emacs.d/custom.el")
 (load custom-file)
 
+(setq *is-a-mac* (eq system-type 'darwin))
+(setq *cygwin* (eq system-type 'cygwin) )
+(setq *linux* (or (eq system-type 'gnu/linux) (eq system-type 'linux)) )
+
 ;; Load modules
 (add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
 (dolist (module '(mysetup

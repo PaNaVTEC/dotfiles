@@ -1,7 +1,3 @@
-(setq *is-a-mac* (eq system-type 'darwin))
-(setq *cygwin* (eq system-type 'cygwin) )
-(setq *linux* (or (eq system-type 'gnu/linux) (eq system-type 'linux)) )
-
 (defun copy-to-x-clipboard ()
   (interactive)
   (if (region-active-p)
