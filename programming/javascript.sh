@@ -1,7 +1,6 @@
 #!/bin/bash -e
 
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-source "$DIR/yarn-completion.bash"
 
 NO_PKG_JSON="No package.json found"
 
