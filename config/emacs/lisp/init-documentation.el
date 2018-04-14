@@ -4,7 +4,10 @@
   :ensure t
   :defer t
   :config
-  (setq helm-dash-docsets-path "~/.local/share/Zeal/Zeal/docsets")
-  (evil-leader/set-key "d" 'helm-dash-at-point))
+  (location-list-buffer (rx bos "*helm-dash*"))
+  (setq
+   helm-dash-docsets-path "~/.local/share/Zeal/Zeal/docsets"
+   helm-dash-browser-func 'eww))
 
+(evil-leader/set-key "d" 'helm-dash-at-point)
 (provide 'init-documentation)
