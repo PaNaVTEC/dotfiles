@@ -18,3 +18,4 @@ evince
 speedtest-cli
 pinta
 exa
+networkmanager-dmenu-git
