@@ -200,6 +200,11 @@ installTools() {
   sudo mkdir -p /usr/share/inox/extensions
   sudo mkdir -p ~/.config/inox/extensions
   ln -sfn "$dir/config/inox/maninex.conf" "$HOME/.config/maninex.conf"
+
+  # Network Manager DNS setup
+  yaourt --noconfirm -S openresolv
+  sudo ln -sfn "$dir/config/networkmanager/rc-manager.conf" "/etc/NetworkManager/conf.d/rc-manager.conf"
+  sudo ln -sfn "$dir/config/networkmanager/resolvconf.conf" "/etc/resolvconf.conf"
 }
 
 installRedshift() {
