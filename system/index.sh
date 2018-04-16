@@ -5,6 +5,7 @@ source "$relativePath/update.sh"
 #source /usr/bin/liquidprompt
 
 source "$relativePath/prompt.sh"
+source "$relativePath/wifi.sh"
 
 if [[ $(uname) == "Darwin" ]]; then
   alias ls='ls -G'
