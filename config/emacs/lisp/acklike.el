@@ -23,7 +23,7 @@
   'grep-find-ignored-directories
   (list "SCCS" "RCS" "CVS" "MCVS" ".svn" "coverage" ".git" ".hg" ".bzr" "_MTN" "_darcs" "{arch}" "objects" "build" "bin" "out" "lib" "dist" "node_modules" ".nyc_output" ".awcache"))
 
-(grep-apply-setting 'grep-find-template "find <D> <X> -type f <F> -exec grep <C> -n --null -r -E -o \".{0,20}<R>.{0,20}\" /dev/null \{\} +")
+(grep-apply-setting 'grep-find-template "find <D> <X> -type f <F> -exec grep <C> -n --null -r -E -o \".{0,50}<R>.{0,50}\" /dev/null \{\} +")
 
 (use-package
   xah-find
