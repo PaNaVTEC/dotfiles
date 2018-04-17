@@ -1,4 +1,4 @@
-if [[ $(pgrep dockerd) == "" ]]; then
+if $(pidof dockerd) == ""; then
   echo "x"
 else
   N_IMAGES=$(docker ps | grep -vc IMAGE)
