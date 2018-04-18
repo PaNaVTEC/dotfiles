@@ -355,8 +355,8 @@ installEmacs() {
 
 installRanger() {
   yaourt -S ranger --noconfirm
-  ranger --copy-config=scope
   ln -sfn "$dir/config/ranger/config" "$HOME/.config/ranger/rc.conf"
+  ln -sfn "$dir/config/ranger/scope.sh" "$HOME/.config/ranger/scope.sh"
 }
 
 installMutt() {
