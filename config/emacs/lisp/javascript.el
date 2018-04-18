@@ -17,6 +17,7 @@
   indium
   :ensure t
   :mode "\\.jsx?$"
+  :defer t
   :config
   (setq indium-chrome-executable my-browser))
 
@@ -26,6 +27,7 @@
   :mode ("\\.js$" . js2-mode )
   :mode ("\\.jsx$" . js2-jsx-mode )
   :interpreter "node"
+  :defer t
   :config
   (setq js-indent-level 2
         evil-shift-width 2
@@ -56,6 +58,7 @@
   :ensure t
   :mode "\\.x?html?$"
   :mode "\\.hbs$"
+  :defer t
   :config
   (setq
     web-mode-markup-indent-offset 2
@@ -80,6 +83,7 @@
   json-mode
   :ensure t
   :mode "\\.json\\'"
+  :defer t
   :config
   (setq json-reformat:indent-width 2
         js-indent-level 2)
