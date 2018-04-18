@@ -45,8 +45,6 @@ assign [instance="caja"] $WS9
 assign [title="TweetDeck"] $WS0
 
 #Apps without borders
-#for_window [class="Firefox"] border 1pixel
-#for_window [class="Scudcloud"] border 1pixel
 new_window 1pixel
 
 #Nyan saver full screen always
@@ -131,9 +129,6 @@ bindsym $mod+space focus mode_toggle
 
 # focus the parent container
 bindsym $mod+a focus parent
-
-# focus the child container
-#bindsym $mod+d focus child
 
 # switch to workspace
 bindsym $mod+1 workspace $WS1
@@ -247,6 +242,11 @@ mode "$mode_monitor" {
 
 bindsym $mod+F12 mode "$mode_monitor"
 
+# Scratchpad
+for_window [title="^ranger$"] move scratchpad
+bindsym $mod+Shift+F scratchpad show
+exec --no-startup-id ranger
+
 bar {
   position top
   status_command i3blocks
@@ -274,4 +274,3 @@ smart_gaps on
 
 exec --no-startup-id i3-msg workspace $WS3, layout tabbed
 exec --no-startup-id set-wallpaper.sh
-#exec --no-startup-id ~/dotfiles/config/polybar/launch.sh 
