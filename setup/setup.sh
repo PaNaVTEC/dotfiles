@@ -190,6 +190,12 @@ installTools() {
   mkdir -p "$HOME/.urxvt/ext"
   ln -sfn "$dir/config/urxvt/matcher" "$HOME/.urxvt/ext/matcher"
 
+  #powerline
+  yaourt --noconfirm -S powerline
+  git clone https://github.com/rdnetto/powerline-hs.git --recursive "$HOME/.powerline-hs"
+  (cd "$HOME/.powerline-hs/" && stack install)
+  ln -sfn "$dir/config/powerline" "$HOME/.config/powerline"
+
   # setup qutebrowser
   yaourt --noconfirm -S qutebrowser
   mkdir -p "$HOME/.config/qutebrowser"
