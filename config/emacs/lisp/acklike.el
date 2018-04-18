@@ -10,6 +10,7 @@
   (interactive "<a>\n"  (list (read-file-name (projectile-project-root))))
   (my-ack to-search path))
 (location-list-buffer (rx bos "*helm-mode-evil-ack-in*"))
+(location-list-buffer (rx bos "*grep*"))
 
 (defun my-ack (arg path-to-search)
   (progn (grep-compute-defaults)
