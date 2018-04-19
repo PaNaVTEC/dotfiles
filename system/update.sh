@@ -66,3 +66,7 @@ systemUpdate () {
 orphans() {
   yaourt -Qdt
 }
+
+cleanCache() {
+  yaourt -Sc
+}
