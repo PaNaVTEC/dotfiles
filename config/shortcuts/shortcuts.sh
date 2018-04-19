@@ -1,8 +1,8 @@
 #!/bin/bash
 
 # Config locations
-folders="folders"
-configs="configs"
+folders="$HOME/Dropbox/folders"
+configs="$HOME/Dropbox/configs"
 
 # Output locations
 bash_shortcuts="$HOME/.bash_shortcuts"
