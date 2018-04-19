@@ -32,5 +32,7 @@
     (:else (message (format "Invalid option %c" option)))))
 
 (location-list-buffer (rx bos "*helm-mode-evil-ack-in*"))
+(location-list-buffer (rx bos "*helm-mode-neotree-"))
+(location-list-buffer (rx bos "*helm-mode-neo-buffer--rename-node*"))
 
 (provide 'file-explorer)
