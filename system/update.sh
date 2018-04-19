@@ -9,18 +9,21 @@ alias yp='yaourt -Qm'
 alias yr='yaourt -R'
 alias yu='systemUpdate;'
 alias yun='systemUpdate "--noconfirm";'
+
+commitsBehind () {
+  git fetch
+  git rev-list \
+    --left-right \
+    --count master...origin/master | awk '{print $2}'
+}
+
 vimUpdate () {
   echo "Upgrade VIM"
   (
-  cd ~/vim
-  git fetch
-  local commitsBehind
-  commitsBehind=$(git rev-list \
-    --left-right \
-    --count master...origin/master | awk '{print $2}')
-  if [ "$commitsBehind" -gt 50 ]; then
-    (source "$DOTFILES_LOCATION/setup/setup.sh" && compileVim;)
-  fi
+    cd ~/vim
+    if [ "$(commitsBehind)" -gt 50 ]; then
+      (source "$DOTFILES_LOCATION/setup/setup.sh" && compileVim;)
+    fi
   )
   echo "Upgrading vim plugins"
   vim +PlugClean +PlugUpgrade +PlugUpdate +qa
@@ -45,7 +48,16 @@ systemUpdate () {
   sudo curl -o "/usr/local/bin/yarn-completion.bash" https://raw.githubusercontent.com/dsifford/yarn-completion/master/yarn-completion.bash
   sudo curl -o "/usr/local/bin/git-completion.bash" https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash
 
+  echo "Updating VIM"
   vimUpdate;
+
+  echo "Updating prompt"
+  (
+    cd "$HOME/.powerline-hs/"
+    if [ "$(commitsBehind)" -gt 1 ]; then
+      stack install
+    fi
+  )
 
   echo "Upgrading system packages"
   yaourt -Syua "$1"
