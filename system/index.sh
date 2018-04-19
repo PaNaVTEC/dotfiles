@@ -18,6 +18,7 @@ alias wireup='sudo wg-quick up wg0-client'
 alias wiredown='sudo wg-quick down wg0-client'
 alias dotfiles='(cd "$DOTFILES_LOCATION" && emacs -nw)'
 alias ffs='sudo $(fc -ln -1)'
+alias shortcuts="$DOTFILES_LOCATION/config/shortcuts/shortcuts.sh"
 
 autogeneratePassword () {
   LC_CTYPE=C tr -dc "[:alnum:]" < /dev/urandom | fold "-w${1:-32}" | head -1
