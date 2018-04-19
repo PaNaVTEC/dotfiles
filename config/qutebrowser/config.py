@@ -7,3 +7,4 @@ c.url.searchengines = {
     'ha' : 'https://hackage.haskell.org/packages/search?terms={}',
     'ho' : 'https://hoogle.haskell.org/?hoogle={}&scope=set%3Astackage'
 }
+config.source('shortcuts.py')
