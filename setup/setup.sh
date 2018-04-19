@@ -151,7 +151,7 @@ installHaskell() {
   sudo pacman-key --lsign-key B0544167
   yaourt -Syu
 
-  yaourt -S haskell-stack-tool ncurses5-compat-libs
+  yaourt -S stack-bin ncurses5-compat-libs
   stack setup
   stack install ghc-mod hindent stylish-haskell cabal-install hoogle hlint
   echo "========"
