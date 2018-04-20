@@ -65,8 +65,12 @@ bindsym $mod+Shift+q kill
 bindsym $mod+Shift+Alt+q exec --no-startup-id kill $(xprop -id `xdotool getwindowfocus` | grep '_NET_WM_PID' | grep -oE '[[:digit:]]*$')
 bindsym $mod+d exec --no-startup-id j4-dmenu-desktop --dmenu="dmenu -i -fn 'xos4 Terminus-13'"
 bindsym $mod+Tab exec --no-startup-id quickswitch.py -d "dmenu -b -i -l 20 -nb \#002b36 -nf \#FFFFFF -sb \#839496 -sf \#3E719F"
-bindsym --release Control+Shift+Print exec --no-startup-id scrot -s
-bindsym Shift+Print exec --no-startup-id scrot
+
+# capture screen
+bindsym Shift+Print exec --no-startup-id scrot "select"
+bindsym --release Control+Shift+Print exec --no-startup-id capture-screen
+bindsym $mod+F11 exec --no-startup-id capture-screen "select"
+bindsym $mod+Shift+F11 exec --no-startup-id capture-screen
 
 # change focus
 bindsym $mod+j focus left

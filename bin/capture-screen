@@ -1,0 +1,12 @@
+#!/bin/bash
+set -e
+
+mode=$1
+
+sleep 0.2 # i3 fix
+path="$HOME/Pictures/shots/shot$(date +%s).png"
+if [ $mode == 'select' ]; then
+  maim --select $path
+else
+  maim $path
+fi

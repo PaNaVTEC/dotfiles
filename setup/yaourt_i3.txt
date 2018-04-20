@@ -12,6 +12,7 @@ feh
 unclutter
 perl-anyevent-i3
 scrot
+maim
 htop
 python-pip
 gsimplecal
