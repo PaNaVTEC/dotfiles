@@ -11,4 +11,4 @@
 (add-hook 'compilation-filter-hook 'endless/colorize-compilation)
 ;TODO: (add-hook 'compilation-mode-hook 'evily/evilify-key-bindings)
 
-(provide 'compile-mode)
+(provide 'init-compile-mode)

@@ -42,7 +42,7 @@
                    init-projectmanagement
                    init-markdown
                    init-yaml
-                   compile-mode
+                   init-compile-mode
                    rest
                    vimscript
                    clipboard
