@@ -45,7 +45,7 @@
                    init-compile-mode
                    init-rest
                    init-vimscript
-                   clipboard
+                   init-clipboard
                    key-helper
                    el
                    sh))
