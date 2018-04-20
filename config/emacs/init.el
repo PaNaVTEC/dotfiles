@@ -23,7 +23,7 @@
 (add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
 (dolist (module '(init-mysetup
                    init-general-config
-                   appearance
+                   init-appearance
                    vim-mode
                    acklike
                    auto-complete
