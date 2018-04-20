@@ -46,7 +46,7 @@
                    init-rest
                    init-vimscript
                    init-clipboard
-                   key-helper
+                   init-key-helper
                    el
                    sh))
   (require module))
