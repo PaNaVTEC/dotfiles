@@ -36,7 +36,7 @@
                    init-typescript
                    init-scala
                    init-syntax-check
-                   file-explorer
+                   init-file-explorer
                    helm-fw
                    git
                    init-projectmanagement
