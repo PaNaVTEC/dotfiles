@@ -1,2 +1,4 @@
 set preview_images true
+set vcs_aware true
 source ~/.config/ranger/shortcuts.conf
+  
