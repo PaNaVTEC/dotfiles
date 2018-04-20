@@ -48,7 +48,7 @@
                    init-clipboard
                    init-key-helper
                    init-el
-                   sh))
+                   init-sh))
   (require module))
 
 (defun display-startup-echo-area-message ()
