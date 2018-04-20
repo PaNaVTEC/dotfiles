@@ -58,8 +58,8 @@ installFonts() {
   sleep 2
 
   # Enable emojis on terminal, Qt and Gtk apps
-  mkdir -p ~/.local/share/fonts/
-  mkdir -p ~/.config/fontconfig/conf.d/
+  mkdir -p "$HOME/.local/share/fonts/"
+  mkdir -p "$HOME/.config/fontconfig/conf.d/"
 
   # cairo-coloredemoji is not maintained anymore. So no emojis :(
   #yaourt -Rdd cairo && yaourt --noconfirm -S cairo-coloredemoji
@@ -105,8 +105,8 @@ installGit() {
 
   # Global git ignores
   gibo --upgrade
-  gibo Emacs Vim JetBrains Ensime Tags Vagrant Windows macOS Linux Archives >> ~/.gitignore.global
-  echo ".tern-project" >> ~/.gitignore.global
+  gibo Emacs Vim JetBrains Ensime Tags Vagrant Windows macOS Linux Archives >> "$HOME/.gitignore.global"
+  echo ".tern-project" >> "$HOME/.gitignore.global"
 }
 
 installDevTools() {
@@ -204,7 +204,7 @@ installTools() {
   # setup inox
   sudo pip install maninex
   sudo mkdir -p /usr/share/inox/extensions
-  sudo mkdir -p ~/.config/inox/extensions
+  sudo mkdir -p "$HOME/.config/inox/extensions"
   ln -sfn "$dir/config/inox/maninex.conf" "$HOME/.config/maninex.conf"
 
   # Network Manager DNS setup
@@ -261,7 +261,7 @@ installYaourt() {
 }
 
 compileVim() {
-  VIM_BUILD_DIR=~
+  VIM_BUILD_DIR=$HOME
   (
   cd "$VIM_BUILD_DIR"
   if [[ ! -d vim ]]; then
@@ -293,21 +293,21 @@ installVim() {
 
   # Ensime
   yaourt -S --noconfirm python2-sexpdata python2-websocket-client
-  mkdir -p ~/.sbt/0.13/plugins/
-  echo 'addSbtPlugin("org.ensime" % "sbt-ensime" % "2.0.0")' > ~/.sbt/0.13/plugins/plugins.sbt
+  mkdir -p "$HOME/.sbt/0.13/plugins/"
+  echo 'addSbtPlugin("org.ensime" % "sbt-ensime" % "2.0.0")' > "$HOME/.sbt/0.13/plugins/plugins.sbt"
 
   # Scala compilation errors with sbt
   git clone git@github.com:PaNaVTEC/sbt-vim-async-integration.git
   (cd sbt-vim-async-integration && sbt publishLocal)
-  echo 'addSbtPlugin("zmre" % "sbt-vim-async-integration" % "1.0-LOCAL")' >> ~/.sbt/0.13/plugins/plugins.sbt
+  echo 'addSbtPlugin("zmre" % "sbt-vim-async-integration" % "1.0-LOCAL")' >> "$HOME/.sbt/0.13/plugins/plugins.sbt"
   mkdir -p "$HOME/.vim/plugged/ale/ale_linters/scala"
   ln -sfn "$dir/config/vim/sbtlogs.vim" "$HOME/.vim/plugged/ale/ale_linters/scala/sbtlogs.vim"
 
   compileVim;
 
   # Haskell-Vim
-  wget https://raw.githubusercontent.com/sdiehl/haskell-vim-proto/master/vim/syntax/cabal.vim -P ~/.vim/syntax/
-  wget https://raw.githubusercontent.com/sdiehl/haskell-vim-proto/master/vim/syntax/haskell.vim -P ~/.vim/syntax/
+  wget https://raw.githubusercontent.com/sdiehl/haskell-vim-proto/master/vim/syntax/cabal.vim -P "$HOME/.vim/syntax/"
+  wget https://raw.githubusercontent.com/sdiehl/haskell-vim-proto/master/vim/syntax/haskell.vim -P "$HOME/.vim/syntax/"
 
   #YouComplete me workarround for ncurses new version
   sudo ln -sfn /usr/lib/libtinfo.so.6 /usr/lib/libtinfo.so.5
@@ -322,9 +322,9 @@ installVim() {
   #Configuration
   ln -sfn "$dir/config/vim/vimrc.vim" "$HOME/.vimrc"
 
-  mkdir -p ~/.backup
-  mkdir -p ~/.tmp
-  mkdir -p ~/.vim/undodir
+  mkdir -p "$HOME/.backup"
+  mkdir -p "$HOME/.tmp"
+  mkdir -p "$HOME/.vim/undodir"
 
   # installs tern for vim
   (cd "$HOME/.vim/plugged/tern_for_vim" && npm install)
@@ -344,9 +344,9 @@ installEmacs() {
   touch "$HOME/.emacs.d/custom.el"
 
   yaourt -S --noconfirm xsel # Fixes clipboard
-  git clone https://github.com/jdee-emacs/jdee-server.git ~/.jdee-server
+  git clone https://github.com/jdee-emacs/jdee-server.git "$HOME/.jdee-server"
   (
-    cd ~/.jdee-server
+    cd "$HOME/.jdee-server"
     mvn -Dmaven.test.skip=true package
   )
 
@@ -360,7 +360,7 @@ installEmacs() {
 }
 
 installRanger() {
-  yaourt -S ranger --noconfirm
+  yaourt -S ranger w3m --noconfirm
   ln -sfn "$dir/config/ranger/config" "$HOME/.config/ranger/rc.conf"
   ln -sfn "$dir/config/ranger/scope.sh" "$HOME/.config/ranger/scope.sh"
 }
@@ -388,9 +388,9 @@ installCompton() {
   yaourt -S --noconfirm \
     compton \
     xorg-xwininfo
-  mkdir -p ~/.before_startx
-  echo "compton -c -i 0.9 -b &" >> ~/.before_startx/run.sh
-  chmod a+x ~/.before_startx/run.sh
+  mkdir -p "$HOME/.before_startx"
+  echo "compton -c -i 0.9 -b &" >> "$HOME/.before_startx/run.sh"
+  chmod a+x "$HOME/.before_startx/run.sh"
   ln -sfn "$dir/config/compton/compton.conf" "$HOME/.config/compton.conf"
 }
 
@@ -400,8 +400,8 @@ installTaskWarrior() {
 
   # time tracking hook
   sudo pip install taskwarrior-time-tracking-hook
-  mkdir -p ~/.task/hooks
-  ln -s "$(which taskwarrior_time_tracking_hook)" ~/.task/hooks/on-modify.timetracking
+  mkdir -p "$HOME/.task/hooks"
+  ln -s "$(which taskwarrior_time_tracking_hook)" "$HOME/.task/hooks/on-modify.timetracking"
 }
 
 installBeancount() {
