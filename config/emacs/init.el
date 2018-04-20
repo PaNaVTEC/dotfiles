@@ -28,7 +28,7 @@
                    init-acklike
                    init-auto-complete
                    init-haskell
-                   javascript
+                   init-javascript
                    init-java
                    init-groovy
                    init-python
