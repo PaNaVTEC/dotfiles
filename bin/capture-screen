@@ -5,8 +5,10 @@ mode=$1
 
 sleep 0.2 # i3 fix
 path="$HOME/Pictures/shots/shot$(date +%s).png"
-if [ $mode == 'select' ]; then
-  maim --select $path
+if [ "$mode" == 'select' ]; then
+  maim --select "$path"
+elif [ "$mode" == 'active' ]; then
+  maim --window "$(xdotool getactivewindow)" "$path"
 else
-  maim $path
+  maim "$path"
 fi

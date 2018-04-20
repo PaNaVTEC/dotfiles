@@ -71,6 +71,7 @@ bindsym Shift+Print exec --no-startup-id scrot "select"
 bindsym --release Control+Shift+Print exec --no-startup-id capture-screen
 bindsym $mod+F11 exec --no-startup-id capture-screen "select"
 bindsym $mod+Shift+F11 exec --no-startup-id capture-screen
+bindsym $mod+Shift+Control+F11 exec --no-startup-id capture-screen "active"
 
 # change focus
 bindsym $mod+j focus left
