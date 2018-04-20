@@ -37,7 +37,7 @@
                    init-scala
                    init-syntax-check
                    init-file-explorer
-                   helm-fw
+                   init-helm-fw
                    git
                    init-projectmanagement
                    markdown
