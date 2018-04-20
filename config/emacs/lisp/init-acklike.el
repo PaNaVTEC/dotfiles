@@ -33,4 +33,4 @@
   :config
   (location-list-buffer (rx bos "*xah-find output*")))
 
-(provide 'acklike)
+(provide 'init-acklike)
