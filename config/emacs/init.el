@@ -34,7 +34,7 @@
                    init-python
                    init-golang
                    init-typescript
-                   scala
+                   init-scala
                    syntax-check
                    file-explorer
                    helm-fw

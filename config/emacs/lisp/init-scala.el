@@ -54,4 +54,4 @@
 
 (use-package sbt-mode :ensure t :mode "\\.scala$")
 
-(provide 'scala)
+(provide 'init-scala)
