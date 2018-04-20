@@ -35,7 +35,7 @@
                    init-golang
                    init-typescript
                    init-scala
-                   syntax-check
+                   init-syntax-check
                    file-explorer
                    helm-fw
                    git
