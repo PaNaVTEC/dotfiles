@@ -1,4 +1,4 @@
-(require 'vim-mode)
+(require 'init-vim-mode)
 
 ;; Fixes Ansi colors on compilation buffer
 (use-package ansi-color :ensure t :defer t)

@@ -70,4 +70,4 @@
   (interactive)
   (setq-local helm-dash-docsets '("Haskell")))
 
-(provide 'haskell)
+(provide 'init-haskell)
