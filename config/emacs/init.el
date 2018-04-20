@@ -44,7 +44,7 @@
                    init-yaml
                    init-compile-mode
                    init-rest
-                   vimscript
+                   init-vimscript
                    clipboard
                    key-helper
                    el
