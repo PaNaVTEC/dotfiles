@@ -40,7 +40,7 @@
                    init-helm-fw
                    init-git
                    init-projectmanagement
-                   markdown
+                   init-markdown
                    yaml
                    compile-mode
                    rest
