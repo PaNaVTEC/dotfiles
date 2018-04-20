@@ -38,7 +38,7 @@
                    init-syntax-check
                    init-file-explorer
                    init-helm-fw
-                   git
+                   init-git
                    init-projectmanagement
                    markdown
                    yaml
