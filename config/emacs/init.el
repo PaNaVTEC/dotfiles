@@ -43,7 +43,7 @@
                    init-markdown
                    init-yaml
                    init-compile-mode
-                   rest
+                   init-rest
                    vimscript
                    clipboard
                    key-helper
