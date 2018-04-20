@@ -5,4 +5,4 @@
 (add-hook 'flycheck-mode-hook
           (lambda () (add-to-list 'flycheck-disabled-checkers 'emacs-lisp-checkdoc)))
 
-(provide 'el)
+(provide 'init-el)
