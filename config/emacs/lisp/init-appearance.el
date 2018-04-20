@@ -1,4 +1,4 @@
-(require 'cycle-theme)
+(require 'init-cycle-theme)
 
 (use-package
   powerline

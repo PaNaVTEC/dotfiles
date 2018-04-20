@@ -9,4 +9,4 @@
   (interactive)
   (setq-local helm-dash-docsets '("Bash")))
 
-(provide 'sh)
+(provide 'init-sh)

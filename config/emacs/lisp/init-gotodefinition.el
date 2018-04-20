@@ -9,4 +9,4 @@
   :defer t
   :ensure)
 
-(provide 'gotodefinition)
+(provide 'init-gotodefinition)

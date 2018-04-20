@@ -18,4 +18,4 @@
   (evil-leader/set-key "\\" 'cycle-theme))
 
 (cycle-theme)
-(provide 'cycle-theme)
+(provide 'init-cycle-theme)
