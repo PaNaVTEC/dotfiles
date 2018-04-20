@@ -24,7 +24,7 @@
 (dolist (module '(init-mysetup
                    init-general-config
                    init-appearance
-                   vim-mode
+                   init-vim-mode
                    acklike
                    auto-complete
                    haskell
