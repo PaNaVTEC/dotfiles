@@ -42,7 +42,6 @@
                    init-projectmanagement
                    init-markdown
                    init-yaml
-                   init-compile-mode
                    init-rest
                    init-vimscript
                    init-clipboard
