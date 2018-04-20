@@ -41,7 +41,7 @@
                    init-git
                    init-projectmanagement
                    init-markdown
-                   yaml
+                   init-yaml
                    compile-mode
                    rest
                    vimscript
