@@ -35,7 +35,7 @@
                    init-golang
                    init-typescript
                    init-scala
-                   init-syntax-check
+                   init-syntax-checker
                    init-file-explorer
                    init-helm-fw
                    init-git

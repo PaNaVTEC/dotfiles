@@ -1,4 +1,4 @@
-(require 'programming-mode)
+(require 'init-programming-mode)
 
 (defun prettify-js-for (mode-hook)
   (defun javascript/prettify ()

@@ -9,4 +9,4 @@
   (location-list-buffer (rx bos "*Flycheck errors*"))
   (location-list-buffer (rx bos "*Flycheck error messages*")))
 
-(provide 'init-syntax-check)
+(provide 'init-syntax-checker)

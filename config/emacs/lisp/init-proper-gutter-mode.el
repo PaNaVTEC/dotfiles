@@ -62,4 +62,4 @@
 
   (if proper-gutter-mode (proper-gutter-mode-on) (proper-gutter-mode-off)))
 
-(provide 'proper-gutter-mode)
+(provide 'init-proper-gutter-mode)

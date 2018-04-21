@@ -1,4 +1,4 @@
-(require 'programming-mode)
+(require 'init-programming-mode)
 
 (use-package go-mode
   :mode ("\\.go\\'" . go-mode)
