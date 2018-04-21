@@ -250,7 +250,7 @@ bindsym $mod+F12 mode "$mode_monitor"
 # Scratchpad
 for_window [title="^ranger$"] move scratchpad
 bindsym $mod+Shift+F scratchpad show
-exec --no-startup-id ranger
+exec --no-startup-id $TERMINAL -t ranger ranger
 
 bar {
   position top
@@ -277,5 +277,5 @@ focus_follows_mouse no
 smart_borders on
 smart_gaps on
 
-exec --no-startup-id i3-msg workspace $WS3, layout tabbed
+exec --no-startup-id i3-msg 'workspace $WS3, layout tabbed'
 exec --no-startup-id set-wallpaper.sh
