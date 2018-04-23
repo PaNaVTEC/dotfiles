@@ -1,8 +1,8 @@
 alias gpl='git prunelocal'
 alias gdl='git discard'
 
-gblame() { 
-  git log -p -M --follow --stat -- $1
+gblame() {
+  git log -p -M --follow --stat -- "$1"
 }
 
 # Git Diff Against
@@ -20,7 +20,7 @@ gdam() {
 # Usage example: git pull origin $(git_current_branch)
 # Using '--quiet' with 'symbolic-ref' will not cause a fatal error (128) if
 # it's not a symbolic ref, but in a Git repo.
-function git_current_branch() {
+git_current_branch() {
   local ref
   ref=$(command git symbolic-ref --quiet HEAD 2> /dev/null)
   local ret=$?
