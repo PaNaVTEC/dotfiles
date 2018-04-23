@@ -32,7 +32,11 @@
         "args": {
           "status_colors": true
         }
-			}
+			},
+      {
+        "function": "powerline_gitstatus.gitstatus",
+        "priority": 40
+      }
 		]
 	}
 }
