@@ -1,4 +1,4 @@
-(require 'programming-mode)
+(require 'init-programming-mode)
 
 (add-hook 'flycheck-mode-hook
   (lambda () (progn (flycheck-add-mode 'python-pylint 'python-mode-hook))))

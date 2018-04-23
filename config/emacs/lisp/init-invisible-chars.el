@@ -22,4 +22,4 @@
     (set-face-attribute 'whitespace-empty nil :background "magenta")
     (evil-leader/set-key "w" 'whitespace-cleanup)))
 
-(provide 'invisible-chars)
+(provide 'init-invisible-chars)

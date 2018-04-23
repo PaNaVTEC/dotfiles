@@ -71,4 +71,4 @@
 (if (not window-system)
     (add-hook 'post-command-hook 'set-terminal-title))
 
-(provide 'general-config)
+(provide 'init-general-config)

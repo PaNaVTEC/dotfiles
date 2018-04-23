@@ -26,4 +26,4 @@
     (set-face-background 'smerge-markers "brightblack")
     (set-face-background 'smerge-upper "red"))))
 
-(provide 'mysetup)
+(provide 'init-mysetup)

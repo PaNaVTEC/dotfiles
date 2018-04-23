@@ -3,4 +3,4 @@
   (dolist (sym symbols)
     (push sym prettify-symbols-alist)))
 
-(provide 'prettify)
+(provide 'init-prettify)

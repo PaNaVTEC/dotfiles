@@ -1,4 +1,4 @@
-(require 'cycle-theme)
+(require 'init-cycle-theme)
 
 (use-package
   powerline
@@ -34,4 +34,4 @@
 (set-default-font my-font)
 (set-face-attribute 'default nil :height my-font-height)
 
-(provide 'appearance)
+(provide 'init-appearance)

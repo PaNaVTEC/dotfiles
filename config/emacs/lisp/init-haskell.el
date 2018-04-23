@@ -1,4 +1,4 @@
-(require 'programming-mode)
+(require 'init-programming-mode)
 
 (defun haskell/prettify ()
   (prettify
@@ -70,4 +70,4 @@
   (interactive)
   (setq-local helm-dash-docsets '("Haskell")))
 
-(provide 'haskell)
+(provide 'init-haskell)

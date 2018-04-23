@@ -1,4 +1,4 @@
-(require 'programming-mode)
+(require 'init-programming-mode)
 
 (defun prettify-js-for (mode-hook)
   (defun javascript/prettify ()
@@ -102,4 +102,4 @@
   (interactive)
   (setq-local helm-dash-docsets '("JavaScript" "NodeJS" "React" "Sinon")))
 
-(provide 'javascript)
+(provide 'init-javascript)

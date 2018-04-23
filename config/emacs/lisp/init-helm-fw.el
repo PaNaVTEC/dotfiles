@@ -24,4 +24,4 @@
      ;; Override default command launcher
      (global-set-key (kbd "M-x") 'helm-M-x))
 
-(provide 'helm-fw)
+(provide 'init-helm-fw)

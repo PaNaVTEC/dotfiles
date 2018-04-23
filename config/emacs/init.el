@@ -21,34 +21,33 @@
 
 ;; Load modules
 (add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
-(dolist (module '(mysetup
-                   general-config
-                   appearance
-                   vim-mode
-                   acklike
-                   auto-complete
-                   haskell
-                   javascript
+(dolist (module '(init-mysetup
+                   init-general-config
+                   init-appearance
+                   init-vim-mode
+                   init-acklike
+                   init-auto-complete
+                   init-haskell
+                   init-javascript
                    init-java
                    init-groovy
                    init-python
                    init-golang
                    init-typescript
-                   scala
-                   syntax-check
-                   file-explorer
-                   helm-fw
-                   git
+                   init-scala
+                   init-syntax-checker
+                   init-file-explorer
+                   init-helm-fw
+                   init-git
                    init-projectmanagement
-                   markdown
-                   yaml
-                   compile-mode
-                   rest
-                   vimscript
-                   clipboard
-                   key-helper
-                   el
-                   sh))
+                   init-markdown
+                   init-yaml
+                   init-rest
+                   init-vimscript
+                   init-clipboard
+                   init-key-helper
+                   init-el
+                   init-sh))
   (require module))
 
 (defun display-startup-echo-area-message ()

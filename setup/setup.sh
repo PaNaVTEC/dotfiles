@@ -360,9 +360,10 @@ installEmacs() {
 }
 
 installRanger() {
-  yaourt -S ranger w3m ffmpegthumbnailer --noconfirm
+  yaourt -S ranger w3m ffmpegthumbnailer atool --noconfirm
   ln -sfn "$dir/config/ranger/config" "$HOME/.config/ranger/rc.conf"
   ln -sfn "$dir/config/ranger/scope.sh" "$HOME/.config/ranger/scope.sh"
+  ln -sfn "$dir/config/ranger/commands/py" "$HOME/.config/ranger/commands.py"
 }
 
 installMutt() {

@@ -1,4 +1,5 @@
-(require 'vim-mode)
+(require 'init-vim-mode)
+(require 'compile)
 
 ;; Fixes Ansi colors on compilation buffer
 (use-package ansi-color :ensure t :defer t)
@@ -11,4 +12,4 @@
 (add-hook 'compilation-filter-hook 'endless/colorize-compilation)
 ;TODO: (add-hook 'compilation-mode-hook 'evily/evilify-key-bindings)
 
-(provide 'compile-mode)
+(provide 'init-compile-mode)

@@ -1,4 +1,4 @@
-(require 'programming-mode)
+(require 'init-programming-mode)
 
 (use-package
   scala-mode
@@ -54,4 +54,4 @@
 
 (use-package sbt-mode :ensure t :mode "\\.scala$")
 
-(provide 'scala)
+(provide 'init-scala)

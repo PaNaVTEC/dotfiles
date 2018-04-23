@@ -1,4 +1,4 @@
-(require 'programming-mode)
+(require 'init-programming-mode)
 
 (use-package
   yaml-mode
@@ -6,4 +6,4 @@
   :mode "\\.ya?ml$"
   :config
   (add-hook 'yaml-mode-hook 'programming-mode))
-(provide 'yaml)
+(provide 'init-yaml)

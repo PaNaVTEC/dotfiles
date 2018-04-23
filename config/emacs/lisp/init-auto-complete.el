@@ -5,4 +5,4 @@
   :config
   (setq company-idle-delay 0.3))
 
-(provide 'auto-complete)
+(provide 'init-auto-complete)

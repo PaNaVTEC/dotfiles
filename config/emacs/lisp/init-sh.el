@@ -1,4 +1,4 @@
-(require 'programming-mode)
+(require 'init-programming-mode)
 
 (add-hook 'sh-mode-hook 'programming-mode)
 (add-hook 'sh-mode-hook 'company-mode)
@@ -9,4 +9,4 @@
   (interactive)
   (setq-local helm-dash-docsets '("Bash")))
 
-(provide 'sh)
+(provide 'init-sh)

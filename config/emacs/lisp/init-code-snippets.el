@@ -6,4 +6,4 @@
   :config
   (setq yas-snippet-dirs '("~/.emacs.d/snippets")))
 
-(provide 'code-snippets)
+(provide 'init-code-snippets)
