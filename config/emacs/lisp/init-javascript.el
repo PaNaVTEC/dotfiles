@@ -45,6 +45,17 @@
   (add-hook 'js-mode-hook 'programming-mode)
   (add-hook 'js-mode-hook 'company-mode)
   (add-hook 'js-mode-hook 'js-doc)
+
+  ; Fix compile mode for NodeJS
+  (setq compilation-error-regexp-alist-alist
+        (cons '(node "^[  ]+at \\(?:[^\(\n]+ \(\\)?\\([a-zA-Z\.0-9_/-]+\\):\\([0-9]+\\):\\([0-9]+\\)\)?$"
+                     1 ;; file
+                     2 ;; line
+                     3 ;; column
+                     )
+              compilation-error-regexp-alist-alist))
+  (setq compilation-error-regexp-alist (cons 'node compilation-error-regexp-alist))
+
   (prettify-js-for 'js-mode-hook)
   (add-hook
     'flycheck-mode-hook
@@ -101,5 +112,6 @@
 (defun js-doc ()
   (interactive)
   (setq-local helm-dash-docsets '("JavaScript" "NodeJS" "React" "Sinon")))
+
 
 (provide 'init-javascript)
