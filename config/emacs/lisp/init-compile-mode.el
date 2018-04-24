@@ -12,4 +12,6 @@
 (add-hook 'compilation-filter-hook 'endless/colorize-compilation)
 ;TODO: (add-hook 'compilation-mode-hook 'evily/evilify-key-bindings)
 
+(location-list-buffer (rx bos "*helm-mode-compilation-next-error-function*"))
+
 (provide 'init-compile-mode)
