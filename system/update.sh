@@ -55,6 +55,7 @@ systemUpdate () {
   (
     cd "$HOME/.powerline-hs/"
     if [ "$(commitsBehind)" -gt 1 ]; then
+      git pull
       stack install
     fi
   )
