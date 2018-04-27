@@ -2,7 +2,9 @@
 set -e
 
 ask() {
-  # http://djm.me/ask
+  # https://djm.me/ask
+  local prompt default reply
+
   while true; do
 
     if [ "${2:-}" = "Y" ]; then
@@ -16,16 +18,19 @@ ask() {
       default=
     fi
 
-    # ask the question
-    read -p "$1 [$prompt] " REPLY
+    # Ask the question (not using "read -p" as it uses stderr not stdout)
+    echo -n "$1 [$prompt] "
 
-    # default?
-    if [ -z "$REPLY" ]; then
-      REPLY=$default
+    # Read the answer (use /dev/tty in case stdin is redirected from somewhere else)
+    read reply </dev/tty
+
+    # Default?
+    if [ -z "$reply" ]; then
+      reply=$default
     fi
 
-    # check if the reply is valid
-    case "$REPLY" in
+    # Check if the reply is valid
+    case "$reply" in
       Y*|y*) return 0 ;;
       N*|n*) return 1 ;;
     esac
