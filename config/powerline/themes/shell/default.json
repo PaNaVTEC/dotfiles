@@ -40,6 +40,22 @@
       {
         "function": "powerline_gitstatus.gitstatus_behind",
         "priority": 40
+      },
+      {
+        "function": "powerline_gitstatus.gitstatus_staged",
+        "priority": 40
+      },
+      {
+        "function": "powerline_gitstatus.gitstatus_unmerged",
+        "priority": 40
+      },
+      {
+        "function": "powerline_gitstatus.gitstatus_changed",
+        "priority": 40
+      },
+      {
+        "function": "powerline_gitstatus.gitstatus_untracked",
+        "priority": 40
       }
     ]
   }
