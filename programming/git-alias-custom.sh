@@ -31,6 +31,7 @@ git_current_branch() {
   echo ${ref#refs/heads/}
 }
 alias gcam='git add . && git commit -a -m'
+alias gprune='git branch | grep -v master | xargs git branch -D'
 
 ## Autocompleted alias
 __git_complete gco _git_checkout
