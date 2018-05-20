@@ -1,7 +1,9 @@
 #!/bin/bash -ex
 
-if [[ $(pgrep Xorg) ]]; then
-  feh --bg-scale ~/Pictures/pict.png
+BACKGROUND="$HOME/Pictures/pict.png"
+
+if [[ $(pidof X) ]]; then
+  feh --bg-scale "$BACKGROUND"
 else
-  output "*" background ~/Pictures/pict.png
+  output "*" background "$BACKGROUND"
 fi
