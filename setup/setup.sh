@@ -267,6 +267,7 @@ installYaourt() {
 
 compileVim() {
   VIM_BUILD_DIR=$HOME/.vim_install
+  mkdir -p "$VIM_BUILD_DIR"
   (
   cd "$VIM_BUILD_DIR"
   if [[ ! -d vim ]]; then
