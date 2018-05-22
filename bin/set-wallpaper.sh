@@ -1,9 +1,7 @@
 #!/bin/bash -ex
 
-BACKGROUND="$HOME/Pictures/pict.png"
-
-if [[ $(pidof X) ]]; then
-  feh --bg-scale "$BACKGROUND"
+if [[ $(pgrep X) ]]; then
+  feh --bg-scale ~/Pictures/pict.png
 else
   output "*" background "$BACKGROUND"
 fi
