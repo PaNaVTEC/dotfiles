@@ -3,7 +3,7 @@ URxvt.intensityStyles: false
 URxvt.background: #2E3440
 URxvt.internalBorder: 0
 !URxvt.depth: 24
-URxvt.font: xft:xos4 Terminus:size=13, xft:Symbola:size=13, xft:DroidSansMonoForPowerline Nerd Font:size=13
+URxvt.font: xft:Terminus:size=13, xft:Symbola:size=13, xft:DroidSansMonoForPowerline Nerd Font:size=13
 URxvt.cursorColor: #D8DEE9
 URxvt*skipBuiltinGlyphs: true
 

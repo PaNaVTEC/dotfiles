@@ -10,6 +10,7 @@
       /etc/nixos/hardware-configuration.nix
       ./i3.nix
       ./urxvt.nix
+      ./fonts.nix
     ];
 
   # SSD options
