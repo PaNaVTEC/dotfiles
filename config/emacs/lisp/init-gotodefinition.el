@@ -1,12 +1,12 @@
 (use-package dumb-jump
   :pin melpa-stable
-  :bind (("M-g o" . dumb-jump-go-other-window)
-         ("M-g j" . dumb-jump-go)
-         ("M-g i" . dumb-jump-go-prompt)
-         ("M-g x" . dumb-jump-go-prefer-external)
-         ("M-g z" . dumb-jump-go-prefer-external-other-window))
-  :config (setq dumb-jump-selector 'helm)
   :defer t
-  :ensure)
+  :config
+    (setq dumb-jump-selector 'helm)
+
+    (define-key evil-normal-state-map (kbd "]j") 'dumb-jump-go)
+    (define-key evil-normal-state-map (kbd "[j") 'dumb-jump-back)
+
+    (location-list-buffer (rx bos "*helm dumb jump choices*")))
 
 (provide 'init-gotodefinition)
