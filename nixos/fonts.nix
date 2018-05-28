@@ -4,8 +4,7 @@ let
   terminus-td1 = pkgs.stdenv.lib.overrideDerivation pkgs.terminus_font (oldAttrs : {
     configurePhase = ''
       patch < alt/td1.diff
-      sh ./configure --prefix=$out
-    '';
+    '' + oldAttrs.configurePhase;
   });
 in
 {
