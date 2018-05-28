@@ -20,6 +20,7 @@ in
       ./git.nix
       ./virtualization.nix
       ./containerization.nix
+      ./javascript.nix
     ];
 
   # SSD options
