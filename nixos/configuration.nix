@@ -10,6 +10,7 @@
       ./apps.nix
       ./emacs.nix
       ./scala.nix
+      ./java.nix
     ];
 
   # SSD options
