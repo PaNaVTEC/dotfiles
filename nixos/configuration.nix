@@ -9,6 +9,7 @@
       ./fonts.nix
       ./apps.nix
       ./emacs.nix
+      ./java.nix
     ];
 
   # SSD options
