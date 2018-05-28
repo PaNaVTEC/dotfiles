@@ -17,6 +17,9 @@ in
       ./emacs.nix
       ./scala.nix
       ./java.nix
+      ./git.nix
+      ./virtualization.nix
+      ./containerization.nix
     ];
 
   # SSD options
@@ -60,7 +63,7 @@ in
   # List packages installed in system profile. To search, run:
   # $ nix search 
   environment.systemPackages = with pkgs; [
-    wget vim git htop iw imagemagick
+    wget vim htop iw imagemagick
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
