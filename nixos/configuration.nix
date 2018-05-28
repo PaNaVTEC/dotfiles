@@ -9,6 +9,7 @@ in
   imports =
     [
       /etc/nixos/hardware-configuration.nix
+      ./networking.nix
       ./i3.nix
       ./urxvt.nix
       ./fonts.nix
