@@ -1,5 +1,11 @@
 { config, pkgs, ... }:
 
+let
+  userModule = (import ./user.nix);
+  username = userModule.name;
+  hostname = userModule.hostname;
+  rootPartitionUUID = userModule.rootPartitionUUID;
+in
 {
   imports =
     [
@@ -31,15 +37,15 @@
       {
         name = "root";
         # blkid gives you back the disk id
-        device = "/dev/disk/by-uuid/c194b5dc-ab62-45a1-8c09-0fcaee826130";
+        device = "/dev/disk/by-uuid/${rootPartitionUUID}";
         preLVM = true;
         allowDiscards = true;
       }
     ];
   };
 
-  networking.hostName = "nVTEC";
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
+  networking.hostName = hostname;
+  networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Select internationalisation properties.
   # i18n = {
@@ -89,13 +95,14 @@
   # Enable touchpad support.
   # services.xserver.libinput.enable = true;
 
-  users.extraUsers.panavtec = {
-    isNormalUser = true;
-    uid = 1000;
-    group = "wheel";
-    home = "/home/panavtec";
-    createHome = true;
-    packages = with pkgs; [ stow ];
+
+  users.extraUsers.${username} = {
+     isNormalUser = true;
+     uid = 1000;
+     group = "wheel";
+     home = "/home/${username}";
+     createHome = true;
+     packages = with pkgs; [ stow ];
   };
   security.sudo.configFile = "%wheel ALL=(ALL) ALL";
 
