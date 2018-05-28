@@ -3,7 +3,6 @@
 let
   userModule = (import ./user.nix);
   username = userModule.name;
-  hostname = userModule.hostname;
   rootPartitionUUID = userModule.rootPartitionUUID;
 in
 {
@@ -47,9 +46,6 @@ in
     ];
   };
 
-  networking.hostName = hostname;
-  networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-
   # Select internationalisation properties.
   # i18n = {
   #   consoleFont = "Lat2-Terminus16";
@@ -61,9 +57,9 @@ in
   time.timeZone = "Europe/London";
 
   # List packages installed in system profile. To search, run:
-  # $ nix search 
+  # $ nix search
   environment.systemPackages = with pkgs; [
-    wget vim htop iw imagemagick
+    wget vim htop imagemagick
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -76,12 +72,6 @@ in
 
   # Enable the OpenSSH daemon.
   # services.openssh.enable = true;
-
-  # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ 8080 80 3000 ];
-  # networking.firewall.allowedUDPPorts = [ ];
-  # Or disable the firewall altogether.
-  # networking.firewall.enable = false;
 
   # Enable CUPS to print documents.
   # services.printing.enable = true;
@@ -98,11 +88,13 @@ in
   # Enable touchpad support.
   # services.xserver.libinput.enable = true;
 
-
   users.extraUsers.${username} = {
      isNormalUser = true;
      uid = 1000;
-     group = "wheel";
+     group = "users";
+     extraGroups = [
+       "wheel" "networkmanager" "systemd-journal" "audio" "video" "disk"
+     ];
      home = "/home/${username}";
      createHome = true;
      packages = with pkgs; [ stow ];
