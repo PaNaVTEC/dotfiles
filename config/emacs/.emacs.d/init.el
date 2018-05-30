@@ -47,6 +47,7 @@
                    init-clipboard
                    init-key-helper
                    init-el
+                   init-nix
                    init-sh))
   (require module))
 

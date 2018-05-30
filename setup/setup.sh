@@ -267,6 +267,7 @@ installYaourt() {
 
 compileVim() {
   VIM_BUILD_DIR=$HOME/.vim_install
+  mkdir -p "$VIM_BUILD_DIR"
   (
   cd "$VIM_BUILD_DIR"
   if [[ ! -d vim ]]; then
@@ -342,8 +343,7 @@ installVim() {
 }
 
 installEmacs() {
-  # Install like this until emacs 26 is released in aur
-  (cd "$dir/config/emacs/install/" && makepkg -si)
+  yaourt -S --noconfirm emacs
   mkdir -p "$HOME/.emacs.saves"
   mkdir -p "$HOME/.emacs.undo"
   touch "$HOME/.emacs.d/custom.el"

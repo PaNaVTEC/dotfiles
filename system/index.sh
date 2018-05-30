@@ -101,19 +101,10 @@ forceHwClock() {
   sudo systemctl restart systemd-timesyncd.service
 }
 
-dockerHotReloading() {
-  # directory in /lib/modules
-#  sudo depmod 4.15.6-1-ARCH
-#  sudo modprobe --set-version=4.15.6-1-ARCH overlay bridge br_netfilter nf_nat xt_conntrack
-
-#  uname () {
-#    echo "4.15.6-1-ARCH"
-#  }
-  modprobe () {
-    builtin modprobe --set-version=4.15.6-1-ARCH
-  }
-}
-
 portOfProcessNamed() {
   netstat -tlpn  | grep "$1"
+}
+
+updateDns() {
+  sudo resolvconf -u
 }
