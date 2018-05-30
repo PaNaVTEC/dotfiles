@@ -101,13 +101,6 @@ installGit() {
   yaourt --noconfirm -S ./yaourt_git.txt
   ln -sfn "$dir/config/git/gitconfig" "$HOME/.gitconfig"
 
-  # SSH agent
-  mkdir -p "$HOME/.config/systemd/user"
-  ln -sfn "$dir/config/units/ssh-agent.service" "$HOME/.config/systemd/user/"
-  systemctl --user daemon-reload
-  systemctl --user enable ssh-agent
-  systemctl --user start ssh-agent
-
   # Global git ignores
   gibo --upgrade
   gibo Emacs Vim JetBrains Ensime Tags Vagrant Windows macOS Linux Archives >> "$HOME/.gitignore.global"
@@ -150,12 +143,6 @@ installGo() {
 }
 
 installHaskell() {
-  sudo pacman-key -r 4209170B
-  sudo pacman-key --lsign-key 4209170B
-  sudo pacman-key -r B0544167
-  sudo pacman-key --lsign-key B0544167
-  yaourt -Syu
-
   yaourt -S stack-bin ncurses5-compat-libs
   stack setup
   stack install ghc-mod hindent stylish-haskell cabal-install hoogle hlint

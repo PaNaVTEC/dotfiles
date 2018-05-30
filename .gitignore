@@ -39,3 +39,5 @@ Temporary Items
 .apdisk
 
 config/vpn/server.ovpn
+nixos/user.nix
+result
