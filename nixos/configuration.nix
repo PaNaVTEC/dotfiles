@@ -4,6 +4,7 @@ let
   userModule = (import ./user.nix);
   username = userModule.name;
   rootPartitionUUID = userModule.rootPartitionUUID;
+  n = pkgs.callPackage ./pkgs/npackagemanager { };
 in
 {
   imports =
@@ -59,8 +60,9 @@ in
 
   # List packages installed in system profile. To search, run:
   # $ nix search
+
   environment.systemPackages = with pkgs; [
-    wget vim htop imagemagick
+    wget vim htop imagemagick n
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
