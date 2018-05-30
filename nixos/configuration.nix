@@ -18,6 +18,7 @@ in
       ./emacs.nix
       ./scala.nix
       ./java.nix
+      ./haskell.nix
       ./git.nix
       ./virtualization.nix
       ./containerization.nix
@@ -62,7 +63,7 @@ in
   # $ nix search
 
   environment.systemPackages = with pkgs; [
-    wget vim htop imagemagick n
+    wget vim htop imagemagick n gcc gnumake binutils
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
