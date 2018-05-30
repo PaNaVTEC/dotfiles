@@ -1,4 +1,4 @@
-{ config, pkgs, stdenv, ... }:
+{ config, pkgs, ... }:
 
 let
   userModule = (import ./user.nix);
