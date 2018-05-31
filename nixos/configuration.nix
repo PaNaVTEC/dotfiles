@@ -22,6 +22,7 @@ in
       ./git.nix
       ./virtualization.nix
       ./containerization.nix
+      ./golang.nix
       ./cli.nix
     ];
 
