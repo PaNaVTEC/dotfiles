@@ -43,19 +43,8 @@ installi3() {
   sleep 2
   yaourt --noconfirm -S ./yaourt_i3.txt
 
-  ln -sfn "$dir/config/i3" "$HOME/.config/i3"
-
-  # gsimplecal configuration
-  mkdir -p "$HOME/.config/gsimplecal"
-  ln -sfn "$dir/config/gsimplecal/config" "$HOME/.config/gsimplecal/config"
-
-  #polybar
-  #mkdir -p "$HOME/.config/polybar/"
-  #ln -sfn "$dir/config/polybar/config" "$HOME/.config/polybar/config"
-
   #i3blocks
-  ln -sfn "$dir/config/i3blocks/config" "$HOME/.i3blocks.conf"
-  yaourt --noconfirm -S sysstat ponymix
+  yaourt --noconfirm -S sysstat
 }
 
 installFonts() {
@@ -66,9 +55,6 @@ installFonts() {
   mkdir -p "$HOME/.local/share/fonts/"
   mkdir -p "$HOME/.config/fontconfig/conf.d/"
 
-  # cairo-coloredemoji is not maintained anymore. So no emojis :(
-  #yaourt -Rdd cairo && yaourt --noconfirm -S cairo-coloredemoji
-  cp "$dir/config/fonts/51-noto-color-emoji.conf" "/etc/fonts/conf.avail/"
   cp "$dir/config/fonts/fonts.conf" "$HOME/.config/fontconfig/"
   yaourt --noconfirm -S ./yaourt_fonts.txt
 
@@ -99,7 +85,6 @@ installThemes() {
 
 installGit() {
   yaourt --noconfirm -S ./yaourt_git.txt
-  ln -sfn "$dir/config/git/gitconfig" "$HOME/.gitconfig"
 
   # Global git ignores
   gibo --upgrade
@@ -342,10 +327,6 @@ installEmacs() {
     mvn -Dmaven.test.skip=true package
   )
 
-  ln -sfn "$dir/config/emacs/init.el" "$HOME/.emacs.d/"
-  ln -sfn "$dir/config/emacs/lisp/" "$HOME/.emacs.d/lisp"
-  ln -sfn "$dir/config/emacs/snippets/" "$HOME/.emacs.d/snippets"
-
   mkdir -p "$HOME/.config/systemd/user"
   ln -sfn "$dir/config/units/emacs.service" "$HOME/.config/systemd/user/emacs.service"
   systemctl --user enable --now emacs
@@ -411,14 +392,6 @@ installPrivacy() {
   sudo chown -v root:root /etc/wireguard/wg0-client.conf
 }
 
-installXresources() {
-  ln -sfn "$dir/config/Xresources/Xresources" "$HOME/.Xresources"
-  ln -sfn "$dir/config/Xresources/Xdefaults" "$HOME/.Xdefaults"
-  ln -sfn "$dir/config/Xresources/xcolors" "$HOME/.xcolors"
-  ln -sfn "$dir/config/urxvt/xurxvt" "$HOME/.xurxvt"
-  ln -sfn "$dir/config/simpleterminal/xst" "$HOME/.xst"
-}
-
 if [[ "${BASH_SOURCE[0]}" = "$0" ]]; then
 
   echo "PaNaVTEC dotfiles installer"
@@ -436,7 +409,6 @@ if [[ "${BASH_SOURCE[0]}" = "$0" ]]; then
 
   echo "actionSystem.suspendFocusTransferIfApplicationInactive=false add this into intelliJ to prevent focus lose"
 
-  installXresources;
   ask "install pacman/yaourt?" Y && installYaourt;
   ask "install i3?" Y && installi3;
   ask "install compton?" Y && installCompton;

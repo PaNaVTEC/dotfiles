@@ -1,5 +1,4 @@
 jdk
-jdk7
 jdk8
 jd-gui-bin
 maven
