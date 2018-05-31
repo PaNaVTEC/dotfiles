@@ -34,6 +34,7 @@
                    init-python
                    init-golang
                    init-typescript
+                   init-purescript
                    init-scala
                    init-syntax-checker
                    init-file-explorer
