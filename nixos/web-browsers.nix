@@ -2,8 +2,8 @@
 
 {
   environment.systemPackages = with pkgs; [
-    dropbox
-    evince
-    pinta
+    chromium
+    firefox
+    qutebrowser
   ];
 }

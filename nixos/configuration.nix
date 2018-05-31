@@ -22,6 +22,8 @@ in
       ./git.nix
       ./virtualization.nix
       ./containerization.nix
+      ./security.nix
+      ./web-browsers.nix
     ];
 
   # SSD options
@@ -104,6 +106,8 @@ in
      packages = with pkgs; [ stow ];
   };
   security.sudo.configFile = "%wheel ALL=(ALL) ALL";
+
+  nixpkgs.config.allowUnfree = true;
 
   # This value determines the NixOS release with which your system is to be
   # compatible, in order to avoid breaking some software such as database
