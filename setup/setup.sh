@@ -237,51 +237,8 @@ installYaourt() {
   rm yaourt.tar.gz
 }
 
-compileVim() {
-  VIM_BUILD_DIR=$HOME/.vim_install
-  mkdir -p "$VIM_BUILD_DIR"
-  (
-  cd "$VIM_BUILD_DIR"
-  if [[ ! -d vim ]]; then
-    git clone https://github.com/vim/vim.git --recursive
-  else
-    (
-    cd vim
-    git pull
-    git submodule update --init --recursive
-    )
-  fi
-  cd vim
-  ./configure --with-features=huge \
-    --enable-multibyte \
-    --enable-rubyinterp \
-    --enable-python3interp=yes \
-    --enable-luainterp \
-    --enable-gui=no \
-    --enable-cscope \
-    --enable-pythoninterp \
-    --enable-python3interp
-  make "-j$(nproc)"
-  sudo make install
-  )
-}
-
 installVim() {
-  yaourt -S --noconfirm silver-searcher-git cmake sbt scalafmt
-
-  # Ensime
-  yaourt -S --noconfirm python2-sexpdata python2-websocket-client
-  mkdir -p "$HOME/.sbt/0.13/plugins/"
-  echo 'addSbtPlugin("org.ensime" % "sbt-ensime" % "2.0.0")' > "$HOME/.sbt/0.13/plugins/plugins.sbt"
-
-  # Scala compilation errors with sbt
-  git clone git@github.com:PaNaVTEC/sbt-vim-async-integration.git
-  (cd sbt-vim-async-integration && sbt publishLocal)
-  echo 'addSbtPlugin("zmre" % "sbt-vim-async-integration" % "1.0-LOCAL")' >> "$HOME/.sbt/0.13/plugins/plugins.sbt"
-  mkdir -p "$HOME/.vim/plugged/ale/ale_linters/scala"
-  ln -sfn "$dir/config/vim/sbtlogs.vim" "$HOME/.vim/plugged/ale/ale_linters/scala/sbtlogs.vim"
-
-  compileVim;
+  yaourt -S --noconfirm silver-searcher-git cmake sbt scalafmt vim
 
   # Haskell-Vim
   wget https://raw.githubusercontent.com/sdiehl/haskell-vim-proto/master/vim/syntax/cabal.vim -P "$HOME/.vim/syntax/"

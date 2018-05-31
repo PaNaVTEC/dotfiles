@@ -18,13 +18,6 @@ commitsBehind () {
 }
 
 vimUpdate () {
-  echo "Upgrade VIM"
-  (
-    cd ~/vim
-    if [ "$(commitsBehind)" -gt 50 ]; then
-      (source "$DOTFILES_LOCATION/setup/setup.sh" && compileVim;)
-    fi
-  )
   echo "Upgrading vim plugins"
   vim +PlugClean +PlugUpgrade +PlugUpdate +qa
 }

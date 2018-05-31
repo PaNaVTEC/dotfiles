@@ -48,8 +48,8 @@ Plug 'ap/vim-css-color'
 
 " Scala
 Plug 'derekwyatt/vim-scala'
-    \| Plug 'ensime/ensime-vim'
-    \| Plug 'ktvoelker/sbt-vim'
+    "\| Plug 'ensime/ensime-vim'
+    "\| Plug 'ktvoelker/sbt-vim'
     "\| Plug 'zmre/vim-scala-async-integration'
     "\| Plug 'vim-syntastic/syntastic'
 " Plug 'dscleaver/sbt-quickfix'
