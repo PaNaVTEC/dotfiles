@@ -162,12 +162,6 @@ installTools() {
   #urxvt
   yaourt --noconfirm -S rxvt-unicode rxvt-unicode-terminfo urxvt-perls urxvt-resize-font-git
 
-  # Patcher matcher as described in
-  # https://wiki.archlinux.org/index.php/Rxvt-unicode#Very_long_lines_cause_slowdown
-  mkdir -p "$HOME/.urxvt/ext"
-  ln -sfn "$dir/config/urxvt/matcher" "$HOME/.urxvt/ext/matcher"
-
-  #powerline
   yaourt --noconfirm -S powerline
   git clone https://github.com/rdnetto/powerline-hs.git --recursive "$HOME/.powerline-hs"
   (cd "$HOME/.powerline-hs/" && stack install)
