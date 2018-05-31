@@ -175,8 +175,6 @@ installTools() {
 
   # setup qutebrowser
   yaourt --noconfirm -S qutebrowser
-  mkdir -p "$HOME/.config/qutebrowser"
-  ln -sfn "$dir/config/qutebrowser/config.py" "$HOME/.config/qutebrowser/config.py"
 
   # setup inox
   sudo pip install maninex
