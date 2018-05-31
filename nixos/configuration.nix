@@ -22,7 +22,7 @@ in
       ./git.nix
       ./virtualization.nix
       ./containerization.nix
-      ./bash.nix
+      ./cli.nix
     ];
 
   # SSD options
