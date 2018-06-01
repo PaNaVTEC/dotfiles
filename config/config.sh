@@ -6,3 +6,5 @@ stow --target=$HOME emacs
 stow --target=$HOME git
 stow --target=$HOME qutebrowser
 sudo stow --target=/etc networkmanager
+stow --target=$HOME ranger
+stow --target=$HOME mutt
