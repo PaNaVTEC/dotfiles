@@ -8,3 +8,4 @@ stow --target=$HOME qutebrowser
 sudo stow --target=/etc networkmanager
 stow --target=$HOME ranger
 stow --target=$HOME mutt
+stow --target=$HOME compton

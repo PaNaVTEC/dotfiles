@@ -27,6 +27,7 @@ in
       ./golang.nix
       ./cli.nix
       ./messaging.nix
+      ./audio.nix
     ];
 
   # SSD options
@@ -83,10 +84,6 @@ in
 
   # Enable CUPS to print documents.
   # services.printing.enable = true;
-
-  # Enable sound.
-  sound.enable = true;
-  hardware.pulseaudio.enable = true;
 
   # services.xserver.xkbOptions = "eurosign:e";
   services.xserver = {

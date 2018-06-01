@@ -11,14 +11,13 @@
     xorg.xbacklight
     acpi
 
-    dmenu 
+    dmenu
     j4-dmenu-desktop
 
     dunst
 
     i3blocks
     sysstat
-    ponymix
 
     i3lock-pixeled
     arandr
@@ -28,5 +27,6 @@
     xfce.thunar-volman
     xfce.thunar-dropbox-plugin
     xfce.thunar-archive-plugin
-  ];
+    compton
+    ];
 }
