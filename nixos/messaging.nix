@@ -2,8 +2,7 @@
 
 {
   environment.systemPackages = with pkgs; [
-    dropbox
-    evince
-    pinta
+    slack
   ];
+
 }

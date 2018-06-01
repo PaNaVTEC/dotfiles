@@ -169,8 +169,6 @@ installTools() {
 
   # setup qutebrowser
   yaourt --noconfirm -S qutebrowser
-  mkdir -p "$HOME/.config/qutebrowser"
-  ln -sfn "$dir/config/qutebrowser/config.py" "$HOME/.config/qutebrowser/config.py"
 
   # setup inox
   sudo pip install maninex
@@ -178,10 +176,7 @@ installTools() {
   sudo mkdir -p "$HOME/.config/inox/extensions"
   ln -sfn "$dir/config/inox/maninex.conf" "$HOME/.config/maninex.conf"
 
-  # Network Manager DNS setup
   yaourt --noconfirm -S openresolv
-  sudo ln -sfn "$dir/config/networkmanager/rc-manager.conf" "/etc/NetworkManager/conf.d/rc-manager.conf"
-  sudo ln -sfn "$dir/config/networkmanager/resolvconf.conf" "/etc/resolvconf.conf"
 }
 
 installRedshift() {

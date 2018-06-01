@@ -2,8 +2,9 @@
 
 {
   environment.systemPackages = with pkgs; [
-    dropbox
-    evince
-    pinta
+    keepass
+    keepass-keepasshttp
+    keepassxc
   ];
+
 }
