@@ -18,7 +18,6 @@
 
     i3blocks
     sysstat
-    ponymix
 
     i3lock-pixeled
     arandr
