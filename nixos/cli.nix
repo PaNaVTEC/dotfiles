@@ -16,6 +16,8 @@
     ffmpegthumbnailer
     atool
     neomutt
+    taskwarrior
+    tasksh
   ];
 
   programs.bash.enableCompletion = true;
