@@ -5,5 +5,7 @@
     dropbox
     evince
     pinta
+    beancount
+    fava
   ];
 }
