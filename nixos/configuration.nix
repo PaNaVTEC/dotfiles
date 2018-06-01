@@ -26,6 +26,7 @@ in
       ./web-browsers.nix
       ./golang.nix
       ./cli.nix
+      ./messaging.nix
     ];
 
   # SSD options
