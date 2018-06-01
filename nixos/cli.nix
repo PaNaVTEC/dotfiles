@@ -11,6 +11,11 @@
     jq
     neofetch
     speedtest-cli
+    ranger
+    w3m
+    ffmpegthumbnailer
+    atool
+    neomutt
   ];
 
   programs.bash.enableCompletion = true;
