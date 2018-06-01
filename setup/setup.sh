@@ -290,16 +290,6 @@ installMutt() {
   ln -sfn "$dir/config/mutt/.muttrc" "$HOME/.muttrc"
 }
 
-installKhal() {
-  yaourt -S --noconfirm khal vdirsyncer
-
-  mkdir -p "$HOME/.config/khal"
-  mkdir -p "$HOME/.config/vdirsyncer"
-
-  ln -sfn "$dir/config/khal/khal.conf" "$HOME/.config/khal/khal.conf"
-  cp "$dir/config/khal/vdirsyncerconfig" "$HOME/.config/vdirsyncer/config"
-}
-
 installAudio() {
   yaourt -S --noconfirm ./yaourt_audio.txt
 }
@@ -311,7 +301,6 @@ installCompton() {
   mkdir -p "$HOME/.before_startx"
   echo "compton -c -i 0.9 -b &" >> "$HOME/.before_startx/run.sh"
   chmod a+x "$HOME/.before_startx/run.sh"
-  ln -sfn "$dir/config/compton/compton.conf" "$HOME/.config/compton.conf"
 }
 
 installTaskWarrior() {
@@ -378,7 +367,6 @@ if [[ "${BASH_SOURCE[0]}" = "$0" ]]; then
   ask "Install configuration for termite?" Y && ln -sfn "${dir}/config/termite" "$HOME/.config/termite" && ln -sfn "$dir/.dircolors" "$HOME/.dircolors;"
   ask "Install screensavers?" Y && installScreensavers;
   ask "Install Ranger?" Y && installRanger;
-  ask "Install Khal?" Y && installKhal;
   ask "Install taskWarrior?" Y && installTaskWarrior;
   ask "Install beancount?" Y && installBeancount;
   ask "Install mutt?" Y && installMutt;

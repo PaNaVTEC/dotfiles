@@ -11,7 +11,7 @@
     xorg.xbacklight
     acpi
 
-    dmenu 
+    dmenu
     j4-dmenu-desktop
 
     dunst
@@ -28,5 +28,6 @@
     xfce.thunar-volman
     xfce.thunar-dropbox-plugin
     xfce.thunar-archive-plugin
-  ];
+    compton
+    ];
 }
