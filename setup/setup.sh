@@ -42,9 +42,6 @@ installi3() {
   echo "Installing i3 and required tools"
   sleep 2
   yaourt --noconfirm -S ./yaourt_i3.txt
-
-  #i3blocks
-  yaourt --noconfirm -S sysstat
 }
 
 installFonts() {

@@ -25,3 +25,4 @@ imagemagick
 i3lock-wrapper
 wireless_tools
 pymodoro-git
+sysstat
