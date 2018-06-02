@@ -157,7 +157,7 @@ installTools() {
   yaourt --noconfirm -S ./yaourt_tools.txt
 
   #urxvt
-  yaourt --noconfirm -S rxvt-unicode rxvt-unicode-terminfo urxvt-perls urxvt-resize-font-git
+  yaourt --noconfirm -S ./yaourt_urxvt.txt
 
   yaourt --noconfirm -S powerline
   git clone https://github.com/rdnetto/powerline-hs.git --recursive "$HOME/.powerline-hs"
