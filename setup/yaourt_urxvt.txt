@@ -2,3 +2,4 @@ rxvt-unicode
 rxvt-unicode-terminfo
 urxvt-perls
 urxvt-resize-font-git
+urxvt-vtwheel

@@ -16,7 +16,7 @@ URxvt*scrollWithBuffer: true
 URxvt*scrollTtyKeypress: true
 
 !! Extensions
-URxvt.perl-ext-common: default,matcher,resize-font,url-select,keyboard-select,clipboard
+URxvt.perl-ext-common: default,matcher,resize-font,url-select,keyboard-select,clipboard,vtwheel
 URxvt.colorUL: #5E81AC
 
 !! url-select
