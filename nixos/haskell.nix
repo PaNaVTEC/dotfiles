@@ -2,10 +2,11 @@
 
 {
   environment.systemPackages = with pkgs; [
-    haskellPackages.stack
+    stack
+    haskellPackages.ghc
+    haskellPackages.cabal-install
     haskellPackages.hindent
     haskellPackages.stylish-haskell
-    haskellPackages.cabal-install
     haskellPackages.hlint
     haskellPackages.hoogle
   ];
