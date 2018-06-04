@@ -9,6 +9,7 @@ alias yp='yaourt -Qm'
 alias yr='yaourt -R'
 alias yu='systemUpdate;'
 alias yun='systemUpdate "--noconfirm";'
+alias updateMirrors='sudo reflector --sort rate -l 10 -f 5 --save /etc/pacman.d/mirrorlist'
 
 commitsBehind () {
   git fetch

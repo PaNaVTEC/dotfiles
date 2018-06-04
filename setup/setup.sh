@@ -221,6 +221,8 @@ installYaourt() {
   (cd yaourt && makepkg -si)
   rm -rf yaourt
   rm yaourt.tar.gz
+
+  yaourt -S --noconfirm reflector
 }
 
 installVim() {
