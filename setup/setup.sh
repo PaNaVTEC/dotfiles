@@ -48,18 +48,15 @@ installFonts() {
   echo "Installing fonts"
   sleep 2
 
-  # Enable emojis on terminal, Qt and Gtk apps
-  mkdir -p "$HOME/.local/share/fonts/"
-  mkdir -p "$HOME/.config/fontconfig/conf.d/"
-
-  cp "$dir/config/fonts/fonts.conf" "$HOME/.config/fontconfig/"
   yaourt --noconfirm -S ./yaourt_fonts.txt
 
   # Download Nerd Font (for glyphs)
   wget "https://github.com/ryanoasis/nerd-fonts/blob/master/patched-fonts/DroidSansMono/complete/Droid%20Sans%20Mono%20for%20Powerline%20Nerd%20Font%20Complete%20Mono.otf"
+  mkdir -p "$HOME/.local/share/fonts/"
   sudo mv "*.otf" "$HOME/.local/share/fonts/"
 
   # Set font fallback configuration in place
+  mkdir -p "$HOME/.config/fontconfig/conf.d/"
   ln -sfn "$dir/config/fontconfig/10-icons.conf" "$HOME/.config/fontconfig/conf.d/10-icons.conf"
 
   # Refresh user and global font paths
@@ -290,9 +287,7 @@ installAudio() {
 }
 
 installCompton() {
-  yaourt -S --noconfirm \
-    compton \
-    xorg-xwininfo
+  yaourt -S --noconfirm compton xorg-xwininfo
   mkdir -p "$HOME/.before_startx"
   echo "compton -c -i 0.9 -b &" >> "$HOME/.before_startx/run.sh"
   chmod a+x "$HOME/.before_startx/run.sh"
@@ -359,7 +354,7 @@ if [[ "${BASH_SOURCE[0]}" = "$0" ]]; then
 
   ask "Install configuration for bin?" Y && ln -sfn "$dir/bin" "$HOME/.bin"
   ask "Install configuration for dunst?" Y && ln -sfn "$dir/config/dunst" "$HOME/.config/dunst"
-  ask "Install configuration for termite?" Y && ln -sfn "${dir}/config/termite" "$HOME/.config/termite" && ln -sfn "$dir/.dircolors" "$HOME/.dircolors;"
+  ask "Install configuration for dircolors?" Y && ln -sfn "$dir/.dircolors" "$HOME/.dircolors;"
   ask "Install screensavers?" Y && installScreensavers;
   ask "Install Ranger?" Y && installRanger;
   ask "Install taskWarrior?" Y && installTaskWarrior;
