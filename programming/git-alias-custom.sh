@@ -32,6 +32,7 @@ git_current_branch() {
 }
 alias gcam='git add . && git commit -a -m'
 alias gprune='git branch | grep -v master | xargs git branch -D'
+alias pr='hub pull-request'
 
 ## Autocompleted alias
 __git_complete gco _git_checkout
