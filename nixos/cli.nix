@@ -1,7 +1,7 @@
 { config, pkgs, ... }:
 
 let
- powerline-hs = pkgs.callPackage ./pkgs/powerline-hs { };
+  powerline-hs = pkgs.haskellPackages.callPackage ./pkgs/powerline-hs { };
 in
 {
   environment.systemPackages = with pkgs; [
