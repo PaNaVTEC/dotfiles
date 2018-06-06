@@ -151,9 +151,8 @@ installClojure() {
 installTools() {
   echo "Installing apps and tools"
   sleep 2
-  yaourt --noconfirm -S ./yaourt_tools.txt
 
-  #urxvt
+  yaourt --noconfirm -S ./yaourt_tools.txt
   yaourt --noconfirm -S ./yaourt_urxvt.txt
 
   yaourt --noconfirm -S powerline
@@ -165,7 +164,7 @@ installTools() {
   yaourt --noconfirm -S qutebrowser
 
   # setup inox
-  sudo pip install maninex
+  yaourt --noconfirm -S maninex
   sudo mkdir -p /usr/share/inox/extensions
   sudo mkdir -p "$HOME/.config/inox/extensions"
   ln -sfn "$dir/config/inox/maninex.conf" "$HOME/.config/maninex.conf"
