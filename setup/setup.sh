@@ -258,20 +258,6 @@ installVim() {
 
 installEmacs() {
   yaourt -S --noconfirm emacs
-  mkdir -p "$HOME/.emacs.saves"
-  mkdir -p "$HOME/.emacs.undo"
-  touch "$HOME/.emacs.d/custom.el"
-
-  yaourt -S --noconfirm xsel # Fixes clipboard
-  git clone https://github.com/jdee-emacs/jdee-server.git "$HOME/.jdee-server"
-  (
-    cd "$HOME/.jdee-server"
-    mvn -Dmaven.test.skip=true package
-  )
-
-  mkdir -p "$HOME/.config/systemd/user"
-  ln -sfn "$dir/config/units/emacs.service" "$HOME/.config/systemd/user/emacs.service"
-  systemctl --user enable --now emacs
 }
 
 installRanger() {

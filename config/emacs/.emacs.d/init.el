@@ -12,6 +12,8 @@
   (package-install 'use-package))
 
 ;; Custom file
+(when (not (file-exists-p "~/.emacs.d/custom.el"))
+  (shell-command "touch ~/.emacs.d/custom.el"))
 (setq custom-file "~/.emacs.d/custom.el")
 (load custom-file)
 
