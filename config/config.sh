@@ -17,3 +17,4 @@ stow --target="$HOME" maninex
 stow --target="$HOME" redshift
 stow --target="$HOME" taskwarrior
 stow --target="$HOME" dunst
+stow --target="$HOME" dircolors
