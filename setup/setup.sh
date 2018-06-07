@@ -162,7 +162,6 @@ installTools() {
   yaourt --noconfirm -S maninex
   sudo mkdir -p /usr/share/inox/extensions
   sudo mkdir -p "$HOME/.config/inox/extensions"
-  ln -sfn "$dir/config/inox/maninex.conf" "$HOME/.config/maninex.conf"
 
   yaourt --noconfirm -S openresolv
 }
