@@ -170,8 +170,6 @@ installRedshift() {
   echo "Installing redshift"
   sleep 2
   yaourt --noconfirm -S redshift
-  mkdir -p "$HOME/.config/redshift"
-  ln -sfn "$dir/config/redshift/config" "$HOME/.config/redshift/config"
 }
 
 installScreensavers() {
