@@ -272,12 +272,6 @@ installCompton() {
 
 installTaskWarrior() {
   yaourt -S --noconfirm task tasksh
-  ln -sfn "$dir/config/taskwarrior/.taskrc" "$HOME/.taskrc"
-
-  # time tracking hook
-  sudo pip install taskwarrior-time-tracking-hook
-  mkdir -p "$HOME/.task/hooks"
-  ln -s "$(which taskwarrior_time_tracking_hook)" "$HOME/.task/hooks/on-modify.timetracking"
 }
 
 installBeancount() {

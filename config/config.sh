@@ -15,3 +15,4 @@ stow --target="$HOME" lein
 stow --target="$HOME" powerline
 stow --target="$HOME" maninex
 stow --target="$HOME" redshift
+stow --target="$HOME" taskwarrior
