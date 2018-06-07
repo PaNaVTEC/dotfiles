@@ -316,14 +316,13 @@ if [[ "${BASH_SOURCE[0]}" = "$0" ]]; then
   ask "install emacs?" Y && installEmacs;
   ask "install audio?" Y && installAudio;
 
-  ask "Install redshift + config?" Y && installRedshift
+  ask "Install redshift?" Y && installRedshift
   ask "Install symlink for .xinitrc?" Y && ln -sfn "$dir/.xinitrc" "$HOME/.xinitrc"
   ask "Install symlink for .bashrc?" Y && \
     ln -sfn "$dir/.bashrc" "$HOME/.bashrc" && \
     ln -sfn "$dir/inputrc" "$HOME/.inputrc"
   ask "Install symlink for .bash_profile?" Y && ln -sfn "$dir/.bash_profile" "$HOME/.bash_profile"
 
-  ask "Install configuration for bin?" Y && ln -sfn "$dir/bin" "$HOME/.bin"
   ask "Install screensavers?" Y && installScreensavers;
   ask "Install Ranger?" Y && installRanger;
   ask "Install taskWarrior?" Y && installTaskWarrior;

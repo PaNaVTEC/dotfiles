@@ -18,3 +18,4 @@ stow --target="$HOME" redshift
 stow --target="$HOME" taskwarrior
 stow --target="$HOME" dunst
 stow --target="$HOME" dircolors
+stow --target="$HOME" bin
