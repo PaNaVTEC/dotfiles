@@ -324,7 +324,6 @@ if [[ "${BASH_SOURCE[0]}" = "$0" ]]; then
   ask "Install symlink for .bash_profile?" Y && ln -sfn "$dir/.bash_profile" "$HOME/.bash_profile"
 
   ask "Install configuration for bin?" Y && ln -sfn "$dir/bin" "$HOME/.bin"
-  ask "Install configuration for dunst?" Y && ln -sfn "$dir/config/dunst" "$HOME/.config/dunst"
   ask "Install configuration for dircolors?" Y && ln -sfn "$dir/.dircolors" "$HOME/.dircolors;"
   ask "Install screensavers?" Y && installScreensavers;
   ask "Install Ranger?" Y && installRanger;
