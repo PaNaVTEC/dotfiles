@@ -20,3 +20,4 @@ stow --target="$HOME" dunst
 stow --target="$HOME" dircolors
 stow --target="$HOME" bin
 stow --target="$HOME" ghci
+stow --target="$HOME" inputrc
