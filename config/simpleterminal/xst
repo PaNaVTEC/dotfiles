@@ -1,6 +1,0 @@
-! vim:set ft=xdefaults:
-st.font: xos4 Terminus:pixelsize=18:antialias=true:autohint=true;Symbola:pixelsize=18:antialias=true:autohint=true;DroidSansMonoForPowerline Nerd Font:pixelsize=18:antialias=true:autohint=true;
-st.termname: xterm-256color
-st.bold_font: 0
-!st.xfps:         120
-!st.actionfps:    60
