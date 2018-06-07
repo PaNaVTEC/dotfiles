@@ -11,3 +11,4 @@ stow --target="$HOME" ranger
 stow --target="$HOME" mutt
 stow --target="$HOME" compton
 stow --target="$HOME" taskwarrior
+stow --target="$HOME" lein

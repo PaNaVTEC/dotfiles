@@ -142,9 +142,6 @@ installJs() {
 
 installClojure() {
   yaourt --noconfirm -S ./yaourt_clojure.txt
-  mkdir -p "$HOME/.lein/"
-  ln -sfn "$dir/config/lein/profiles.clj" "$HOME/.lein/profiles.clj"
-  lein > /dev/null
 }
 
 installTools() {
