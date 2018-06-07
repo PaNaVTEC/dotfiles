@@ -6,6 +6,7 @@ stow --target="$HOME" emacs
 stow --target="$HOME" git
 stow --target="$HOME" qutebrowser
 sudo stow --target=/etc networkmanager
+sudo stow --target=/etc vconsole
 stow --target="$HOME" ranger
 stow --target="$HOME" mutt
 stow --target="$HOME" compton
