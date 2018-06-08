@@ -21,3 +21,5 @@ stow --target="$HOME" dircolors
 stow --target="$HOME" bin
 stow --target="$HOME" ghci
 stow --target="$HOME" inputrc
+stow --target="$HOME" bash
+stow --target="$HOME" xinit

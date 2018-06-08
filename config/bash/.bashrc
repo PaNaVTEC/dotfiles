@@ -1,6 +1,4 @@
 #!/bin/bash
-
-[[ $- != *i* ]] && return
 set -o vi
 
 export XDG_CONFIG_HOME=$HOME/.config
