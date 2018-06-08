@@ -10,7 +10,7 @@ source "$HOME/.env.sh"
 source "$DOTFILES_LOCATION/programming/index.sh"
 source "$DOTFILES_LOCATION/finance/index.sh"
 source "$DOTFILES_LOCATION/system/index.sh"
-source "$DOTFILES_LOCATION/paths.sh"
+source "$DOTFILES_LOCATION/system/paths.sh"
 source "$DOTFILES_LOCATION/system/prompt.sh"
 [ -f "$HOME/.bash_shortcuts" ] && source "$HOME/.bash_shortcuts"
 
