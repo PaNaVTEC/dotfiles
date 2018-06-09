@@ -51,7 +51,8 @@
                    init-key-helper
                    init-el
                    init-nix
-                   init-sh))
+                   init-sh
+                   init-text))
   (require module))
 
 (defun display-startup-echo-area-message ()
