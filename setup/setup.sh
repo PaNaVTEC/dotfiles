@@ -227,7 +227,7 @@ installVim() {
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
   #Vimwiki
-  ln -sfn "$HOME/Dropbox/vimwiki/" "$HOME/vimwiki"
+  ln -sfn "$HOME/Dropbox/.sync/vimwiki/" "$HOME/vimwiki"
 
   #Configuration
   ln -sfn "$dir/config/vim/vimrc.vim" "$HOME/.vimrc"
