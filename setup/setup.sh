@@ -247,7 +247,7 @@ installVim() {
 }
 
 installEmacs() {
-  yaourt -S --noconfirm emacs
+  yaourt -S --noconfirm emacs aspell aspell-en aspell-es
 }
 
 installRanger() {
@@ -297,7 +297,6 @@ if [[ "${BASH_SOURCE[0]}" = "$0" ]]; then
     exit 2
   fi
   dir="${dir}/.."
-
 
   mkdir -p "$HOME/.data"
   mkdir -p "$HOME/.i3"

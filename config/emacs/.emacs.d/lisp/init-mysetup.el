@@ -4,12 +4,13 @@
 (defcustom my-initial-msg nil "Initial welcome message")
 
 ;; Fonts
-(defcustom my-font "xos4 Terminus" "Emacs font")
+(defcustom my-font "Terminus" "Emacs font")
 (defcustom my-font-height 150 "Emacs font height")
 
 ;; Themes
-(defcustom available-themes '(nord spacemacs-light) "Available themes to cycle")
-(use-package spacemacs-theme :ensure t :defer t)
+(defcustom available-themes '(nord solarized-light material material-light) "Available themes to cycle")
+(use-package solarized-theme :ensure t :defer t)
+(use-package material-theme :ensure t :defer t)
 (use-package
   nord-theme
   :ensure t
