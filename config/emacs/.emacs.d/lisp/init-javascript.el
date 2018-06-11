@@ -45,10 +45,16 @@
   (set-compile-for 'js-mode-hook "yarn test:unit")
 
   (add-hook 'js-mode-hook 'programming-mode)
-  (add-hook 'js-mode-hook 'company-mode)
+  (add-hook 'js-mode-hook 'tern-mode)
   (add-hook 'js-mode-hook 'js-doc)
+  (add-hook 'js-mode-hook 'js2-refactor-mode)
+  (add-hook 'js-mode-hook 'company-mode)
 
   (prettify-js-for 'js-mode-hook)
+
+  (add-hook 'js-mode-hook
+            (lambda () (add-to-list 'company-backends 'company-tern)))
+
   (add-hook
     'flycheck-mode-hook
     (lambda () (progn
@@ -78,7 +84,7 @@
     web-mode-code-indent-offset 2)
   (add-hook 'web-mode-hook 'programming-mode))
 
-(use-package tern :defer t :config (add-hook 'js-mode-hook 'tern-mode))
+(use-package tern :defer t :diminish tern-mode)
 
 (use-package
   js2-refactor
@@ -103,21 +109,12 @@
   (add-hook 'json-mode-hook 'whitespace-mode)
   (add-hook 'json-mode-hook 'proper-gutter-mode))
 
-(use-package
-  company-tern
-  :ensure t
-  :defer t
-  :config
-  (add-hook 'js-mode-hook
-    (lambda () (add-to-list 'company-backends 'company-tern))))
+(use-package company-tern :ensure t :defer t)
 
 (defun js-doc ()
   (interactive)
   (setq-local helm-dash-docsets '("JavaScript" "NodeJS" "React" "Sinon")))
 
-(use-package
-  web-beautify
-  :ensure t
-  :defer t)
+(use-package web-beautify :ensure t :defer t)
 
 (provide 'init-javascript)
