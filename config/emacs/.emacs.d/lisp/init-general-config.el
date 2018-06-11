@@ -37,7 +37,7 @@
         scroll-step 1))
 
 ;; Initial mode in text avoids lag
-(setq initial-major-mode 'text-mode
+(setq initial-major-mode 'fundamental-mode
       initial-scratch-message my-initial-msg)
 
 ; Temporary files
