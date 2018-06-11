@@ -1,0 +1,1 @@
+acpi | awk -F ',' '{print $2}'
