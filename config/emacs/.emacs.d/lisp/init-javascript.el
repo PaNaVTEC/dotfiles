@@ -29,6 +29,8 @@
   :interpreter "node"
   :defer t
   :config
+
+  (evil-leader/set-key "b" 'js2-jump-to-definition)
   (setq js-indent-level 2
         evil-shift-width 2
         js-switch-indent-offset 2
