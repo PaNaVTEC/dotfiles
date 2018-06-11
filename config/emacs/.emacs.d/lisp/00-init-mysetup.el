@@ -47,4 +47,4 @@
     (set-face-background 'smerge-markers "brightblack")
     (set-face-background 'smerge-upper "red"))))
 
-(provide 'init-mysetup)
+(provide '00-init-mysetup)

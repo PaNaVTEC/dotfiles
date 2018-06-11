@@ -12,47 +12,22 @@
   (package-install 'use-package))
 
 ;; Custom file
-(when (not (file-exists-p "~/.emacs.d/custom.el"))
-  (shell-command "touch ~/.emacs.d/custom.el"))
 (setq custom-file "~/.emacs.d/custom.el")
+(when (not (file-exists-p custom-file))
+  (shell-command (concat "touch " custom-file)))
 (load custom-file)
 
 (setq *is-a-mac* (eq system-type 'darwin))
-(setq *cygwin* (eq system-type 'cygwin) )
-(setq *linux* (or (eq system-type 'gnu/linux) (eq system-type 'linux)) )
+(setq *cygwin* (eq system-type 'cygwin))
+(setq *linux* (or (eq system-type 'gnu/linux) (eq system-type 'linux)))
 
 ;; Load modules
-(add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
-(dolist (module '(init-mysetup
-                   init-general-config
-                   init-appearance
-                   init-vim-mode
-                   init-acklike
-                   init-haskell
-                   init-javascript
-                   init-java
-                   init-groovy
-                   init-python
-                   init-golang
-                   init-typescript
-                   init-purescript
-                   init-scala
-                   init-syntax-checker
-                   init-file-explorer
-                   init-helm-fw
-                   init-git
-                   init-projectmanagement
-                   init-markdown
-                   init-yaml
-                   init-rest
-                   init-vimscript
-                   init-clipboard
-                   init-key-helper
-                   init-el
-                   init-nix
-                   init-sh
-                   init-text))
-  (require module))
+(defvar lisp-directory)
+(setq lisp-directory (expand-file-name "lisp" user-emacs-directory))
+(add-to-list 'load-path lisp-directory)
+(mapc (lambda (file-name)
+        (require (intern (file-name-sans-extension file-name))))
+      (directory-files lisp-directory nil "\\.el$"))
 
 (defun display-startup-echo-area-message ()
   (message (format "Emacs started in %s" (emacs-init-time))))

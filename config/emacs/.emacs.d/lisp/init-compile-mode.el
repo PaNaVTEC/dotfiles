@@ -1,4 +1,3 @@
-(require 'init-vim-mode)
 (require 'compile)
 
 ;; Fixes Ansi colors on compilation buffer
