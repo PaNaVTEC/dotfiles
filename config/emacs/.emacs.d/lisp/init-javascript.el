@@ -42,18 +42,15 @@
         js2-pretty-multiline-declarations 'all
         js2-strict-missing-semi-warning nil)
 
-  (set-compile-for 'js-mode-hook "yarn test:unit")
+  (set-compile-for 'js-mode "yarn test:unit")
+  (set-company-backend-for 'js-mode-hook 'company-tern)
 
   (add-hook 'js-mode-hook 'programming-mode)
   (add-hook 'js-mode-hook 'tern-mode)
   (add-hook 'js-mode-hook 'js-doc)
   (add-hook 'js-mode-hook 'js2-refactor-mode)
-  (add-hook 'js-mode-hook 'company-mode)
 
   (prettify-js-for 'js-mode-hook)
-
-  (add-hook 'js-mode-hook
-            (lambda () (add-to-list 'company-backends 'company-tern)))
 
   (add-hook
     'flycheck-mode-hook

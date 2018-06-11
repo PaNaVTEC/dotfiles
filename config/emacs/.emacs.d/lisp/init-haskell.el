@@ -61,6 +61,8 @@
 
   (custom-set-variables '(haskell-stylish-on-save t))
   (set-compile-for 'haskell-mode-hook "stack test")
+  (set-company-backend-for 'haskell-mode-hook 'company-ghci)
+
   (add-hook 'haskell-mode-hook 'programming-mode)
   (add-hook 'haskell-mode-hook 'haskell/prettify)
   (add-hook 'haskell-mode-hook 'hs-doc)

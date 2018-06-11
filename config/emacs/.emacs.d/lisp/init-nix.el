@@ -6,17 +6,11 @@
   :mode "\\.nix\\'"
   :defer t
   :config
+  (set-company-backend-for 'nix-mode-hook 'company-nixos-options)
+  (add-hook 'nix-mode-hook 'programming-mode))
 
-  (use-package nixos-options :ensure t :defer t)
-  (use-package nix-sandbox :ensure t :defer t)
-  (use-package company-nixos-options
-    :ensure t
-    :defer t
-    :config
-    (add-hook 'js-mode-hook
-              (lambda () (add-to-list 'company-backends 'company-nixos-options))))
-
-(add-hook 'nix-mode-hook 'programming-mode)
-(add-hook 'nix-mode-hook 'company-mode))
+(use-package nixos-options :ensure t :defer t)
+(use-package nix-sandbox :ensure t :defer t)
+(use-package company-nixos-options :ensure t :defer t)
 
 (provide 'init-nix)

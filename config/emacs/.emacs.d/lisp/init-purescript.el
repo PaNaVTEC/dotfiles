@@ -12,8 +12,7 @@
 
               (turn-on-purescript-indentation)
               (inferior-psci-mode)))
-  (add-hook 'purescript-mode-hook 'programming-mode)
-  (add-hook 'purescript-mode-hook 'company-mode))
+  (add-hook 'purescript-mode-hook 'programming-mode))
 
 (use-package psc-ide
   :diminish psc-ide-mode
