@@ -1,3 +1,4 @@
+(defvar themes-index)
 (setq themes-index -1)
 
 (defun cycle-theme ()

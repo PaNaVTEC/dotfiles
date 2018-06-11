@@ -1,14 +1,34 @@
-(defcustom my-browser "inox" "Current browser")
+(defcustom my-browser "inox"
+  "Current browser"
+  :type 'string
+  :group 'mysetup)
 
-(defcustom my-lines-mode 'normal "Type of lines. 'normal or 'relative")
-(defcustom my-initial-msg nil "Initial welcome message")
+(defcustom my-lines-mode 'normal
+  "Type of lines. 'normal or 'relative"
+  :group 'mysetup)
+
+(defcustom my-initial-msg nil
+  "Initial welcome message"
+  :type 'string
+  :group 'mysetup)
 
 ;; Fonts
-(defcustom my-font "Terminus" "Emacs font")
-(defcustom my-font-height 150 "Emacs font height")
+(defcustom my-font "Terminus"
+  "Emacs font"
+  :type 'string
+  :group 'mysetup)
+
+(defcustom my-font-height 150
+  "Emacs font height"
+  :type 'integer
+  :group 'mysetup)
 
 ;; Themes
-(defcustom available-themes '(nord solarized-light material material-light) "Available themes to cycle")
+(defcustom available-themes '(nord solarized-light material material-light)
+  "Available themes to cycle"
+  :type 'list
+  :group 'mysetup)
+
 (use-package solarized-theme :ensure t :defer t)
 (use-package material-theme :ensure t :defer t)
 (use-package
