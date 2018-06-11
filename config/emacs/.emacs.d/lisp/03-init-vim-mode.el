@@ -61,7 +61,9 @@
   (define-key minibuffer-local-isearch-map [escape] 'minibuffer-keyboard-quit)
 
   ;; Reload config
-  (evil-ex-define-cmd "ReloadConfig" '(lambda () (interactive) (load-file "~/.emacs.d/init.el")))
+  (evil-ex-define-cmd
+   "ReloadConfig"
+   '(lambda () (interactive) (load-file (concat emacs-dir "init.el"))))
 
   ;; Typo avoider
   (evil-ex-define-cmd "WQ" "wq")

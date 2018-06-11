@@ -6,13 +6,15 @@
 (setq package-enable-at-startup nil)
 (package-initialize)
 
+(defvar emacs-dir "~/.emacs.d/")
+
 (unless
   (package-installed-p 'use-package)
   (package-refresh-contents)
   (package-install 'use-package))
 
 ;; Custom file
-(setq custom-file "~/.emacs.d/custom.el")
+(setq custom-file (concat emacs-dir "custom.el"))
 (when (not (file-exists-p custom-file))
   (shell-command (concat "touch " custom-file)))
 (load custom-file)
