@@ -287,6 +287,13 @@ installPrivacy() {
   sudo chown -v root:root /etc/wireguard/wg0-client.conf
 }
 
+installBt() {
+  yaourt -S --noconfirm bluez bluez-utils bluez-qt pulseaudio-bluetooth
+  modprobe btusb
+  sudo systemctl enable bluetooth.service
+  sudo systemctl start bluetooth.service
+}
+
 if [[ "${BASH_SOURCE[0]}" = "$0" ]]; then
 
   echo "PaNaVTEC dotfiles installer"
@@ -313,6 +320,7 @@ if [[ "${BASH_SOURCE[0]}" = "$0" ]]; then
   ask "install vim config?" Y && installVim;
   ask "install emacs?" Y && installEmacs;
   ask "install audio?" Y && installAudio;
+  ask "install bt?" Y && installBt;
 
   ask "Install redshift?" Y && installRedshift
   ask "Install symlink for .xinitrc?" Y && ln -sfn "$dir/.xinitrc" "$HOME/.xinitrc"
