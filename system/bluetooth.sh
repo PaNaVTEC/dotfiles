@@ -7,3 +7,9 @@ bt_poweron() {
 bt_poweroff() {
   echo -e 'power off\nquit' | bluetoothctl
 }
+
+bt_connect() {
+  rfkill unblock bluetooth
+  sleep 1
+  echo -e "connect $1\nquit" | bluetoothctl
+}

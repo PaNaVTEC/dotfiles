@@ -3,6 +3,7 @@
 relativePath="$DOTFILES_LOCATION/system"
 source "$relativePath/update.sh"
 source "$relativePath/wifi.sh"
+source "$relativePath/bluetooth.sh"
 
 if [[ $(uname) == "Darwin" ]]; then
   alias ls='ls -G'
