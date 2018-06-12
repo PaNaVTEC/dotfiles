@@ -15,8 +15,8 @@
 
 ;; Custom file
 (setq custom-file (concat emacs-dir "custom.el"))
-(when (not (file-exists-p custom-file))
-  (shell-command (concat "touch " custom-file)))
+(unless (file-exists-p custom-file))
+  (shell-command (concat "touch " custom-file))
 (load custom-file)
 
 (setq *is-a-mac* (eq system-type 'darwin))
@@ -24,8 +24,7 @@
 (setq *linux* (or (eq system-type 'gnu/linux) (eq system-type 'linux)))
 
 ;; Load modules
-(defvar lisp-directory)
-(setq lisp-directory (expand-file-name "lisp" user-emacs-directory))
+(defvar lisp-directory (expand-file-name "lisp" user-emacs-directory))
 (add-to-list 'load-path lisp-directory)
 (mapc (lambda (file-name)
         (require (intern (file-name-sans-extension file-name))))

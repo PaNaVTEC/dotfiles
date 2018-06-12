@@ -4,6 +4,6 @@
   :defer t
   :diminish yas-minor-mode
   :config
-  (setq yas-snippet-dirs '((concat emacs-dir "snippets"))))
+  (setq yas-snippet-dirs (list (concat emacs-dir "snippets"))))
 
 (provide 'init-code-snippets)
