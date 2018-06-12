@@ -31,6 +31,7 @@
 (use-package
   smooth-scrolling
   :ensure t
+  :defer t
   :init
   (setq scroll-margin 5
         scroll-conservatively 9999

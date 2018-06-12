@@ -13,7 +13,7 @@
   :group 'mysetup)
 
 ;; Fonts
-(defcustom my-font "Terminus"
+(defcustom my-font "xos4 Terminus"
   "Emacs font"
   :type 'string
   :group 'mysetup)
