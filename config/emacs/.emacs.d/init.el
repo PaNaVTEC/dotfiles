@@ -6,6 +6,9 @@
 (setq package-enable-at-startup nil)
 (package-initialize)
 
+(defvar *is-a-mac* (eq system-type 'darwin))
+(defvar *cygwin* (eq system-type 'cygwin))
+(defvar *linux* (or (eq system-type 'gnu/linux) (eq system-type 'linux)))
 (defvar emacs-dir "~/.emacs.d/")
 
 (unless
@@ -15,13 +18,9 @@
 
 ;; Custom file
 (setq custom-file (concat emacs-dir "custom.el"))
-(unless (file-exists-p custom-file))
-  (shell-command (concat "touch " custom-file))
+(unless (file-exists-p custom-file)
+  (shell-command (concat "touch " custom-file)))
 (load custom-file)
-
-(setq *is-a-mac* (eq system-type 'darwin))
-(setq *cygwin* (eq system-type 'cygwin))
-(setq *linux* (or (eq system-type 'gnu/linux) (eq system-type 'linux)))
 
 ;; Load modules
 (defvar lisp-directory (expand-file-name "lisp" user-emacs-directory))
