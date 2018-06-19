@@ -91,7 +91,7 @@
 
   (evil-leader/set-key "v" 'js2r-extract-var)
   (evil-leader/set-key "m" 'js2r-extract-method)
-  (evil-leader/set-key "f" 'js2r-extract-function)
+  (evil-leader/set-key "." 'js2r-extract-function)
   (evil-leader/set-key "n" 'js2r-inline-var)
   (evil-leader/set-key "r" 'js2r-rename-var))
 
