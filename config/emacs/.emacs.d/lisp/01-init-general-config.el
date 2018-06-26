@@ -62,11 +62,14 @@
 
 (use-package diminish :ensure t)
 
+(defun my-buffer-file-name ()
+  (replace-regexp-in-string (getenv "HOME") "~" (buffer-file-name)))
+
 (defun set-terminal-title ()
   (interactive)
   (send-string-to-terminal (concat "\033]1; " (buffer-name) "\007"))
   (if buffer-file-name
-      (send-string-to-terminal (concat "\033]2; " (buffer-file-name) "\007"))
+      (send-string-to-terminal (concat "\033]2; " (my-buffer-file-name) "\007"))
     (send-string-to-terminal (concat "\033]2; " (buffer-name) "\007"))))
 
 (if (not window-system)
