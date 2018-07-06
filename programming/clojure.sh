@@ -3,4 +3,3 @@
 projectCreateClojure() {
   lein new "$1"
 }
-
