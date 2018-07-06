@@ -19,6 +19,7 @@
   :mode "\\.jsx?$"
   :defer t
   :config
+  (evil-collection-init 'indium)
   (setq indium-chrome-executable my-browser))
 
 (use-package
@@ -45,6 +46,7 @@
   (set-compile-for 'js-mode "yarn test:unit")
   (set-company-backend-for 'js-mode-hook 'company-tern)
 
+  (add-hook 'js-mode-hook 'evil-paredit-mode)
   (add-hook 'js-mode-hook 'programming-mode)
   (add-hook 'js-mode-hook 'tern-mode)
   (add-hook 'js-mode-hook 'js-doc)
@@ -52,6 +54,7 @@
 
   (prettify-js-for 'js-mode-hook)
 
+  (evil-collection-init 'js2-mode)
   (add-hook
     'flycheck-mode-hook
     (lambda () (progn

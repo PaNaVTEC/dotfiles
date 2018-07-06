@@ -10,6 +10,7 @@
 (require 'init-gotodefinition)
 (require 'init-documentation)
 (require 'init-code-folding)
+(require 'init-syntatic-close)
 
 (define-minor-mode
   programming-mode

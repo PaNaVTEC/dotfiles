@@ -2,15 +2,13 @@
   neotree
   :ensure t
   :init
+  (evil-collection-init 'neotree)
 
   (evil-define-key
     'normal neotree-mode-map
     (kbd "TAB") 'neotree-enter
-    (kbd "SPC") 'neotree-quick-look
-    (kbd "q")   'neotree-hide
     (kbd "RET") 'neotree-enter
     (kbd "I")   'neotree-hidden-file-toggle
-    (kbd "R")   'neotree-refresh
     (kbd "i")   'neotree-enter-horizontal-split
     (kbd "s")   'neotree-enter-vertical-split
     (kbd "m")   'neotree-modify-mode-menu

@@ -1,6 +1,7 @@
 (use-package
   evil
   :ensure t
+  :init (setq evil-want-integration nil)
   :config
   (evil-mode 1)
 
@@ -95,7 +96,9 @@
   evil-surround
   :ensure t
   :config
-  (global-evil-surround-mode))
+  (global-evil-surround-mode)
+  (add-to-list 'evil-surround-operator-alist '(evil-paredit-change . change))
+  (add-to-list 'evil-surround-operator-alist '(evil-paredit-delete . delete)))
 
 (use-package
   evil-leader
@@ -111,5 +114,18 @@
 
   (define-key evil-normal-state-map (kbd "C-a") 'evil-numbers/inc-at-pt)
   (define-key evil-normal-state-map (kbd "C-x") 'evil-numbers/dec-at-pt))
+
+;(use-package evil-paredit :ensure t :defer t)
+(use-package evil-collection
+  :ensure t
+  :defer t
+  :init
+  (evil-collection-init 'debug)
+  (evil-collection-init 'diff-mode)
+  (evil-collection-init 'dired)
+  (evil-collection-init 'eshell)
+  (evil-collection-init 'eww)
+  (evil-collection-init 'help)
+  (evil-collection-init 'compile))
 
 (provide '03-init-vim-mode)
