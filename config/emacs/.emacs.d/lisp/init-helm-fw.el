@@ -17,7 +17,6 @@
        helm-bookmark-show-location t
        helm-buffers-fuzzy-matching t)
 
-     (evil-collection-init 'helm)
      (location-list-buffer (rx bos "*helm M-x"))
      (location-list-buffer (rx bos "*helm mini"))
      (location-list-buffer (rx bos "*helm-ag"))

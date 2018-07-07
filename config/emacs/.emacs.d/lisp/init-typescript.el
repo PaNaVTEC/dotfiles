@@ -29,14 +29,12 @@
 
   (setq typescript-indent-level 2)
   (set-compile-for 'typescript-mode "yarn test")
-  (evil-collection-init 'typescript-mode)
 
   (use-package
     tide
     :ensure t
     :pin melpa-stable
     :config
-    (evil-collection-init 'tide)
     (set-company-backend-for 'typescript-mode-hook 'company-tide)
     (add-hook 'typescript-mode-hook 'programming-mode)
     (add-hook 'typescript-mode-hook 'my/setup-tide)))

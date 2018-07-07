@@ -115,17 +115,11 @@
   (define-key evil-normal-state-map (kbd "C-a") 'evil-numbers/inc-at-pt)
   (define-key evil-normal-state-map (kbd "C-x") 'evil-numbers/dec-at-pt))
 
-;(use-package evil-paredit :ensure t :defer t)
+(use-package evil-paredit :ensure t :defer t)
 (use-package evil-collection
   :ensure t
   :defer t
-  :init
-  (evil-collection-init 'debug)
-  (evil-collection-init 'diff-mode)
-  (evil-collection-init 'dired)
-  (evil-collection-init 'eshell)
-  (evil-collection-init 'eww)
-  (evil-collection-init 'help)
-  (evil-collection-init 'compile))
+  :config
+  (evil-collection-init))
 
 (provide '03-init-vim-mode)
