@@ -9,8 +9,8 @@ createProjectHaskell () {
   local name=''
   local email=''
   local username=''
-  name=$(cat ~/.gitconfig | grep name | awk -F '=' '{print $2}')
-  email=$(cat ~/.gitconfig | grep email | awk -F '=' '{print $2}')
+  name=$(cat ~/.gitconfig | grep name | awk -F '= ' '{print $2}')
+  email=$(cat ~/.gitconfig | grep email | awk -F '= ' '{print $2}')
   username=$(echo "$email" | awk -F '@' '{print $1}')
 
   stack new "$projectDirectory" hspec \
