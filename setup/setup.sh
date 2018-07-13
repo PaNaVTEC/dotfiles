@@ -83,6 +83,7 @@ installGit() {
   gibo --upgrade
   gibo Emacs Vim JetBrains Ensime Tags Vagrant Windows macOS Linux Archives >> "$HOME/.gitignore.global"
   echo ".tern-project" >> "$HOME/.gitignore.global"
+  echo ".tern-port" >> "$HOME/.gitignore.global"
 }
 
 installDevTools() {
