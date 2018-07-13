@@ -2,8 +2,6 @@
   neotree
   :ensure t
   :init
-  (evil-collection-init 'neotree)
-
   (evil-define-key
     'normal neotree-mode-map
     (kbd "TAB") 'neotree-enter

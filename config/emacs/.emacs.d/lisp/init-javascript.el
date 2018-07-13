@@ -19,7 +19,6 @@
   :mode "\\.jsx?$"
   :defer t
   :config
-  (evil-collection-init 'indium)
   (setq indium-chrome-executable my-browser))
 
 (use-package
@@ -54,7 +53,6 @@
 
   (prettify-js-for 'js-mode-hook)
 
-  (evil-collection-init 'js2-mode)
   (add-hook
     'flycheck-mode-hook
     (lambda () (progn
