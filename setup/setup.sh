@@ -214,7 +214,7 @@ installYaourt() {
 }
 
 installVim() {
-  yaourt -S --noconfirm silver-searcher-git cmake sbt scalafmt vim
+  yaourt -S --noconfirm cmake sbt scalafmt vim
 
   # Haskell-Vim
   wget https://raw.githubusercontent.com/sdiehl/haskell-vim-proto/master/vim/syntax/cabal.vim -P "$HOME/.vim/syntax/"
