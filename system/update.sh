@@ -54,6 +54,9 @@ systemUpdate () {
     fi
   )
 
+  "Regenerating shortcuts"
+  shortcuts
+
   echo "Upgrading system packages"
   yaourt -Syua "$1"
 }
