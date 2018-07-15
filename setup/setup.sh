@@ -122,7 +122,7 @@ installGo() {
 }
 
 installHaskell() {
-  yaourt -S stack-bin ncurses5-compat-libs
+  yaourt --noconfirm -S stack-bin
   stack setup
   stack install ghc-mod hindent stylish-haskell cabal-install hoogle hlint
   echo "========"
