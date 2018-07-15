@@ -15,8 +15,9 @@ unzip
 unrar
 jq
 neofetch
-evince
 speedtest-cli
 pinta
 exa
 networkmanager-dmenu-git
+calibre
+mupdf
