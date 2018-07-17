@@ -100,6 +100,7 @@ installDevTools() {
   installHaskell;
   installGo;
   installBash;
+  installRust;
 
   # Docker
   rm -rf /var/lib/docker
@@ -109,6 +110,13 @@ installDevTools() {
   #IntelliJ watches in the FS
   sudo bash -c 'echo "fs.inotify.max_user_watches = 524288" > /etc/sysctl.d/99-sysctl.conf'
   sudo sysctl --system
+}
+
+installRust () {
+  yaourt --noconfirm -S rustup
+  rustup toolchain install stable
+  rustup default stable
+  rustup toolchain install nightly
 }
 
 installBash() {
