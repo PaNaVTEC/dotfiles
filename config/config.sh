@@ -23,5 +23,6 @@ stow --target="$HOME" ghci
 stow --target="$HOME" inputrc
 stow --target="$HOME" bash
 stow --target="$HOME" xinit
+stow --target="$HOME" gtk
 sudo stow --target=/etc bluetooth
 sudo stow --target=/etc pulseaudio
