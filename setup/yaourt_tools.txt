@@ -21,3 +21,4 @@ exa
 networkmanager-dmenu-git
 calibre
 mupdf
+baobab
