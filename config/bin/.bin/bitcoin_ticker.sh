@@ -11,4 +11,7 @@ krakenTicker () {
 }
 
 #printf "%.2f € | $ %.2f" "$(gdaxTicker EUR)" "$(gdaxTicker USD)"
-printf "%.2f €" "$(gdaxTicker EUR)"
+EUR_TICK=$(gdaxTicker EUR)
+if [[ $EUR_TICK != "" ]]; then
+  printf "%.2f €" "$EUR_TICK"
+fi
