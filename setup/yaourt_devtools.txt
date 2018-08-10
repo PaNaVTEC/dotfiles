@@ -1,3 +1,4 @@
+wireless_tools
 virtualbox
 hub
 linux-headers
