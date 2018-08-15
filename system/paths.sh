@@ -5,7 +5,6 @@ export PATH=$PATH:"$HOME/.bin/"
 export PATH=$PATH:"$HOME/.local/bin/"
 export PATH=$PATH:"$HOME/.gem/ruby/2.4.0/bin"
 export PATH=$PATH:"$HOME/.yarn/bin"
-export PATH=$PATH:"$HOME/code/i3blocks-hs-contrib/bin"
 
 export GOPATH="$HOME/go"
 export PATH="${PATH}:$GOPATH/bin"
