@@ -5,7 +5,6 @@ Plug 'scrooloose/nerdtree'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'wincent/ferret'
 Plug 'tpope/vim-unimpaired'
-Plug 'terryma/vim-multiple-cursors'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'marijnh/tern_for_vim'
 Plug 'Valloric/YouCompleteMe', { 'do': './install.py' }
