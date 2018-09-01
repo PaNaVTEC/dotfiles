@@ -1,6 +1,0 @@
-#!/usr/bin/env bash
-
-acpi | awk -F ',' '{print $2}'
-case $BLOCK_BUTTON in
-  3) notify-send "$(acpi -b)"
-esac
