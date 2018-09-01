@@ -11,9 +11,9 @@ createJavascriptProject () {
   mkdir -p "$1"
   cd "$1" || return
   gibo Node JetBrains Vim Emacs macOS Linux Windows > .gitignore
-  ya init -y
-  ya add mocha chai standard
-  ya add babel-core babel-preset-es2015 --dev
+  yarn init -y
+  yarn add mocha chai standard
+  yarn add babel-core babel-preset-es2015 --dev
   cp "$DOTFILES_LOCATION/config/vim/tern-project" ./.tern-project
   jq -r '.scripts |= . + {"start": "node src/index.js", "test": "mocha ./src/**.test.js --compilers js:babel-core/register"}' package.json > temp.json
   jq -r '.standard |= . + {}' temp.json > package.json
@@ -27,7 +27,7 @@ createJavascriptProject () {
   local DESCRIBE="describe('A test', () => {\n$IT\n})"
   local TEST="$IMPORT\n\n$DESCRIBE"
   echo -e "$TEST" > src/intext.test.js
-  ya
+  yarn
 }
 
 jsonPrettyPrintNonStrict () {
