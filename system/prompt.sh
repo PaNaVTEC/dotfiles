@@ -1,9 +1,11 @@
 #!/usr/bin/env bash
 
 export PROMPT_DIRTRIM=2
-powerline-daemon -q
-POWERLINE_COMMAND=$HOME/.local/bin/powerline-hs
-POWERLINE_CONFIG_COMMAND=/bin/true
-POWERLINE_BASH_CONTINUATION=1
-POWERLINE_BASH_SELECT=1
-. "$SITE_PACKAGES/powerline/bindings/bash/powerline.sh"
+
+function _update_ps1() {
+  PS1="$(powerline-go -cwd-mode plain -modules venv,ssh,cwd,perms,git,docker,jobs,exit,root -error $?)"
+}
+
+if [ "$TERM" != "linux" ]; then
+  PROMPT_COMMAND="_update_ps1; $PROMPT_COMMAND"
+fi

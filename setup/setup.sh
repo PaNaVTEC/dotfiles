@@ -159,10 +159,7 @@ installTools() {
   yaourt --noconfirm -S ./yaourt_tools.txt
   yaourt --noconfirm -S ./yaourt_urxvt.txt
 
-  yaourt --noconfirm -S powerline
-  git clone https://github.com/rdnetto/powerline-hs.git --recursive "$HOME/.powerline-hs"
-  (cd "$HOME/.powerline-hs/" && stack install)
-
+  yaourt --noconfirm -S powerline-go-bin
   # setup qutebrowser
   yaourt --noconfirm -S qutebrowser
 
