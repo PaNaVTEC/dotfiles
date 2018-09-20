@@ -1,7 +1,6 @@
 (use-package
   evil
   :ensure t
-  :init (setq evil-want-integration nil)
   :config
   (evil-mode 1)
 
