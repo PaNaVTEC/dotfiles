@@ -1,5 +1,6 @@
 (use-package dumb-jump
   :pin melpa-stable
+  :ensure t
   :defer t
   :config
     (setq dumb-jump-selector 'helm)
