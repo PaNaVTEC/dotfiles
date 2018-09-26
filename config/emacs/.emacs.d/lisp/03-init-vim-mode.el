@@ -1,5 +1,4 @@
-(use-package
-  evil
+(use-package evil
   :ensure t
   :config
   (evil-mode 1)
@@ -95,9 +94,7 @@
   evil-surround
   :ensure t
   :config
-  (global-evil-surround-mode)
-  (add-to-list 'evil-surround-operator-alist '(evil-paredit-change . change))
-  (add-to-list 'evil-surround-operator-alist '(evil-paredit-delete . delete)))
+  (global-evil-surround-mode))
 
 (use-package
   evil-leader
@@ -114,7 +111,6 @@
   (define-key evil-normal-state-map (kbd "C-a") 'evil-numbers/inc-at-pt)
   (define-key evil-normal-state-map (kbd "C-x") 'evil-numbers/dec-at-pt))
 
-(use-package evil-paredit :ensure t :defer t)
 (use-package evil-collection
   :ensure t
   :defer t
