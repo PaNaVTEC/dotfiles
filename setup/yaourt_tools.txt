@@ -1,4 +1,5 @@
 the_silver_searcher
+slack-desktop
 pygmentize
 autojump
 openssh
