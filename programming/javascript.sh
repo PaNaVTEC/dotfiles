@@ -10,7 +10,7 @@ createJavascriptProject () {
   TAB="  "
   mkdir -p "$1"
   cd "$1" || return
-  gibo Node JetBrains Vim Emacs macOS Linux Windows > .gitignore
+  gibo dump Node JetBrains Vim Emacs macOS Linux Windows > .gitignore
   yarn init -y
   yarn add mocha chai standard
   yarn add babel-core babel-preset-es2015 --dev

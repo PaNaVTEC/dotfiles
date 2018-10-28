@@ -13,15 +13,17 @@ createProjectHaskell () {
   email=$(cat ~/.gitconfig | grep email | awk -F '= ' '{print $2}')
   username=$(echo "$email" | awk -F '@' '{print $1}')
 
-  stack new "$projectDirectory" hspec \
-    -p "author-email:$email"\
+  stack \
+    new "$projectDirectory" hspec \
+    -p "name:$projectDirectory" \
+    -p "author-email:$email" \
     -p "author-name:$name" \
     -p "category:katas" \
     -p "copyright:Apache2" \
     -p "github-username:$username"
 
   (cd "$projectDirectory" && \
-    gibo Haskell JetBrains Vim Emacs macOS Linux Windows > .gitignore)
+    gibo dump Haskell JetBrains Vim Emacs macOS Linux Windows > .gitignore)
 }
 
 createScriptHaskell () {
