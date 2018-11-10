@@ -38,7 +38,7 @@ floating_modifier $mod
 
 bindsym $mod+Return exec $TERMINAL
 bindsym $mod+Shift+q kill
-bindsym $mod+d exec --no-startup-id j4-dmenu-desktop --dmenu="dmenu -i -fn 'xos4 Terminus-13'"
+bindsym $mod+d exec --no-startup-id dmenu_run -i -fn 'xos4 Terminus-13'
 
 # capture screen
 bindsym Shift+Print exec --no-startup-id scrot "select"

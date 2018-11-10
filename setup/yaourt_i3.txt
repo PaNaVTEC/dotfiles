@@ -8,7 +8,7 @@ xtitle
 xdotool
 arandr
 i3-gaps
-j4-dmenu-desktop
+dmenu2
 feh
 unclutter
 maim
