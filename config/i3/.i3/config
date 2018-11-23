@@ -276,3 +276,4 @@ smart_gaps on
 
 exec --no-startup-id i3-msg 'workspace $WS3, layout tabbed'
 exec --no-startup-id set-wallpaper.sh
+exec --no-startup-id xss-lock $Locker &
