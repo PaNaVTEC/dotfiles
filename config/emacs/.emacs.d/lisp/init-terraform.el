@@ -9,4 +9,4 @@
 
   (add-hook 'terraform-mode-hook 'programming-mode))
 
-(provide 'init-docker)
+(provide 'init-terraform)
