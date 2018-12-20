@@ -24,7 +24,7 @@ dunst
 acpi
 iw
 imagemagick
-i3lock-wrapper
+i3lock-blur
 xss-lock
 wireless_tools
 pymodoro-git
