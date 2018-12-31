@@ -1,6 +1,10 @@
 #!/usr/bin/env bash
 set -e
 
+installPkg() {
+  yay --noconfirm -S $1
+}
+
 ask() {
   # https://djm.me/ask
   local prompt default reply
@@ -41,14 +45,14 @@ ask() {
 installi3() {
   echo "Installing i3 and required tools"
   sleep 2
-  yaourt --noconfirm -S ./yaourt_i3.txt
+  installPkg ./yaourt_i3.txt
 }
 
 installFonts() {
   echo "Installing fonts"
   sleep 2
 
-  yaourt --noconfirm -S ./yaourt_fonts.txt
+  installPkg ./yaourt_fonts.txt
 
   # Download Nerd Font (for glyphs)
   wget "https://github.com/ryanoasis/nerd-fonts/blob/master/patched-fonts/DroidSansMono/complete/Droid%20Sans%20Mono%20for%20Powerline%20Nerd%20Font%20Complete%20Mono.otf"
@@ -64,7 +68,7 @@ installFonts() {
   sudo fc-cache -fv
 
   # Install vcconsole.font & colors
-  yaourt --noconfirm -S mkinitcpio-colors-git
+  installPkg mkinitcpio-colors-git
 
   sudo sed -i /etc/mkinitcpio.conf -e 's/^\\\(HOOKS=\"base\s\)\([^\"]\+\)\"/\1colors consolefont \2"/'
   sudo mkinitcpio -p linux
@@ -73,11 +77,11 @@ installFonts() {
 installThemes() {
   echo "Installing themes"
   sleep 2
-  yaourt --noconfirm -S ./yaourt_themes.txt
+  installPkg ./yaourt_themes.txt
 }
 
 installGit() {
-  yaourt --noconfirm -S ./yaourt_git.txt
+  installPkg ./yaourt_git.txt
 
   # Global git ignores
   gibo --upgrade
@@ -91,10 +95,10 @@ installDevTools() {
   sleep 2
 
   installGit;
-  yaourt --noconfirm -S ./yaourt_java.txt
-  yaourt --noconfirm -S ./yaourt_android.txt
-  yaourt --noconfirm -S ./yaourt_scala.txt
-  yaourt --noconfirm -S ./yaourt_devtools.txt
+  installPkg ./yaourt_java.txt
+  installPkg ./yaourt_android.txt
+  installPkg ./yaourt_scala.txt
+  installPkg ./yaourt_devtools.txt
   installJs;
   installClojure;
   installHaskell;
@@ -113,24 +117,24 @@ installDevTools() {
 }
 
 installRust () {
-  yaourt --noconfirm -S rustup
+  installPkg rustup
   rustup toolchain install stable
   rustup default stable
   rustup toolchain install nightly
 }
 
 installBash() {
-  yaourt --noconfirm -S shellcheck-static shunit2
+  installPkg shellcheck-static shunit2
 }
 
 installGo() {
-  yaourt --noconfirm -S go
+  installPkg go
   mkdir -p "$HOME/go/{bin,src}"
   go get -u github.com/golang/lint/golint
 }
 
 installHaskell() {
-  yaourt --noconfirm -S stack-bin
+  installPkg stack-bin
   stack setup
   stack install ghc-mod hindent stylish-haskell cabal-install hoogle hlint
   echo "========"
@@ -140,7 +144,7 @@ installHaskell() {
 }
 
 installJs() {
-  yaourt --noconfirm -S nodejs npm yarn
+  installPkg nodejs npm yarn
   yarn config set -- --emoji true
   sudo yarn global add n
   sudo n latest
@@ -149,38 +153,38 @@ installJs() {
 }
 
 installClojure() {
-  yaourt --noconfirm -S ./yaourt_clojure.txt
+  installPkg ./yaourt_clojure.txt
 }
 
 installTools() {
   echo "Installing apps and tools"
   sleep 2
 
-  yaourt --noconfirm -S ./yaourt_tools.txt
-  yaourt --noconfirm -S ./yaourt_urxvt.txt
+  installPkg ./yaourt_tools.txt
+  installPkg ./yaourt_urxvt.txt
 
-  yaourt --noconfirm -S powerline-go-bin
+  installPkg powerline-go-bin
   # setup qutebrowser
-  yaourt --noconfirm -S qutebrowser
+  installPkg qutebrowser
 
   # setup inox
-  yaourt --noconfirm -S maninex
+  installPkg maninex
   sudo mkdir -p /usr/share/inox/extensions
   sudo mkdir -p "$HOME/.config/inox/extensions"
 
-  yaourt --noconfirm -S openresolv
+  installPkg openresolv
 }
 
 installRedshift() {
   echo "Installing redshift"
   sleep 2
-  yaourt --noconfirm -S redshift
+  installPkg redshift
 }
 
 installScreensavers() {
   echo "Installing screensavers"
   sleep 2
-  yaourt --noconfirm -S nyancat
+  installPkg nyancat
 }
 
 installPacman() {
@@ -200,26 +204,18 @@ installPacman() {
   sudo pacman -Syu
 }
 
-installYaourt() {
+installPacmanWrapper() {
   installPacman;
 
-  sudo pacman -S --needed base-devel git wget yajl
-  wget https://aur.archlinux.org/cgit/aur.git/snapshot/package-query.tar.gz
-  tar xvfz package-query.tar.gz
-  (cd package-query && makepkg -si)
-  rm -rf package-query
-  rm package-query.tar.gz
-  wget https://aur.archlinux.org/cgit/aur.git/snapshot/yaourt.tar.gz
-  tar xvfz yaourt.tar.gz
-  (cd yaourt && makepkg -si)
-  rm -rf yaourt
-  rm yaourt.tar.gz
+  sudo pacman -S --needed base-devel git wget yajl go
 
-  yaourt -S --noconfirm reflector
+  git clone https://aur.archlinux.org/yay.git && cd yay && makepkg -si
+
+  installPkg reflector
 }
 
 installVim() {
-  yaourt -S --noconfirm cmake sbt scalafmt vim
+  installPkg cmake sbt scalafmt vim
 
   # Haskell-Vim
   wget https://raw.githubusercontent.com/sdiehl/haskell-vim-proto/master/vim/syntax/cabal.vim -P "$HOME/.vim/syntax/"
@@ -253,38 +249,38 @@ installVim() {
 }
 
 installEmacs() {
-  yaourt -S --noconfirm emacs aspell aspell-en aspell-es
+  installPkg emacs aspell aspell-en aspell-es
 }
 
 installRanger() {
-  yaourt -S ranger w3m ffmpegthumbnailer atool --noconfirm
+  installPkg ranger w3m ffmpegthumbnailer atool
 }
 
 installMutt() {
-  yaourt -S --noconfirm neomutt
+  installPkg neomutt
 }
 
 installAudio() {
-  yaourt -S --noconfirm ./yaourt_audio.txt
+  installPkg ./yaourt_audio.txt
 }
 
 installCompton() {
-  yaourt -S --noconfirm compton xorg-xwininfo
+  installPkg compton xorg-xwininfo
   mkdir -p "$HOME/.before_startx"
   echo "compton -c -i 0.9 -b &" >> "$HOME/.before_startx/run.sh"
   chmod a+x "$HOME/.before_startx/run.sh"
 }
 
 installTaskWarrior() {
-  yaourt -S --noconfirm task tasksh
+  installPkg task tasksh
 }
 
 installBeancount() {
-  yaourt -S --noconfirm beancount fava
+  installPkg beancount fava
 }
 
 installPrivacy() {
-  yaourt -S --noconfirm openvpn wireguard-dkms wireguard-tools
+  installPkg openvpn wireguard-dkms wireguard-tools
   sudo mkdir -p /etc/openvpn/
   sudo mkdir -p /etc/wireguard/
   sudo gpg -d --output /etc/openvpn/server.ovpn "$dir/config/vpn/server.gpg"
@@ -294,7 +290,7 @@ installPrivacy() {
 }
 
 installBt() {
-  yaourt -S --noconfirm bluez bluez-utils bluez-qt pulseaudio-bluetooth
+  installPkg bluez bluez-utils bluez-qt pulseaudio-bluetooth
   modprobe btusb
   sudo systemctl enable bluetooth.service
   sudo systemctl start bluetooth.service
@@ -316,7 +312,7 @@ if [[ "${BASH_SOURCE[0]}" = "$0" ]]; then
 
   echo "actionSystem.suspendFocusTransferIfApplicationInactive=false add this into intelliJ to prevent focus lose"
 
-  ask "install pacman/yaourt?" Y && installYaourt;
+  ask "install pacman/yaourt?" Y && installPacmanWrapper;
   ask "install i3?" Y && installi3;
   ask "install compton?" Y && installCompton;
   ask "install fonts?" Y && installFonts;

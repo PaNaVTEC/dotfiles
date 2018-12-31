@@ -1,15 +1,14 @@
 #!/bin/bash -e
 
-alias y='yaourt'
-alias ys='yaourt -Ss'
-alias yi='yaourt -S'
+alias y='yay'
+alias ys='yay -Ss'
+alias yi='yay -S'
 alias yin='yi --noconfirm'
 alias yunf='yu --noconfirm --force'
-alias yp='yaourt -Qm'
-alias yr='yaourt -R'
+alias yr='yay -R'
 alias yu='systemUpdate;'
 alias yun='systemUpdate "--noconfirm";'
-alias updateMirrors='sudo reflector --sort rate -l 10 -f 5 --save /etc/pacman.d/mirrorlist && yaourt -Syy'
+alias updateMirrors='sudo reflector --sort rate -l 10 -f 5 --save /etc/pacman.d/mirrorlist && yay -Syy'
 
 commitsBehind () {
   git fetch
@@ -58,13 +57,9 @@ systemUpdate () {
   shortcuts
 
   echo "Upgrading system packages"
-  yaourt -Syua "$1"
+  yay -Syu "$1"
 }
 
 orphans() {
-  yaourt -Qdt
-}
-
-cleanCache() {
-  yaourt -Sc
+  yay -Yc
 }
