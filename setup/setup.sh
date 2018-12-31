@@ -5,6 +5,10 @@ installPkg() {
   yay --noconfirm -S $1
 }
 
+installPkgs() {
+  yay --noconfirm -S $(cat "$1")
+}
+
 ask() {
   # https://djm.me/ask
   local prompt default reply
@@ -45,14 +49,14 @@ ask() {
 installi3() {
   echo "Installing i3 and required tools"
   sleep 2
-  installPkg ./yaourt_i3.txt
+  installPkgs ./yaourt_i3.txt
 }
 
 installFonts() {
   echo "Installing fonts"
   sleep 2
 
-  installPkg ./yaourt_fonts.txt
+  installPkgs ./yaourt_fonts.txt
 
   # Download Nerd Font (for glyphs)
   wget "https://github.com/ryanoasis/nerd-fonts/blob/master/patched-fonts/DroidSansMono/complete/Droid%20Sans%20Mono%20for%20Powerline%20Nerd%20Font%20Complete%20Mono.otf"
@@ -77,11 +81,11 @@ installFonts() {
 installThemes() {
   echo "Installing themes"
   sleep 2
-  installPkg ./yaourt_themes.txt
+  installPkgs ./yaourt_themes.txt
 }
 
 installGit() {
-  installPkg ./yaourt_git.txt
+  installPkgs ./yaourt_git.txt
 
   # Global git ignores
   gibo --upgrade
@@ -95,10 +99,10 @@ installDevTools() {
   sleep 2
 
   installGit;
-  installPkg ./yaourt_java.txt
-  installPkg ./yaourt_android.txt
-  installPkg ./yaourt_scala.txt
-  installPkg ./yaourt_devtools.txt
+  installPkgs ./yaourt_java.txt
+  installPkgs ./yaourt_android.txt
+  installPkgs ./yaourt_scala.txt
+  installPkgs ./yaourt_devtools.txt
   installJs;
   installClojure;
   installHaskell;
@@ -124,7 +128,7 @@ installRust () {
 }
 
 installBash() {
-  installPkg shellcheck-static shunit2
+  installPkg "shellcheck-static shunit2"
 }
 
 installGo() {
@@ -144,7 +148,7 @@ installHaskell() {
 }
 
 installJs() {
-  installPkg nodejs npm yarn
+  installPkg "nodejs npm yarn"
   yarn config set -- --emoji true
   sudo yarn global add n
   sudo n latest
@@ -153,15 +157,15 @@ installJs() {
 }
 
 installClojure() {
-  installPkg ./yaourt_clojure.txt
+  installPkgs ./yaourt_clojure.txt
 }
 
 installTools() {
   echo "Installing apps and tools"
   sleep 2
 
-  installPkg ./yaourt_tools.txt
-  installPkg ./yaourt_urxvt.txt
+  installPkgs ./yaourt_tools.txt
+  installPkgs ./yaourt_urxvt.txt
 
   installPkg powerline-go-bin
   # setup qutebrowser
@@ -215,7 +219,7 @@ installPacmanWrapper() {
 }
 
 installVim() {
-  installPkg cmake sbt scalafmt vim
+  installPkg "cmake sbt scalafmt vim"
 
   # Haskell-Vim
   wget https://raw.githubusercontent.com/sdiehl/haskell-vim-proto/master/vim/syntax/cabal.vim -P "$HOME/.vim/syntax/"
@@ -249,11 +253,11 @@ installVim() {
 }
 
 installEmacs() {
-  installPkg emacs aspell aspell-en aspell-es
+  installPkg "emacs aspell aspell-en aspell-es"
 }
 
 installRanger() {
-  installPkg ranger w3m ffmpegthumbnailer atool
+  installPkg "ranger w3m ffmpegthumbnailer atool"
 }
 
 installMutt() {
@@ -261,26 +265,26 @@ installMutt() {
 }
 
 installAudio() {
-  installPkg ./yaourt_audio.txt
+  installPkgs ./yaourt_audio.txt
 }
 
 installCompton() {
-  installPkg compton xorg-xwininfo
+  installPkg "compton xorg-xwininfo"
   mkdir -p "$HOME/.before_startx"
   echo "compton -c -i 0.9 -b &" >> "$HOME/.before_startx/run.sh"
   chmod a+x "$HOME/.before_startx/run.sh"
 }
 
 installTaskWarrior() {
-  installPkg task tasksh
+  installPkg "task tasksh"
 }
 
 installBeancount() {
-  installPkg beancount fava
+  installPkg "beancount fava"
 }
 
 installPrivacy() {
-  installPkg openvpn wireguard-dkms wireguard-tools
+  installPkg "openvpn wireguard-dkms wireguard-tools"
   sudo mkdir -p /etc/openvpn/
   sudo mkdir -p /etc/wireguard/
   sudo gpg -d --output /etc/openvpn/server.ovpn "$dir/config/vpn/server.gpg"
@@ -290,7 +294,7 @@ installPrivacy() {
 }
 
 installBt() {
-  installPkg bluez bluez-utils bluez-qt pulseaudio-bluetooth
+  installPkg "bluez bluez-utils bluez-qt pulseaudio-bluetooth"
   modprobe btusb
   sudo systemctl enable bluetooth.service
   sudo systemctl start bluetooth.service
