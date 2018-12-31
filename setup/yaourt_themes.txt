@@ -1,6 +1,5 @@
 paper-gtk-theme-git
 paper-icon-theme-git
 numix-icon-theme-git
-gtk-theme-arc-grey-git
-gtk-theme-solarc-git
+nordic-theme-git
 lxappearance
