@@ -1,6 +1,0 @@
-# blacklist for usb autosuspend
-ACTION=="add", SUBSYSTEM=="usb", ATTR{idVendor}=="0b05", ATTR{idProduct}=="17cb", GOTO="power_usb_rules_end"
-
-ACTION=="add", SUBSYSTEM=="usb", TEST=="power/control", ATTR{power/control}="auto"
-LABEL="power_usb_rules_end"
-

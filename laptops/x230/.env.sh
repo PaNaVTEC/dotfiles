@@ -1,3 +1,0 @@
-export POLYBAR_MONITOR=LVDS-1
-export POLYBAR_WIFI_CARD=wlp2s0
-

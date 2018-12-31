@@ -1,2 +1,0 @@
-SUBSYSTEM=="backlight", ACTION=="add", RUN+="/bin/chgrp wheel /sys/class/backlight/%k/brightness"
-SUBSYSTEM=="backlight", ACTION=="add", RUN+="/bin/chmod g+w /sys/class/backlight/%k/brightness"
