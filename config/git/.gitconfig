@@ -16,3 +16,5 @@
 [alias]
   discard = !git clean -df && git checkout -- .
   prunelocal = !git branch -d $(git branch --merged)
+[includeIf "gitdir:~/code/habito"]
+  path = ~/.gitconfig-habito
