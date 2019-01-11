@@ -1,15 +1,21 @@
 #!/bin/bash -e
 
-alias y='yay'
-alias ys='yay -Ss'
-alias yi='yay -S'
-alias yin='yi --noconfirm'
-alias yunf='yu --noconfirm --force'
-alias yr='yay -R'
-alias yu='systemUpdate;'
-alias yun='systemUpdate "--noconfirm";'
-alias updateMirrors='sudo reflector --sort rate -l 10 -f 5 --save /etc/pacman.d/mirrorlist && yay -Syy'
-
+if [[ $DISTRO == "ubuntu" ]]; then
+  alias ys='apt-cache search'
+  alias yi='sudo apt-get install'
+  alias yin='sudo apt-get install -y'
+  alias yr='sudo apt-get remove'
+else
+  alias y='yay'
+  alias ys='yay -Ss'
+  alias yi='yay -S'
+  alias yin='yi --noconfirm'
+  alias yunf='yu --noconfirm --force'
+  alias yr='yay -R'
+  alias yu='systemUpdate;'
+  alias yun='systemUpdate "--noconfirm";'
+  alias updateMirrors='sudo reflector --sort rate -l 10 -f 5 --save /etc/pacman.d/mirrorlist && yay -Syy'
+fi
 commitsBehind () {
   git fetch
   git rev-list \
