@@ -20,15 +20,10 @@ URxvt.perl-ext-common: default,matcher,font-size,url-select,keyboard-select,clip
 URxvt.colorUL: #5E81AC
 
 !! url-select
-! URxvt.keysym.M-u: perl:url-select:select_next
-! URxvt.url-select.launcher: /usr/bin/xdg-open
-! URxvt.url-select.underline: true
-! URxvt.url-launcher: /usr/bin/xdg-open
 URxvt.urlLauncher: /usr/bin/xdg-open
 URxvt.matcher.pattern.1: \\bwww\\.[\\w-]+\\.[\\w./?&@#-]*[\\w/-]
 URxvt.matcher.button: 1
-URxvt.keysym.M-U: matcher:next
-URxvt.keysym.M-U: matcher:next
+!URxvt.keysym.C-U: matcher:last
 Urxvt*saveLines: 20480
 
 !! Clipboard
