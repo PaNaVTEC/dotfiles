@@ -32,14 +32,6 @@ systemUpdate () {
   echo "Updating dotfiles"
   (cd "$DOTFILES_LOCATION" && git pull)
 
-  echo "Installing new inox extensions"
-  sudo maninex -i | grep --invert-match "is already installed"
-  echo "Done"
-
-  echo "Updating inox extensions"
-  sudo maninex -u | grep --invert-match "up-to-date"
-  echo "Done"
-
   echo "Upgrading global Js packages"
   sudo yarn global upgrade
 

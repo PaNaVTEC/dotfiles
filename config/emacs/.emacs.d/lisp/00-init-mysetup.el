@@ -1,4 +1,4 @@
-(defcustom my-browser "inox"
+(defcustom my-browser "firefox"
   "Current browser"
   :type 'string
   :group 'mysetup)
@@ -13,7 +13,7 @@
   :group 'mysetup)
 
 ;; Fonts
-(defcustom my-font "xos4 Terminus"
+(defcustom my-font "Terminus"
   "Emacs font"
   :type 'string
   :group 'mysetup)

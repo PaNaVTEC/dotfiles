@@ -2,7 +2,7 @@
 set -o vi
 
 export XDG_CONFIG_HOME=$HOME/.config
-export BROWSER=inox
+export BROWSER=firefox
 export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
 export DOTFILES_LOCATION=$HOME/dotfiles
 export SITE_PACKAGES=$(python -c 'import site; print(site.getsitepackages()[0])')

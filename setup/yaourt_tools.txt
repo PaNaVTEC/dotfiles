@@ -6,7 +6,6 @@ openssh
 firefox
 dropbox
 dropbox-cli
-inox-bin
 google-talkplugin
 spotify
 keeweb-desktop

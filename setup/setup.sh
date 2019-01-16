@@ -170,12 +170,6 @@ installTools() {
   installPkg powerline-go-bin
   # setup qutebrowser
   installPkg qutebrowser
-
-  # setup inox
-  installPkg maninex
-  sudo mkdir -p /usr/share/inox/extensions
-  sudo mkdir -p "$HOME/.config/inox/extensions"
-
   installPkg openresolv
 }
 
