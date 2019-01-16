@@ -3,7 +3,7 @@ URxvt.intensityStyles: false
 URxvt.background: #2E3440
 URxvt.internalBorder: 0
 !URxvt.depth: 24
-URxvt.font: xft:Terminus:size=13, xft:Symbola:size=13, xft:DroidSansMonoForPowerline Nerd Font:size=13
+URxvt.font: xft:Terminus:size=13, xft:Symbola:size=13, xft:Droid Sans Mono for Powerline:size=13
 URxvt.cursorColor: #D8DEE9
 URxvt*skipBuiltinGlyphs: true
 
@@ -16,21 +16,25 @@ URxvt*scrollWithBuffer: true
 URxvt*scrollTtyKeypress: true
 
 !! Extensions
-URxvt.perl-ext-common: default,matcher,resize-font,url-select,keyboard-select,clipboard,vtwheel
+URxvt.perl-ext-common: default,matcher,font-size,url-select,keyboard-select,clipboard,selection-to-clipboard,vtwheel
 URxvt.colorUL: #5E81AC
 
 !! url-select
-URxvt.keysym.M-u: perl:url-select:select_next
-URxvt.url-select.launcher: /usr/bin/xdg-open
-URxvt.url-select.underline: true
-URxvt.url-launcher: /usr/bin/xdg-open
+! URxvt.keysym.M-u: perl:url-select:select_next
+! URxvt.url-select.launcher: /usr/bin/xdg-open
+! URxvt.url-select.underline: true
+! URxvt.url-launcher: /usr/bin/xdg-open
+URxvt.urlLauncher: /usr/bin/xdg-open
+URxvt.matcher.pattern.1: \\bwww\\.[\\w-]+\\.[\\w./?&@#-]*[\\w/-]
 URxvt.matcher.button: 1
+URxvt.keysym.M-U: matcher:next
+URxvt.keysym.M-U: matcher:next
 Urxvt*saveLines: 20480
 
 !! Clipboard
 URxvt.clipboard.autocopy: true
-URxvt.keysym.Shift-Control-V: perl:clipboard:paste
-URxvt.keysym.Shift-Control-C: perl:clipboard:copy
+URxvt.keysym.Shift-Control-V: eval:paste_clipboard
+URxvt.keysym.Shift-Control-C: eval:selection_to_clipboard
 URxvt.iso14755: false
 URxvt.iso14755_52: false
 
@@ -42,3 +46,6 @@ URxvt.resize-font.smaller: C-minus
 URxvt.resize-font.bigger: C-plus
 URxvt.resize-font.reset: C-equal
 
+URxvt.keysym.C-plus:   font-size:increase
+URxvt.keysym.C-minus:  font-size:decrease
+URxvt.keysym.C-equal:  font-size:reset
