@@ -3,6 +3,7 @@
 alias ghc='stack exec ghc --'
 alias ghci='stack exec ghci --'
 alias si='stack install'
+alias sbf='stack build --fast'
 
 createProjectHaskell () {
   local projectDirectory=$1
