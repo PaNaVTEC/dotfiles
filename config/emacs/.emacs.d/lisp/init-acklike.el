@@ -33,4 +33,9 @@
   :config
   (location-list-buffer (rx bos "*xah-find output*")))
 
+(use-package
+  helm-ag
+  :ensure t
+  :defer t)
+
 (provide 'init-acklike)
