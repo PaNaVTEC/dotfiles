@@ -55,4 +55,6 @@
             (lambda ()
               (add-to-list 'company-backends backend))))
 
+(location-list-buffer (rx bos "*xref*"))
+
 (provide 'init-programming-mode)
