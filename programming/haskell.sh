@@ -5,6 +5,22 @@ alias ghci='stack exec ghci --'
 alias si='stack install'
 alias sbf='stack build --fast'
 
+hid () {
+  ghcid --command "stack ghci --ghc-options='-O0' --ghci-options='-fobject-code -O0' $2 $1"
+}
+
+hidskip () {
+  hid $1 --skip-intermediate-deps
+}
+
+hi () {
+  stack ghci --ghc-options='-O0' --ghci-options='-fobject-code -O0' $1
+}
+
+hiskip () {
+  hi $1 --skip-intermediate-deps
+}
+
 createProjectHaskell () {
   local projectDirectory=$1
   local name=''
