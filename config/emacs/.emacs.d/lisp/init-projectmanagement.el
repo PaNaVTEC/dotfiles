@@ -2,6 +2,14 @@
   projectile
   :ensure t)
 
+(use-package
+  perspective
+  :ensure t
+  :defer t
+  :config
+  (persp-mode)
+  (use-package persp-projectile :ensure t :defer t))
+
 ;; CtrlP like
 (use-package
   helm-projectile

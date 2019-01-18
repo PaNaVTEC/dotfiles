@@ -54,18 +54,6 @@
   (set-compile-for 'haskell-mode-hook "stack test")
   (set-company-backend-for 'haskell-mode-hook 'company-ghci)
 
-  (use-package
-    dante
-    :ensure t
-    :config
-
-    (evil-leader/set-key "7" 'xref-find-references)
-    (add-hook 'dante-mode-hook
-              '(lambda () (flycheck-add-next-checker
-                      'haskell-dante
-                      '(warning . haskell-hlint))))
-    )
-
   (add-hook 'haskell-mode-hook 'programming-mode)
   (add-hook 'haskell-mode-hook 'haskell/prettify)
   (add-hook 'haskell-mode-hook 'hs-doc))
