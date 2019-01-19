@@ -72,7 +72,15 @@
       (send-string-to-terminal (concat "\033]2; " (my-buffer-file-name) "\007"))
     (send-string-to-terminal (concat "\033]2; " (buffer-name) "\007"))))
 
+(defun set-window-title()
+  (setq frame-title-format
+        '((:eval
+           (if (buffer-file-name)
+               (abbreviate-file-name (buffer-file-name))
+                     "%b")))))
+
 (if (not window-system)
-    (add-hook 'post-command-hook 'set-terminal-title))
+    (add-hook 'post-command-hook 'set-terminal-title)
+    (add-hook 'post-command-hook 'set-window-title))
 
 (provide '01-init-general-config)
