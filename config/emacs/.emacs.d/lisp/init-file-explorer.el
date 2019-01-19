@@ -12,11 +12,23 @@
     (kbd "m")   'neotree-modify-mode-menu
     (kbd "p")   'neotree-open-file-in-system-application)
 
+  (add-hook 'neo-change-root-hook #'neotree-resize-window)
+  (add-hook 'neo-enter-hook #'neotree-resize-window)
+
   (evil-leader/set-key "f" 'neotree-find)
 
   (global-set-key (kbd "C-n") 'neotree-toggle)
   (define-key evil-normal-state-map (kbd "C-n") 'neotree-toggle)
-  (setq-default neo-show-hidden-files t))
+  (setq-default neo-show-hidden-files t)
+  (setq-default neo-auto-indent-point t)
+  (setq-default neo-window-fixed-size nil))
+
+(defun neotree-resize-window (&rest _args)
+  (interactive)
+  (neo-buffer--with-resizable-window
+    (let ((fit-window-to-buffer-horizontally t))
+      (fit-window-to-buffer))))
+
 
 (defun neotree-modify-mode-menu (option)
   "Asks for a mode and execute associated Neotree command"
