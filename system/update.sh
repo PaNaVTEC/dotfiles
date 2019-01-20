@@ -42,15 +42,6 @@ systemUpdate () {
   echo "Updating VIM"
   vimUpdate;
 
-  echo "Updating prompt"
-  (
-    cd "$HOME/.powerline-hs/"
-    if [ "$(commitsBehind)" -gt 1 ]; then
-      git pull
-      stack install
-    fi
-  )
-
   "Regenerating shortcuts"
   shortcuts
 
