@@ -43,8 +43,8 @@
   ;; configure smerge colors
   (add-hook 'smerge-mode-hook
   (lambda ()
-    (set-face-background 'smerge-lower "green")
-    (set-face-background 'smerge-markers "brightblack")
-    (set-face-background 'smerge-upper "red"))))
+    (set-face-background 'smerge-lower "#A3BE8C")
+    (set-face-background 'smerge-markers "#4C566A")
+    (set-face-background 'smerge-upper "#BF616A"))))
 
 (provide '00-init-mysetup)
