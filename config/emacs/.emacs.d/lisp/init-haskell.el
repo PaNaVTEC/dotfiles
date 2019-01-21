@@ -54,6 +54,11 @@
   (set-compile-for 'haskell-mode-hook "stack test")
   (set-company-backend-for 'haskell-mode-hook 'company-ghci)
 
+  (add-hook
+   'flycheck-mode-hook
+   (lambda () (progn
+           (add-to-list 'flycheck-disabled-checkers 'haskell-stack-ghc))))
+
   (add-hook 'haskell-mode-hook 'programming-mode)
   (add-hook 'haskell-mode-hook 'haskell/prettify)
   (add-hook 'haskell-mode-hook 'hs-doc))
