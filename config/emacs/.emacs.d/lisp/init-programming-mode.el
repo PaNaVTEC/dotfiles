@@ -11,6 +11,7 @@
 (require 'init-documentation)
 (require 'init-code-folding)
 (require 'init-syntatic-close)
+(require 'init-tags)
 
 (define-minor-mode
   programming-mode
@@ -32,7 +33,8 @@
       (flycheck-mode +1)
       (dumb-jump-mode +1)
       (company-mode +1)
-      (origami-mode +1))
+      (origami-mode +1)
+      (initialize-project-tags))
     (progn
       (prettify-symbols-mode -1)
       (whitespace-mode -1)
