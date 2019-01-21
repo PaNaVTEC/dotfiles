@@ -1,4 +1,4 @@
-(defcustom my-browser "firefox"
+(defcustom my-browser "xdg-open"
   "Current browser"
   :type 'string
   :group 'mysetup)
