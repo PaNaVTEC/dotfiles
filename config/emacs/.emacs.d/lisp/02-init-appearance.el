@@ -30,6 +30,13 @@
 (set-display-table-slot standard-display-table 'truncation (make-glyph-code ?→))
 (set-display-table-slot standard-display-table 'wrap (make-glyph-code ?⤸))
 
+;; Font size (ui only, in terminal this is provided by urxvt)
+(if
+  (display-graphic-p)
+  (progn
+    (global-set-key (kbd "C-+") 'text-scale-increase)
+    (global-set-key (kbd "C--") 'text-scale-decrease)))
+
 ;; Personalization
 (set-default-font my-font)
 (set-face-attribute 'default nil :height my-font-height)
