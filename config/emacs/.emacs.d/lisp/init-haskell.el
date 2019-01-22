@@ -61,6 +61,7 @@
            (add-to-list 'flycheck-disabled-checkers 'haskell-stack-ghc))))
 
   (add-hook 'haskell-mode-hook 'programming-mode)
+  (add-hook 'haskell-mode-hook 'haskell-decl-scan-mode)
   (add-hook 'haskell-mode-hook 'haskell/prettify)
   (add-hook 'haskell-mode-hook 'hs-doc))
 

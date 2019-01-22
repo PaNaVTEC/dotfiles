@@ -58,5 +58,8 @@
               (add-to-list 'company-backends backend))))
 
 (location-list-buffer (rx bos "*xref*"))
+(location-list-buffer (rx bos "*helm imenu*"))
+(define-key evil-normal-state-map (kbd "C-S-o") 'helm-imenu)
+(global-set-key (kbd "C-S-o") 'helm-imenu)
 
 (provide 'init-programming-mode)
