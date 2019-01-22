@@ -5,6 +5,8 @@
 
 (use-package helm-xref
   :ensure t
-  :init (setq xref-show-xrefs-function 'helm-xref-show-xrefs))
+  :init (setq xref-show-xrefs-function 'helm-xref-show-xrefs)
+  :config
+  (location-list-buffer (rx bos "*helm-xref*")))
 
 (provide 'init-tags)
