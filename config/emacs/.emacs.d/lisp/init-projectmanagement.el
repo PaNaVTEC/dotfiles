@@ -1,14 +1,16 @@
 (use-package
   projectile
-  :ensure t)
+  :ensure t
+  :config
+  (projectile-mode))
 
 (use-package
   perspective
   :ensure t
-  :defer t
+  :after projectile
   :config
   (persp-mode)
-  (use-package persp-projectile :ensure t :defer t))
+  (use-package persp-projectile :ensure t))
 
 ;; CtrlP like
 (use-package
