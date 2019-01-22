@@ -38,7 +38,7 @@
   :ensure t
   :defer t
   :config
-  (setq helm-ag-base-command "ag --nocolor --nogroup --hidden"))
+  (setq helm-ag-command-option "--hidden"))
 (global-set-key (kbd "C-S-f") 'helm-do-ag-project-root)
 
 (provide 'init-acklike)
