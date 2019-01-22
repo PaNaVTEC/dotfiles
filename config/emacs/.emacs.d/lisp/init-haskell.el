@@ -57,6 +57,7 @@
   (add-hook
    'flycheck-mode-hook
    (lambda () (progn
+           (add-to-list 'flycheck-disabled-checkers 'haskell-ghc)
            (add-to-list 'flycheck-disabled-checkers 'haskell-stack-ghc))))
 
   (add-hook 'haskell-mode-hook 'programming-mode)
