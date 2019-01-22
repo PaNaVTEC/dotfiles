@@ -5,6 +5,7 @@
   :ensure t
   :defer t
   :config
+  (setq projectile-tags-command "npm run etags")
   (add-hook 'purescript-mode-hook
             (lambda ()
               (flycheck-purescript-setup)
