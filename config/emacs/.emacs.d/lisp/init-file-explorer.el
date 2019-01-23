@@ -23,13 +23,6 @@
   (setq-default neo-auto-indent-point t)
   (setq-default neo-window-fixed-size nil))
 
-(defun neotree-resize-window (&rest _args)
-  (interactive)
-  (neo-buffer--with-resizable-window
-    (let ((fit-window-to-buffer-horizontally t))
-      (fit-window-to-buffer))))
-
-
 (defun neotree-modify-mode-menu (option)
   "Asks for a mode and execute associated Neotree command"
   (interactive "c(a)dd node | (d)elete node | (c)opy node | (r)ename node")
