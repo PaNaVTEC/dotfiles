@@ -38,7 +38,7 @@
   :ensure t
   :defer t
   :config
-  (setq helm-ag-command-option "--hidden"))
+  (setq helm-ag-command-option "--hidden --width 120"))
 (global-set-key (kbd "C-S-f") 'helm-do-ag-project-root)
 
 (provide 'init-acklike)
