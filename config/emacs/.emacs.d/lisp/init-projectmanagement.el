@@ -11,6 +11,11 @@
   :config
   (persp-mode)
 
+  (defadvice projectile-persp-switch-project (before hide-neotree-w activate)
+    (neotree-hide))
+  (defadvice projectile-persp-switch-project (after change-neotree-dir activate)
+    (neotree-projectile-action))
+
   (set-face-foreground 'persp-selected-face "#81A1C1")
   (define-key evil-normal-state-map (kbd "[p") 'persp-prev)
   (define-key evil-normal-state-map (kbd "]p") 'persp-next)
