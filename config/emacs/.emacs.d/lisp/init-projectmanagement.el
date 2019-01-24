@@ -16,6 +16,8 @@
   (defadvice projectile-persp-switch-project (after change-neotree-dir activate)
     (neotree-projectile-action))
 
+  (location-list-buffer (rx bos "*helm-mode-persp"))
+
   (set-face-foreground 'persp-selected-face "#81A1C1")
   (define-key evil-normal-state-map (kbd "[p") 'persp-prev)
   (define-key evil-normal-state-map (kbd "]p") 'persp-next)
