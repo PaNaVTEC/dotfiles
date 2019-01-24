@@ -11,6 +11,7 @@
   :config
   (persp-mode)
 
+  (set-face-foreground 'persp-selected-face "#81A1C1")
   (define-key evil-normal-state-map (kbd "[p") 'persp-prev)
   (define-key evil-normal-state-map (kbd "]p") 'persp-next)
   (evil-leader/set-key "p" 'projectile-persp-switch-project)
