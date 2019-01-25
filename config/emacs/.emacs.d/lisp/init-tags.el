@@ -8,7 +8,9 @@
   :init (setq xref-show-xrefs-function 'helm-xref-show-xrefs)
   :config
   (set-face-foreground 'helm-xref-file-name "#81A1C1")
-  (setq helm-xref-candidate-formatting-function  'helm-xref-format-candidate-long)
-  (location-list-buffer (rx bos "*helm-xref*")))
+  (setq helm-xref-candidate-formatting-function  'helm-xref-format-candidate-long))
 
+(location-list-buffer (rx bos "*helm-xref*"))
+(location-list-buffer (rx bos "*helm-mode-xref*"))
+(location-list-buffer (rx bos "*xref*"))
 (provide 'init-tags)

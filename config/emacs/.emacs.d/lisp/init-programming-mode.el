@@ -7,7 +7,6 @@
 (require 'init-parenthesis)
 (require 'init-compile-mode)
 (require 'init-code-snippets)
-(require 'init-gotodefinition)
 (require 'init-documentation)
 (require 'init-code-folding)
 (require 'init-syntatic-close)
@@ -31,7 +30,7 @@
       (show-paren-mode +1)
       (yas-global-mode +1)
       (flycheck-mode +1)
-      (dumb-jump-mode +1)
+      (xref-etags-mode +1)
       (company-mode +1)
       (origami-mode +1)
       (initialize-project-tags))
@@ -43,7 +42,7 @@
       (show-paren-mode -1)
       (yas-global-mode -1)
       (flycheck-mode -1)
-      (dumb-jump-mode -1)
+      (xref-etags-mode -1)
       (company-mode -1)
       (origami-mode -1))))
 
@@ -57,7 +56,7 @@
             (lambda ()
               (add-to-list 'company-backends backend))))
 
-(location-list-buffer (rx bos "*xref*"))
+; Outline
 (location-list-buffer (rx bos "*helm imenu*"))
 (define-key evil-normal-state-map (kbd "C-S-o") 'helm-imenu)
 (global-set-key (kbd "C-S-o") 'helm-imenu)
