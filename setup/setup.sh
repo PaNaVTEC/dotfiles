@@ -140,7 +140,7 @@ installGo() {
 installHaskell() {
   installPkg stack-bin
   stack setup
-  stack install ghc-mod hindent stylish-haskell cabal-install hoogle hlint
+  stack install ghc-mod hindent stylish-haskell cabal-install hoogle hlint ghcid
   echo "========"
   echo "Your GHC path will be: $(stack path | grep ghc-paths)"
   echo "========"
