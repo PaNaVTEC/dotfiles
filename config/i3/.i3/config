@@ -197,7 +197,7 @@ mode $resize {
   bindsym Escape mode "default"
 }
 #lockscreen
-set $Locker i3lock -i ~/Pictures/pict.png
+set $Locker i3-locker.sh
 bindsym $mod+Escape exec $Locker
 
 # Shutdown / reboot...
