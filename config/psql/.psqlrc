@@ -1,0 +1,10 @@
+\set QUIET yes
+
+\timing
+\set paste
+\pset null '<null>'
+\set HISTCONTROL ignoredups
+\setenv PAGER less
+\setenv LESS -iS
+
+\unset QUIET
