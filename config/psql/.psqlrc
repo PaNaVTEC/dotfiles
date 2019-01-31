@@ -1,5 +1,6 @@
 \set QUIET yes
 
+\set HISTFILE ~/.psql-history- :HOST :DBNAME
 \timing
 \set paste
 \pset null '<null>'
