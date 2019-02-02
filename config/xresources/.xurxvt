@@ -21,10 +21,12 @@ URxvt.colorUL: #5E81AC
 
 !! url-select
 URxvt.urlLauncher: /usr/bin/xdg-open
+URxvt.url-launcher: /usr/bin/xdg-open
 URxvt.matcher.pattern.1: \\bwww\\.[\\w-]+\\.[\\w./?&@#-]*[\\w/-]
 URxvt.matcher.button: 1
-!URxvt.keysym.C-U: matcher:last
 Urxvt*saveLines: 20480
+URxvt.keysym.C-Delete:    matcher:last
+URxvt.keysym.M-Delete:    matcher:list
 
 !! Clipboard
 URxvt.clipboard.autocopy: true
