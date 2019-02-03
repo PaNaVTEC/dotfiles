@@ -38,6 +38,8 @@
   :ensure t
   :defer t
   :config
+  (setq helm-ag-insert-at-point 'word)
+  (setq helm-ag-use-grep-ignore-list t)
   (setq helm-ag-command-option "--hidden --width 120"))
 (global-set-key (kbd "C-S-f") 'helm-do-ag-project-root)
 
