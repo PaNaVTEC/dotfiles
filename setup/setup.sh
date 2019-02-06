@@ -294,6 +294,16 @@ installBt() {
   sudo systemctl start bluetooth.service
 }
 
+installPrinter () {
+  installPkg "cups nss-mdns gtk3-print-backends"
+  systemctl enable org.cups.cupsd.service
+  systemctl start org.cups.cupsd.service
+  sudo systemctl enable avahi-daemon.service
+  sudo systemctl start avahi-daemon.service
+  echo "Add your printer in: http://localhost:631/"
+  sudo usermod -a -G sys panavtec
+}
+
 if [[ "${BASH_SOURCE[0]}" = "$0" ]]; then
 
   echo "PaNaVTEC dotfiles installer"
@@ -333,4 +343,5 @@ if [[ "${BASH_SOURCE[0]}" = "$0" ]]; then
   ask "Install beancount?" Y && installBeancount;
   ask "Install mutt?" Y && installMutt;
   ask "Install privacy?" Y && installPrivacy;
+  installPrinter;
 fi
