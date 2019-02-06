@@ -38,9 +38,20 @@
   :ensure t
   :defer t
   :config
-  (setq helm-ag-insert-at-point 'word)
-  (setq helm-ag-use-grep-ignore-list t)
-  (setq helm-ag-command-option "--hidden --width 120"))
-(global-set-key (kbd "C-S-f") 'helm-do-ag-project-root)
+  (custom-set-variables
+   '(helm-ag-base-command "ag --nocolor --nogroup --ignore-case")
+   '(helm-ag-command-option "--hidden --width 120")
+   '(helm-ag-use-grep-ignore-list t)
+   '(helm-ag-insert-at-point 'word)
+   '(helm-ag-use-agignore t)))
+
+(defun helm-do-ag-projectile-root ()
+  (interactive)
+  (let ((rootdir (projectile-project-root)))
+    (unless rootdir
+      (error "Could not find the project root. Use projectile swith project"))
+    (helm-do-ag rootdir)))
+
+(global-set-key (kbd "C-S-f") 'helm-do-ag-projectile-root)
 
 (provide 'init-acklike)
