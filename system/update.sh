@@ -5,6 +5,8 @@ if [[ $DISTRO == "ubuntu" ]]; then
   alias yi='sudo apt-get install'
   alias yin='sudo apt-get install -y'
   alias yr='sudo apt-get remove'
+  alias yu='sudo apt-get upgrade'
+  alias yun='sudo apt-get upgrade -y'
 else
   alias y='yay'
   alias ys='yay -Ss'
