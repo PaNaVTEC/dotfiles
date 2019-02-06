@@ -39,7 +39,6 @@
   :defer t
   :config
   (custom-set-variables
-   '(helm-ag-base-command "ag --nocolor --nogroup --ignore-case")
    '(helm-ag-command-option "--hidden --width 120")
    '(helm-ag-use-grep-ignore-list t)
    '(helm-ag-insert-at-point 'word)
