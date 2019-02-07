@@ -2,6 +2,8 @@
   email = panavtec@gmail.com
   name = Christian Panadero
   signingkey = 88EF58F88BE619F6
+[includeIf "gitdir:~/code/habito/"]
+  path = ~/dotfiles/config/git/.gitconfig-habito
 [credential]
   helper = cache --timeout 86400
 [color]
@@ -16,5 +18,3 @@
 [alias]
   discard = !git clean -df && git checkout -- .
   prunelocal = !git branch -d $(git branch --merged)
-[includeIf "gitdir:~/code/habito"]
-  path = ~/.gitconfig-habito
