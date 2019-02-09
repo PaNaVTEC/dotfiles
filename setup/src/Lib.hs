@@ -24,9 +24,6 @@ entryPoint = do
   _ <- aurInstallF "./yaourt_urxvt.txt"
   _ <- aurInstallF "./yaourt_themes.txt"
   _ <- aurInstallF "./yaourt_audio.txt"
-  _ <- aurInstall' ["powerline-go-bin", "openresolv", "redshift", "nyancat"]
-  _ <- aurInstall' ["ranger", "w3m", "ffmpegthumbnailer", "atool"]
-  _ <- aurInstall' ["beancount", "fava"]
   return ()
 
 installPrinter :: IO ()
@@ -65,16 +62,17 @@ installDevTools = do
 
 installIntellij :: IO ()
 installIntellij = do
-  B.writeFile "/etc/sysctl.d/99-sysctl.conf" "fs.inotify.max_user_watches = 524288"
+  B.writeFile "/tmp/sysctl.d/99-sysctl.conf" "fs.inotify.max_user_watches = 524288"
+  _ <- sudomv "/tmp/sysctl.d/99-sysctl.conf""/etc/sysctl.d/99-sysctl.conf"
   _ <- run' "sudo sysctl --system"
   return ()
 
 installDocker :: IO ()
 installDocker = do
-  rmdir "/var/lib/docker"
+  sudormdir "/var/lib/docker"
   dockerlib <- (~/) ".dockerlib"
   mktree dockerlib
-  _ <- lnsfn dockerlib "/var/lib/docker"
+  _ <- sudolnsfn dockerlib "/var/lib/docker"
   return ()
 
 installRust :: IO ()

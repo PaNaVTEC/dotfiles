@@ -82,6 +82,9 @@ yarnInstallG' pkgs = run' $ "yarn global add " ++ (join . intersperse " " $ unPk
 sudorm :: MonadIO io => Turtle.FilePath -> io ExitCode
 sudorm s' = run' $ "sudo rm " ++ encodeString s'
 
+sudormdir :: MonadIO io => Turtle.FilePath -> io ExitCode
+sudormdir s' = run' $ "sudo rm -rf " ++ encodeString s'
+
 sudomv :: MonadIO io => Turtle.FilePath -> Turtle.FilePath -> io ExitCode
 sudomv s' t = run' $ "sudo mv " ++ encodeString s' ++ " " ++ encodeString t
 

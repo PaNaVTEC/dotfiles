@@ -22,3 +22,13 @@ networkmanager-dmenu-git
 calibre
 mupdf
 baobab
+beancount
+fava
+ranger
+w3m
+ffmpegthumbnailer
+atool
+openresolv
+redshift
+nyancat
+powerline-go-bin
