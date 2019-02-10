@@ -79,6 +79,9 @@ yarnInstallG pkg = run' $ "yarn global add " ++ unPkgName pkg
 yarnInstallG' :: MonadIO io => [PkgName] -> io ExitCode
 yarnInstallG' pkgs = run' $ "yarn global add " ++ (join . intersperse " " $ unPkgName <$> pkgs)
 
+stackInstall :: MonadIO io => [PkgName] -> io ExitCode
+stackInstall pkgs = run' $ "stack install " ++ (join . intersperse " " $ unPkgName <$> pkgs)
+
 sudorm :: MonadIO io => Turtle.FilePath -> io ExitCode
 sudorm s' = run' $ "sudo rm " ++ encodeString s'
 

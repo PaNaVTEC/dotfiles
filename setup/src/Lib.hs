@@ -69,7 +69,7 @@ installIntellij = do
 
 installDocker :: IO ()
 installDocker = do
-  sudormdir "/var/lib/docker"
+  _ <- sudormdir "/var/lib/docker"
   dockerlib <- (~/) ".dockerlib"
   mktree dockerlib
   _ <- sudolnsfn dockerlib "/var/lib/docker"
@@ -96,7 +96,7 @@ installHaskell :: IO ()
 installHaskell = do
   _ <- aurInstall "stack-bin"
   _ <- run' "stack setup"
-  _ <- run' "stack install ghcid hindent stylish-haskell cabal-install hoogle hlint"
+  _ <- stackInstall ["ghcid", "hindent", "stylish-haskell", "cabal-install", "hoogle", "hlint"]
   return ()
 
 installGo :: IO ()
