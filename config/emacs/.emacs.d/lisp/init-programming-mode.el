@@ -61,4 +61,38 @@
 (define-key evil-normal-state-map (kbd "C-S-o") 'helm-imenu)
 (global-set-key (kbd "C-S-o") 'helm-imenu)
 
+(defun escape-quotes (@begin @end)
+    "Replace 「\"」 by 「\\\"」 in current line or text selection.
+See also: `xah-unescape-quotes'
+
+URL `http://ergoemacs.org/emacs/elisp_escape_quotes.html'
+Version 2017-01-11"
+    (interactive
+     (if (use-region-p)
+         (list (region-beginning) (region-end))
+       (list (line-beginning-position) (line-end-position))))
+    (save-excursion
+      (save-restriction
+        (narrow-to-region @begin @end)
+        (goto-char (point-min))
+        (while (search-forward "\"" nil t)
+                    (replace-match "\\\"" "FIXEDCASE" "LITERAL")))))
+
+(defun unescape-quotes (@begin @end)
+    "Replace  「\\\"」 by 「\"」 in current line or text selection.
+See also: `xah-escape-quotes'
+
+URL `http://ergoemacs.org/emacs/elisp_escape_quotes.html'
+Version 2017-01-11"
+    (interactive
+     (if (use-region-p)
+         (list (region-beginning) (region-end))
+       (list (line-beginning-position) (line-end-position))))
+    (save-excursion
+      (save-restriction
+        (narrow-to-region @begin @end)
+        (goto-char (point-min))
+        (while (search-forward "\\\"" nil t)
+                  (replace-match "\"" "FIXEDCASE" "LITERAL")))))
+
 (provide 'init-programming-mode)
