@@ -4,7 +4,7 @@ cabal-version: 1.12
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: 2ac20d471979d53efa1a6e2086a5be98dac3de4a300ee242bc22e42cadbf1235
+-- hash: e2663b419492bee1516078793d2d115c50f26a96c73fca3ed245b2e533017db9
 
 name:           archsetup
 version:        0.1.0.0
@@ -37,7 +37,9 @@ library
       base >=4.7 && <5
     , bytestring
     , lens
+    , mtl
     , text
+    , transformers
     , turtle
     , wreq
   default-language: Haskell2010
@@ -48,13 +50,15 @@ executable archsetup-exe
       Paths_archsetup
   hs-source-dirs:
       app
-  ghc-options: -threaded -rtsopts -with-rtsopts=-N
+  ghc-options: -threaded -rtsopts -with-rtsopts=-N -Wall -Wsemigroup -Wmissing-monadfail-instances -Wnoncanonical-monoid-instances -Wnoncanonical-monad-instances -Wincomplete-record-updates -Wpartial-fields -Wmissing-home-modules -Werror
   build-depends:
       archsetup
     , base >=4.7 && <5
     , bytestring
     , lens
+    , mtl
     , text
+    , transformers
     , turtle
     , wreq
   default-language: Haskell2010

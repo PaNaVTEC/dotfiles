@@ -13,11 +13,13 @@ description:         Please see the README on GitHub at <https://github.com/pana
 
 dependencies:
 - base >= 4.7 && < 5
-- turtle
-- text
-- wreq
-- lens
 - bytestring
+- lens
+- mtl
+- text
+- transformers
+- turtle
+- wreq
 
 library:
   source-dirs: src
@@ -30,5 +32,14 @@ executables:
     - -threaded
     - -rtsopts
     - -with-rtsopts=-N
+    - -Wall
+    - -Wsemigroup
+    - -Wmissing-monadfail-instances
+    - -Wnoncanonical-monoid-instances
+    - -Wnoncanonical-monad-instances
+    - -Wincomplete-record-updates
+    - -Wpartial-fields
+    - -Wmissing-home-modules
+    - -Werror
     dependencies:
     - archsetup
