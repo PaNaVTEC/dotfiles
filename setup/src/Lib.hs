@@ -1,32 +1,32 @@
 {-# LANGUAGE OverloadedStrings          #-}
 {-# LANGUAGE GeneralizedNewtypeDeriving #-}
-{-# LANGUAGE TypeApplications #-}
-{-# LANGUAGE RankNTypes #-}
-{-# LANGUAGE FlexibleContexts #-}
+{-# LANGUAGE RankNTypes                 #-}
+{-# LANGUAGE FlexibleContexts           #-}
 
 module Lib (entryPoint) where
 
 import           Commands
-import           Control.Lens
+import           Control.Lens                     ((^.))
 import           Control.Monad.Except
-import           Control.Monad.Trans
 import qualified Data.ByteString.Char8      as B
-import qualified Data.ByteString.Lazy       as BL
-import           Data.Maybe                        (catMaybes)
-import           Network.Wreq
+import qualified Data.ByteString.Lazy       as BL (ByteString, toStrict)
+import           Data.Maybe                       (catMaybes)
+import           Network.Wreq                     (get, responseBody)
 import           Turtle
+import           Data.Text                  as Tx (unpack)
 
 type App m = AppT m ()
-newtype AppT m a = App
+newtype AppT m a = AppT
   { unApp :: ExceptT Text m a
   } deriving
-  (Functor, Applicative, Monad, MonadIO, MonadError Text)
+  (Functor, Applicative, Monad, MonadIO, MonadError Text, MonadTrans)
 
 entryPoint :: IO ()
-entryPoint = void . runExceptT . unApp $ install'
+entryPoint = void . runExceptT . unApp . printErrorAndContinue $ install'
 
 install' :: MonadIO io => App io
 install' = do
+  updateMirrorList
   configurePacman
   installPacmanWrapper
   _ <- aurInstallF "./yaourt_i3.txt"
@@ -41,24 +41,58 @@ install' = do
   _ <- aurInstallF "./yaourt_audio.txt"
   return ()
 
+configurePacman :: MonadIO io => App io
+configurePacman = printErrorAndContinue $ do
+  (*!) $ sudorm "/etc/pacman.conf"
+  (*!) $ (`sudolnsfn` "/etc/pacman.conf") =<< pwd' "config/pacman/pacman.conf"
+  (*!) pacmanSync
+  (*!) $ prun "sudo pacman-key --init"
+  (*!) $ prun "sudo pacman-key --populate archlinux"
+  (*!) pacmanUpdate
+
+updateMirrorList :: (MonadIO io) => App io
+updateMirrorList = printErrorAndContinue $ do
+  r <- liftIO $ get "https://www.archlinux.org/mirrorlist/?country=GB&protocol=https"
+  liftIO $ B.writeFile "/tmp/mirrorlist" (uncommentLines $ r ^. responseBody)
+  (*!) $ sudorm "/etc/pacman.d/mirrorlist"
+  (*!) $ sudomv "/tmp/mirrorlist" "/etc/pacman.d/mirrorlist"
+  where
+    uncommentLines :: BL.ByteString -> B.ByteString
+    uncommentLines lines' = B.unlines . catMaybes
+      $ B.stripPrefix "#" <$> B.lines (BL.toStrict lines')
+
+installPacmanWrapper :: MonadIO io => App io
+installPacmanWrapper = do
+  (*!) $ pacmanInstall' ["base-devel", "git", "wget", "yajl", "go"]
+  (*!) installYay
+  void $ aurInstall "reflector"
+  where
+    installYay = do
+      cmdE <- commandExists "yay"
+      if cmdE
+      then runpenv
+        ["git clone https://aur.archlinux.org/yay.git /tmp/yay/"
+        ,"cd /tmp/yay"
+        ,"makepkg -si --noconfirm"
+        ]
+      else pure $ Right ""
+
 installPrinter :: MonadIO io => App io
-installPrinter = do
-  _ <- aurInstall' ["cups", "nss-mdns", "gtk3-print-backends"]
-  startService "orgs.cups.cupsd.service"
-  startService "avahi-daemon.service"
+installPrinter = printErrorAndContinue $ do
+  (*!) $ aurInstall' ["cups", "nss-mdns", "gtk3-print-backends"]
+  (*!) $ startService "orgs.cups.cupsd.service"
+  (*!) $ startService "avahi-daemon.service"
   liftIO $ putStrLn "Add your printer in: http://localhost:631/"
-  _ <- addCurrentUserToGroup "sys"
-  return ()
+  (*!) $ addCurrentUserToGroup "sys"
 
 installBt :: MonadIO io => App io
-installBt = do
-  _ <- aurInstall' ["bluez", "bluez-utils", "bluez-qt", "pulseaudio-bluetooth"]
-  _ <- run' "modprobe btusb"
-  startService "bluetooth.service"
-  return ()
+installBt = printErrorAndContinue $ do
+  (*!) $ aurInstall' ["bluez", "bluez-utils", "bluez-qt", "pulseaudio-bluetooth"]
+  prun' "modprobe btusb"
+  (*!) $ startService "bluetooth.service"
 
 installDevTools :: MonadIO io => App io
-installDevTools = do
+installDevTools = printErrorAndContinue $ do
   installGit
   _ <- aurInstallF "./yaourt_java.txt"
   _ <- aurInstallF "./yaourt_android.txt"
@@ -75,59 +109,56 @@ installDevTools = do
   installIntellij
 
 installIntellij :: MonadIO io => App io
-installIntellij = do
+installIntellij = printErrorAndContinue $ do
   liftIO $ B.writeFile "/tmp/sysctl.d/99-sysctl.conf" "fs.inotify.max_user_watches = 524288"
-  _ <- sudomv "/tmp/sysctl.d/99-sysctl.conf""/etc/sysctl.d/99-sysctl.conf"
-  _ <- run' "sudo sysctl --system"
-  return ()
+  (*!) $ sudomv "/tmp/sysctl.d/99-sysctl.conf""/etc/sysctl.d/99-sysctl.conf"
+  prun' "sudo sysctl --system"
 
 installDocker :: MonadIO io => App io
-installDocker = do
-  _ <- sudormdir "/var/lib/docker"
+installDocker = printErrorAndContinue $ do
+  (*!) $ sudormdir "/var/lib/docker"
   dockerlib <- (~/) ".dockerlib"
   mktree dockerlib
   _ <- sudolnsfn dockerlib "/var/lib/docker"
   return ()
 
 installRust :: MonadIO io => App io
-installRust = do
-  _ <- aurInstall "rustup"
-  _ <- run' "rustup toolchain install stable"
-  _ <- run' "rustup default stable"
-  _ <- run' "rustup toolchain install nightly"
-  return ()
+installRust = printErrorAndContinue $ do
+  (*!) $ aurInstall "rustup"
+  prun' "rustup toolchain install stable"
+  prun' "rustup default stable"
+  prun' "rustup toolchain install nightly"
 
 installJs :: MonadIO io => App io
-installJs = do
-  _ <- aurInstall' ["nodejs", "npm", "yarn"]
-  _ <- run' "yarn config set -- --emoji true"
+installJs = printErrorAndContinue $ do
+  (*!) $ aurInstall' ["nodejs", "npm", "yarn"]
+  prun' "yarn config set -- --emoji true"
   _ <- yarnInstallG "n"
   _ <- run' "n latest"
   _ <- yarnInstallG' ["tern", "standard", "create-react-app", "js-beautify", "typescript", "tslint", "eslint-plugin-typescript", "typescript-eslint-parser"]
   return ()
 
 installHaskell :: MonadIO io => App io
-installHaskell = do
-  _ <- aurInstall "stack-bin"
-  _ <- run' "stack setup"
-  _ <- stackInstall ["ghcid", "hindent", "stylish-haskell", "cabal-install", "hoogle", "hlint"]
-  return ()
+installHaskell = printErrorAndContinue $ do
+  (*!) $ aurInstall "stack-bin"
+  (*!) $ prun "stack setup"
+  (*!) $ stackInstall ["ghcid", "hindent", "stylish-haskell", "cabal-install", "hoogle", "hlint"]
 
 installGo :: MonadIO io => App io
-installGo = do
-  _    <- aurInstall "go"
+installGo = printErrorAndContinue $ do
+  (*!) $ aurInstall "go"
   bin  <- (~/) "go/bin"
   src  <- (~/) "go/src"
   liftIO $ mktrees [bin, src]
   cmdE <- commandExists "golint"
-  unless cmdE $ void $ run' "go get -u github.com/golang/lint/golint"
+  unless cmdE $ prun' "go get -u github.com/golang/lint/golint"
 
 installGit :: MonadIO io => App io
-installGit = sh $ do
-  _ <- aurInstallF "./yaourt_git.txt"
+installGit = printErrorAndContinue $ do
+  (*!) $ aurInstallF "./yaourt_git.txt"
   createGitIgnore
   where
-    createGitIgnore = do
+    createGitIgnore = sh $ do
       _    <- run "gibo update"
       let content = run "gibo dump Emacs Vim JetBrains Ensime Tags Vagrant Windows macOS Linux Archives"
       path <- (~/) ".gitignore.global"
@@ -137,7 +168,7 @@ installGit = sh $ do
 
 installCompton :: MonadIO io => App io
 installCompton = do
-  _ <- aurInstall' ["compton", "xorg-xwininfo"]
+  (*!) $ aurInstall' ["compton", "xorg-xwininfo"]
   beforeStartX <- (~/) ".before_startx"
   mktree beforeStartX
   let runsh = beforeStartX </> "run.sh"
@@ -146,40 +177,19 @@ installCompton = do
   _ <- chmodx runsh
   return ()
 
-configurePacman :: MonadIO io => App io
-configurePacman = do
-  _ <- sudorm "/etc/pacman.conf"
-  _ <- (`sudolnsfn` "/etc/pacman.conf") =<< pwd' "config/pacman/pacman.conf"
-  updateMirrorList
-  _ <- pacmanSync
-  _ <- run' "sudo pacman-key --init"
-  _ <- run' "sudo pacman-key --populate archlinux"
-  _ <- pacmanUpdate
-  return ()
+printErrorAndContinue :: MonadIO io => App io -> App io
+printErrorAndContinue = ignoreExcept (putStrLn . Tx.unpack)
 
-installPacmanWrapper :: MonadIO io => App io
-installPacmanWrapper = do
-  _ <- pacmanInstall' ["base-devel", "git", "wget", "yajl", "go"]
-  _ <- installYay
-  _ <- aurInstall "reflector"
-  return ()
-  where
-    installYay = do
-      cmdE <- commandExists "yay"
-      unless cmdE . void . runpenv $
-        ["git clone https://aur.archlinux.org/yay.git /tmp/yay/"
-        ,"cd /tmp/yay"
-        ,"makepkg -si --noconfirm"
-        ]
+ignoreExcept :: MonadIO io => (Text -> IO ()) -> App io -> App io
+ignoreExcept f' app' = lift $ do
+  result <- runExceptT . unApp $ app'
+  either
+    (liftIO . f')
+    pure
+    result
 
-updateMirrorList :: MonadIO io => App io
-updateMirrorList = do
-  r <- liftIO $ get "https://www.archlinux.org/mirrorlist/?country=GB&protocol=https"
-  liftIO $ B.writeFile "/tmp/mirrorlist" (uncommentLines $ r ^. responseBody)
-  _ <- sudorm "/etc/pacman.d/mirrorlist"
-  _ <- sudomv "/tmp/mirrorlist" "/etc/pacman.d/mirrorlist"
-  return ()
-  where
-    uncommentLines :: BL.ByteString -> B.ByteString
-    uncommentLines lines' = B.unlines . catMaybes
-      $ B.stripPrefix "#" <$> B.lines (BL.toStrict lines')
+breakIfFail :: MonadIO io => io ExecResult -> App io
+breakIfFail res' = void $ liftEither =<< lift res'
+
+(*!) :: MonadIO io => io ExecResult -> App io
+(*!) = breakIfFail

@@ -24,14 +24,17 @@ prun command = toOutput <$> shellStrictWithErr command empty
     toOutput (ExitSuccess, out, _) = Right out
     toOutput (_, _, e') = Left e'
 
+prun' :: MonadIO io => Text -> io ()
+prun' = void . prun
+
 runpenv :: MonadIO io => [String] -> io ExecResult
 runpenv = prun . pack . join . Data.List.intersperse " && "
 
 lnsfn :: MonadIO io => Turtle.FilePath -> Turtle.FilePath -> io ExecResult
-lnsfn s' t = prun . pack $ "ln -sfn " ++ encodeString s' ++ " " ++ encodeString t
+lnsfn s' t = prun . pack $ "ln -sfn " <> encodeString s' <> " " <> encodeString t
 
 sudolnsfn :: MonadIO io => Turtle.FilePath -> Turtle.FilePath -> io ExecResult
-sudolnsfn s' t = prun .pack $ "sudo ln -sfn " ++ encodeString s' ++ " " ++ encodeString t
+sudolnsfn s' t = prun .pack $ "sudo ln -sfn " <> encodeString s' <> " " <> encodeString t
 
 pacmanSync :: MonadIO io => io ExecResult
 pacmanSync = prun "sudo pacman -Syy"
@@ -52,10 +55,10 @@ pacmanInstall' pkgs = prun . pack
   $ "sudo pacman -S --noconfirm --needed " <> (join . Data.List.intersperse " " $ unPkgName <$> pkgs)
 
 aurInstall :: MonadIO io => PkgName -> io ExecResult
-aurInstall pkg = prun . pack $ "yay --noconfirm -S --needed " ++ unPkgName pkg
+aurInstall pkg = prun . pack $ "yay --noconfirm -S --needed " <> unPkgName pkg
 
 aurInstall' :: MonadIO io => [PkgName] -> io ExecResult
-aurInstall' pkgs = prun . pack $ "yay --noconfirm -S --needed " ++ (join . Data.List.intersperse " " $ unPkgName <$> pkgs)
+aurInstall' pkgs = prun . pack $ "yay --noconfirm -S --needed " <> (join . Data.List.intersperse " " $ unPkgName <$> pkgs)
 
 aurInstallF :: MonadIO io => Prelude.FilePath -> io ExecResult
 aurInstallF fp' = do
@@ -92,22 +95,23 @@ stackInstall :: MonadIO io => [PkgName] -> io ExecResult
 stackInstall pkgs = prun . pack $ "stack install " <> (join . Data.List.intersperse " " $ unPkgName <$> pkgs)
 
 sudorm :: MonadIO io => Turtle.FilePath -> io ExecResult
-sudorm s' = prun . pack $ "sudo rm " ++ encodeString s'
+sudorm s' = prun . pack $ "sudo rm " <> encodeString s'
 
 sudormdir :: MonadIO io => Turtle.FilePath -> io ExecResult
-sudormdir s' = prun . pack $ "sudo rm -rf " ++ encodeString s'
+sudormdir s' = prun . pack $ "sudo rm -rf " <> encodeString s'
 
 sudomv :: MonadIO io => Turtle.FilePath -> Turtle.FilePath -> io ExecResult
-sudomv s' t = prun . pack $ "sudo mv " ++ encodeString s' ++ " " ++ encodeString t
+sudomv s' t = prun . pack $ "sudo mv " <> encodeString s' <> " " <> encodeString t
 
-startService :: MonadIO io => Text -> io ()
+startService :: MonadIO io => Text -> io ExecResult
 startService serv = do
   isEnabled <- exitsOk $ "systemctl is-enabled " <> serv
-  unless isEnabled $
-    do
-    _ <- prun $ "sudo systemctl enable " <> serv
+  if isEnabled
+  then do
+    execRes <- prun $ "sudo systemctl enable " <> serv
     _ <- prun $ "sudo systemctl start " <> serv
-    return ()
+    pure execRes
+  else pure $ Right ""
 
 addCurrentUserToGroup :: (MonadIO io) => Text -> io ExecResult
 addCurrentUserToGroup group' = do
