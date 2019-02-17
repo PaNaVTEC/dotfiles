@@ -1,13 +1,13 @@
+{-# LANGUAGE ExtendedDefaultRules       #-}
+{-# LANGUAGE FlexibleInstances          #-}
 {-# LANGUAGE GeneralizedNewtypeDeriving #-}
-{-# LANGUAGE FlexibleInstances #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE ExtendedDefaultRules #-}
+{-# LANGUAGE OverloadedStrings          #-}
 
 module Commands where
 
 import qualified Data.ByteString.Char8 as B
 import           Data.List
-import           Data.Text                   (pack)
+import           Data.Text             (pack)
 import           Turtle
 
 type ExecResult = Either Text Text
@@ -15,14 +15,11 @@ type ExecResult = Either Text Text
 run :: String -> Shell Line
 run command = inshell (pack command) empty
 
-run' :: MonadIO io => String -> io ExitCode
-run' command = shell (pack command) empty
-
 prun :: MonadIO io => Text -> io ExecResult
 prun command = toOutput <$> shellStrictWithErr command empty
   where
     toOutput (ExitSuccess, out, _) = Right out
-    toOutput (_, _, e') = Left e'
+    toOutput (_, _, e')            = Left e'
 
 prun' :: MonadIO io => Text -> io ()
 prun' = void . prun
@@ -118,7 +115,7 @@ addCurrentUserToGroup group' = do
   res' <- currentUser
   case res' of
     (Right u') -> addUserToGroup u' group'
-    t -> pure t
+    t          -> pure t
 
 addUserToGroup :: (MonadIO io) => Text -> Text -> io ExecResult
 addUserToGroup user group' =
@@ -131,7 +128,7 @@ exitsOk :: MonadIO io => Text -> io Bool
 exitsOk cmd' = exitsOk' <$> prun cmd'
   where
     exitsOk' (Right _) = True
-    exitsOk' _ = False
+    exitsOk' _         = False
 
 currentUser :: MonadIO io => io ExecResult
 currentUser = prun "id -u -n"
