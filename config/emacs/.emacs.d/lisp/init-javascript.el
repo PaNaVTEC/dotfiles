@@ -69,18 +69,6 @@
             compilation-error-regexp-alist-alist))
 (setq compilation-error-regexp-alist (cons 'node compilation-error-regexp-alist))
 
-(use-package
-  web-mode
-  :ensure t
-  :mode "\\.x?html?$"
-  :mode "\\.hbs$"
-  :defer t
-  :config
-  (setq
-    web-mode-markup-indent-offset 2
-    web-mode-code-indent-offset 2)
-  (add-hook 'web-mode-hook 'programming-mode))
-
 (use-package tern :defer t :diminish tern-mode)
 
 (use-package
