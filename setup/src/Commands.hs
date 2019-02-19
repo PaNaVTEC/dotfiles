@@ -5,6 +5,7 @@
 
 module Commands where
 
+import           Data.Bool                   (bool)
 import qualified Data.ByteString.Char8 as B
 import           Data.List
 import           Data.Text                   (pack)
@@ -77,13 +78,27 @@ filePath p = fromText $ pack p
 mktrees :: [Turtle.FilePath] -> IO ()
 mktrees = mapM_ mktree
 
-chmodx :: MonadIO io => Turtle.FilePath -> io Permissions
-chmodx = chmod (const $ Permissions True True True)
+chmodx :: MonadIO io => Turtle.FilePath -> io ExecResult
+chmodx fp' =
+  bool
+    (Left "Permissions not changed correctly")
+    (Right "")
+  . (== execPermissions)
+  <$> chmod (const execPermissions) fp'
+  where
+    execPermissions = Permissions True True True
 
 (&>) :: MonadIO io => Shell Line -> Turtle.FilePath -> io ()
 line &> filepath = do
   touch filepath
   output filepath line
+
+(&>>) :: MonadIO io => B.ByteString -> Turtle.FilePath -> io ExecResult
+inp &>> filepath = liftIO $ do
+  let tmpFilePath = "/tmp/" <> encodeString filepath
+  touch (fromString tmpFilePath)
+  B.writeFile tmpFilePath inp
+  sudomv (fromString tmpFilePath) filepath
 
 yarnInstallG :: MonadIO io => PkgName -> io ExecResult
 yarnInstallG pkg = prun . pack $ "yarn global add " <> unPkgName pkg

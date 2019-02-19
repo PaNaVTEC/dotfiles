@@ -11,9 +11,9 @@ import           Control.Monad.Except
 import qualified Data.ByteString.Char8      as B
 import qualified Data.ByteString.Lazy       as BL (ByteString, toStrict)
 import           Data.Maybe                       (catMaybes)
+import           Data.Text                  as Tx (unpack)
 import           Network.Wreq                     (get, responseBody)
 import           Turtle
-import           Data.Text                  as Tx (unpack)
 
 type App m = AppT m ()
 newtype AppT m a = AppT
@@ -53,9 +53,7 @@ configurePacman = printErrorAndContinue $ do
 updateMirrorList :: (MonadIO io) => App io
 updateMirrorList = printErrorAndContinue $ do
   r <- liftIO $ get "https://www.archlinux.org/mirrorlist/?country=GB&protocol=https"
-  liftIO $ B.writeFile "/tmp/mirrorlist" (uncommentLines $ r ^. responseBody)
-  (*!) $ sudorm "/etc/pacman.d/mirrorlist"
-  (*!) $ sudomv "/tmp/mirrorlist" "/etc/pacman.d/mirrorlist"
+  (*!) $ uncommentLines (r ^. responseBody) &>> "/etc/pacman.d/mirrorlist"
   where
     uncommentLines :: BL.ByteString -> B.ByteString
     uncommentLines lines' = B.unlines . catMaybes
@@ -110,8 +108,7 @@ installDevTools = printErrorAndContinue $ do
 
 installIntellij :: MonadIO io => App io
 installIntellij = printErrorAndContinue $ do
-  liftIO $ B.writeFile "/tmp/sysctl.d/99-sysctl.conf" "fs.inotify.max_user_watches = 524288"
-  (*!) $ sudomv "/tmp/sysctl.d/99-sysctl.conf""/etc/sysctl.d/99-sysctl.conf"
+  (*!) $ "fs.inotify.max_user_watches = 524288" &>> "/tmp/sysctl.d/99-sysctl.conf"
   prun' "sudo sysctl --system"
 
 installDocker :: MonadIO io => App io
@@ -167,15 +164,12 @@ installGit = printErrorAndContinue $ do
       append path ".tern-port"
 
 installCompton :: MonadIO io => App io
-installCompton = do
+installCompton = printErrorAndContinue $ do
   (*!) $ aurInstall' ["compton", "xorg-xwininfo"]
   beforeStartX <- (~/) ".before_startx"
   mktree beforeStartX
   let runsh = beforeStartX </> "run.sh"
-  touch runsh
-  liftIO $ B.writeFile (encodeString runsh) "compton -c -i 0.9 -b &"
-  _ <- chmodx runsh
-  return ()
+  (*!) $ "compton -c -i 0.9 -b &" &>> runsh
 
 printErrorAndContinue :: MonadIO io => App io -> App io
 printErrorAndContinue = ignoreExcept (putStrLn . Tx.unpack)
