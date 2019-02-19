@@ -1,7 +1,7 @@
-{-# LANGUAGE OverloadedStrings          #-}
-{-# LANGUAGE GeneralizedNewtypeDeriving #-}
-{-# LANGUAGE RankNTypes                 #-}
 {-# LANGUAGE FlexibleContexts           #-}
+{-# LANGUAGE GeneralizedNewtypeDeriving #-}
+{-# LANGUAGE OverloadedStrings          #-}
+{-# LANGUAGE RankNTypes                 #-}
 
 module Lib (entryPoint) where
 
@@ -131,7 +131,7 @@ installJs = printErrorAndContinue $ do
   (*!) $ aurInstall' ["nodejs", "npm", "yarn"]
   prun' "yarn config set -- --emoji true"
   _ <- yarnInstallG "n"
-  _ <- run' "n latest"
+  prun' "n latest"
   _ <- yarnInstallG' ["tern", "standard", "create-react-app", "js-beautify", "typescript", "tslint", "eslint-plugin-typescript", "typescript-eslint-parser"]
   return ()
 
