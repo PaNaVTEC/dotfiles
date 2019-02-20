@@ -6,13 +6,13 @@
 module Lib (entryPoint) where
 
 import           Commands
-import           Control.Lens                     ((^.))
+import           Control.Lens          ((^.))
 import           Control.Monad.Except
-import qualified Data.ByteString.Char8      as B
-import qualified Data.ByteString.Lazy       as BL (ByteString, toStrict)
-import           Data.Maybe                       (catMaybes)
-import           Data.Text                  as Tx (unpack)
-import           Network.Wreq                     (get, responseBody)
+import qualified Data.ByteString.Char8 as B
+import qualified Data.ByteString.Lazy  as BL (ByteString, toStrict)
+import           Data.Maybe            (catMaybes)
+import           Data.Text             as Tx (unpack)
+import           Network.Wreq          (get, responseBody)
 import           Turtle
 
 type App m = AppT m ()
@@ -26,9 +26,9 @@ entryPoint = void . runExceptT . unApp . printErrorAndContinue $ install'
 
 install' :: MonadIO io => App io
 install' = do
-  updateMirrorList
-  configurePacman
-  installPacmanWrapper
+  "Updating Mirror list" *#> updateMirrorList
+  "Configuring pacman" *#> configurePacman
+  "Installilng pacman wrapper" *#> installPacmanWrapper
   _ <- aurInstallF "./yaourt_i3.txt"
   installCompton
   installDevTools
@@ -187,3 +187,13 @@ breakIfFail res' = void $ liftEither =<< lift res'
 
 (*!) :: MonadIO io => io ExecResult -> App io
 (*!) = breakIfFail
+
+(*#>) :: MonadIO io => String -> App io -> App io
+(*#>) s app = do
+  pure . putStrLn $ s
+  printErrorAndContinue app
+
+(*!>) :: MonadIO io => String -> App io -> App io
+(*!>) s app = do
+  pure . putStrLn $ s
+  app

@@ -5,7 +5,7 @@
 
 module Commands where
 
-import           Data.Bool                   (bool)
+import           Data.Bool             (bool)
 import qualified Data.ByteString.Char8 as B
 import           Data.List
 import           Data.Text             (pack)
@@ -92,7 +92,7 @@ line &> filepath = do
 
 (&>>) :: MonadIO io => B.ByteString -> Turtle.FilePath -> io ExecResult
 inp &>> filepath = liftIO $ do
-  let tmpFilePath = "/tmp/" <> encodeString filepath
+  let tmpFilePath = "/tmp/i-am-a-tmp-file"
   touch (fromString tmpFilePath)
   B.writeFile tmpFilePath inp
   sudomv (fromString tmpFilePath) filepath
