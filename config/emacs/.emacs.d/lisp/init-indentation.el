@@ -1,5 +1,3 @@
-(require 'paren)
-
 (use-package
   highlight-indent-guides
   :ensure t
