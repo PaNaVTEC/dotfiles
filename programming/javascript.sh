@@ -67,3 +67,11 @@ nBumpMinor () {
 nLastVersion() {
   npm show "$1@*" version | tail -1
 }
+
+nn () {
+  if [ -e yarn.lock ]; then
+    yarn $@
+  else
+    npm $@
+  fi
+}
