@@ -63,6 +63,9 @@ aurInstallF fp' = do
   pkgs <- liftIO $ B.lines <$> B.readFile fp'
   head $ aurInstall . PkgName . B.unpack <$> pkgs
 
+aurInstallF' :: MonadIO io => Prelude.FilePath -> io ()
+aurInstallF' = void . aurInstallF
+
 (~/) :: MonadIO io => String -> io Turtle.FilePath
 (~/) path = (\h -> h </> filePath path ) <$> home
 
@@ -137,7 +140,7 @@ addUserToGroup user group' =
   prun $ "sudo usermod -a -G " <> group' <> " " <> user
 
 commandExists :: MonadIO io => Text -> io Bool
-commandExists cmd' = exitsOk $ "which " <> cmd'
+commandExists cmd' = not <$> exitsOk ("which " <> cmd')
 
 exitsOk :: MonadIO io => Text -> io Bool
 exitsOk cmd' = exitsOk' <$> prun cmd'

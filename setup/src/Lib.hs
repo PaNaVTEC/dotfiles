@@ -26,23 +26,22 @@ entryPoint = void . runExceptT . unApp . printErrorAndContinue $ install'
 
 install' :: MonadIO io => App io
 install' = do
-  "Updating Mirror list" *#> updateMirrorList
-  "Configuring pacman" *#> configurePacman
-  "Installilng pacman wrapper" *#> installPacmanWrapper
-  _ <- aurInstallF "./yaourt_i3.txt"
-  installCompton
-  installDevTools
-  installBt
-  installPrinter
-  _ <- aurInstallF "./yaourt_fonts.txt"
-  _ <- aurInstallF "./yaourt_tools.txt"
-  _ <- aurInstallF "./yaourt_urxvt.txt"
-  _ <- aurInstallF "./yaourt_themes.txt"
-  _ <- aurInstallF "./yaourt_audio.txt"
-  return ()
+  "Mirror list"      *#> updateMirrorList
+  "Configure pacman" *!> configurePacman
+  "Pacman wrapper"   *!> installPacmanWrapper
+  "i3"               *#> aurInstallF' "./yaourt_i3.txt"
+  "Compton"          *#> installCompton
+  "Dev tools"        *#> installDevTools
+  "Bluetooth"        *#> installBt
+  "Printer"          *#> installPrinter
+  "Fonts"            *#> aurInstallF' "./yaourt_fonts.txt"
+  "Tools"            *#> aurInstallF' "./yaourt_tools.txt"
+  "Urvt"             *#> aurInstallF' "./yaourt_urxvt.txt"
+  "Themes"           *#> aurInstallF' "./yaourt_themes.txt"
+  "Audio"            *#> aurInstallF' "./yaourt_audio.txt"
 
 configurePacman :: MonadIO io => App io
-configurePacman = printErrorAndContinue $ do
+configurePacman = do
   (*!) $ sudorm "/etc/pacman.conf"
   (*!) $ (`sudolnsfn` "/etc/pacman.conf") =<< pwd' "config/pacman/pacman.conf"
   (*!) pacmanSync
@@ -51,7 +50,7 @@ configurePacman = printErrorAndContinue $ do
   (*!) pacmanUpdate
 
 updateMirrorList :: (MonadIO io) => App io
-updateMirrorList = printErrorAndContinue $ do
+updateMirrorList = do
   r <- liftIO $ get "https://www.archlinux.org/mirrorlist/?country=GB&protocol=https"
   (*!) $ uncommentLines (r ^. responseBody) &>> "/etc/pacman.d/mirrorlist"
   where
@@ -68,15 +67,15 @@ installPacmanWrapper = do
     installYay = do
       cmdE <- commandExists "yay"
       if cmdE
-      then runpenv
+      then pure $ Right ""
+      else runpenv
         ["git clone https://aur.archlinux.org/yay.git /tmp/yay/"
         ,"cd /tmp/yay"
         ,"makepkg -si --noconfirm"
         ]
-      else pure $ Right ""
 
 installPrinter :: MonadIO io => App io
-installPrinter = printErrorAndContinue $ do
+installPrinter = do
   (*!) $ aurInstall' ["cups", "nss-mdns", "gtk3-print-backends"]
   (*!) $ startService "orgs.cups.cupsd.service"
   (*!) $ startService "avahi-daemon.service"
@@ -84,13 +83,13 @@ installPrinter = printErrorAndContinue $ do
   (*!) $ addCurrentUserToGroup "sys"
 
 installBt :: MonadIO io => App io
-installBt = printErrorAndContinue $ do
+installBt = do
   (*!) $ aurInstall' ["bluez", "bluez-utils", "bluez-qt", "pulseaudio-bluetooth"]
   prun' "modprobe btusb"
   (*!) $ startService "bluetooth.service"
 
 installDevTools :: MonadIO io => App io
-installDevTools = printErrorAndContinue $ do
+installDevTools = do
   installGit
   _ <- aurInstallF "./yaourt_java.txt"
   _ <- aurInstallF "./yaourt_android.txt"
@@ -107,12 +106,12 @@ installDevTools = printErrorAndContinue $ do
   installIntellij
 
 installIntellij :: MonadIO io => App io
-installIntellij = printErrorAndContinue $ do
+installIntellij = do
   (*!) $ "fs.inotify.max_user_watches = 524288" &>> "/tmp/sysctl.d/99-sysctl.conf"
   prun' "sudo sysctl --system"
 
 installDocker :: MonadIO io => App io
-installDocker = printErrorAndContinue $ do
+installDocker = do
   (*!) $ sudormdir "/var/lib/docker"
   dockerlib <- (~/) ".dockerlib"
   mktree dockerlib
@@ -120,14 +119,14 @@ installDocker = printErrorAndContinue $ do
   return ()
 
 installRust :: MonadIO io => App io
-installRust = printErrorAndContinue $ do
+installRust = do
   (*!) $ aurInstall "rustup"
   prun' "rustup toolchain install stable"
   prun' "rustup default stable"
   prun' "rustup toolchain install nightly"
 
 installJs :: MonadIO io => App io
-installJs = printErrorAndContinue $ do
+installJs = do
   (*!) $ aurInstall' ["nodejs", "npm", "yarn"]
   prun' "yarn config set -- --emoji true"
   _ <- yarnInstallG "n"
@@ -136,13 +135,13 @@ installJs = printErrorAndContinue $ do
   return ()
 
 installHaskell :: MonadIO io => App io
-installHaskell = printErrorAndContinue $ do
+installHaskell = do
   (*!) $ aurInstall "stack-bin"
   (*!) $ prun "stack setup"
   (*!) $ stackInstall ["ghcid", "hindent", "stylish-haskell", "cabal-install", "hoogle", "hlint"]
 
 installGo :: MonadIO io => App io
-installGo = printErrorAndContinue $ do
+installGo = do
   (*!) $ aurInstall "go"
   bin  <- (~/) "go/bin"
   src  <- (~/) "go/src"
@@ -151,7 +150,7 @@ installGo = printErrorAndContinue $ do
   unless cmdE $ prun' "go get -u github.com/golang/lint/golint"
 
 installGit :: MonadIO io => App io
-installGit = printErrorAndContinue $ do
+installGit = do
   (*!) $ aurInstallF "./yaourt_git.txt"
   createGitIgnore
   where
@@ -164,7 +163,7 @@ installGit = printErrorAndContinue $ do
       append path ".tern-port"
 
 installCompton :: MonadIO io => App io
-installCompton = printErrorAndContinue $ do
+installCompton = do
   (*!) $ aurInstall' ["compton", "xorg-xwininfo"]
   beforeStartX <- (~/) ".before_startx"
   mktree beforeStartX
@@ -189,11 +188,11 @@ breakIfFail res' = void $ liftEither =<< lift res'
 (*!) = breakIfFail
 
 (*#>) :: MonadIO io => String -> App io -> App io
-(*#>) s app = do
-  pure . putStrLn $ s
+(*#>) s' app = do
+  liftIO . putStrLn $ s'
   printErrorAndContinue app
 
 (*!>) :: MonadIO io => String -> App io -> App io
-(*!>) s app = do
-  pure . putStrLn $ s
+(*!>) s' app = do
+  liftIO . putStrLn $ "## " <> s'
   app
