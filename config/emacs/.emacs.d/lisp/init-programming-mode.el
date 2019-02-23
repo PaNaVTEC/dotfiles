@@ -11,6 +11,7 @@
 (require 'init-code-folding)
 (require 'init-syntatic-close)
 (require 'init-tags)
+(require 'init-indentation)
 
 (define-minor-mode
   programming-mode
@@ -33,7 +34,8 @@
       (xref-etags-mode +1)
       (company-mode +1)
       (origami-mode +1)
-      (initialize-project-tags))
+      (initialize-project-tags)
+      (highlight-indent-guides-mode +1))
     (progn
       (prettify-symbols-mode -1)
       (whitespace-mode -1)
@@ -44,7 +46,8 @@
       (flycheck-mode -1)
       (xref-etags-mode -1)
       (company-mode -1)
-      (origami-mode -1))))
+      (origami-mode -1)
+      (highlight-indent-guides-mode -1))))
 
 (defun set-compile-for (mode command)
   (add-hook mode
