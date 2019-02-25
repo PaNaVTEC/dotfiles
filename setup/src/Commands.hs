@@ -92,6 +92,7 @@ chmodx fp' =
 line &> filepath = do
   touch filepath
   output filepath line
+infixr 5 &>
 
 (&>>) :: MonadIO io => B.ByteString -> Turtle.FilePath -> io ExecResult
 inp &>> filepath = liftIO $ do
@@ -99,6 +100,7 @@ inp &>> filepath = liftIO $ do
   touch (fromString tmpFilePath)
   B.writeFile tmpFilePath inp
   sudomv (fromString tmpFilePath) filepath
+infixr 5 &>>
 
 yarnInstallG :: MonadIO io => PkgName -> io ExecResult
 yarnInstallG pkg = prun . pack $ "yarn global add " <> unPkgName pkg

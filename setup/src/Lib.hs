@@ -3,7 +3,8 @@
 {-# LANGUAGE OverloadedStrings          #-}
 {-# LANGUAGE RankNTypes                 #-}
 
-module Lib (entryPoint) where
+--module Lib (entryPoint) where
+module Lib  where
 
 import           Commands
 import           Control.Lens          ((^.))
@@ -107,7 +108,7 @@ installDevTools = do
 
 installIntellij :: MonadIO io => App io
 installIntellij = do
-  (*!) $ "fs.inotify.max_user_watches = 524288" &>> "/tmp/sysctl.d/99-sysctl.conf"
+  (*!) $ "fs.inotify.max_user_watches = 524288" &>> "/etc/sysctl.d/99-sysctl.conf"
   prun' "sudo sysctl --system"
 
 installDocker :: MonadIO io => App io
@@ -167,8 +168,7 @@ installCompton = do
   (*!) $ aurInstall' ["compton", "xorg-xwininfo"]
   beforeStartX <- (~/) ".before_startx"
   mktree beforeStartX
-  let runsh = beforeStartX </> "run.sh"
-  (*!) $ "compton -c -i 0.9 -b &" &>> runsh
+  (*!) $ "compton -c -i 0.9 -b &" &>> beforeStartX </> "run.sh"
 
 printErrorAndContinue :: MonadIO io => App io -> App io
 printErrorAndContinue = ignoreExcept (putStrLn . Tx.unpack)
