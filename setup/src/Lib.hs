@@ -3,8 +3,7 @@
 {-# LANGUAGE OverloadedStrings          #-}
 {-# LANGUAGE RankNTypes                 #-}
 
---module Lib (entryPoint) where
-module Lib  where
+module Lib (entryPoint) where
 
 import           Commands
 import           Control.Lens          ((^.))
