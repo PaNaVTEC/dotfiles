@@ -28,6 +28,7 @@ install' :: MonadIO io => App io
 install' = do
   "Mirror list"      *#> updateMirrorList
   "Configure pacman" *!> configurePacman
+  "Upading system"   *!> pacmanUpdate
   "Pacman wrapper"   *!> installPacmanWrapper
   "i3"               *#> aurInstallF' "./yaourt_i3.txt"
   "Compton"          *#> installCompton
@@ -47,7 +48,6 @@ configurePacman = do
   (*!) pacmanSync
   (*!) $ prun "sudo pacman-key --init"
   (*!) $ prun "sudo pacman-key --populate archlinux"
-  (*!) pacmanUpdate
 
 updateMirrorList :: (MonadIO io) => App io
 updateMirrorList = do
@@ -60,7 +60,7 @@ updateMirrorList = do
 
 installPacmanWrapper :: MonadIO io => App io
 installPacmanWrapper = do
-  (*!) $ pacmanInstall' ["base-devel", "git", "wget", "yajl", "go"]
+  (*!) $ pacmanInstall' ["base-devel", "git", "wget", "yajl", "go-pie"]
   (*!) installYay
   void $ aurInstall "reflector"
   where
@@ -79,7 +79,6 @@ installPrinter = do
   (*!) $ aurInstall' ["cups", "nss-mdns", "gtk3-print-backends"]
   (*!) $ startService "orgs.cups.cupsd.service"
   (*!) $ startService "avahi-daemon.service"
-  liftIO $ putStrLn "Add your printer in: http://localhost:631/"
   (*!) $ addCurrentUserToGroup "sys"
 
 installBt :: MonadIO io => App io
@@ -142,7 +141,7 @@ installHaskell = do
 
 installGo :: MonadIO io => App io
 installGo = do
-  (*!) $ aurInstall "go"
+  (*!) $ aurInstall "go-pie"
   bin  <- (~/) "go/bin"
   src  <- (~/) "go/src"
   liftIO $ mktrees [bin, src]
@@ -191,7 +190,7 @@ breakIfFail res' = void $ liftEither =<< lift res'
   liftIO . putStrLn $ s'
   printErrorAndContinue app
 
-(*!>) :: MonadIO io => String -> App io -> App io
+(*!>) :: MonadIO io => String -> AppT io a -> App io
 (*!>) s' app = do
   liftIO . putStrLn $ "## " <> s'
-  app
+  void app

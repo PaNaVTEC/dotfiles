@@ -1,4 +1,3 @@
-paper-gtk-theme-git
 paper-icon-theme-git
 numix-icon-theme-git
 nordic-theme-git
