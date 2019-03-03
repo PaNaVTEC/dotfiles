@@ -11,10 +11,11 @@ import           Control.Monad.Except
 import qualified Data.ByteString.Char8 as B
 import qualified Data.ByteString.Lazy  as BL (ByteString, toStrict)
 import           Data.Maybe            (catMaybes)
-import           Data.Text             as Tx (unpack)
+import           Data.Text             as Tx (Text, unpack)
 import           Network.Wreq          (get, responseBody)
-import           Turtle
+import           Turtle                (append, mktree, sh, (</>))
 
+-- TODO add MonadLogger with file support
 type App m = AppT m ()
 newtype AppT m a = AppT
   { unApp :: ExceptT Text m a
