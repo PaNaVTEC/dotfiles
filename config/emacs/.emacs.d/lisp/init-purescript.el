@@ -25,7 +25,7 @@
         (progn
           (purescript-sort-imports)
           (purescript-align-imports)))
-      (purescript-navigate-imports-return)))
+      (purescript-navigate-imports-return))))
 
 (use-package psci :ensure t :defer t)
 (use-package flycheck-purescript :ensure t :defer t)
