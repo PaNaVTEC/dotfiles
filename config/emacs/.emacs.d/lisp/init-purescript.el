@@ -3,25 +3,25 @@
   :diminish purescript-indentation-mode
   :mode "\\.purs\\'"
   :ensure t
-  :defer t
   :config
   (setq projectile-tags-command "npm run etags")
+  (add-hook 'purescript-mode-hook 'turn-on-purescript-decl-scan)
+
+  (setq purescript-align-imports-pad-after-name nil)
+  (defun purescript-sort-and-align-imports ()
+    (interactive)
+    (save-excursion
+      (while (purescript-navigate-imports)
+        (progn
+          (purescript-sort-imports)
+          (purescript-align-imports)))
+      (purescript-navigate-imports-return)))
+
   (add-hook 'purescript-mode-hook
             (lambda ()
-              (flycheck-purescript-setup)
-              (psc-ide-mode)
-
               (turn-on-purescript-indentation)
-              (inferior-psci-mode)))
-  (add-hook 'purescript-mode-hook 'programming-mode))
-
-(use-package psc-ide
-  :diminish psc-ide-mode
-  :ensure t
-  :defer t
-  :config
-  (setq browse-url-browser-function 'eww-browse-url)
-  (customize-set-variable 'psc-ide-rebuild-on-save t))
+              (programming-mode)
+              (inferior-psci-mode))))
 
 (use-package psci :ensure t :defer t)
 (use-package flycheck-purescript :ensure t :defer t)
