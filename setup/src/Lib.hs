@@ -2,9 +2,9 @@
 {-# LANGUAGE GeneralizedNewtypeDeriving #-}
 {-# LANGUAGE OverloadedStrings          #-}
 {-# LANGUAGE RankNTypes                 #-}
-{-# LANGUAGE TypeApplications                 #-}
+{-# LANGUAGE TypeApplications           #-}
 
-module Lib (entryPoint) where
+module Lib  where
 
 import           Commands
 import           Control.Monad.Except
@@ -12,8 +12,9 @@ import qualified Data.ByteString.Char8 as B
 import qualified Data.ByteString.Lazy  as BL (ByteString, toStrict)
 import           Data.Maybe            (catMaybes)
 import           Data.Text             as Tx (Text, unpack)
+import           Data.Text.Encoding    as Tx (encodeUtf8)
 import           Network.Wreq          (get)
-import           Turtle                (append, mktree, sh, (</>))
+import           Turtle                (append, mktree, (</>))
 import           Network.HTTP.Client   (responseBody)
 
 -- TODO add MonadLogger with file support
@@ -156,13 +157,16 @@ installGit = do
   (*!) $ aurInstallF "./yaourt_git.txt"
   createGitIgnore
   where
-    createGitIgnore = sh $ do
-      _    <- run "gibo update"
-      let content = run "gibo dump Emacs Vim JetBrains Ensime Tags Vagrant Windows macOS Linux Archives"
-      path <- (~/) ".gitignore.global"
-      content &> path
-      append path ".tern-project"
-      append path ".tern-port"
+    createGitIgnore = do
+      (*!) $ prun "gibo update"
+      res <- prun "gibo dump Emacs Vim JetBrains Ensime Tags Vagrant Windows macOS Linux Archives"
+      case res of
+        (Right gitignore) -> do
+          gitingoreglobal <- (~/) ".gitignore.global"
+          (*!) $ Tx.encodeUtf8 gitignore &>> gitingoreglobal
+          append gitingoreglobal ".tern-project"
+          append gitingoreglobal ".tern-port"
+        e -> (*!) $ pure e
 
 installCompton :: MonadIO io => App io
 installCompton = do
