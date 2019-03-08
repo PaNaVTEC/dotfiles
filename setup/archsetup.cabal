@@ -4,7 +4,7 @@ cabal-version: 1.12
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: e2663b419492bee1516078793d2d115c50f26a96c73fca3ed245b2e533017db9
+-- hash: db78b9fba10f3a086e91a7a4d7a0fee7242caf8d2365182baf1a50f9458cc718
 
 name:           archsetup
 version:        0.1.0.0
@@ -36,7 +36,7 @@ library
   build-depends:
       base >=4.7 && <5
     , bytestring
-    , lens
+    , http-client
     , mtl
     , text
     , transformers
@@ -55,7 +55,7 @@ executable archsetup-exe
       archsetup
     , base >=4.7 && <5
     , bytestring
-    , lens
+    , http-client
     , mtl
     , text
     , transformers

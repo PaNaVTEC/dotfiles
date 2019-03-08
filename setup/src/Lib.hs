@@ -2,18 +2,19 @@
 {-# LANGUAGE GeneralizedNewtypeDeriving #-}
 {-# LANGUAGE OverloadedStrings          #-}
 {-# LANGUAGE RankNTypes                 #-}
+{-# LANGUAGE TypeApplications                 #-}
 
 module Lib (entryPoint) where
 
 import           Commands
-import           Control.Lens          ((^.))
 import           Control.Monad.Except
 import qualified Data.ByteString.Char8 as B
 import qualified Data.ByteString.Lazy  as BL (ByteString, toStrict)
 import           Data.Maybe            (catMaybes)
 import           Data.Text             as Tx (Text, unpack)
-import           Network.Wreq          (get, responseBody)
+import           Network.Wreq          (get)
 import           Turtle                (append, mktree, sh, (</>))
+import           Network.HTTP.Client   (responseBody)
 
 -- TODO add MonadLogger with file support
 type App m = AppT m ()
@@ -53,7 +54,8 @@ configurePacman = do
 updateMirrorList :: (MonadIO io) => App io
 updateMirrorList = do
   r <- liftIO $ get "https://www.archlinux.org/mirrorlist/?country=GB&protocol=https"
-  (*!) $ uncommentLines (r ^. responseBody) &>> "/etc/pacman.d/mirrorlist"
+  (*!) $ uncommentLines (responseBody @BL.ByteString r) &>> "/etc/pacman.d/mirrorlist"
+
   where
     uncommentLines :: BL.ByteString -> B.ByteString
     uncommentLines lines' = B.unlines . catMaybes

@@ -14,12 +14,12 @@ description:         Please see the README on GitHub at <https://github.com/pana
 dependencies:
 - base >= 4.7 && < 5
 - bytestring
-- lens
 - mtl
 - text
 - transformers
 - turtle
 - wreq
+- http-client
 
 library:
   source-dirs: src
