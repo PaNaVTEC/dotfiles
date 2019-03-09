@@ -2,7 +2,6 @@
 {-# LANGUAGE GeneralizedNewtypeDeriving #-}
 {-# LANGUAGE OverloadedStrings          #-}
 {-# LANGUAGE RankNTypes                 #-}
-{-# LANGUAGE TypeApplications           #-}
 
 module Lib  where
 
@@ -55,8 +54,7 @@ configurePacman = do
 updateMirrorList :: (MonadIO io) => App io
 updateMirrorList = do
   r <- liftIO $ get "https://www.archlinux.org/mirrorlist/?country=GB&protocol=https"
-  (*!) $ uncommentLines (responseBody @BL.ByteString r) &>> "/etc/pacman.d/mirrorlist"
-
+  (*!) $ uncommentLines (responseBody r) &>> "/etc/pacman.d/mirrorlist"
   where
     uncommentLines :: BL.ByteString -> B.ByteString
     uncommentLines lines' = B.unlines . catMaybes
