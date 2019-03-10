@@ -18,6 +18,8 @@ python-pip
 xorg-xbacklight
 thunar
 thunar-volman
+gvfs
+gnome-polkit
 thunar-archive-plugin
 thunar-dropbox
 dunst
