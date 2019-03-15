@@ -22,6 +22,14 @@ hiskip () {
   hi $1 --skip-intermediate-deps
 }
 
+debugTemplateHaskell () {
+  read -p "If you don't 'stack clean' it will not work, do stack clean?" -n 1 -r
+  echo ""
+  if [[ $REPLY =~ ^[yY]$ ]]; then
+    sbf --ghc-options="-fbyte-code -O0 -Wwarn -ddump-splices -ddump-to-file"
+  fi
+}
+
 createProjectHaskell () {
   local projectDirectory=$1
   local name=''
