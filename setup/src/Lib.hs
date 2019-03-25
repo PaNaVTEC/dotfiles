@@ -3,17 +3,18 @@
 {-# LANGUAGE OverloadedStrings          #-}
 {-# LANGUAGE RankNTypes                 #-}
 
-module Lib (entryPoint) where
+module Lib  where
 
 import           Commands
-import           Control.Lens          ((^.))
 import           Control.Monad.Except
 import qualified Data.ByteString.Char8 as B
 import qualified Data.ByteString.Lazy  as BL (ByteString, toStrict)
 import           Data.Maybe            (catMaybes)
 import           Data.Text             as Tx (Text, unpack)
-import           Network.Wreq          (get, responseBody)
-import           Turtle                (append, mktree, sh, (</>))
+import           Data.Text.Encoding    as Tx (encodeUtf8)
+import           Network.Wreq          (get)
+import           Turtle                (append, mktree, (</>))
+import           Network.HTTP.Client   (responseBody)
 
 -- TODO add MonadLogger with file support
 type App m = AppT m ()
@@ -53,7 +54,7 @@ configurePacman = do
 updateMirrorList :: (MonadIO io) => App io
 updateMirrorList = do
   r <- liftIO $ get "https://www.archlinux.org/mirrorlist/?country=GB&protocol=https"
-  (*!) $ uncommentLines (r ^. responseBody) &>> "/etc/pacman.d/mirrorlist"
+  (*!) $ uncommentLines (responseBody r) &>> "/etc/pacman.d/mirrorlist"
   where
     uncommentLines :: BL.ByteString -> B.ByteString
     uncommentLines lines' = B.unlines . catMaybes
@@ -154,13 +155,16 @@ installGit = do
   (*!) $ aurInstallF "./yaourt_git.txt"
   createGitIgnore
   where
-    createGitIgnore = sh $ do
-      _    <- run "gibo update"
-      let content = run "gibo dump Emacs Vim JetBrains Ensime Tags Vagrant Windows macOS Linux Archives"
-      path <- (~/) ".gitignore.global"
-      content &> path
-      append path ".tern-project"
-      append path ".tern-port"
+    createGitIgnore = do
+      (*!) $ prun "gibo update"
+      res <- prun "gibo dump Emacs Vim JetBrains Ensime Tags Vagrant Windows macOS Linux Archives"
+      case res of
+        (Right gitignore) -> do
+          gitingoreglobal <- (~/) ".gitignore.global"
+          (*!) $ Tx.encodeUtf8 gitignore &>> gitingoreglobal
+          append gitingoreglobal ".tern-project"
+          append gitingoreglobal ".tern-port"
+        e -> (*!) $ pure e
 
 installCompton :: MonadIO io => App io
 installCompton = do
