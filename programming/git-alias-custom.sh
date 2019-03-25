@@ -33,6 +33,8 @@ git_current_branch() {
 alias gcam='git add . && git commit -a -m'
 alias gprune='git branch | grep -v master | xargs git branch -D'
 alias pr='hub pull-request'
+alias gdu='git diff --name-only --diff-filter=U'
+alias gdup='git diff --diff-filter=U'
 
 ## Autocompleted alias
 __git_complete gco _git_checkout
