@@ -5,6 +5,7 @@ source "$relativePath/update.sh"
 source "$relativePath/wifi.sh"
 source "$relativePath/bluetooth.sh"
 source "$relativePath/music.sh"
+source "$relativePath/tmux.sh"
 
 if [[ $(uname) == "Darwin" ]]; then
   alias ls='ls -G'
