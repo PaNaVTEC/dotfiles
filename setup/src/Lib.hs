@@ -99,6 +99,7 @@ installDevTools = do
   _ <- aurInstallF "./yaourt_clojure.txt"
   _ <- aurInstall' ["shellcheck-static", "shunit2"]
   _ <- aurInstall' ["emacs", "aspell", "aspell-en", "aspell-es"]
+  _ <- aurInstall' ["tmux", "tmux-tpm"]
   installJs
   installHaskell
   installGo
