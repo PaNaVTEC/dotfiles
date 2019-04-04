@@ -26,5 +26,6 @@ stow --target="$HOME" gtk
 stow --target="$HOME" xmodmap
 stow --target="$HOME" psql
 stow --target="$HOME" haskeline
+stow --target="$HOME" tmux
 sudo stow --target=/etc bluetooth
 sudo stow --target=/etc pulseaudio
