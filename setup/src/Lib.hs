@@ -99,13 +99,20 @@ installDevTools = do
   _ <- aurInstallF "./yaourt_clojure.txt"
   _ <- aurInstall' ["shellcheck-static", "shunit2"]
   _ <- aurInstall' ["emacs", "aspell", "aspell-en", "aspell-es"]
-  _ <- aurInstall' ["tmux", "tmux-tpm"]
+  installTmux
   installJs
   installHaskell
   installGo
   installRust
   installDocker
   installIntellij
+
+installTmux :: MonadIO io => App io
+installTmux = do
+  _ <- aurInstall' ["tmux", "tmux-tpm"]
+  if exitsOk "ls ~/tmux/plugins/tpm/"
+  then pure $ Right ""
+  else prun' "git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm"
 
 installIntellij :: MonadIO io => App io
 installIntellij = do

@@ -10,6 +10,4 @@ trm () {
   tmux kill-session -t "$1"
 }
 
-trmf () {
-  tmux kill-session -a
-}
+alias trmf='tmux kill-session -a'

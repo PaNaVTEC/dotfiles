@@ -1,3 +1,5 @@
 [[ -f ~/.bashrc ]] && . ~/.bashrc
 
-startx ~/.xinitrc
+if [ -z "$TMUX" ]; then
+  startx ~/.xinitrc
+fi
