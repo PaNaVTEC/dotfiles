@@ -110,8 +110,9 @@ installDevTools = do
 installTmux :: MonadIO io => App io
 installTmux = do
   _ <- aurInstall' ["tmux", "tmux-tpm"]
-  if exitsOk "ls ~/tmux/plugins/tpm/"
-  then pure $ Right ""
+  tpmAlreadyExists <- exitsOk "ls ~/tmux/plugins/tpm/"
+  if tpmAlreadyExists
+  then pure ()
   else prun' "git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm"
 
 installIntellij :: MonadIO io => App io
@@ -140,7 +141,10 @@ installJs = do
   prun' "yarn config set -- --emoji true"
   _ <- yarnInstallG "n"
   prun' "n latest"
-  _ <- yarnInstallG' ["tern", "standard", "create-react-app", "js-beautify", "typescript", "tslint", "eslint-plugin-typescript", "typescript-eslint-parser"]
+  _ <- yarnInstallG' ["tern", "standard", "js-beautify"]
+  _ <- yarnInstallG' ["create-react-app", "react-native-cli"]
+  _ <- yarnInstallG' ["typescript", "tslint", "eslint-plugin-typescript", "typescript-eslint-parser"]
+  _ <- yarnInstallG' ["purescript", "bower", "pulp"]
   return ()
 
 installHaskell :: MonadIO io => App io
