@@ -31,14 +31,14 @@ for_window [title="^Nyanyanyanyanyanyanya...$"] mark "STATWIN", fullscreen enabl
 set $mod Mod4
 
 # fonts
-font pango:xos4 Terminus, FontAwesome Regular 12
+font pango:Pragmata Pro:Regular, FontAwesome 10
 
 # Move windows with mouse+$mod
 floating_modifier $mod
 
 bindsym $mod+Return exec $TERMINAL
 bindsym $mod+Shift+q kill
-bindsym $mod+d exec --no-startup-id dmenu_run -i -fn 'xos4 Terminus-13'
+bindsym $mod+d exec --no-startup-id dmenu_run -i -fn 'Pragmata Pro Regular-10'
 
 # capture screen
 bindsym Shift+Print exec --no-startup-id scrot "select"
