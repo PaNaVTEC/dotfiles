@@ -1,4 +1,3 @@
-
 # Query/use custom command for `git`.
 #zstyle -s ":vcs_info:git:*:-all-" "command" _omz_git_git_cmd
 #: ${_omz_git_git_cmd:=git}
@@ -88,8 +87,8 @@ alias gdct='git describe --tags `git rev-list --tags --max-count=1`'
 alias gdt='git diff-tree --no-commit-id --name-only -r'
 alias gdw='git diff --word-diff'
 
-function gdv() { 
-	git diff -w "$@" | view - 
+function gdv() {
+  git diff -w "$@" | view -
 }
 #compdef _git gdv=git-diff
 
@@ -97,8 +96,8 @@ alias gf='git fetch'
 alias gfa='git fetch --all --prune'
 alias gfo='git fetch origin'
 
-function gfg() { 
-	git ls-files | grep $@
+function gfg() {
+  git ls-files | grep $@
 }
 #compdef _grep gfg
 
@@ -242,4 +241,3 @@ alias glum='git pull upstream master'
 
 alias gwch='git whatchanged -p --abbrev-commit --pretty=medium'
 alias gwip='git add -A; git rm $(git ls-files --deleted) 2> /dev/null; git commit -m "--wip--"'
-

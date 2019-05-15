@@ -37,8 +37,6 @@
     (global-set-key (kbd "C-+") 'text-scale-increase)
     (global-set-key (kbd "C--") 'text-scale-decrease)))
 
-;; Personalization
 (set-default-font my-font)
-(set-face-attribute 'default nil :height my-font-height)
 
 (provide '02-init-appearance)
