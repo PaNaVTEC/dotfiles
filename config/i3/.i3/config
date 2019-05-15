@@ -31,7 +31,7 @@ for_window [title="^Nyanyanyanyanyanyanya...$"] mark "STATWIN", fullscreen enabl
 set $mod Mod4
 
 # fonts
-font pango:Pragmata Pro:Regular, FontAwesome 10
+font pango:Pragmata Pro 10
 
 # Move windows with mouse+$mod
 floating_modifier $mod
