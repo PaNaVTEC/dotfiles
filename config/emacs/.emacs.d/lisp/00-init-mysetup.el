@@ -13,14 +13,9 @@
   :group 'mysetup)
 
 ;; Fonts
-(defcustom my-font "xos4 Terminus"
+(defcustom my-font "Pragmata Pro Mono-14"
   "Emacs font"
   :type 'string
-  :group 'mysetup)
-
-(defcustom my-font-height 150
-  "Emacs font height"
-  :type 'integer
   :group 'mysetup)
 
 ;; Themes
