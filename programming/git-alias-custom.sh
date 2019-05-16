@@ -1,5 +1,14 @@
 alias gpl='git prunelocal'
 alias gdl='git discard'
+alias glrb='git pull --rebase'
+alias gcam='git add . && git commit -a -m'
+alias gprune='git branch | grep -v master | xargs git branch -D'
+alias pr='hub pull-request'
+alias gdu='git diff --name-only --diff-filter=U'
+alias gdup='git diff --diff-filter=U'
+alias gbsup='git branch --set-upstream-to=origin/$(git_current_branch)'
+alias gpf='git push --force-with-lease'
+alias gds='git diff --staged'
 
 gblame() {
   git log -p -M --follow --stat -- "$1"
@@ -30,11 +39,6 @@ git_current_branch() {
   fi
   echo ${ref#refs/heads/}
 }
-alias gcam='git add . && git commit -a -m'
-alias gprune='git branch | grep -v master | xargs git branch -D'
-alias pr='hub pull-request'
-alias gdu='git diff --name-only --diff-filter=U'
-alias gdup='git diff --diff-filter=U'
 
 ## Autocompleted alias
 __git_complete gco _git_checkout
