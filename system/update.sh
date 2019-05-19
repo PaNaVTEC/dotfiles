@@ -44,9 +44,6 @@ systemUpdate () {
   sudo curl -o "/usr/local/bin/yarn-completion.bash" https://raw.githubusercontent.com/dsifford/yarn-completion/master/yarn-completion.bash
   sudo curl -o "/usr/local/bin/git-completion.bash" https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash
 
-  echo "Updating VIM"
-  vimUpdate;
-
   "Regenerating shortcuts"
   shortcuts
 
