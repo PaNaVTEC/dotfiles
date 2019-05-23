@@ -34,6 +34,7 @@
   (define-key evil-motion-state-map (kbd "C-w j") 'evil-window-down)
   (define-key evil-motion-state-map (kbd "C-w h") 'evil-window-left)
   (define-key evil-motion-state-map (kbd "C-w l") 'evil-window-right)
+  (define-key evil-motion-state-map (kbd "C-w z") 'maximize-window)
 
   ;; Buffer navigation
   (define-key evil-motion-state-map (kbd "[ b") 'evil-prev-buffer)
