@@ -8,6 +8,8 @@
   lsp-mode
   :ensure t
   :config
+  (define-key evil-normal-state-map (kbd "]w") 'flymake-goto-next-error)
+  (define-key evil-normal-state-map (kbd "[w") 'flymake-goto-prev-error)
   (setq lsp-enable-snippet nil))
 
 (use-package
@@ -34,6 +36,6 @@
   :bind (:map dart-mode-map
               ("C-M-x" . #'flutter-run-or-hot-reload))
   :config
-    (setq flutter-sdk-path "~/flutter/bin/cache/dart-sdk/"))
+    (setq flutter-sdk-path "~/flutter/"))
 
 (provide 'init-flutter)
