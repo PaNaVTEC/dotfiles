@@ -1,15 +1,31 @@
 (require 'init-programming-mode)
 
+;(use-package
+;  eglot
+;  :ensure t)
+
+(use-package
+  lsp-mode
+  :ensure t
+  :config
+  (setq lsp-enable-snippet nil))
+
 (use-package
   dart-mode
   :ensure t
   :mode "\\.dart$"
   :config
     (add-hook 'dart-mode-hook 'programming-mode)
-  :custom
-  (dart-format-on-save t)
-  (dart-enable-analysis-server t)
-  (dart-sdk-path "/opt/dart-sdk"))
+    (add-hook 'dart-mode-hook 'lsp)
+    (with-eval-after-load "projectile"
+      (add-to-list 'projectile-project-root-files-bottom-up "pubspec.yaml")
+      (add-to-list 'projectile-project-root-files-bottom-up "BUILD"))
+    (setq lsp-auto-guess-root t)
+;    (with-eval-after-load "eglot"
+;      (add-to-list 'eglot-server-programs '(dart-mode . ("dart_language_server")))
+;      (add-hook 'dart-mode-hook 'eglot-ensure))
+    (setq dart-format-on-save t)
+    (setq dart-sdk-path "~/flutter/bin/cache/dart-sdk/"))
 
 (use-package
   flutter
@@ -17,7 +33,7 @@
   :after dart-mode
   :bind (:map dart-mode-map
               ("C-M-x" . #'flutter-run-or-hot-reload))
-  :custom
-  (flutter-sdk-path "~/flutter/"))
+  :config
+    (setq flutter-sdk-path "~/flutter/bin/cache/dart-sdk/"))
 
 (provide 'init-flutter)
