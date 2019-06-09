@@ -142,7 +142,7 @@ addUserToGroup user group' =
   prun $ "sudo usermod -a -G " <> group' <> " " <> user
 
 commandExists :: MonadIO io => Text -> io Bool
-commandExists cmd' = not <$> exitsOk ("which " <> cmd')
+commandExists cmd' = exitsOk ("which " <> cmd')
 
 exitsOk :: MonadIO io => Text -> io Bool
 exitsOk cmd' = exitsOk' <$> prun cmd'

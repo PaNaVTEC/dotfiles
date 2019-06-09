@@ -7,15 +7,16 @@ module Lib  where
 
 import           Commands
 import           Control.Monad.Except
+import           Control.Monad.Logger
 import qualified Data.ByteString.Char8 as B
 import qualified Data.ByteString.Lazy  as BL (ByteString, toStrict)
 import           Data.Maybe            (catMaybes)
 import           Data.Text             as Tx (Text, unpack)
 import           Data.Text.Encoding    as Tx (encodeUtf8)
-import           Network.Wreq          (get)
-import           Turtle                (append, mktree, (</>), touch)
 import           Network.HTTP.Client   (responseBody)
-import           Control.Monad.Logger
+import           Network.Wreq          (get)
+import           Turtle                (append, encodeString, mktree, touch,
+                                        (</>))
 
 type App m = AppT m ()
 newtype AppT m a = AppT
@@ -71,7 +72,7 @@ installPacmanWrapper = AppT $ do
       if cmdE
       then pure $ Right ""
       else runpenv
-        ["git clone https://aur.archlinux.org/yay.git /tmp/yay/"
+        ["git clone --depth 1 https://aur.archlinux.org/yay.git /tmp/yay/"
         ,"cd /tmp/yay"
         ,"makepkg -si --noconfirm"
         ]
@@ -113,7 +114,7 @@ installTmux = AppT $ do
   tpmAlreadyExists <- exitsOk "ls ~/tmux/plugins/tpm/"
   if tpmAlreadyExists
   then pure ()
-  else prun' "git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm"
+  else prun' "git clone --depth 1 https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm"
 
 installIntellij :: MonadIO io => App io
 installIntellij = AppT $ do
@@ -191,14 +192,17 @@ installi3 = AppT $ do
   installLocker
   where
     installLocker = do
-      (*!) $ prun "git clone https://github.com/kuravih/gllock /tmp"
+      cmdE <- commandExists "gllock"
       shaderPath <- (~/) ".gllock"
-      (*!) $ runpenv
-        [ "cd /tmp/gllock"
-        , "cat config.mk | grep -v 'SHADER_LOCATION' | grep -v 'FRGMNT_SHADER' > config.mk"
-        , "echo 'FRGMNT_SHADER = crt.fragment.gls' > config.mk"
-        , "echo 'SHADER_LOCATION = " <> show shaderPath <> "' > config.mk"
-        ]
+      unless cmdE $ do
+        prun "git clone --depth 1 https://github.com/kuravih/gllock /tmp/gllock"
+        (*!) $ runpenv
+          [ "cd /tmp/gllock"
+          , "mv config.mk config_orig.mk"
+          , "cat config_orig.mk | grep -v '^FRGMNT_SHADER' | grep -v '^SHADER_LOCATION' > config.mk"
+          , "echo -e \"FRGMNT_SHADER = crt.fragment.gls\nSHADER_LOCATION="<> encodeString  shaderPath <>"\n $(cat config.mk)\"> config.mk"
+          , "sudo make clean install"
+          ]
 
 printErrorAndContinue :: MonadIO io => App io -> App io
 printErrorAndContinue = ignoreExcept (putStrLn . Tx.unpack)
