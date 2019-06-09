@@ -67,10 +67,10 @@ aurInstallF' :: MonadIO io => Prelude.FilePath -> io ()
 aurInstallF' = void . aurInstallF
 
 (~/) :: MonadIO io => String -> io Turtle.FilePath
-(~/) path = (\h -> h </> filePath path ) <$> home
+(~/) path = (\h -> h </> filePath path) <$> home
 
 pwd' :: MonadIO io => String -> io Turtle.FilePath
-pwd' path = (\h -> h </> filePath path ) <$> pwd
+pwd' path = (\h -> h </> filePath path) <$> pwd
 
 filePath :: String -> Turtle.FilePath
 filePath p = fromText $ pack p
@@ -130,14 +130,14 @@ startService serv = do
     pure execRes
   else pure $ Right ""
 
-addCurrentUserToGroup :: (MonadIO io) => Text -> io ExecResult
+addCurrentUserToGroup :: MonadIO io => Text -> io ExecResult
 addCurrentUserToGroup group' = do
   res' <- currentUser
   case res' of
     (Right u') -> addUserToGroup u' group'
     t          -> pure t
 
-addUserToGroup :: (MonadIO io) => Text -> Text -> io ExecResult
+addUserToGroup :: MonadIO io => Text -> Text -> io ExecResult
 addUserToGroup user group' =
   prun $ "sudo usermod -a -G " <> group' <> " " <> user
 

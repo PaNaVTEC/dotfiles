@@ -13,10 +13,10 @@ import           Data.Maybe            (catMaybes)
 import           Data.Text             as Tx (Text, unpack)
 import           Data.Text.Encoding    as Tx (encodeUtf8)
 import           Network.Wreq          (get)
-import           Turtle                (append, mktree, (</>))
+import           Turtle                (append, mktree, (</>), touch)
 import           Network.HTTP.Client   (responseBody)
+import           Control.Monad.Logger
 
--- TODO add MonadLogger with file support
 type App m = AppT m ()
 newtype AppT m a = AppT
   { unApp :: ExceptT Text m a
@@ -44,15 +44,15 @@ install' = do
   "Audio"            *#> aurInstallF' "./yaourt_audio.txt"
 
 configurePacman :: MonadIO io => App io
-configurePacman = do
-  (*!) $ sudorm "/etc/pacman.conf"
+configurePacman = AppT $ do
+  _ <- sudorm "/etc/pacman.conf"
   (*!) $ (`sudolnsfn` "/etc/pacman.conf") =<< pwd' "config/pacman/pacman.conf"
   (*!) pacmanSync
   (*!) $ prun "sudo pacman-key --init"
   (*!) $ prun "sudo pacman-key --populate archlinux"
 
-updateMirrorList :: (MonadIO io) => App io
-updateMirrorList = do
+updateMirrorList :: MonadIO io => App io
+updateMirrorList = AppT $ do
   r <- liftIO $ get "https://www.archlinux.org/mirrorlist/?country=GB&protocol=https"
   (*!) $ uncommentLines (responseBody r) &>> "/etc/pacman.d/mirrorlist"
   where
@@ -61,7 +61,7 @@ updateMirrorList = do
       $ B.stripPrefix "#" <$> B.lines (BL.toStrict lines')
 
 installPacmanWrapper :: MonadIO io => App io
-installPacmanWrapper = do
+installPacmanWrapper = AppT $ do
   (*!) $ pacmanInstall' ["base-devel", "git", "wget", "yajl", "go-pie"]
   (*!) installYay
   void $ aurInstall "reflector"
@@ -77,14 +77,14 @@ installPacmanWrapper = do
         ]
 
 installPrinter :: MonadIO io => App io
-installPrinter = do
+installPrinter = AppT $ do
   (*!) $ aurInstall' ["cups", "nss-mdns", "gtk3-print-backends"]
   (*!) $ startService "orgs.cups.cupsd.service"
   (*!) $ startService "avahi-daemon.service"
   (*!) $ addCurrentUserToGroup "sys"
 
 installBt :: MonadIO io => App io
-installBt = do
+installBt = AppT $ do
   (*!) $ aurInstall' ["bluez", "bluez-utils", "bluez-qt", "pulseaudio-bluetooth"]
   prun' "modprobe btusb"
   (*!) $ startService "bluetooth.service"
@@ -108,7 +108,7 @@ installDevTools = do
   installIntellij
 
 installTmux :: MonadIO io => App io
-installTmux = do
+installTmux = AppT $ do
   _ <- aurInstall' ["tmux", "tmux-tpm"]
   tpmAlreadyExists <- exitsOk "ls ~/tmux/plugins/tpm/"
   if tpmAlreadyExists
@@ -116,12 +116,12 @@ installTmux = do
   else prun' "git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm"
 
 installIntellij :: MonadIO io => App io
-installIntellij = do
+installIntellij = AppT $ do
   (*!) $ "fs.inotify.max_user_watches = 524288" &>> "/etc/sysctl.d/99-sysctl.conf"
   prun' "sudo sysctl --system"
 
 installDocker :: MonadIO io => App io
-installDocker = do
+installDocker = AppT $ do
   (*!) $ sudormdir "/var/lib/docker"
   dockerlib <- (~/) ".dockerlib"
   mktree dockerlib
@@ -129,14 +129,14 @@ installDocker = do
   return ()
 
 installRust :: MonadIO io => App io
-installRust = do
+installRust = AppT $ do
   (*!) $ aurInstall "rustup"
   prun' "rustup toolchain install stable"
   prun' "rustup default stable"
   prun' "rustup toolchain install nightly"
 
 installJs :: MonadIO io => App io
-installJs = do
+installJs = AppT $ do
   (*!) $ aurInstall' ["nodejs", "npm", "yarn"]
   prun' "yarn config set -- --emoji true"
   _ <- yarnInstallG "n"
@@ -148,13 +148,13 @@ installJs = do
   return ()
 
 installHaskell :: MonadIO io => App io
-installHaskell = do
+installHaskell = AppT $ do
   (*!) $ aurInstall "stack-bin"
   (*!) $ prun "stack setup"
   (*!) $ stackInstall ["ghcid", "hindent", "stylish-haskell", "cabal-install", "hoogle", "hlint"]
 
 installGo :: MonadIO io => App io
-installGo = do
+installGo = AppT $ do
   (*!) $ aurInstall "go-pie"
   bin  <- (~/) "go/bin"
   src  <- (~/) "go/src"
@@ -163,7 +163,7 @@ installGo = do
   unless cmdE $ prun' "go get -u github.com/golang/lint/golint"
 
 installGit :: MonadIO io => App io
-installGit = do
+installGit = AppT $ do
   (*!) $ aurInstallF "./yaourt_git.txt"
   createGitIgnore
   where
@@ -179,7 +179,7 @@ installGit = do
         e -> (*!) $ pure e
 
 installCompton :: MonadIO io => App io
-installCompton = do
+installCompton = AppT $ do
   (*!) $ aurInstall' ["compton", "xorg-xwininfo"]
   beforeStartX <- (~/) ".before_startx"
   mktree beforeStartX
@@ -196,10 +196,12 @@ ignoreExcept f' app' = lift $ do
     pure
     result
 
-breakIfFail :: MonadIO io => io ExecResult -> App io
-breakIfFail res' = void $ liftEither =<< lift res'
+breakIfFail :: MonadIO io => io ExecResult -> ExceptT Text io ()
+breakIfFail res' = do
+  _ <- lift (writeLogToFile res')
+  void (liftEither =<< lift res')
 
-(*!) :: MonadIO io => io ExecResult -> App io
+(*!) :: MonadIO io => io ExecResult -> ExceptT Text io ()
 (*!) = breakIfFail
 
 (*#>) :: MonadIO io => String -> App io -> App io
@@ -211,3 +213,15 @@ breakIfFail res' = void $ liftEither =<< lift res'
 (*!>) s' app = do
   liftIO . putStrLn $ "## " <> s'
   void app
+
+writeLogToFile :: MonadIO io => io ExecResult -> io ExecResult
+writeLogToFile iores = do
+    result <- iores
+    mktree "/tmp/setuplogs/"
+    touch "/tmp/setuplogs/log.txt"
+    liftIO . runFileLoggingT "/tmp/setuplogs/log.txt"
+      $ do
+        case result of
+          (Right r) -> logInfoN r
+          (Left l)  -> logErrorN l
+        pure result
