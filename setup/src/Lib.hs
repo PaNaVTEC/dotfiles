@@ -32,7 +32,7 @@ install' = do
   "Configure pacman" *!> configurePacman
   "Upading system"   *!> pacmanUpdate
   "Pacman wrapper"   *!> installPacmanWrapper
-  "i3"               *#> aurInstallF' "./yaourt_i3.txt"
+  "i3"               *#> installi3
   "Compton"          *#> installCompton
   "Dev tools"        *#> installDevTools
   "Bluetooth"        *#> installBt
@@ -184,6 +184,21 @@ installCompton = AppT $ do
   beforeStartX <- (~/) ".before_startx"
   mktree beforeStartX
   (*!) $ "compton -c -i 0.9 -b &" &>> beforeStartX </> "run.sh"
+
+installi3 :: MonadIO io => App io
+installi3 = AppT $ do
+  aurInstallF' "./yaourt_i3.txt"
+  installLocker
+  where
+    installLocker = do
+      (*!) $ prun "git clone https://github.com/kuravih/gllock /tmp"
+      shaderPath <- (~/) ".gllock"
+      (*!) $ runpenv
+        [ "cd /tmp/gllock"
+        , "cat config.mk | grep -v 'SHADER_LOCATION' | grep -v 'FRGMNT_SHADER' > config.mk"
+        , "echo 'FRGMNT_SHADER = crt.fragment.gls' > config.mk"
+        , "echo 'SHADER_LOCATION = " <> show shaderPath <> "' > config.mk"
+        ]
 
 printErrorAndContinue :: MonadIO io => App io -> App io
 printErrorAndContinue = ignoreExcept (putStrLn . Tx.unpack)
