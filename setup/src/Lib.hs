@@ -7,12 +7,13 @@ module Lib  where
 
 import           Commands
 import           Control.Monad.Except
+import           Control.Monad.Logger
 import           Data.Text             as Tx (Text, unpack)
 import           Data.Text.Encoding    as Tx (encodeUtf8)
-import           Network.Wreq          (get)
-import           Turtle                (append, mktree, (</>), touch)
 import           Network.HTTP.Client   (responseBody)
-import           Control.Monad.Logger
+import           Network.Wreq          (get)
+import           Turtle                (append, encodeString, mktree, touch,
+                                        (</>))
 
 type App m = AppT m ()
 newtype AppT m a = AppT
@@ -60,7 +61,7 @@ installPacmanWrapper = AppT $ do
   void $ aurInstall "reflector"
   where
     installYay = runIfNotInstalled "yay" $ runpenv
-        ["git clone https://aur.archlinux.org/yay.git /tmp/yay/"
+        ["git clone --depth 1 https://aur.archlinux.org/yay.git /tmp/yay/"
         ,"cd /tmp/yay"
         ,"makepkg -si --noconfirm"
         ]
@@ -181,9 +182,10 @@ installi3 = AppT $ do
         shaderPath <- (~/) ".gllock"
         runpenv
           [ "cd /tmp/gllock"
-          , "cat config.mk | grep -v 'SHADER_LOCATION' | grep -v 'FRGMNT_SHADER' > config.mk"
-          , "echo 'FRGMNT_SHADER = crt.fragment.gls' > config.mk"
-          , "echo 'SHADER_LOCATION = " <> show shaderPath <> "' > config.mk"
+          , "mv config.mk config_orig.mk"
+          , "cat config_orig.mk | grep -v '^FRGMNT_SHADER' | grep -v '^SHADER_LOCATION' > config.mk"
+          , "echo -e \"FRGMNT_SHADER = crt.fragment.gls\nSHADER_LOCATION="<> encodeString  shaderPath <>"\n $(cat config.mk)\"> config.mk"
+          , "sudo make clean install"
           ]
 
 printErrorAndContinue :: MonadIO io => App io -> App io

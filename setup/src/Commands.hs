@@ -144,7 +144,7 @@ addUserToGroup user group' =
   prun $ "sudo usermod -a -G " <> group' <> " " <> user
 
 commandExists :: MonadIO io => Text -> io Bool
-commandExists cmd' = not <$> exitsOk ("which " <> cmd')
+commandExists cmd' = exitsOk ("which " <> cmd')
 
 exitsOk :: MonadIO io => Text -> io Bool
 exitsOk cmd' = exitsOk' <$> prun cmd'
@@ -173,7 +173,7 @@ runIfNotInstalled' :: MonadIO io => Text -> io ExecResult -> io ()
 runIfNotInstalled' t a = void $ runIfNotInstalled t a
 
 githubClone :: MonadIO io => Text -> Text -> io ExecResult
-githubClone repo p = prun $ "git clone https://github.com/" <> " " <> p
+githubClone repo p = prun $ "git clone --depth 1 https://github.com/" <> " " <> p
 
 githubClone' :: MonadIO io => Text -> Text -> io ()
 githubClone' repo p = void $ githubClone repo p
