@@ -159,8 +159,8 @@ uncommentHash :: BL.ByteString -> B.ByteString
 uncommentHash = uncommentLines "#"
 
 uncommentLines :: B.ByteString -> BL.ByteString -> B.ByteString
-uncommentLines prefix lines' = B.unlines . catMaybes
-  $ B.stripPrefix prefix <$> B.lines (BL.toStrict lines')
+uncommentLines prefix' lines' = B.unlines . catMaybes
+  $ B.stripPrefix prefix' <$> B.lines (BL.toStrict lines')
 
 runIfNotInstalled :: MonadIO io => Text -> io ExecResult -> io ExecResult
 runIfNotInstalled app action = do
@@ -173,7 +173,7 @@ runIfNotInstalled' :: MonadIO io => Text -> io ExecResult -> io ()
 runIfNotInstalled' t a = void $ runIfNotInstalled t a
 
 githubClone :: MonadIO io => Text -> Text -> io ExecResult
-githubClone repo p = prun $ "git clone --depth 1 https://github.com/" <> " " <> p
+githubClone repo p = prun $ "git clone --depth 1 https://github.com/" <> repo <> " " <> p
 
 githubClone' :: MonadIO io => Text -> Text -> io ()
 githubClone' repo p = void $ githubClone repo p
