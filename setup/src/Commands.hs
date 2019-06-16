@@ -7,9 +7,11 @@ module Commands where
 
 import           Data.Bool             (bool)
 import qualified Data.ByteString.Char8 as B
+import qualified Data.ByteString.Lazy  as BL (ByteString, toStrict)
 import           Data.List
 import           Data.Text             (pack)
 import           Turtle
+import           Data.Maybe            (catMaybes)
 
 type ExecResult = Either Text Text
 
@@ -152,3 +154,26 @@ exitsOk cmd' = exitsOk' <$> prun cmd'
 
 currentUser :: MonadIO io => io ExecResult
 currentUser = prun "id -u -n"
+
+uncommentHash :: BL.ByteString -> B.ByteString
+uncommentHash = uncommentLines "#"
+
+uncommentLines :: B.ByteString -> BL.ByteString -> B.ByteString
+uncommentLines prefix lines' = B.unlines . catMaybes
+  $ B.stripPrefix prefix <$> B.lines (BL.toStrict lines')
+
+runIfNotInstalled :: MonadIO io => Text -> io ExecResult -> io ExecResult
+runIfNotInstalled app action = do
+  cmdE <- commandExists app
+  if cmdE
+  then pure $ Right ""
+  else action
+
+runIfNotInstalled' :: MonadIO io => Text -> io ExecResult -> io ()
+runIfNotInstalled' t a = void $ runIfNotInstalled t a
+
+githubClone :: MonadIO io => Text -> Text -> io ExecResult
+githubClone repo p = prun $ "git clone https://github.com/" <> " " <> p
+
+githubClone' :: MonadIO io => Text -> Text -> io ()
+githubClone' repo p = void $ githubClone repo p

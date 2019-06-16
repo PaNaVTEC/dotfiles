@@ -7,9 +7,6 @@ module Lib  where
 
 import           Commands
 import           Control.Monad.Except
-import qualified Data.ByteString.Char8 as B
-import qualified Data.ByteString.Lazy  as BL (ByteString, toStrict)
-import           Data.Maybe            (catMaybes)
 import           Data.Text             as Tx (Text, unpack)
 import           Data.Text.Encoding    as Tx (encodeUtf8)
 import           Network.Wreq          (get)
@@ -54,11 +51,7 @@ configurePacman = AppT $ do
 updateMirrorList :: MonadIO io => App io
 updateMirrorList = AppT $ do
   r <- liftIO $ get "https://www.archlinux.org/mirrorlist/?country=GB&protocol=https"
-  (*!) $ uncommentLines (responseBody r) &>> "/etc/pacman.d/mirrorlist"
-  where
-    uncommentLines :: BL.ByteString -> B.ByteString
-    uncommentLines lines' = B.unlines . catMaybes
-      $ B.stripPrefix "#" <$> B.lines (BL.toStrict lines')
+  (*!) $ uncommentHash (responseBody r) &>> "/etc/pacman.d/mirrorlist"
 
 installPacmanWrapper :: MonadIO io => App io
 installPacmanWrapper = AppT $ do
@@ -66,11 +59,7 @@ installPacmanWrapper = AppT $ do
   (*!) installYay
   void $ aurInstall "reflector"
   where
-    installYay = do
-      cmdE <- commandExists "yay"
-      if cmdE
-      then pure $ Right ""
-      else runpenv
+    installYay = runIfNotInstalled "yay" $ runpenv
         ["git clone https://aur.archlinux.org/yay.git /tmp/yay/"
         ,"cd /tmp/yay"
         ,"makepkg -si --noconfirm"
@@ -111,9 +100,7 @@ installTmux :: MonadIO io => App io
 installTmux = AppT $ do
   _ <- aurInstall' ["tmux", "tmux-tpm"]
   tpmAlreadyExists <- exitsOk "ls ~/tmux/plugins/tpm/"
-  if tpmAlreadyExists
-  then pure ()
-  else prun' "git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm"
+  unless tpmAlreadyExists $ githubClone' "tmux-plugins/tpm" "~/.tmux/"
 
 installIntellij :: MonadIO io => App io
 installIntellij = AppT $ do
@@ -159,8 +146,7 @@ installGo = AppT $ do
   bin  <- (~/) "go/bin"
   src  <- (~/) "go/src"
   liftIO $ mktrees [bin, src]
-  cmdE <- commandExists "golint"
-  unless cmdE $ prun' "go get -u github.com/golang/lint/golint"
+  runIfNotInstalled' "golint" $ prun "go get -u github.com/golang/lint/golint"
 
 installGit :: MonadIO io => App io
 installGit = AppT $ do
@@ -190,15 +176,15 @@ installi3 = AppT $ do
   aurInstallF' "./yaourt_i3.txt"
   installLocker
   where
-    installLocker = do
-      (*!) $ prun "git clone https://github.com/kuravih/gllock /tmp"
-      shaderPath <- (~/) ".gllock"
-      (*!) $ runpenv
-        [ "cd /tmp/gllock"
-        , "cat config.mk | grep -v 'SHADER_LOCATION' | grep -v 'FRGMNT_SHADER' > config.mk"
-        , "echo 'FRGMNT_SHADER = crt.fragment.gls' > config.mk"
-        , "echo 'SHADER_LOCATION = " <> show shaderPath <> "' > config.mk"
-        ]
+    installLocker =
+      runIfNotInstalled' "gllock" $ do
+        shaderPath <- (~/) ".gllock"
+        runpenv
+          [ "cd /tmp/gllock"
+          , "cat config.mk | grep -v 'SHADER_LOCATION' | grep -v 'FRGMNT_SHADER' > config.mk"
+          , "echo 'FRGMNT_SHADER = crt.fragment.gls' > config.mk"
+          , "echo 'SHADER_LOCATION = " <> show shaderPath <> "' > config.mk"
+          ]
 
 printErrorAndContinue :: MonadIO io => App io -> App io
 printErrorAndContinue = ignoreExcept (putStrLn . Tx.unpack)
