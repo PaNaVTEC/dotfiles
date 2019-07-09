@@ -9,16 +9,25 @@ splitFlacSpecialCue () {
 }
 
 pathOfSong () {
-  beet ls -f '$path' -- "artist:$1" "title:~$2" | head -n 1
+  beet ls -f '$path' -- "artist:$1" "title:~$2" year- | head -n 1
 }
 
 playListOf () {
+  fileName=$1
+  artist=$2
   while read -r line; do
-    echo "Song: $line"
-    result=$(pathOfSong "$1" "$line")
-    echo "Output: $result"
-    echo "$result" >> "$2.m3u"
-  done < "$2"
+    if [ -z "$artist" ]; then
+      echo "Parsing: $line"
+      result=$(pathOfSong "$(echo $line | cut -d'-' -f1)" "$(echo $line | cut -d'-' -f2)")
+      echo "Output: $result"
+      echo "$result" >> "$fileName.m3u"
+    else
+      echo "Parsing: $line"
+      result=$(pathOfSong "$artist" "$line")
+      echo "Output: $result"
+      echo "$result" >> "$fileName.m3u"
+    fi
+  done < "$fileName"
 }
 
 fixFiioAbsolutePaths () {
