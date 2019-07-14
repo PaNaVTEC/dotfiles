@@ -212,19 +212,18 @@ breakIfFail res' = do
   liftIO . putStrLn $ s'
   printErrorAndContinue app
 
-(*!>) :: MonadIO io => String -> AppT io a -> App io
-(*!>) s' app = do
-  liftIO . putStrLn $ "## " <> s'
-  void app
+(*!>) :: MonadIO io => String -> io a -> io ()
+(*!>) s' app
+  = (liftIO . putStrLn $ "## " <> s') *> void app
 
 writeLogToFile :: MonadIO io => io ExecResult -> io ExecResult
 writeLogToFile iores = do
-    result <- iores
-    mktree "/tmp/setuplogs/"
-    touch "/tmp/setuplogs/log.txt"
-    liftIO . runFileLoggingT "/tmp/setuplogs/log.txt"
-      $ do
-        case result of
-          (Right r) -> logInfoN r
-          (Left l)  -> logErrorN l
-        pure result
+  result <- iores
+  mktree "/tmp/setuplogs/"
+  touch "/tmp/setuplogs/log.txt"
+  liftIO . runFileLoggingT "/tmp/setuplogs/log.txt"
+    $ do
+      case result of
+        (Right r) -> logInfoN r
+        (Left l)  -> logErrorN l
+      pure result
