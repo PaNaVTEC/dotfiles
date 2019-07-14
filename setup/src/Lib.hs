@@ -22,7 +22,7 @@ newtype AppT m a = AppT
   (Functor, Applicative, Monad, MonadIO, MonadError Text, MonadTrans)
 
 entryPoint :: IO ()
-entryPoint = void . runExceptT . unApp . printErrorAndContinue $ install'
+entryPoint = void . runExceptT . printErrorAndContinue . unApp $ install'
 
 install' :: MonadIO io => App io
 install' = do
@@ -188,12 +188,12 @@ installi3 = AppT $ do
           , "sudo make clean install"
           ]
 
-printErrorAndContinue :: MonadIO io => App io -> App io
+printErrorAndContinue :: MonadIO io => ExceptT Text io () -> ExceptT Text io ()
 printErrorAndContinue = ignoreExcept (putStrLn . Tx.unpack)
 
-ignoreExcept :: MonadIO io => (Text -> IO ()) -> App io -> App io
+ignoreExcept :: MonadIO io => (Text -> IO ()) -> ExceptT Text io () -> ExceptT Text io ()
 ignoreExcept f' app' = lift $ do
-  result <- runExceptT . unApp $ app'
+  result <- runExceptT app'
   either
     (liftIO . f')
     pure
@@ -210,7 +210,7 @@ breakIfFail res' = do
 (*#>) :: MonadIO io => String -> App io -> App io
 (*#>) s' app = do
   liftIO . putStrLn $ s'
-  printErrorAndContinue app
+  AppT $ printErrorAndContinue (unApp app)
 
 (*!>) :: MonadIO io => String -> io a -> io ()
 (*!>) s' app
