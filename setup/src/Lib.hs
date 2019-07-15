@@ -207,10 +207,13 @@ breakIfFail res' = do
 (*!) :: MonadIO io => io ExecResult -> ExceptT Text io ()
 (*!) = breakIfFail
 
-(*#>) :: MonadIO io => String -> App io -> App io
-(*#>) s' app = do
+printTitleErrorAndContinue :: MonadIO io => String -> ExceptT Text io () -> ExceptT Text io ()
+printTitleErrorAndContinue s' app = do
   liftIO . putStrLn $ s'
-  AppT $ printErrorAndContinue (unApp app)
+  printErrorAndContinue app
+
+(*#>) :: MonadIO io => String -> App io -> App io
+(*#>) s' app = AppT $ printTitleErrorAndContinue s' (unApp app)
 
 (*!>) :: MonadIO io => String -> io a -> io ()
 (*!>) s' app
