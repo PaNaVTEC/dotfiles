@@ -34,7 +34,14 @@
   (define-key evil-motion-state-map (kbd "C-w j") 'evil-window-down)
   (define-key evil-motion-state-map (kbd "C-w h") 'evil-window-left)
   (define-key evil-motion-state-map (kbd "C-w l") 'evil-window-right)
-  (define-key evil-motion-state-map (kbd "C-w z") 'maximize-window)
+  (define-key evil-motion-state-map (kbd "C-k") 'evil-window-up)
+  (define-key evil-motion-state-map (kbd "C-j") 'evil-window-down)
+  (define-key evil-motion-state-map (kbd "C-h") 'evil-window-left)
+  (define-key evil-motion-state-map (kbd "C-l") 'evil-window-right)
+
+  ;;Maximise window
+  (define-key evil-motion-state-map (kbd "C-w f") 'maximize-window)
+  (define-key evil-motion-state-map (kbd "C-f") 'maximize-window)
 
   ;; Buffer navigation
   (define-key evil-motion-state-map (kbd "[ b") 'evil-prev-buffer)
@@ -64,6 +71,12 @@
   (evil-ex-define-cmd
    "ReloadConfig"
    '(lambda () (interactive) (load-file (concat emacs-dir "init.el"))))
+
+  ;; More vim like
+  (customize-set-variable 'evil-want-Y-yank-to-eol t)
+  (customize-set-variable 'evil-want-C-d-scroll t)
+  (customize-set-variable 'evil-want-C-u-scroll t)
+  (define-key evil-normal-state-map (kbd "C-g") 'evil-show-file-info)
 
   ;; Typo avoider
   (evil-ex-define-cmd "WQ" "wq")

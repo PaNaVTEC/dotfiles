@@ -1,6 +1,6 @@
 alias gpl='git prunelocal'
 alias gdl='git discard'
-alias glrb='git pull --rebase'
+alias glrb='git pull --rebase --autostash'
 alias gcam='git add . && git commit -a -m'
 alias gprune='git branch | grep -v master | xargs git branch -D'
 alias pr='hub pull-request'
