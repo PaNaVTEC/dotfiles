@@ -22,7 +22,7 @@ newtype AppT m a = AppT
   (Functor, Applicative, Monad, MonadIO, MonadError Text, MonadTrans)
 
 entryPoint :: IO ()
-entryPoint = void . runExceptT . unApp . printErrorAndContinue $ install'
+entryPoint = void . runExceptT . printErrorAndContinue . unApp $ install'
 
 install' :: MonadIO io => App io
 install' = do
@@ -188,12 +188,12 @@ installi3 = AppT $ do
           , "sudo make clean install"
           ]
 
-printErrorAndContinue :: MonadIO io => App io -> App io
+printErrorAndContinue :: MonadIO io => ExceptT Text io () -> ExceptT Text io ()
 printErrorAndContinue = ignoreExcept (putStrLn . Tx.unpack)
 
-ignoreExcept :: MonadIO io => (Text -> IO ()) -> App io -> App io
+ignoreExcept :: MonadIO io => (Text -> IO ()) -> ExceptT Text io () -> ExceptT Text io ()
 ignoreExcept f' app' = lift $ do
-  result <- runExceptT . unApp $ app'
+  result <- runExceptT app'
   either
     (liftIO . f')
     pure
@@ -207,24 +207,26 @@ breakIfFail res' = do
 (*!) :: MonadIO io => io ExecResult -> ExceptT Text io ()
 (*!) = breakIfFail
 
-(*#>) :: MonadIO io => String -> App io -> App io
-(*#>) s' app = do
+printTitleErrorAndContinue :: MonadIO io => String -> ExceptT Text io () -> ExceptT Text io ()
+printTitleErrorAndContinue s' app = do
   liftIO . putStrLn $ s'
   printErrorAndContinue app
 
-(*!>) :: MonadIO io => String -> AppT io a -> App io
-(*!>) s' app = do
-  liftIO . putStrLn $ "## " <> s'
-  void app
+(*#>) :: MonadIO io => String -> App io -> App io
+(*#>) s' app = AppT $ printTitleErrorAndContinue s' (unApp app)
+
+(*!>) :: MonadIO io => String -> io a -> io ()
+(*!>) s' app
+  = (liftIO . putStrLn $ "## " <> s') *> void app
 
 writeLogToFile :: MonadIO io => io ExecResult -> io ExecResult
 writeLogToFile iores = do
-    result <- iores
-    mktree "/tmp/setuplogs/"
-    touch "/tmp/setuplogs/log.txt"
-    liftIO . runFileLoggingT "/tmp/setuplogs/log.txt"
-      $ do
-        case result of
-          (Right r) -> logInfoN r
-          (Left l)  -> logErrorN l
-        pure result
+  result <- iores
+  mktree "/tmp/setuplogs/"
+  touch "/tmp/setuplogs/log.txt"
+  liftIO . runFileLoggingT "/tmp/setuplogs/log.txt"
+    $ do
+      case result of
+        (Right r) -> logInfoN r
+        (Left l)  -> logErrorN l
+      pure result
