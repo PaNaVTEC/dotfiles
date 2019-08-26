@@ -206,4 +206,4 @@
 (add-hook 'prog-mode-hook
           #'add-pragmatapro-prettify-symbols-alist)
 
-(global-prettify-symbols-mode +1)
+(if (display-graphic-p) (global-prettify-symbols-mode +1))

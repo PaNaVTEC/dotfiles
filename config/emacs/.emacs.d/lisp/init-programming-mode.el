@@ -24,7 +24,7 @@
 
   (if programming-mode
     (progn
-      (prettify-symbols-mode +1)
+      (if (display-graphic-p) (prettify-symbols-mode +1))
       (whitespace-mode +1)
       (proper-gutter-mode +1)
       (rainbow-delimiters-mode +1)
