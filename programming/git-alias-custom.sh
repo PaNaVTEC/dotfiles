@@ -24,6 +24,10 @@ gdam() {
   gda 'master'
 }
 
+gdamsbs () {
+  git difftool --tool=meld --dir-diff master...$(git_current_branch)
+}
+
 # Copied this from: https://github.com/robbyrussell/oh-my-zsh/blob/3705d47bb3f3229234cba992320eadc97a221caf/lib/git.zsh
 # Outputs the name of the current branch
 # Usage example: git pull origin $(git_current_branch)

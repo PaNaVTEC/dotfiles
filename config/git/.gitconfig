@@ -6,6 +6,8 @@
   path = ~/dotfiles/config/git/.gitconfig-habito
 [credential]
   helper = cache --timeout 86400
+[diff]
+  tool = vimdiff
 [color]
   ui = auto
 [merge]
