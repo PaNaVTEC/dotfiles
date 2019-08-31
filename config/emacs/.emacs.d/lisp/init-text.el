@@ -1,7 +1,6 @@
-(define-minor-mode
-  good-spelling-mode
-  :ligter " T"
-  :group 'text
+(define-minor-mode good-spelling-mode
+  "Mode for regular text editing"
+  nil " T" nil
 
   (use-package helm-flyspell :ensure t :defer t)
   (use-package wc-mode :diminish flyspell-mode :ensure t :defer t)

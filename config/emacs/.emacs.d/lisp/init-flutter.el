@@ -1,9 +1,5 @@
 (require 'init-programming-mode)
 
-;(use-package
-;  eglot
-;  :ensure t)
-
 (use-package
   lsp-mode
   :ensure t
@@ -17,17 +13,14 @@
   :ensure t
   :mode "\\.dart$"
   :config
+    (setq dart-sdk-path "~/flutter/bin/cache/dart-sdk/")
     (add-hook 'dart-mode-hook 'programming-mode)
     (add-hook 'dart-mode-hook 'lsp)
     (with-eval-after-load "projectile"
       (add-to-list 'projectile-project-root-files-bottom-up "pubspec.yaml")
       (add-to-list 'projectile-project-root-files-bottom-up "BUILD"))
     (setq lsp-auto-guess-root t)
-;    (with-eval-after-load "eglot"
-;      (add-to-list 'eglot-server-programs '(dart-mode . ("dart_language_server")))
-;      (add-hook 'dart-mode-hook 'eglot-ensure))
-    (setq dart-format-on-save t)
-    (setq dart-sdk-path "~/flutter/bin/cache/dart-sdk/"))
+    (setq dart-format-on-save t))
 
 (use-package
   flutter

@@ -5,18 +5,17 @@
 (require 'init-invisible-chars)
 (require 'init-syntax-checker)
 (require 'init-parenthesis)
-(require 'init-compile-mode)
 (require 'init-code-snippets)
 (require 'init-documentation)
 (require 'init-code-folding)
 (require 'init-syntatic-close)
+(require 'init-projectmanagement)
 (require 'init-tags)
 (require 'init-indentation)
 
-(define-minor-mode
-  programming-mode
-  :lighter " λ"
-  :group 'programming
+(define-minor-mode programming-mode
+  "Programming custom mode"
+  nil " λ" nil
 
   (evil-leader/set-key "r" 'recompile)
 

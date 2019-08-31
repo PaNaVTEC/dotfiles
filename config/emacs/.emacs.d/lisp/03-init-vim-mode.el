@@ -43,9 +43,6 @@
   (define-key evil-motion-state-map (kbd "C-w f") 'maximize-window)
   (define-key evil-motion-state-map (kbd "C-f") 'maximize-window)
 
-  ;;Align
-  (evil-leader/set-key "a" 'align)
-
   ;; Buffer navigation
   (define-key evil-motion-state-map (kbd "[ b") 'evil-prev-buffer)
   (define-key evil-motion-state-map (kbd "] b") 'evil-next-buffer)
@@ -118,6 +115,7 @@
   :ensure t
   :config
   (global-evil-leader-mode)
+  (evil-leader/set-key "a" 'align)
   (evil-leader/set-leader ","))
 
 (use-package

@@ -8,12 +8,14 @@
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
 (add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/") t)
 (setq package-enable-at-startup nil)
-(package-initialize)
+;(package-initialize)
 
 (defvar *is-a-mac* (eq system-type 'darwin))
 (defvar *cygwin* (eq system-type 'cygwin))
 (defvar *linux* (or (eq system-type 'gnu/linux) (eq system-type 'linux)))
 (defvar emacs-dir "~/.emacs.d/")
+(when (version<= emacs-version "26.2")
+  (package-initialize))
 
 (unless
   (package-installed-p 'use-package)
