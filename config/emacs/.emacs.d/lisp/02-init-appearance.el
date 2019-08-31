@@ -37,7 +37,9 @@
     (global-set-key (kbd "C-+") 'text-scale-increase)
     (global-set-key (kbd "C--") 'text-scale-decrease)))
 
-(when (version< emacs-version "27")
-  (set-default-font my-font))
+(if
+  (version< emacs-version "27")
+  (set-default-font my-font)
+  (set-face-attribute 'default nil :font my-font))
 
 (provide '02-init-appearance)
