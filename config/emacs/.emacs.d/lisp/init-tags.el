@@ -11,6 +11,6 @@
   (setq helm-xref-candidate-formatting-function  'helm-xref-format-candidate-long))
 
 (location-list-buffer (rx bos "*helm-xref*"))
-(location-list-buffer (rx bos "*helm-mode-xref*"))
+(location-list-buffer (rx bos "*helm-mode-xref-find-references*"))
 (location-list-buffer (rx bos "*xref*"))
 (provide 'init-tags)
