@@ -14,7 +14,7 @@ else
 fi
 alias ll='exa'
 alias la='ll'
-alias exa='exa -bghlaU --git --group-directories-first'
+alias exa='exa -bghla --git --group-directories-first'
 alias grep="grep --color=auto"
 alias connectvpn='sudo toggle-openvpn.sh'
 alias wireup='sudo wg-quick up wg0-client'
