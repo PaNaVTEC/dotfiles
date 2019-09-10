@@ -23,6 +23,21 @@ alias dotfiles='(cd "$DOTFILES_LOCATION" && emacs -nw)'
 alias ffs='sudo $(fc -ln -1)'
 alias shortcuts="$DOTFILES_LOCATION/config/shortcuts/shortcuts.sh"
 alias cls='printf "\033c"'
+alias scriptinfo="grep -E '^[[:space:]]*([[:alnum:]_]+[[:space:]]*\(\)|alias[[:space:]]+[[:alnum:]_]+|function[[:space:]]+[[:alnum:]_]+)'"
+
+availableCommands () {
+  shopt -s extdebug
+  declare -F | awk '{print $NF}' | while read func; do \
+    declare -F $func; \
+  done; \
+  shopt -u extdebug
+}
+
+indexOf () {
+  availableCommands | grep -E "$1.[[:alnum:]]+\$" | awk '{print $1}' | while read nFunc; do \
+    type $nFunc | grep -v "is a function"; \
+  done;
+}
 
 autogeneratePassword () {
   LC_CTYPE=C tr -dc "[:alnum:]" < /dev/urandom | fold "-w${1:-32}" | head -1
