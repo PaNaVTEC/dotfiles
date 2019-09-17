@@ -21,6 +21,8 @@
 
   (setq show-paren-delay 0)
 
+  (if (not (version< emacs-version "26")) (set-fill-column 80))
+
   (if programming-mode
     (progn
       (if (display-graphic-p) (prettify-symbols-mode +1))
@@ -34,6 +36,7 @@
       (company-mode +1)
       (origami-mode +1)
       (initialize-project-tags)
+      (if (not (version< emacs-version "26")) (display-fill-column-indicator-mode +1))
       (highlight-indent-guides-mode +1))
     (progn
       (prettify-symbols-mode -1)
@@ -46,6 +49,7 @@
       (xref-etags-mode -1)
       (company-mode -1)
       (origami-mode -1)
+      (if (not (version< emacs-version "26")) (display-fill-column-indicator-mode -1))
       (highlight-indent-guides-mode -1))))
 
 (defun set-compile-for (mode command)
