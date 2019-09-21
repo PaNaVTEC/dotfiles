@@ -72,6 +72,8 @@
    "ReloadConfig"
    '(lambda () (interactive) (load-file (concat emacs-dir "init.el"))))
 
+  (evil-ex-define-cmd "od" 'kill-other-buffers)
+
   ;; More vim like
   (customize-set-variable 'evil-want-Y-yank-to-eol t)
   (customize-set-variable 'evil-want-C-d-scroll t)
@@ -131,5 +133,10 @@
   :defer t
   :config
   (evil-collection-init))
+
+(defun kill-other-buffers ()
+  "Kill all other buffers."
+  (interactive)
+        (mapc 'kill-buffer (delq (current-buffer) (buffer-list))))
 
 (provide '03-init-vim-mode)
