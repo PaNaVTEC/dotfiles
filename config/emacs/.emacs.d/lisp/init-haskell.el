@@ -90,4 +90,8 @@
 
 (location-list-buffer (rx bos "*Intero-Help*"))
 
+(my/highlight-keyword-in-mode 'haskell-mode "error" nil 'font-lock-warning-face)
+(my/highlight-keyword-in-mode 'haskell-mode "undefined" nil 'font-lock-warning-face)
+
+
 (provide 'init-haskell)

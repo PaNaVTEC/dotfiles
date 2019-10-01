@@ -101,4 +101,18 @@ Version 2017-01-11"
         (while (search-forward "\\\"" nil t)
                   (replace-match "\"" "FIXEDCASE" "LITERAL")))))
 
+(defface my/special-keyword-face
+  '((t (:inherit font-lock-keyword-face)))
+  "Face for highlighting special keywords"
+  :group 'my/faces)
+
+(defun my/highlight-keyword-in-mode (mode kw &optional in-comment face)
+  (let ((fc (or face (if in-comment 'my/special-comment-keyword-face 'my/special-keyword-face)))
+        (str (format "\\<\\(%s\\)\\>" kw)))
+    (font-lock-add-keywords
+     mode
+     (if in-comment
+         `((,str 1 ,`(quote ,fc) prepend))
+       `((,str . ,`(quote ,fc)))))))
+
 (provide 'init-programming-mode)
