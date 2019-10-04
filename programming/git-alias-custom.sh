@@ -9,6 +9,11 @@ alias gdup='git diff --diff-filter=U'
 alias gbsup='git branch --set-upstream-to=origin/$(git_current_branch)'
 alias gpf='git push --force-with-lease'
 alias gds='git diff --staged'
+alias gssc='git status -s | awk '\''{printf("%0d %s\n", NR, $0)}'\'''
+
+gcoc() {
+  gco $(gss | sed -n "$1p" | sed s/^...//)
+}
 
 gblame() {
   git log -p -M --follow --stat -- "$1"
