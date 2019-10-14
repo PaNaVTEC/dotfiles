@@ -15,6 +15,10 @@ gcoc() {
   gco $(gss | sed -n "$1p" | sed s/^...//)
 }
 
+gac() {
+  ga $(gss | sed -n "$1p" | sed s/^...//)
+}
+
 gblame() {
   git log -p -M --follow --stat -- "$1"
 }
