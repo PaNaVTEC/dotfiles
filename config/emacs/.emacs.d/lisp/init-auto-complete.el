@@ -3,7 +3,7 @@
   :ensure t
   :diminish company-mode
   :config
-  (setq company-idle-delay 0)
+  (setq company-idle-delay 0.3)
   (setq company-show-numbers t))
 
 (use-package
