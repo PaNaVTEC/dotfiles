@@ -35,7 +35,7 @@
     :ensure t
     :pin melpa-stable
     :config
-    (set-company-backend-for 'typescript-mode-hook 'company-tide)
+    ;(set-company-backend-for 'typescript-mode-hook 'company-tide)
     (add-hook 'typescript-mode-hook 'programming-mode)
     (add-hook 'typescript-mode-hook 'my/setup-tide)))
 

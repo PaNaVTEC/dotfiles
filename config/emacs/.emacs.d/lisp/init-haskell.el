@@ -52,7 +52,7 @@
 
   (custom-set-variables '(haskell-stylish-on-save nil))
   (set-compile-for 'haskell-mode-hook "stack test")
-  (set-company-backend-for 'haskell-mode-hook 'company-ghci)
+  ;(set-company-backend-for 'haskell-mode-hook 'company-ghci)
   (setq projectile-tags-command "fast-tags -e -R -o %s --exclude=\"%s\" \"%s\"")
 
   (add-hook 'align-load-hook (lambda ()

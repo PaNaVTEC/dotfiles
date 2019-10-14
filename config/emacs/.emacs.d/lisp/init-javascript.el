@@ -43,7 +43,7 @@
         js2-strict-missing-semi-warning nil)
 
   (set-compile-for 'js-mode "yarn test:unit")
-  (set-company-backend-for 'js-mode-hook 'company-tern)
+  ;(set-company-backend-for 'js-mode-hook 'company-tern)
 
   (add-hook 'js-mode-hook 'programming-mode)
   (add-hook 'js-mode-hook 'tern-mode)
