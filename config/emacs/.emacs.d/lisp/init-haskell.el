@@ -54,15 +54,12 @@
   (set-compile-for 'haskell-mode-hook "stack test")
   ;(set-company-backend-for 'haskell-mode-hook 'company-ghci)
   (setq projectile-tags-command "fast-tags -e -R -o %s --exclude=\"%s\" \"%s\"")
+  (setq haskell-align-imports-pad-after-name t)
 
   (add-hook 'align-load-hook (lambda ()
   (add-to-list 'align-rules-list
                '(haskell-types
                  (regexp . "\\(\\s-+\\)\\(::\\|∷\\)\\s-+")
-                 (modes quote (haskell-mode literate-haskell-mode))))
-  (add-to-list 'align-rules-list
-               '(haskell-types
-                 (regexp . "\\(\\s-+\\)\\as\\s-+")
                  (modes quote (haskell-mode literate-haskell-mode))))
   (add-to-list 'align-rules-list
                '(haskell-assignment
