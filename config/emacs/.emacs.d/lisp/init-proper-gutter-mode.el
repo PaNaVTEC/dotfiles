@@ -14,6 +14,7 @@
     (set-face-background 'diff-hl-insert "#A3BE8C")
     (set-face-background 'diff-hl-delete "#BF616A")
 
+    (location-list-buffer (rx bos "*diff-hl*"))
     (setq
       diff-hl-margin-symbols-alist
       '((insert . " ") (delete . " ") (change . " ") (unknown . " ") (ignored . " ")))

@@ -17,7 +17,6 @@
   "Programming custom mode"
   nil " λ" nil
 
-  (setq linum-format "  %3s ")
   (evil-leader/set-key "r" 'recompile)
 
   (setq show-paren-delay 0)
@@ -31,7 +30,7 @@
       (diff-hl-mode +1)
       (diff-hl-margin-mode +1)
       (diff-hl-flydiff-mode +1)
-      (linum-mode +1)
+      (display-line-numbers-mode +1)
       (rainbow-delimiters-mode +1)
       (show-paren-mode +1)
       (yas-global-mode +1)
@@ -48,7 +47,7 @@
       (diff-hl-mode -1)
       (diff-hl-margin-mode -1)
       (diff-hl-flydiff-mode -1)
-      (linum-mode -1)
+      (display-line-numbers-mode -1)
       (rainbow-delimiters-mode -1)
       (show-paren-mode -1)
       (yas-global-mode -1)
