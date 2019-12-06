@@ -24,7 +24,7 @@ URxvt.urlLauncher: /usr/bin/xdg-open
 URxvt.url-launcher: /usr/bin/xdg-open
 URxvt.matcher.pattern.1: \\bwww\\.[\\w-]+\\.[\\w./?&@#-]*[\\w/-]
 URxvt.matcher.button: 1
-Urxvt*saveLines: 20480
+Urxvt*saveLines: 65535
 URxvt.keysym.C-Delete:    matcher:last
 URxvt.keysym.M-Delete:    matcher:list
 
