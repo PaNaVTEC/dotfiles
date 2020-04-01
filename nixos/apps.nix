@@ -5,8 +5,6 @@
     dropbox
     evince
     pinta
-    beancount
-    fava
     libreoffice
     transmission_gtk
     vlc

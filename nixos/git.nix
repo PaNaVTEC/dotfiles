@@ -5,7 +5,6 @@
     git
     gibo
     gitAndTools.hub
-    gitAndTools.tig
     gitAndTools.diff-so-fancy
   ];
 }

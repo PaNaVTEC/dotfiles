@@ -3,7 +3,6 @@
 {
   environment.systemPackages = with pkgs; [
     shellcheck
-    autojump
     exa
     unzip
     unrar
@@ -14,7 +13,6 @@
     w3m
     ffmpegthumbnailer
     atool
-    taskwarrior
     tasksh
     xsel
     lm_sensors

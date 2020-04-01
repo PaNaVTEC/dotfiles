@@ -2,8 +2,8 @@
 
 {
   environment.systemPackages = with pkgs; [
-    rambox
-   	zoom-us
+    zoom-us
+    slack
   ];
 
 }

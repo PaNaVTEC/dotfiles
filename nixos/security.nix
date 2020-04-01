@@ -2,9 +2,6 @@
 
 {
   environment.systemPackages = with pkgs; [
-    keepass
-    keepass-keepasshttp
-    keepassxc
     gksu
   ];
 
