@@ -1,22 +1,20 @@
 { config, pkgs, ... }:
 
-let
-  userModule = (import ./user.nix);
-  hostname = userModule.hostname;
-in
 {
+
   networking = {
-    hostName = hostname;
     networkmanager.enable = true;
+    nameservers = ["103.86.96.100" "103.86.99.100"];
+    firewall.enable = false;
+    enableIPv6 = false;
   };
 
-  # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ 8080 80 3000 ];
-  # networking.firewall.allowedUDPPorts = [ ];
-  # Or disable the firewall altogether.
-  # networking.firewall.enable = false;
-
   environment.systemPackages = with pkgs; [
-    iw networkmanagerapplet openresolv
+    iw
+    networkmanagerapplet
+    bind
+    wirelesstools
+    wireguard
+    linuxHeaders
   ];
 }

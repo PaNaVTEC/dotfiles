@@ -2,9 +2,9 @@
 
 let
   terminus-td1 = pkgs.stdenv.lib.overrideDerivation pkgs.terminus_font (oldAttrs : {
-    configurePhase = ''
+    postPatch = ''
       patch < alt/td1.diff
-    '' + oldAttrs.configurePhase;
+    '' + oldAttrs.postPatch;
   });
 in
 {
@@ -16,6 +16,7 @@ in
       noto-fonts-emoji
       symbola
       nerdfonts
+      font-awesome-ttf
     ];
   };
 }

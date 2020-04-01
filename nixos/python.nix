@@ -2,8 +2,6 @@
 
 {
   environment.systemPackages = with pkgs; [
-    rambox
-   	zoom-us
+    python3
   ];
-
 }

@@ -5,6 +5,9 @@
     keepass
     keepass-keepasshttp
     keepassxc
+    gksu
   ];
 
+  services.physlock.enable = true;
+  services.physlock.allowAnyUser = true;
 }

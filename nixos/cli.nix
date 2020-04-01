@@ -5,7 +5,6 @@
     shellcheck
     autojump
     exa
-    dropbox-cli
     unzip
     unrar
     jq
@@ -15,10 +14,21 @@
     w3m
     ffmpegthumbnailer
     atool
-    neomutt
     taskwarrior
     tasksh
+    xsel
+    lm_sensors
+    ag
+    powerline-go
+    nix-prefetch-git
+    bat
+    youtube-dl
+    exfat
+    tldr
   ];
 
-  programs.bash.enableCompletion = true;
+  programs = {
+    bash.enableCompletion = true;
+    tmux.enable = true;
+  };
 }

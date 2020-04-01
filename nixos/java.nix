@@ -1,7 +1,12 @@
 { config, pkgs, ... }:
 
 {
+
+  programs.java = {
+    enable = true;
+  };
+
   environment.systemPackages = with pkgs; [
-    openjdk openjdk10 maven gradle jetbrains.idea-community
+    jetbrains.idea-ultimate
   ];
 }
