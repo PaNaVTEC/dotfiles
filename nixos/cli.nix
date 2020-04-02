@@ -23,6 +23,8 @@
     youtube-dl
     exfat
     tldr
+    glances
+    killall
   ];
 
   programs = {

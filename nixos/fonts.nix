@@ -17,6 +17,7 @@ in
       symbola
       nerdfonts
       font-awesome-ttf
+      iosevka-bin
     ];
   };
 }

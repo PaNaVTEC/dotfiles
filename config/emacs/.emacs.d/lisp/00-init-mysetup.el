@@ -13,7 +13,7 @@
   :group 'mysetup)
 
 ;; Fonts
-(defcustom my-font "Pragmata Pro Mono-14"
+(defcustom my-font "Iosevka"
   "Emacs font"
   :type 'string
   :group 'mysetup)

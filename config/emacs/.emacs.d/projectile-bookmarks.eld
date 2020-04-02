@@ -1,0 +1,1 @@
+("~/dotfiles/" "~/code/i3blocks-hs-contrib/")
