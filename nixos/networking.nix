@@ -1,9 +1,10 @@
 { config, pkgs, ... }:
 
 {
-
   networking = {
-    networkmanager.enable = true;
+    networkmanager = {
+      enable = true;
+    };
     firewall.enable = false;
     enableIPv6 = false;
   };
@@ -14,6 +15,5 @@
     bind
     wirelesstools
     wireguard
-    linuxHeaders
   ];
 }

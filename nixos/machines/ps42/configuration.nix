@@ -10,9 +10,12 @@
   networking = {
     hostName = "mVTEC";
     useDHCP = false;
-    interfaces.enp0s20f0u3.useDHCP = true;
-    interfaces.wlp2s0.useDHCP = true;
+#    interfaces.enp0s20f0u3.useDHCP = true;
+#    interfaces.wlp2s0.useDHCP = true;
   };
+
+  programs.light.enable = true;
+  hardware.bumblebee.enable = true;
 
   boot = {
     loader = {

@@ -1,12 +1,9 @@
 { config, pkgs, ... }:
 
-let
-  i3blocks-hs-contrib = pkgs.haskellPackages.callPackage ./pkgs/i3blocks-hs-contrib { };
-in
 {
   services.xserver = {
     enable = true;
-
+    displayManager.startx.enable = true;
     windowManager.i3 = {
       package = pkgs.i3-gaps;
       enable = true;
@@ -18,6 +15,7 @@ in
     libinput.enable = true;
     layout = "us";
     xkbOptions = "eurosign:e";
+    exportConfiguration = true;
   };
 
   environment.systemPackages = with pkgs; [
@@ -43,7 +41,6 @@ in
     xfce.thunar-dropbox-plugin
     xfce.thunar-archive-plugin
     compton
-#    i3blocks-hs-contrib
     masterpdfeditor
     ];
 }

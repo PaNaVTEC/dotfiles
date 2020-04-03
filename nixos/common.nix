@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 
 {
   imports =
@@ -33,11 +33,7 @@
     wget vim htop imagemagick gnumake binutils
   ];
 
-  services.xserver = {
-    enable = true;
-    layout = "us";
-    exportConfiguration = true;
-  };
+  systemd.services.systemd-udev-settle.enable = lib.mkForce false;
 
   nixpkgs.config = {
     allowUnfree = true;
