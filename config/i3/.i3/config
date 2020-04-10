@@ -135,8 +135,8 @@ bindsym XF86AudioMicMute exec pulseaudio-ctl mute
 # Brightness
 bindsym XF86KbdBrightnessDown exec kbdlight down 5
 bindsym XF86KbdBrightnessUp exec kbdlight up 10
-bindsym XF86MonBrightnessDown exec xbacklight -dec 5 
-bindsym XF86MonBrightnessUp exec xbacklight -inc 10
+bindsym XF86MonBrightnessDown exec light -U 5 
+bindsym XF86MonBrightnessUp exec light -A 10
 
 #Touchpad
 bindsym XF86TouchpadToggle exec "synclient TouchpadOff=$(synclient | awk '/TouchpadOff/ {print ($3+1)%2}')"
