@@ -3,6 +3,7 @@
 {
   environment.systemPackages = with pkgs; [
     pavucontrol
+    pulseaudio-ctl
     ponymix
     clementine
   ];

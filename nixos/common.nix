@@ -9,20 +9,15 @@
       ./fonts.nix
       ./apps.nix
       ./emacs.nix
-      ./scala.nix
       ./java.nix
-      ./haskell.nix
       ./git.nix
       ./virtualization.nix
       ./containerization.nix
       ./security.nix
       ./web-browsers.nix
-      ./golang.nix
       ./cli.nix
       ./messaging.nix
       ./audio.nix
-      ./python.nix
-      ./javascript.nix
       ./users.nix
       ./bluetooth.nix
     ];

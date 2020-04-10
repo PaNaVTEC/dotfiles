@@ -41,5 +41,6 @@
     xfce.thunar-archive-plugin
     compton
     evince
+#    haskellPackages.i3blocks-hs-contrib
     ];
 }

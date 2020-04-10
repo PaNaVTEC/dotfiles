@@ -1,7 +1,7 @@
-{ config, pkgs, ... }:
+with import <nixpkgs> {};
 
-{
-  environment.systemPackages = with pkgs; [
+mkShell {
+  buildInputs = [
     nodejs
     yarn
     nodePackages.tern
