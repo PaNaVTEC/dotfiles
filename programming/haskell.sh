@@ -1,4 +1,4 @@
-#!/bin/bash -e
+#!/usr/bin/env bash
 
 alias ghc='stack exec ghc --'
 alias ghci='stack exec ghci --'

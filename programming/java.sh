@@ -1,4 +1,4 @@
-#!/bin/bash -e
+#!/usr/bin/env bash
 
 projectCreateJava () {
   gradle init --type java-library

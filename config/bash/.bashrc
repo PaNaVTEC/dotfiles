@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 set -o vi
 
 export XDG_CONFIG_HOME=$HOME/.config

@@ -1,4 +1,4 @@
-#!/bin/bash -e
+#!/usr/bin/env bash
 
 export ANDROID_HOME="$HOME/Android/Sdk"
 export JAVA8_HOME="/usr/lib/jvm/java-8-jdk/"
@@ -18,7 +18,3 @@ source "$relativePath/git-alias-custom.sh"
 source "$relativePath/ssl.sh"
 source "$relativePath/tmux.sh"
 source "$relativePath/flutter.sh"
-
-[ -f /usr/local/etc/profile.d/autojump.sh ] && . /usr/local/etc/profile.d/autojump.sh
-[ -f /usr/share/autojump/autojump.bash ] && . /usr/share/autojump/autojump.bash
-[ -f /etc/profile.d/autojump.bash ] && . /etc/profile.d/autojump.bash

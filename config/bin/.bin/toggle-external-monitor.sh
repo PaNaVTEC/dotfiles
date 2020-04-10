@@ -1,4 +1,5 @@
-#!/bin/bash
+#!/usr/bin/env bash
+
 intern=eDP1
 extern=HDMI1
 

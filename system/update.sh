@@ -1,4 +1,4 @@
-#!/bin/bash -e
+#!/usr/bin/env bash
 
 if [[ $DISTRO == "ubuntu" ]]; then
   alias ys='apt-cache search'
@@ -7,6 +7,10 @@ if [[ $DISTRO == "ubuntu" ]]; then
   alias yr='sudo apt-get remove'
   alias yu='sudo apt-get upgrade'
   alias yun='sudo apt-get upgrade -y'
+elif [[ $DISTRO == "nixos" ]]; then
+  alias ys='nix-env -qaP'
+  alias yi='nix-env -i'
+  alias yr='nix-env --uninstall'
 else
   alias y='yay'
   alias ys='yay -Ss'
@@ -18,6 +22,7 @@ else
   alias yun='systemUpdate "--noconfirm";'
   alias updateMirrors='sudo reflector --sort rate -l 10 -f 5 --save /etc/pacman.d/mirrorlist && yay -Syy'
 fi
+
 commitsBehind () {
   git fetch
   git rev-list \

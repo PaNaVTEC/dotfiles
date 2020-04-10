@@ -1,4 +1,5 @@
-#!/bin/bash
+#!/usr/bin/env bash
+
 S60X='atmega32u4'
 FILCO='atmega32u2'
 sudo dfu-programmer $S60X erase

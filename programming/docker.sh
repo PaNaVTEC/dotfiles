@@ -1,4 +1,4 @@
-#!/bin/bash -e
+#!/usr/bin/env bash
 
 # Get latest container ID
 alias dl="docker ps -l -q"

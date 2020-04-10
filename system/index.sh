@@ -1,4 +1,4 @@
-#!/bin/bash -e
+#!/usr/bin/env bash
 
 relativePath="$DOTFILES_LOCATION/system"
 source "$relativePath/update.sh"

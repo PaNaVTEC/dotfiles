@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 readarray -t workspaceNames < ~/.data/workspacenames
 readarray -t workspaceNums < ~/.data/workspacenums
 let i=0

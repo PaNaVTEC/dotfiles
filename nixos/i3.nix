@@ -22,23 +22,24 @@
     xorg.xkill
     xorg.xwininfo
     acpi
-
     dmenu
-
     dunst
-
     i3blocks
     sysstat
-
     i3lock-pixeled
     arandr
     feh
+
+    nordic
+    paper-icon-theme
+    lxappearance
+
     maim
     xfce.thunar
     xfce.thunar-volman
     xfce.thunar-dropbox-plugin
     xfce.thunar-archive-plugin
     compton
-    masterpdfeditor
+    evince
     ];
 }

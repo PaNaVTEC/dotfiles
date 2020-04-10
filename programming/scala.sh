@@ -1,4 +1,5 @@
-#!/bin/bash -e
+#!/usr/bin/env bash
+
 alias sbt='TERM=xterm-256colors sbt'
 
 createProjectScala () {

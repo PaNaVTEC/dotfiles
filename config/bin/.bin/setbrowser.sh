@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 NEWBROWSER=inox.desktop
 
 xdg-mime default $NEWBROWSER x-scheme-handler/http

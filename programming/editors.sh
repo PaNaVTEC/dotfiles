@@ -1,4 +1,4 @@
-#!/bin/bash -e
+#!/usr/bin/env bash
 
 export EDITOR=vim
 export VISUAL=vim

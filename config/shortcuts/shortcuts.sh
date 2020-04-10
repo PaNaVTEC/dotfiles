@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # Config locations
 folders="$HOME/Dropbox/.sync/folders"

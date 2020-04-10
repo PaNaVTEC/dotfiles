@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 (i3-msg -t get_workspaces | jshon -a -e name) | sed -e 's/^"//' -e 's/"$//' > ~/.data/workspacenames
 (i3-msg -t get_workspaces | jshon -a -e num) | sed -e 's/^"//' -e 's/"$//' > ~/.data/workspacenums
 
