@@ -41,3 +41,6 @@ Temporary Items
 config/vpn/server.ovpn
 nixos/user.nix
 result
+config/emacs/.emacs.d/projectile-bookmarks.eld
+config/emacs/.emacs.d/transient/history.el
+  
