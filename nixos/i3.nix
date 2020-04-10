@@ -20,8 +20,6 @@
 
   environment.systemPackages = with pkgs; [
     xorg.xkill
-    xorg.xauth
-    xorg.xbacklight
     xorg.xwininfo
     acpi
 
