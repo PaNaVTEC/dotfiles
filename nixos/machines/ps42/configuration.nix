@@ -15,7 +15,6 @@
   };
 
   programs.light.enable = true;
-  hardware.bumblebee.enable = true;
 
   boot = {
     loader = {
