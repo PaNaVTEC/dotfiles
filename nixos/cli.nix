@@ -2,7 +2,6 @@
 
 {
   environment.systemPackages = with pkgs; [
-    shellcheck
     exa
     unzip
     unrar
@@ -25,6 +24,11 @@
     tldr
     glances
     killall
+    wget
+    vim
+    imagemagick
+    gnumake
+    binutils
   ];
 
   programs = {

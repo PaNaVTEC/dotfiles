@@ -24,11 +24,8 @@
 
   time.timeZone = "Europe/Madrid";
 
-  environment.systemPackages = with pkgs; [
-    wget vim htop imagemagick gnumake binutils
-  ];
-
   systemd.services.systemd-udev-settle.enable = lib.mkForce false;
+  systemd.services.NetworkManager-wait-online.enable = lib.mkForce false;
 
   nixpkgs.config = {
     allowUnfree = true;
