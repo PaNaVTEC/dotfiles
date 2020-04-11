@@ -9,8 +9,10 @@ if [[ $DISTRO == "ubuntu" ]]; then
   alias yun='sudo apt-get upgrade -y'
 elif [[ $DISTRO == "nixos" ]]; then
   alias ys='nix-env -qaP'
-  alias yi='nix-env -i'
-  alias yr='nix-env --uninstall'
+  alias yi='sudo nix-env -i'
+  alias yr='sudo nix-env --uninstall'
+  alias yu='yun'
+  alias yun="sudo nix-channel --update nixpkgs && sudo nix-env -u '*'"
 else
   alias y='yay'
   alias ys='yay -Ss'
