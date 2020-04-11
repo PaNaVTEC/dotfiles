@@ -16,6 +16,9 @@
 
   programs.light.enable = true;
 
+  services.xserver.videoDrivers = [ "intel" ];
+  hardware.opengl.driSupport32Bit = true;
+
   boot = {
     loader = {
       systemd-boot.enable = true;
