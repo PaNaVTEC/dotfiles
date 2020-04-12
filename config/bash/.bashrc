@@ -7,9 +7,8 @@ export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
 export DOTFILES_LOCATION=$HOME/dotfiles
 export DISTRO=$(awk -F "=" '/^ID=/ {print $2}' /etc/*-release)
 
-source "$HOME/.env.sh"
+[ -f "$HOME/.env.sh" ] && source "$HOME/.env.sh"
 source "$DOTFILES_LOCATION/programming/index.sh"
-source "$DOTFILES_LOCATION/finance/index.sh"
 source "$DOTFILES_LOCATION/system/index.sh"
 source "$DOTFILES_LOCATION/system/paths.sh"
 source "$DOTFILES_LOCATION/system/prompt.sh"
