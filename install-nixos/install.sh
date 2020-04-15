@@ -6,11 +6,6 @@ set -x
 # IT WILL BE WIPED
 rootdisk="${rootdisk:-NONE}";
 
-# You can set the passphrase here (so you can view it in plaintext,
-# but do not forget to remove it.
-# TODO: check if this file is on a tempfs just like /etc/nixos/configuration.nix
-passphrase="${passphrase:-NONE}";
-
 help() {
   echo "\
 Basic usage:
@@ -21,11 +16,9 @@ You can declare the following variables to change this script's behaviour:
     Required:
   rootdisk: path to the disk that will serve as root disk,
         will be wiped compeletely
-  passphrase: the boot passphrase for your LUKS partition
 
     Example:
 root@nixos:~$ export rootdisk=/dev/disk/by-id/wwn-0x50026b7275000ae3
-root@nixos:~$ export passphrase=\"my secret passphrase\"
 root@nixos:~$ $0
 "
 
@@ -40,12 +33,6 @@ fi
 if [[ "${rootdisk}" == "NONE" ]]; then
   help;
   echo "please set rootdisk with: \`rootdisk=/dev/disk/by-id/disk_id_for_root_device $0\`" >&2;
-  exit 1;
-fi
-
-if [[ "${passphrase}" == "NONE" ]]; then
-  help;
-  echo "please set passphrase with: \`passphrase=foo $0\`" >&2;
   exit 1;
 fi
 
