@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # This partitions the given rootdisk into two partitions: one for EFI (300MB) and the rest for LUKS (which will contain ZFS)
 # This then formats the resulting EFI partition with FAT32
 
