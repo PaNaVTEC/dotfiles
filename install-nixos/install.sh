@@ -47,6 +47,17 @@ bash "$scriptlocation/formatluks.sh"
 nixos-generate-config --root /mnt
 
 echo "Done!"
-echo "Please check if if everything looks allright in all the files in /mnt/etc/nixos/"
-echo "After that, run nixos-install, reboot your pc and remove your usb stick, you should be set :)"
+echo "Manual STEPS, if not it will not boot:"
+echo "edit /mnt/etc/nixos/configuration.nix and add a section:"
+echo 'initrd.luks.devices = {'
+echo '  root = {'
+echo '    device = "/dev/disk/by-uuid/YOUR DISK UUID (NOT PARTUUID)";'
+echo '    preLVM = true;'
+echo '    allowDiscards = true;'
+echo '  };'
+echo '};'
+echo '\n'
+echo 'To get your UUID do "blkid" and get the uuid from the partition where the typpe is crypto_LUKS'
+echo 'After that, run install-nixos and you should be done'
+
 exit 0
