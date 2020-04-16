@@ -18,8 +18,29 @@
 
   boot = {
     loader = {
-      systemd-boot.enable = true;
+      # It does not really disable systemd, after turning on grub you have to
+      # change the bios configuration and select:
+      # "NixOS boot" over "Linux boot manager"
+      systemd-boot.enable = false;
       efi.canTouchEfiVariables = true;
+      grub = {
+        enable = true;
+        devices = [ "nodev" ];
+        efiSupport = true;
+        version = 2;
+        # FE5E-1305 is the partition UUID got from running 'sudo blkid'
+        # and represents the boot EFI partition of Windows
+        extraEntries = ''
+          menuentry "Windows" {
+            insmod part_gpt
+            insmod fat
+            insmod search_fs_uuid
+            insmod chain
+            search --fs-uuid --set=root FE5E-1305
+            chainloader /EFI/Microsoft/Boot/bootmgfw.efi
+          }
+      '';
+      };
     };
 
     initrd.luks.devices = {
