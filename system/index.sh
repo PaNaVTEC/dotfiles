@@ -61,19 +61,6 @@ up() {
   cd $d
 }
 
-kernelModuleParameters() {
-  cat /proc/modules | cut -f 1 -d " " | while read module; do \
-    echo "Module: $module"; \
-    if [ -d "/sys/module/$module/parameters" ]; then \
-      ls /sys/module/$module/parameters/ | while read parameter; do \
-      echo -n "Parameter: $parameter --> "; \
-      cat /sys/module/$module/parameters/$parameter; \
-    done; \
-  fi; \
-  echo; \
-done
-}
-
 killByName() {
   pkill "$1"
 }
@@ -100,18 +87,8 @@ showListeningPorts() {
   sudo netstat -tulpn | grep LISTEN
 }
 
-backupSystem() {
-  rsync -aAXv --exclude={"/dev/*","/proc/*","/sys/*","/tmp/*","/run/*","/mnt/*","/media/*","/lost+found"} / $1
-}
-
-alias trayer='trayer --width 30 --widthtype pixel --SetDockType false --edge top --align center'
-
 cpuDrainers() {
   ps aux --sort %cpu | tail -5 | cut -c 22-150
-}
-
-setTermiteTitle() {
-  echo `tput tsl` $1  `tput fsl`
 }
 
 forceHwClock() {
@@ -124,6 +101,11 @@ portOfProcessNamed() {
   netstat -tlpn  | grep "$1"
 }
 
-updateDns() {
-  sudo resolvconf -u
+setSshPermissions() {
+  chmod 700 ~/.ssh
+  chmod 644 ~/.ssh/authorized_keys
+  chmod 644 ~/.ssh/known_hosts
+  chmod 644 ~/.ssh/config
+  chmod 600 ~/.ssh/id_rsa
+  chmod 644 ~/.ssh/id_rsa.pub
 }
