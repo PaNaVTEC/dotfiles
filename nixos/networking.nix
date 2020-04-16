@@ -12,6 +12,7 @@
   environment.systemPackages = with pkgs; [
     iw
     networkmanagerapplet
+    networkmanager-l2tp
     bind
     wirelesstools
     wireguard
