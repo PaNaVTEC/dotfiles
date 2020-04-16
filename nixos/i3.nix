@@ -41,6 +41,7 @@
     xfce.thunar-archive-plugin
     compton
     evince
+    gnome3.file-roller
 #    haskellPackages.i3blocks-hs-contrib
     ];
 }
