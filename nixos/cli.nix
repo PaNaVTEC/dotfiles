@@ -29,6 +29,9 @@
     imagemagick
     gnumake
     binutils
+    exfat
+    exfat-utils
+    ntfs3g
   ];
 
   programs = {

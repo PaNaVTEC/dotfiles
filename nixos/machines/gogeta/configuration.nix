@@ -16,6 +16,11 @@
   hardware.enableRedistributableFirmware = true;
   services.xserver.videoDrivers = [ "amdgpu" ];
 
+  fileSystems."/mnt/data" = {
+    device = "/dev/disk/by-partlabel/data";
+    options = [ "uid=1000" "gid=1000" "dmask=007" "fmask=117" ];
+  };
+
   boot = {
     loader = {
       # It does not really disable systemd, after turning on grub you have to

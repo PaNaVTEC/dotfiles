@@ -6,7 +6,7 @@
     evince
     pinta
     libreoffice
-    transmission_gtk
+    qbittorrent
     vlc
     baobab
   ];
