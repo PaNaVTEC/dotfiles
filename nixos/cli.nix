@@ -7,6 +7,7 @@
     unrar
     jq
     neofetch
+    pciutils
     speedtest-cli
     ranger
     w3m
@@ -29,9 +30,14 @@
     imagemagick
     gnumake
     binutils
+
+    #exfat
     exfat
     exfat-utils
     ntfs3g
+    # fat32
+    dosfstools
+    mtools
   ];
 
   programs = {

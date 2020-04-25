@@ -14,14 +14,58 @@
 
   # fixes GPU
   hardware.enableRedistributableFirmware = true;
-  services.xserver.videoDrivers = [ "amdgpu" ];
-
-  fileSystems."/mnt/data" = {
-    device = "/dev/disk/by-partlabel/data";
-    options = [ "uid=1000" "gid=1000" "dmask=007" "fmask=117" ];
+  services.xserver = {
+    videoDrivers = [ "amdgpu" ];
+    xrandrHeads = [
+      "DisplayPorts"
+      {
+        output = "DisplayPort-3";
+        monitorConfig = ''
+          Option "Rotate" "left"
+          Option "PreferredMode" "1920x1080"
+          Option "Position" "0 0"
+        '';
+      }
+      {
+        output = "DisplayPort-0";
+        primary = true;
+        monitorConfig = ''
+          Option "Position" "1080 0"
+          Option "PreferredMode" "3840x2160"
+        '';
+      }
+    ];
+#    resolutions = [
+#      { x = 2048; y = 1152; }
+#      { x = 1920; y = 1080; }
+#    ];
   };
 
+  fileSystems = {
+    "/mnt/data" = {
+      device = "/dev/disk/by-label/data-samsung";
+      fsType = "ntfs";
+      options = [ "defaults" "uid=1000" "nofail" ];
+    };
+
+    "/mnt/data2" = {
+      device = "/dev/disk/by-label/BACKUP";
+      fsType = "vfat";
+      options = [ "defaults" "uid=1000" "nofail" ];
+    };
+  };
+
+  environment.systemPackages = with pkgs; [
+    # ICC monitor color management
+    argyllcms
+  ];
+
   boot = {
+    kernelModules = [
+      "kvm-amd" # enables virtualization
+      "nct6775" # enables cpu sensors
+    ];
+
     loader = {
       # It does not really disable systemd, after turning on grub you have to
       # change the bios configuration and select:

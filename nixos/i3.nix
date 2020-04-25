@@ -7,10 +7,6 @@
     windowManager.i3 = {
       package = pkgs.i3-gaps;
       enable = true;
-      extraSessionCommands = ''
-        dropbox &
-        nm-applet &
-      '';
     };
     libinput.enable = true;
     layout = "us";
