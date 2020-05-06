@@ -11,6 +11,7 @@
     libinput.enable = true;
     layout = "us";
     xkbOptions = "eurosign:e";
+    xkbVariant = "altgr-intl";
     exportConfiguration = true;
   };
 
