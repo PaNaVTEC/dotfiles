@@ -15,6 +15,9 @@ set $WS8 8 
 set $WS9 9  
 set $WS0 10  
 
+set $FONT Iosevka Nerd Font
+set $FONT_SIZE 12
+
 # Default terminal emulator
 set $TERMINAL urxvt
 
@@ -31,14 +34,14 @@ for_window [title="^Nyanyanyanyanyanyanya...$"] mark "STATWIN", fullscreen enabl
 set $mod Mod4
 
 # fonts
-font pango:Iosevka Nerd Font 10
+font "pango:$FONT $FONT_SIZE"
 
 # Move windows with mouse+$mod
 floating_modifier $mod
 
 bindsym $mod+Return exec $TERMINAL
 bindsym $mod+Shift+q kill
-bindsym $mod+d exec --no-startup-id dmenu_run -i -fn 'Iosevka-10'
+bindsym $mod+d exec --no-startup-id dmenu_run -i -fn "$FONT-$FONT_SIZE"
 
 # capture screen
 bindsym Shift+Print exec --no-startup-id scrot "select"
