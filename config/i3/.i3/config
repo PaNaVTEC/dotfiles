@@ -42,6 +42,7 @@ floating_modifier $mod
 bindsym $mod+Return exec $TERMINAL
 bindsym $mod+Shift+q kill
 bindsym $mod+d exec --no-startup-id dmenu_run -i -fn "$FONT-$FONT_SIZE"
+bindsym $mod+Shift+d exec --no-startup-id nix-shell-launcher.sh
 
 # capture screen
 bindsym Shift+Print exec --no-startup-id scrot "select"
