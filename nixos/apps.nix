@@ -9,5 +9,6 @@
     qbittorrent
     vlc
     baobab
+    cura
   ];
 }

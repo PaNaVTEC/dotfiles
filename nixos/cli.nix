@@ -17,6 +17,7 @@
     xsel
     lm_sensors
     ag
+    ripgrep
     powerline-go
     nix-prefetch-git
     bat
@@ -30,6 +31,8 @@
     imagemagick
     gnumake
     binutils
+    sshpass
+    gitAndTools.gh
 
     #exfat
     exfat
