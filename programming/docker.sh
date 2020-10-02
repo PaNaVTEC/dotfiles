@@ -4,10 +4,10 @@
 alias dl="docker ps -l -q"
 
 # Get container process
-alias dps="docker ps"
+alias dps="docker ps | less -iS"
 
 # Get process included stop container
-alias dpa="docker ps -a"
+alias dpa="docker ps -a | less -iS"
 
 # Get images
 alias di="docker images"
@@ -35,6 +35,7 @@ alias drmf='docker stop $(docker ps -a -q) && docker rm $(docker ps -a -q)'
 
 # Remove all images
 dri() { docker rmi $(docker images -q); }
+drif() { docker rmi -f $(docker images -q); }
 
 # Dockerfile build, e.g., $dbu tcnksm/test
 dbu() { docker build -t=$1 .; }
