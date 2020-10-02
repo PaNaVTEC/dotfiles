@@ -2,7 +2,7 @@
   email = panavtec@gmail.com
   name = Christian Panadero
   signingkey = 88EF58F88BE619F6
-[includeIf "gitdir:~/code/habito/"]
+[includeIf "gitdir:~/code/monorepo/"]
   path = ~/dotfiles/config/git/.gitconfig-habito
 [credential]
   helper = cache --timeout 86400
