@@ -2,10 +2,11 @@ with import <nixpkgs> {};
 
 mkShell {
   buildInputs = [
-    nodejs
-    yarn
+    nodejs-12_x
+    (yarn.override { nodejs = nodejs-12_x; })
     nodePackages.tern
-    sass
-    nodePackages.grunt-cli
+    nodePackages.node2nix
+    nodePackages.lerna
+    cypress
   ];
 }
