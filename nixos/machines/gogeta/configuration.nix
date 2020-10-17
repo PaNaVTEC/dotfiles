@@ -12,14 +12,26 @@
     useDHCP = false;
   };
 
-  # fixes GPU
   hardware.enableRedistributableFirmware = true;
   services.xserver = {
-    videoDrivers = [ "amdgpu" ];
+    videoDrivers = [ "nvidia" ];
+    screenSection = ''
+      Option         "metamodes" "DP-4: nvidia-auto-select +1080+0, DP-2.1: nvidia-auto-select +0+0 {rotation=left}"
+    '';
+    monitorSection = ''
+      Option "DPI" "96x96"
+      Option "UseEdidDpi" "FALSE"
+    '';
+    dpi = 96;
     xrandrHeads = [
-      "DisplayPorts"
       {
-        output = "DisplayPort-3";
+        output = "DP-0";
+        monitorConfig = ''
+          Option "Ignore" "true"
+        '';
+      }
+      {
+        output = "DP-2.1";
         monitorConfig = ''
           Option "Rotate" "left"
           Option "PreferredMode" "1920x1080"
@@ -27,18 +39,18 @@
         '';
       }
       {
-        output = "DisplayPort-0";
+        output = "DP-4";
         primary = true;
         monitorConfig = ''
           Option "Position" "1080 0"
           Option "PreferredMode" "3840x2160"
+          ModelName      "LG Electronics LG HDR 4K"
+          HorizSync       135.0 - 135.0
+          VertRefresh     48.0 - 61.0
+          Option         "DPMS"
         '';
       }
     ];
-#    resolutions = [
-#      { x = 2048; y = 1152; }
-#      { x = 1920; y = 1080; }
-#    ];
   };
 
   fileSystems = {

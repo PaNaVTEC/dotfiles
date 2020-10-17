@@ -17,6 +17,7 @@
   environment.systemPackages = with pkgs; [
     xorg.xkill
     xorg.xwininfo
+    xorg.xdpyinfo
     acpi
     dmenu
     dunst
