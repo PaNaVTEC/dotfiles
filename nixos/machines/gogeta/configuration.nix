@@ -14,35 +14,25 @@
 
   hardware.enableRedistributableFirmware = true;
   services.xserver = {
-    videoDrivers = [ "nvidia" ];
-    screenSection = ''
-      Option         "metamodes" "DP-4: nvidia-auto-select +1080+0, DP-2.1: nvidia-auto-select +0+0 {rotation=left}"
-    '';
+    videoDrivers = [ "amdgpu" ];
     monitorSection = ''
       Option "DPI" "96x96"
       Option "UseEdidDpi" "FALSE"
     '';
-    dpi = 96;
     xrandrHeads = [
+#      {
+#        output = "HDMI-1";
+#        monitorConfig = ''
+#          Option "Rotate" "left"
+#          Option "PreferredMode" "1920x1080"
+#          Option "Position" "0 0"
+#        '';
+#      }
       {
         output = "DP-0";
-        monitorConfig = ''
-          Option "Ignore" "true"
-        '';
-      }
-      {
-        output = "DP-2.1";
-        monitorConfig = ''
-          Option "Rotate" "left"
-          Option "PreferredMode" "1920x1080"
-          Option "Position" "0 0"
-        '';
-      }
-      {
-        output = "DP-4";
         primary = true;
         monitorConfig = ''
-          Option "Position" "1080 0"
+          Option "Position" "0 0"
           Option "PreferredMode" "3840x2160"
           ModelName      "LG Electronics LG HDR 4K"
           HorizSync       135.0 - 135.0
@@ -70,6 +60,9 @@
   environment.systemPackages = with pkgs; [
     # ICC monitor color management
     argyllcms
+
+    # cue-like software
+    openrgb
   ];
 
   boot = {
@@ -79,29 +72,8 @@
     ];
 
     loader = {
-      # It does not really disable systemd, after turning on grub you have to
-      # change the bios configuration and select:
-      # "NixOS boot" over "Linux boot manager"
-      systemd-boot.enable = false;
+      systemd-boot.enable = true;
       efi.canTouchEfiVariables = true;
-      grub = {
-        enable = true;
-        devices = [ "nodev" ];
-        efiSupport = true;
-        version = 2;
-        # FE5E-1305 is the partition UUID got from running 'sudo blkid'
-        # and represents the boot EFI partition of Windows
-        extraEntries = ''
-          menuentry "Windows" {
-            insmod part_gpt
-            insmod fat
-            insmod search_fs_uuid
-            insmod chain
-            search --fs-uuid --set=root FE5E-1305
-            chainloader /EFI/Microsoft/Boot/bootmgfw.efi
-          }
-      '';
-      };
     };
 
     initrd.luks.devices = {
