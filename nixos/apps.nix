@@ -10,5 +10,7 @@
     vlc
     baobab
     cura
+    unstable.vscode
+    unstable.ledger-live-desktop
   ];
 }
