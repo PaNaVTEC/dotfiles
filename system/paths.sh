@@ -9,6 +9,7 @@ export PATH=$PATH:"$HOME/.cabal/bin"
 export PATH=$PATH:"$HOME/flutter/bin/cache/dart-sdk/bin"
 export PATH=$PATH:"$HOME/flutter/bin"
 export PATH=$PATH:"$HOME/.pub-cache/bin"
+export PATH=$PATH:"$HOME/Desktop"
 
 export GOPATH="$HOME/go"
 export PATH="${PATH}:$GOPATH/bin"
