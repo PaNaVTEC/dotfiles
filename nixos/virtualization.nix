@@ -2,6 +2,6 @@
 
 {
   environment.systemPackages = with pkgs; [
-    virtualbox linuxHeaders vagrant
+    virtualbox linuxHeaders wine
   ];
 }
