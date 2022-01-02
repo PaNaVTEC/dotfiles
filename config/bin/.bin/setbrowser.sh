@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-NEWBROWSER=inox.desktop
+NEWBROWSER=brave.desktop
 
 xdg-mime default $NEWBROWSER x-scheme-handler/http
 xdg-mime default $NEWBROWSER x-scheme-handler/https

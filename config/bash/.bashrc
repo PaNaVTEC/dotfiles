@@ -2,7 +2,7 @@
 set -o vi
 
 export XDG_CONFIG_HOME=$HOME/.config
-export BROWSER=firefox
+#export BROWSER=brave
 export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
 export DOTFILES_LOCATION=$HOME/dotfiles
 export DISTRO=$(awk -F "=" '/^ID=/ {print $2}' /etc/*-release)
