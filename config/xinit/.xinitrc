@@ -22,10 +22,10 @@ fi
 [ -f "$usermodmap" ] && xmodmap "$usermodmap"
 
 if [ -d ~/.before_startx ] ; then
- for f in ~/.before_startx/?*.sh ; do
-  [ -x "$f" ] && . "$f"
- done
- unset f
+  for f in ~/.before_startx/?*.sh ; do
+    [ -x "$f" ] && . "$f"
+  done
+  unset f
 fi
 
 exec i3
