@@ -1,12 +1,9 @@
 (require 'init-programming-mode)
 
 (use-package
-  bazel-mode
+  bazel
   :ensure t
   :defer t
-  :mode "\\.ba?ze?l$"
-  :config
-  (add-hook 'bazel-mode-hook 'programming-mode)
-)
+  :mode ("\\.ba?ze?l$" . bazel-mode))
 
 (provide 'init-bazel)
