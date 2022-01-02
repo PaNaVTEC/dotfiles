@@ -1,2 +1,4 @@
 #include ".xcolors"
 #include ".xurxvt"
+
+Xcursor.size: 32

@@ -14,6 +14,10 @@
     exportConfiguration = true;
   };
 
+  environment.variables = {
+    XCURSOR_SIZE= "32";
+  };
+
   environment.systemPackages = with pkgs; [
     xorg.xkill
     xorg.xwininfo
