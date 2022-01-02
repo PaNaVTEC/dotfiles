@@ -33,6 +33,7 @@
     binutils
     sshpass
     gitAndTools.gh
+    bc
 
     #exfat
     exfat
