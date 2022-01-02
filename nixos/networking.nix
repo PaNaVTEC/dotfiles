@@ -4,6 +4,7 @@
   networking = {
     networkmanager = {
       enable = true;
+      enableStrongSwan = true;
     };
     firewall.enable = false;
     enableIPv6 = false;
