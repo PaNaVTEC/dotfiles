@@ -33,6 +33,10 @@
       stable = import <stable> {
         config = config.nixpkgs.config;
       };
+      # sudo nix-channel --add https://nixos.org/channels/nixpkgs-unstable unstable
+      unstable = import <unstable> {
+        config = config.nixpkgs.config;
+      };
     };
   };
 
