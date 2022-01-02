@@ -13,31 +13,18 @@
   };
 
   hardware.enableRedistributableFirmware = true;
+
+  #services.udev.extraRules = "SUBSYSTEMS==\"usb\", ATTRS{idVendor}==\"2c97\", ATTRS{idProduct}==\"4011\", TAG+=\"uaccess\", TAG+=\"udev-acl\"\n";
+  hardware.ledger.enable = true;
+
   services.xserver = {
     videoDrivers = [ "amdgpu" ];
-    monitorSection = ''
-      Option "DPI" "96x96"
-      Option "UseEdidDpi" "FALSE"
-    '';
     xrandrHeads = [
-#      {
-#        output = "HDMI-1";
-#        monitorConfig = ''
-#          Option "Rotate" "left"
-#          Option "PreferredMode" "1920x1080"
-#          Option "Position" "0 0"
-#        '';
-#      }
       {
-        output = "DP-0";
-        primary = true;
+        output = "HDMI-A-0";
         monitorConfig = ''
+          Option "PreferredMode" "5120x1440"
           Option "Position" "0 0"
-          Option "PreferredMode" "3840x2160"
-          ModelName      "LG Electronics LG HDR 4K"
-          HorizSync       135.0 - 135.0
-          VertRefresh     48.0 - 61.0
-          Option         "DPMS"
         '';
       }
     ];
@@ -47,12 +34,10 @@
     "/mnt/data" = {
       device = "/dev/disk/by-label/data-samsung";
       fsType = "ntfs";
-      options = [ "defaults" "uid=1000" "nofail" ];
+      options = [ "rw" "defaults" "uid=1000" "nofail" ];
     };
-
-    "/mnt/data2" = {
-      device = "/dev/disk/by-label/BACKUP";
-      fsType = "vfat";
+    "/mnt/music" = {
+      device = "/dev/disk/by-uuid/8631-05AC";
       options = [ "defaults" "uid=1000" "nofail" ];
     };
   };
@@ -60,9 +45,6 @@
   environment.systemPackages = with pkgs; [
     # ICC monitor color management
     argyllcms
-
-    # cue-like software
-    openrgb
   ];
 
   boot = {
