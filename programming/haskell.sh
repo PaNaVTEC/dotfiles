@@ -40,7 +40,7 @@ createProjectHaskell () {
   username=$(echo "$email" | awk -F '@' '{print $1}')
 
   stack \
-    new "$projectDirectory" hspec \
+    new "$projectDirectory" 'https://gist.githubusercontent.com/techno-tanoC/3418cc0c75436081d6af6d20c2a5c885/raw/687f834ccf4c6871ae6193950d841fe5f4f3af76/simple-hpack-hspec.hsfiles' \
     -p "name:$projectDirectory" \
     -p "author-email:$email" \
     -p "author-name:$name" \
@@ -49,7 +49,7 @@ createProjectHaskell () {
     -p "github-username:$username"
 
   (cd "$projectDirectory" && \
-    gibo dump Haskell JetBrains Vim Emacs macOS Linux Windows > .gitignore)
+    gibo Haskell JetBrains Vim Emacs macOS Linux Windows > .gitignore)
 }
 
 createScriptHaskell () {

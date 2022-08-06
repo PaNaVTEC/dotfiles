@@ -12,7 +12,7 @@ elif [[ $DISTRO == "nixos" ]]; then
   alias yi='sudo nix-env -i'
   alias yr='sudo nix-env --uninstall'
   alias yu='yun'
-  alias yun="sudo nix-channel --update nixpkgs && sudo nix-env -u '*'"
+  alias yun="sudo nix-channel --update && sudo nix-env -u '*'"
 
   # Update single package to latest version
   updatePackage () {
