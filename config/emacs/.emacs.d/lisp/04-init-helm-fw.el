@@ -1,15 +1,14 @@
 ;; helm settings (TAB in helm window for actions over selected items,
 ;; C-SPC to select items)
 (use-package helm
-     :ensure t
      :init (use-package helm-projectile :ensure t)
      :diminish (helm-mode . "")
-     :defer t
      :config
      (require 'helm-config)
      (require 'helm-misc)
      (require 'helm-projectile)
      (require 'helm-locate)
+     (helm-buffer-list)
      (helm-mode 1)
      (define-key evil-normal-state-map (kbd "<backtab>") 'helm-mini)
      (setq
@@ -25,4 +24,4 @@
      (global-set-key (kbd "M-x") 'helm-M-x)
      (evil-leader/set-key "hr" 'helm-resume))
 
-(provide 'init-helm-fw)
+(provide '04-init-helm-fw)

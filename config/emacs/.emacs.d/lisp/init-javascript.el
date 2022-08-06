@@ -24,11 +24,15 @@
 (use-package
   js2-mode
   :ensure t
-  :mode ("\\.js$" . js2-mode )
-  :mode ("\\.jsx$" . js2-jsx-mode )
+;  :mode ("\\.js$" . js2-mode )
+;  :mode ("\\.jsx$" . js2-jsx-mode )
+  :mode "\\.jsx?$"
   :interpreter "node"
   :defer t
   :config
+
+  (js-mode)
+  (js2-minor-mode)
 
   (evil-leader/set-key "b" 'js2-jump-to-definition)
   (setq js-indent-level 2
@@ -94,7 +98,7 @@
   (add-hook 'json-mode-hook 'whitespace-mode)
   (add-hook 'json-mode-hook 'proper-gutter-mode))
 
-(use-package company-tern :ensure t :defer t)
+;(use-package company-tern :ensure t :defer t)
 
 (defun js-doc ()
   (interactive)
