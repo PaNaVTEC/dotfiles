@@ -2,7 +2,7 @@
 
 {
   environment.systemPackages = with pkgs; [
-    emacs27
+    emacs
     sqlite # Required by helm-dash
   ];
 }

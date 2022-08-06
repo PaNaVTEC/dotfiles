@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 
 {
   environment.systemPackages = with pkgs; [
@@ -9,8 +9,23 @@
     qbittorrent
     vlc
     baobab
-    cura
-    unstable.vscode
     unstable.ledger-live-desktop
+    signal-desktop
+    solaar
+    unstable.android-udev-rules
+    # record audio
+    audacity
+    # sign pdfs
+    xournal
+    unetbootin
+    synergy
+    calibre
+    appimage-run
+    wine-staging
+    lutris
+    audio-recorder
   ];
+
+  # programs.adb.enable = true;
+  programs.java.enable = true;
 }

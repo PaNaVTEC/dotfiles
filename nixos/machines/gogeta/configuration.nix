@@ -12,10 +12,13 @@
     useDHCP = false;
   };
 
-  hardware.enableRedistributableFirmware = true;
+  hardware = {
+    enableRedistributableFirmware = true;
+    ledger.enable = true;
+    logitech.wireless.enable = true;
+  };
 
-  #services.udev.extraRules = "SUBSYSTEMS==\"usb\", ATTRS{idVendor}==\"2c97\", ATTRS{idProduct}==\"4011\", TAG+=\"uaccess\", TAG+=\"udev-acl\"\n";
-  hardware.ledger.enable = true;
+  environment.etc."docker-daemon.json".text = ''{"data-root": "/run/media/panavtec/099a0278-856c-450c-af43-fe601c952d24/docker-data-root"}'';
 
   services.xserver = {
     videoDrivers = [ "amdgpu" ];

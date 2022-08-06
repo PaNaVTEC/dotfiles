@@ -4,12 +4,11 @@
   fonts = {
     fonts = with pkgs; [
       twemoji-color-font
-      google-fonts
-      noto-fonts-emoji
       symbola
       nerdfonts
-      font-awesome-ttf
+      font-awesome
       iosevka-bin
+      cantarell-fonts
     ];
   };
 }

@@ -2,10 +2,7 @@
 
 {
   networking = {
-    networkmanager = {
-      enable = true;
-      enableStrongSwan = true;
-    };
+    networkmanager.enable = true;
     firewall.enable = false;
     enableIPv6 = false;
   };
@@ -16,6 +13,9 @@
     networkmanager-l2tp
     bind
     wirelesstools
-    wireguard
+    wireguard-tools
+    protonvpn-gui
+    openconnect_unstable
+    unstable.networkmanager-openconnect
   ];
 }

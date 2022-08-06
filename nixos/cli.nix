@@ -16,15 +16,15 @@
     tasksh
     xsel
     lm_sensors
-    ag
+    silver-searcher
     ripgrep
+    htop
     powerline-go
     nix-prefetch-git
     bat
     youtube-dl
     exfat
     tldr
-    glances
     killall
     wget
     vim
@@ -34,10 +34,13 @@
     sshpass
     gitAndTools.gh
     bc
+    gparted
+    httpie
+    grpcurl
+    loc
 
     #exfat
     exfat
-    exfat-utils
     ntfs3g
     # fat32
     dosfstools

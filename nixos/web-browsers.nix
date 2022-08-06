@@ -3,7 +3,8 @@
 {
   environment.systemPackages = with pkgs; [
     google-chrome
+    chromium
     firefox
-    brave
+    unstable.brave
   ];
 }

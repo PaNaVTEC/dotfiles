@@ -9,10 +9,7 @@
       ./fonts.nix
       ./apps.nix
       ./emacs.nix
-      ./java.nix
-      ./git.nix
-      ./virtualization.nix
-      ./containerization.nix
+      ./development.nix
       ./security.nix
       ./web-browsers.nix
       ./cli.nix
@@ -23,6 +20,9 @@
     ];
 
   time.timeZone = "Europe/Madrid";
+  i18n.extraLocaleSettings = {
+    LC_TIME = "es_ES.UTF-8";
+  };
 
   systemd.services.systemd-udev-settle.enable = lib.mkForce false;
   systemd.services.NetworkManager-wait-online.enable = lib.mkForce false;
@@ -51,6 +51,7 @@
     autoUpgrade.enable = true;
   };
 
+  nix.settings.auto-optimise-store = true;
   nix.gc = {
     automatic = true;
     dates = "weekly";
