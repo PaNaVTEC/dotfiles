@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-NEWBROWSER=brave.desktop
+NEWBROWSER=chromium-browser.desktop
 
 xdg-mime default $NEWBROWSER x-scheme-handler/http
 xdg-mime default $NEWBROWSER x-scheme-handler/https
