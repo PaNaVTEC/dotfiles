@@ -2,8 +2,8 @@
   email = panavtec@gmail.com
   name = Christian Panadero
   signingkey = 88EF58F88BE619F6
-[includeIf "gitdir:~/code/monorepo/"]
-  path = ~/dotfiles/config/git/.gitconfig-habito
+[includeIf "gitdir:~/code/siriusxm/"]
+  path = ~/dotfiles/config/git/.gitconfig-siriusxm
 [credential]
   helper = cache --timeout 86400
 [diff]
