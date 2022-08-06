@@ -42,6 +42,15 @@
       ("undefined" . ?⊥)
       ("\\" . ?λ))))
 
+(use-package ormolu
+  ;:hook (haskell-mode . ormolu-format-on-save-mode)
+  :ensure t
+  :mode "\\.hs$"
+  :bind
+  (:map haskell-mode-map
+        ("C-c r" . ormolu-format-buffer))
+  )
+
 (use-package
   haskell-mode
   :ensure t
@@ -83,16 +92,49 @@
   (add-hook 'haskell-mode-hook 'programming-mode)
   (add-hook 'haskell-mode-hook 'haskell-decl-scan-mode)
   (add-hook 'haskell-mode-hook 'haskell/prettify)
-  (add-hook 'haskell-mode-hook 'hs-doc))
+  (add-hook 'haskell-mode-hook 'hs-doc)
+  ;; (add-hook 'haskell-mode-hook 'ormolu-format-on-save-mode)
 
-(defun hs-doc ()
-  (interactive)
-  (setq-local helm-dash-docsets '("Haskell")))
-
-(location-list-buffer (rx bos "*Intero-Help*"))
+  (defun hs-doc ()
+    (interactive)
+    (setq-local helm-dash-docsets '("Haskell"))))
 
 (my/highlight-keyword-in-mode 'haskell-mode "error" nil 'font-lock-warning-face)
 (my/highlight-keyword-in-mode 'haskell-mode "undefined" nil 'font-lock-warning-face)
 
+; (use-package lsp-mode
+;   :ensure t
+;   :hook (haskell-mode . lsp-deferred)
+;   :commands (lsp lsp-deferred)
+;   :config
+;   (setq lsp-enable-file-watchers nil)
+;   (setq lsp-log-io t)
+;   (setq lsp-enable-xref t)
+;   (setq lsp-enable-imenu t)
+;   (setq lsp-signature-auto-activate t)
+;   (setq lsp-signature-render-documentation t)
+;   )
+;
+; (use-package helm-lsp
+;   :ensure t
+;   :commands helm-lsp-workspace-symbol)
+;
+; (use-package lsp-haskell
+;   :ensure t
+;   :config
+;     (add-hook 'haskell-mode-hook #'lsp)
+;     (add-hook 'haskell-literate-mode-hook #'lsp)
+;     (setq lsp-haskell-pragmas-on nil)
+; ;    (setq lsp-haskell-server-wrapper-function
+; ;          (lambda (argv)
+; ;            (append (list "cd /home/panavtec/code/monorepo && direnv allow && ")
+; ;                    (list (mapconcat 'identity argv " ")))))
+;
+;   ;;(setq lsp-haskell-server-path "ghcide")
+;   ;;(setq lsp-haskell-server-args '())
+;   ;; Comment/uncomment this line to see interactions between lsp client/server.
+;   (setq lsp-log-io t)
+;   ;; (setq lsp-auto-guess-root nil)
+;   )
 
 (provide 'init-haskell)
