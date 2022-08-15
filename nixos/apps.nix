@@ -25,7 +25,4 @@
     lutris
     audio-recorder
   ];
-
-  # programs.adb.enable = true;
-  programs.java.enable = true;
 }

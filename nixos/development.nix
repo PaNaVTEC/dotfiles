@@ -14,6 +14,16 @@
     pinentryFlavor = "gnome3";
   };
 
+  # programs.adb.enable = true;
+  programs.java = {
+    enable = true;
+    # package = pkgs.openjdk16-bootstrap;
+  };
+
+  # environment.variables = {
+  #   JAVA_HOME = "/run/current-system/sw";
+  # };
+
   environment.systemPackages = with pkgs; [
     git
     gibo
@@ -33,6 +43,8 @@
     # Ide/editors
     unstable.jetbrains.idea-community
     unstable.vscode-fhs
+
+    # openjdk16-bootstrap
   ];
 
   # Solves problems with file watchers, too many open files
