@@ -1,8 +1,0 @@
-wireless_tools
-virtualbox
-hub
-linux-headers
-docker
-docker-compose-bin
-vagrant
-

@@ -1,3 +1,0 @@
-rxvt-unicode
-rxvt-unicode-terminfo
-urxvt-vtwheel

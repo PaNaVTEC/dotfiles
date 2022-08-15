@@ -1,7 +1,0 @@
-terminus-font-ll2-td1
-ttf-twemoji-color
-ttf-google-fonts-git
-ttf-ms-fonts
-noto-fonts-emoji
-ttf-symbola
-awesome-terminal-fonts

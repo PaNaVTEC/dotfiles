@@ -1,7 +1,0 @@
-pulseaudio
-pulseaudio-ctl
-alsa-utils
-pavucontrol
-ponymix
-cmus
-cmusfm
