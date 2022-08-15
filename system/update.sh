@@ -21,6 +21,10 @@ elif [[ $DISTRO == "nixos" ]]; then
      sudo nixos-rebuild switch --upgrade
   }
 
+  nixPathOfPackage () {
+    nix-store -q --requisites /run/current-system ~/.nix-profile | grep "$1"
+  }
+
 else
   alias y='yay'
   alias ys='yay -Ss'
