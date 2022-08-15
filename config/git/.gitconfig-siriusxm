@@ -1,3 +1,5 @@
 [user]
   email = christian.panadero@siriusxm.com
-  signingkey = TODO
+  signingkey = D7F8DD4B5C2AEF2B
+[commit]
+  gpgsign = true
