@@ -3,7 +3,7 @@
 export PROMPT_DIRTRIM=2
 
 function _update_ps1() {
-  PS1="$(powerline-go -cwd-mode plain -modules venv,ssh,cwd,perms,git,nix-shell,docker,jobs,exit,root -error $?)"
+  PS1="$(powerline-go -cwd-mode plain -modules venv,ssh,cwd,perms,git,aws,nix-shell,docker,jobs,exit,root -error $?)"
 }
 
 # Workaround for nix-shell --pure
