@@ -37,6 +37,7 @@
       unstable = import <unstable> {
         config = config.nixpkgs.config;
       };
+      amazon-corretto17 = pkgs.callPackage ./pkgs/amazon-corretto17 {};
     };
   };
 

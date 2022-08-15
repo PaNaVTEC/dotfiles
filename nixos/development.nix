@@ -45,6 +45,7 @@
     unstable.vscode-fhs
 
     # openjdk16-bootstrap
+    amazon-corretto17
   ];
 
   # Solves problems with file watchers, too many open files
