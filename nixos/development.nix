@@ -48,6 +48,7 @@
 
     # unstable.vscode-fhs
     (vscode-with-extensions.override {
+      vscode = pkgs.vscodium;
       vscodeExtensions = [ vscode-extensions.ms-vsliveshare.vsliveshare ] ++ map
         (extension: vscode-utils.buildVscodeMarketplaceExtension {
           mktplcRef = {
