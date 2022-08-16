@@ -28,5 +28,6 @@ stow --target="$HOME" psql
 stow --target="$HOME" haskeline
 stow --target="$HOME" tmux
 stow --target="$HOME" cmus
+stow --target="$HOME" vscode
 sudo stow --target=/etc bluetooth
 sudo stow --target=/etc pulseaudio
