@@ -29,6 +29,7 @@
     gibo
     gitAndTools.hub
     gitAndTools.diff-so-fancy
+    mob
 
     gnupg
     pinentry
@@ -42,7 +43,17 @@
 
     # Ide/editors
     unstable.jetbrains.idea-community
-    unstable.vscode-fhs
+
+    # unstable.vscode-fhs
+    (vscode-with-extensions.override {
+      vscodeExtensions = map
+        (extension: vscode-utils.buildVscodeMarketplaceExtension {
+          mktplcRef = {
+           inherit (extension) name publisher version sha256;
+          };
+        })
+        (import ./vscode-extensions.nix).extensions;
+    })
 
     # openjdk16-bootstrap
     amazon-corretto17
