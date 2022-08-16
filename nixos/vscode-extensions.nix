@@ -1,11 +1,5 @@
 { extensions = [
   {
-    name = "vsliveshare";
-    publisher = "ms-vsliveshare";
-    version = "1.0.5683";
-    sha256 = "0m6idwbynfvqilvhnkdyiyi207vq50m6cbfi7pfwqb0b5c64771x";
-  }
-  {
     name = "vscode-docker";
     publisher = "ms-azuretools";
     version = "1.22.1";
@@ -81,7 +75,7 @@
     name = "vscode-yaml";
     publisher = "redhat";
     version = "1.10.20220805";
-    sha256 = "02r71m4fdkcg5j4lk3lk2w1j80a43v0zf71qwjiylsmxklndnrwv";
+    sha256 = "sha256-XFg6L+DYhq7cmbnYPkRaZJK5zPTp4yeQR24fCpUGp4I=";
   }
   {
     name = "nord-visual-studio-code";

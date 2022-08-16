@@ -46,7 +46,7 @@
 
     # unstable.vscode-fhs
     (vscode-with-extensions.override {
-      vscodeExtensions = map
+      vscodeExtensions = [ vscode-extensions.ms-vsliveshare.vsliveshare ] ++ map
         (extension: vscode-utils.buildVscodeMarketplaceExtension {
           mktplcRef = {
            inherit (extension) name publisher version sha256;
