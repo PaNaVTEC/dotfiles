@@ -1,0 +1,25 @@
+// Place your key bindings in this file to override the defaults
+[
+  {
+    "key": "ctrl+n",
+    "command": "workbench.action.toggleSidebarVisibility"
+  },
+  {
+    "key": "ctrl+shift+f12",
+    "command": "multiCommand.toggleAllPanels"
+  },
+  {
+    "key": "ctrl+f12",
+    "command": "workbench.action.togglePanel"
+  },
+  {
+    "key": "escape",
+    "command":"workbench.action.focusActiveEditorGroup",
+    "when":"!editorTextFocus"
+  },
+  {
+    "key": "ctrl+r",
+    "command": "metals.run-current-file",
+    "when": "editorTextFocus"
+  }
+]

@@ -1,0 +1,111 @@
+{
+  "editor.rulers": [
+    80
+  ],
+  "git.autofetch": true,
+  "editor.renderControlCharacters": true,
+  "editor.tabSize": 2,
+  "editor.autoClosingDelete": "never",
+  "editor.autoClosingBrackets": "never",
+  "editor.autoClosingOvertype": "never",
+  "editor.cursorBlinking": "smooth",
+  "editor.fontFamily": "'Iosevka Nerd Font','Droid Sans Mono', 'monospace', monospace",
+  "editor.fontSize": 14,
+  "editor.bracketPairColorization.enabled": true,
+  "editor.folding": false,
+  "editor.renderWhitespace": "trailing",
+  "editor.renderLineHighlight": "none",
+  "editor.experimental.stickyScroll.enabled": true,
+  "workbench.preferredLightColorTheme": "Default Dark+",
+  "workbench.colorTheme": "Nord",
+  "workbench.editor.showTabs": false,
+  "workbench.colorCustomizations": {
+    "editorWhitespace.foreground": "#ff0000"
+  },
+  "nix.enableLanguageServer": true,
+  "multiCommand.commands": [
+    {
+      "command": "multiCommand.toggleAllPanels",
+      "sequence": [
+        "workbench.action.togglePanel",
+        "workbench.action.toggleSidebarVisibility",
+        "workbench.action.focusActiveEditorGroup"
+      ]
+    }
+  ],
+  "telemetry.telemetryLevel": "off",
+  "gitlens.currentLine.enabled": false,
+  "gitlens.hovers.currentLine.over": "line",
+  "gitlens.statusBar.alignment": "left",
+  "gitlens.hovers.enabled": false,
+  "terminal.integrated.enableMultiLinePasteWarning": false,
+  "editor.inlineSuggest.enabled": true,
+  "vim.ignorecase": false,
+  "vim.leader": ",",
+  "vim.normalModeKeyBindings": [
+    {
+      "before": ["<leader>", "w"],
+      "commands": [
+        "editor.action.trimTrailingWhitespace"
+      ]
+    },
+    {
+      "before": ["<leader>", "z"],
+      "commands": [
+        "git.revertSelectedRanges"
+      ]
+    },
+    {
+      "before": ["[", "h"],
+      "commands": [
+        "workbench.action.editor.previousChange"
+      ]
+    },
+    {
+      "before": ["]", "h"],
+      "commands": [
+        "workbench.action.editor.nextChange"
+      ]
+    },
+    {
+      "before": ["]", "w"],
+      "commands": [
+        "editor.action.marker.prev"
+      ]
+    },
+    {
+      "before": ["]", "w"],
+      "commands": [
+        "editor.action.marker.next"
+      ]
+    }
+  ],
+  "vim.visualModeKeyBindings": [
+    {
+      "before": ["alt", "c"],
+      "commands": [
+        "editor.action.clipboardCopyAction"
+      ]
+    }
+  ],
+  "github.copilot.enable": {
+    "*": true,
+    "yaml": true,
+    "plaintext": true,
+    "markdown": true,
+    "scala": true
+  },
+  "haskell.manageHLS": "PATH",
+  "window.menuBarVisibility": "toggle",
+  "files.watcherExclude": {
+    "**/.bloop": true,
+    "**/.metals": true,
+    "**/.ammonite": true
+  },
+  "editor.minimap.renderCharacters": false,
+  "gitlens.codeLens.enabled": false,
+  "metals.sbtScript": "/home/panavtec/code/siriusxm/sbt2.sh",
+  "extensions.autoUpdate": false,
+  "extensions.autoCheckUpdates": false,
+  "update.mode": "none"
+}
