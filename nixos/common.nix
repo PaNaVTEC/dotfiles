@@ -8,7 +8,6 @@
       ./urxvt.nix
       ./fonts.nix
       ./apps.nix
-      ./emacs.nix
       ./development.nix
       ./security.nix
       ./web-browsers.nix

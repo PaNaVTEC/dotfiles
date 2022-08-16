@@ -43,6 +43,8 @@
 
     # Ide/editors
     unstable.jetbrains.idea-community
+    emacs
+    sqlite # Required by helm-dash
 
     # unstable.vscode-fhs
     (vscode-with-extensions.override {
