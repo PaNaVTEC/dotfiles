@@ -14,8 +14,8 @@ elif [[ $DISTRO == "nixos" ]]; then
   alias yu='yun'
   alias yun="sudo nix-channel --update && sudo nix-env -u '*'"
 
-  # Update single package to latest version
-  updatePackage () {
+  # Update single package to latest version in an impure env
+  nixUpdatePackage () {
      sudo nix-channel --update nixpkgs
      sudo nix-env -u "$1" # where #1 is the name of the package
      sudo nixos-rebuild switch --upgrade
@@ -23,6 +23,10 @@ elif [[ $DISTRO == "nixos" ]]; then
 
   nixPathOfPackage () {
     nix-store -q --requisites /run/current-system ~/.nix-profile | grep "$1"
+  }
+
+  nixUpdateVscodeExtensions () {
+    $DOTFILES_LOCATION/nixos/updateVscodeExtensions.sh "$DOTFILES_LOCATION/nixos/vscode-extensions" > "$DOTFILES_LOCATION/nixos/vscode-extensions.nix"
   }
 
 else
