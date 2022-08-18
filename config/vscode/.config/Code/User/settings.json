@@ -12,10 +12,10 @@
   "editor.fontFamily": "'Iosevka Nerd Font','Droid Sans Mono', 'monospace', monospace",
   "editor.fontSize": 14,
   "editor.bracketPairColorization.enabled": true,
-  "editor.folding": false,
   "editor.renderWhitespace": "trailing",
   "editor.renderLineHighlight": "none",
   "editor.experimental.stickyScroll.enabled": true,
+  "workbench.startupEditor": "none",
   "workbench.preferredLightColorTheme": "Default Dark+",
   "workbench.colorTheme": "Nord",
   "workbench.editor.showTabs": false,
@@ -56,6 +56,12 @@
       ]
     },
     {
+      "before": ["<leader>", "f"],
+      "commands": [
+        "workbench.files.action.showActiveFileInExplorer"
+      ]
+    },
+    {
       "before": ["[", "h"],
       "commands": [
         "workbench.action.editor.previousChange"
@@ -93,7 +99,7 @@
     "yaml": true,
     "plaintext": true,
     "markdown": true,
-    "scala": true
+    "scala": false
   },
   "haskell.manageHLS": "PATH",
   "window.menuBarVisibility": "toggle",
@@ -104,8 +110,12 @@
   },
   "editor.minimap.renderCharacters": false,
   "gitlens.codeLens.enabled": false,
-  "metals.sbtScript": "/home/panavtec/code/siriusxm/sbt2.sh",
   "extensions.autoUpdate": false,
   "extensions.autoCheckUpdates": false,
-  "update.mode": "none"
+  "update.mode": "none",
+  "task.problemMatchers.neverPrompt": {
+    "shell": true
+  },
+  "editor.foldingImportsByDefault": true,
+  "editor.showFoldingControls": "never"
 }
