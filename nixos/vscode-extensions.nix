@@ -6,12 +6,6 @@
     sha256 = "1ix363fjxi9g450rs3ghx44z3hppvasf0xpzgha93m90djd7ai52";
   }
   {
-    name = "copilot";
-    publisher = "github";
-    version = "1.40.6471";
-    sha256 = "198k98p5cwmyzkl0y96q41424d3m48ycvkmpfvjf74302mlh1wn7";
-  }
-  {
     name = "vim";
     publisher = "vscodevim";
     version = "1.23.2";
@@ -20,14 +14,14 @@
   {
     name = "vscode-pull-request-github";
     publisher = "github";
-    version = "0.49.2022081609";
-    sha256 = "1qhlx8fw4l4j6lxwgpa8isd33rsj2l013rw51gfc36s5wcv2pici";
+    version = "0.51.2022090809";
+    sha256 = "0x4v8vi7542fnbqrimz3iap9xh3wnsr7cas65qkqdvz9xh99dwi0";
   }
   {
     name = "gitlens";
     publisher = "eamodio";
-    version = "12.1.2";
-    sha256 = "0wpmfrfpi6wl9v3dknx2qr2m74azpcw8bvhac21v67w6jxnl3jd9";
+    version = "2022.8.3105";
+    sha256 = "11axaxi06j0hb9xv35azqy4fys15pllg67gk3sqsc3s66q4qzk6w";
   }
   {
     name = "haskell";
@@ -44,8 +38,8 @@
   {
     name = "metals";
     publisher = "scalameta";
-    version = "1.19.2";
-    sha256 = "025d93hqqyji5d12pjgys15f6c4mrphyvdvmxc0js9ynp65sghrx";
+    version = "1.19.9";
+    sha256 = "0jkj5bn7cyv9bgc14kmzncybkm4zi3dsfrkxg7vqak5my1jnypdr";
   }
   {
     name = "scala";
@@ -75,7 +69,7 @@
     name = "vscode-yaml";
     publisher = "redhat";
     version = "1.10.20220805";
-    sha256 = "sha256-XFg6L+DYhq7cmbnYPkRaZJK5zPTp4yeQR24fCpUGp4I=";
+    sha256 = "sha256-BZHU9FrFqsO09fllMF3+vszrGnPrfQmhVgpcNQhPv/w=";
   }
   {
     name = "nord-visual-studio-code";
@@ -86,20 +80,14 @@
   {
     name = "rest-client";
     publisher = "humao";
-    version = "0.25.0";
-    sha256 = "1j2gzagl5hyy7ry4nn595z0xzr7wbaq9qrm32p0fj1bgk3r6ib5z";
+    version = "0.25.1";
+    sha256 = "19yc3hvhyr2na741z6ajgigxckagvfrcq3h6y958bl4107vxjb0d";
   }
   {
     name = "direnv";
     publisher = "mkhl";
     version = "0.6.1";
     sha256 = "1d60hqww1innch277yd3va2snpsp19c7w4v0rxz2jvzvgykfmx77";
-  }
-  {
-    name = "copilot";
-    publisher = "Github";
-    version = "1.40.6471";
-    sha256 = "198k98p5cwmyzkl0y96q41424d3m48ycvkmpfvjf74302mlh1wn7";
   }
   {
     name = "single-editor-tabs";
@@ -116,8 +104,14 @@
   {
     name = "smithy-vscode-extension";
     publisher = "Smithy";
-    version = "0.4.0";
-    sha256 = "05rz7rbg1anrhl77js53sr2i01ags1vhgj5ggvjg80pi4qv88g2v";
+    version = "0.5.0";
+    sha256 = "0psy54617rdglh2fzpzq1c0x03qm9zi9v673c1i1m5k09vp34hn6";
+  }
+  {
+    name = "plantuml";
+    publisher = "jebbs";
+    version = "2.17.4";
+    sha256 = "1s6jp1rx1k03ir7j3fsyqkhnnp9m6akabznb4pmjxpkvn2wzlz3y";
   }
 ];
 }
