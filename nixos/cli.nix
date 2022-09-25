@@ -20,6 +20,7 @@
     ripgrep
     htop
     powerline-go
+    starship
     nix-prefetch-git
     bat
     youtube-dl
