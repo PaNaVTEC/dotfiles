@@ -1,0 +1,42 @@
+add_newline = false
+
+format = """
+$aws\
+$nix_shell\
+$git_branch\
+$git_status\
+$directory\
+$cmd_duration\
+$line_break\
+$character
+"""
+[nix_shell]
+format = '[](fg:#772953 bg:#CE412B)[ ]($style)'
+style = "bg:#CE412B"
+  
+[directory]
+style = "fg:black bg:#FFC107"
+read_only_style = "fg:black bg:#FFC107"
+format = "[ $path ]($style)[$read_only]($read_only_style)[](fg:#FFC107)"
+truncation_length = 8
+truncation_symbol = " "
+
+[git_branch]
+symbol = ""
+style = "bg:#F05032"
+format = '[](fg:#CE412B bg:#F05032)[ $symbol $branch ]($style)'
+
+[git_status]
+style = "bg:#F05032"
+format = '[$all_status$ahead_behind ]($style)[](fg:#F05032 bg:#FFC107)'
+
+[character]
+error_symbol = "[✗](bold red) "
+
+[cmd_duration]
+min_time = 0
+format = "[ $duration]($style) "
+
+[aws]
+format = '[ ($profile )(\($region\) )]($style)'
+style = "bg:#772953"
