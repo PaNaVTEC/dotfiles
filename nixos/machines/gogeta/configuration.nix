@@ -16,6 +16,9 @@
     enableRedistributableFirmware = true;
     ledger.enable = true;
     logitech.wireless.enable = true;
+
+    opengl.driSupport = true;
+    opengl.driSupport32Bit = true;
   };
 
   environment.etc."docker-daemon.json".text = ''{"data-root": "/run/media/panavtec/099a0278-856c-450c-af43-fe601c952d24/docker-data-root"}'';
@@ -43,17 +46,28 @@
       device = "/dev/disk/by-uuid/8631-05AC";
       options = [ "defaults" "uid=1000" "nofail" ];
     };
+    "/run/media/panavtec/099a0278-856c-450c-af43-fe601c952d24" = {
+      device = "/dev/disk/by-uuid/099a0278-856c-450c-af43-fe601c952d24";
+      options = [ "rw" "defaults" "uid=1000" "nofail" ];
+    };
   };
 
-  environment.systemPackages = with pkgs; [
-    # ICC monitor color management
-    argyllcms
-  ];
-
   boot = {
+    # waveshare 8.8 color patch
+    kernelPatches = [
+      {
+        name = "force-rgb";
+        patch = pkgs.fetchurl {
+          url = "https://gitlab.freedesktop.org/drm/amd/uploads/99b3664a49ec759075bde5c454e1d7c2/0001-force-rgb.patch";
+          sha256 = "03dhnlxx9vlj1x8izh3c3j4r9s75q47nx8kf6mbdxqfy3cj96mjm";
+        };
+      }
+    ];
+
     kernelModules = [
       "kvm-amd" # enables virtualization
       "nct6775" # enables cpu sensors
+      "amd-gpu" # load driver right away
     ];
 
     loader = {
