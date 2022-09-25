@@ -3,3 +3,7 @@
   signingkey = D7F8DD4B5C2AEF2B
 [commit]
   gpgsign = true
+  template = ~/.gitcommit
+[credential "https://ghe.siriusxm.com"]
+	helper = 
+	helper = !/run/current-system/sw/bin/gh auth git-credential
