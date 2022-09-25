@@ -14,7 +14,6 @@
   "editor.bracketPairColorization.enabled": true,
   "editor.renderWhitespace": "trailing",
   "editor.renderLineHighlight": "none",
-  "editor.experimental.stickyScroll.enabled": true,
   "workbench.startupEditor": "none",
   "workbench.preferredLightColorTheme": "Default Dark+",
   "workbench.colorTheme": "Nord",
@@ -39,8 +38,10 @@
   "gitlens.statusBar.alignment": "left",
   "gitlens.hovers.enabled": false,
   "terminal.integrated.enableMultiLinePasteWarning": false,
+  "terminal.integrated.smoothScrolling": true,
   "editor.inlineSuggest.enabled": true,
   "vim.ignorecase": false,
+  "vim.foldfix": true,
   "vim.leader": ",",
   "vim.normalModeKeyBindings": [
     {
@@ -84,6 +85,18 @@
       "commands": [
         "editor.action.marker.next"
       ]
+    },
+    {
+      "before": ["[", "b"],
+      "commands": [
+        "workbench.action.navigateBack"
+      ]
+    },
+    {
+      "before": ["]", "b"],
+      "commands": [
+        "workbench.action.navigateForward"
+      ]
     }
   ],
   "vim.visualModeKeyBindings": [
@@ -94,13 +107,6 @@
       ]
     }
   ],
-  "github.copilot.enable": {
-    "*": true,
-    "yaml": true,
-    "plaintext": true,
-    "markdown": true,
-    "scala": false
-  },
   "haskell.manageHLS": "PATH",
   "window.menuBarVisibility": "toggle",
   "files.watcherExclude": {
@@ -116,6 +122,11 @@
   "task.problemMatchers.neverPrompt": {
     "shell": true
   },
+  "github-enterprise.uri": "https://ghe.siriusxm.com/",
   "editor.foldingImportsByDefault": true,
-  "editor.showFoldingControls": "never"
+  "editor.showFoldingControls": "never",
+  "terminal.integrated.shellIntegration.decorationsEnabled": "never",
+  "metals.serverVersion": "0.11.8+96-734fbf48-SNAPSHOT",
+  "metals.testUserInterface": "Code Lenses",
+  "editor.stickyScroll.enabled": true
 }
