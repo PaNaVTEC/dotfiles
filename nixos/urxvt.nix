@@ -2,7 +2,7 @@
 
 {
   environment.systemPackages = with pkgs; [
-    rxvt_unicode
+    rxvt-unicode-unwrapped-emoji
   ];
 
   systemd.user.services.urxvtd = {
