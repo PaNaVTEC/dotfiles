@@ -20,6 +20,15 @@
     XCURSOR_SIZE= "32";
   };
 
+  environment.gnome.excludePackages = with pkgs.gnome; [
+    gnome-maps
+    gnome-terminal
+    gnome-music
+    epiphany
+    geary
+    cheese
+  ];
+
   environment.systemPackages = with pkgs; [
     xorg.xkill
     xorg.xwininfo
@@ -43,7 +52,7 @@
     xfce.thunar-volman
     xfce.thunar-dropbox-plugin
     xfce.thunar-archive-plugin
-    compton
+    picom
     evince
     cups
     system-config-printer
@@ -61,6 +70,7 @@
     unstable.gnomeExtensions.extensions-sync
     unstable.gnomeExtensions.workspaces-bar
     unstable.gnomeExtensions.unite
+    unstable.gnomeExtensions.forge
     gnome.dconf-editor
   ];
 }
