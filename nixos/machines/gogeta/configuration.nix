@@ -46,10 +46,10 @@
       device = "/dev/disk/by-uuid/8631-05AC";
       options = [ "defaults" "uid=1000" "nofail" ];
     };
-    "/run/media/panavtec/099a0278-856c-450c-af43-fe601c952d24" = {
-      device = "/dev/disk/by-uuid/099a0278-856c-450c-af43-fe601c952d24";
-      options = [ "rw" "defaults" "uid=1000" "nofail" ];
-    };
+#    "/run/media/panavtec/099a0278-856c-450c-af43-fe601c952d24" = {
+#      device = "/dev/disk/by-uuid/099a0278-856c-450c-af43-fe601c952d24";
+#      options = [ "rw" "defaults" "uid=1000" "nofail" ];
+#    };
   };
 
   boot = {
@@ -67,20 +67,25 @@
     kernelModules = [
       "kvm-amd" # enables virtualization
       "nct6775" # enables cpu sensors
-      "amd-gpu" # load driver right away
     ];
 
     loader = {
-      systemd-boot.enable = true;
+      systemd-boot = {
+        configurationLimit = 20;
+        enable = true;
+      };
       efi.canTouchEfiVariables = true;
     };
 
-    initrd.luks.devices = {
-      root = {
-        device = "/dev/disk/by-uuid/743ed7b2-82b2-4cd7-9cb3-9ef4b78fca72";
-        preLVM = true;
-        allowDiscards = true;
+    initrd = {
+      luks.devices = {
+        root = {
+          device = "/dev/disk/by-uuid/743ed7b2-82b2-4cd7-9cb3-9ef4b78fca72";
+          preLVM = true;
+          allowDiscards = true;
+        };
       };
+      kernelModules = [ "amdgpu" ];
     };
   };
 }
