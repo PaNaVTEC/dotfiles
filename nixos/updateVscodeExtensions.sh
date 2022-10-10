@@ -45,6 +45,7 @@ function get_vsixpkg() {
     VER=$(jq -r '.version' <(unzip -qc "$EXTTMP/$N.zip" "extension/package.json"))
     # Calculate the SHA
     SHA=$(nix-hash --flat --base32 --type sha256 "$EXTTMP/$N.zip")
+    # SHA=$(nix hash to-sri --type sha256 $(nix-prefetch-url $URL))
 
     # Clean up.
     rm -Rf "$EXTTMP"

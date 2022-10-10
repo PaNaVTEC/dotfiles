@@ -6,16 +6,10 @@
     sha256 = "1ix363fjxi9g450rs3ghx44z3hppvasf0xpzgha93m90djd7ai52";
   }
   {
-    name = "vim";
-    publisher = "vscodevim";
-    version = "1.23.2";
-    sha256 = "1kb8i3l3lzi54r6v6la9ksykna172c1pwqldd8dc2ni3jqabjbs0";
-  }
-  {
     name = "vscode-pull-request-github";
     publisher = "github";
-    version = "0.51.2022090809";
-    sha256 = "0x4v8vi7542fnbqrimz3iap9xh3wnsr7cas65qkqdvz9xh99dwi0";
+    version = "0.53.2022100609";
+    sha256 = "0zvqldblg1j9jc0v9xfx84abkbsdmfmh14sz2ghicw52r4s3lv0m";
   }
   {
     name = "gitlens";
@@ -38,8 +32,8 @@
   {
     name = "metals";
     publisher = "scalameta";
-    version = "1.19.9";
-    sha256 = "0jkj5bn7cyv9bgc14kmzncybkm4zi3dsfrkxg7vqak5my1jnypdr";
+    version = "1.20.0";
+    sha256 = "1c3whs3n5w1mihkgg3l1p6scwpvdcvqdakylvnsjj8h14g6xfj6w";
   }
   {
     name = "scala";
@@ -104,8 +98,8 @@
   {
     name = "smithy-vscode-extension";
     publisher = "Smithy";
-    version = "0.5.0";
-    sha256 = "0psy54617rdglh2fzpzq1c0x03qm9zi9v673c1i1m5k09vp34hn6";
+    version = "0.5.1";
+    sha256 = "1fzp0pa3rz34mn6hv7fna11r9p96xjflklh9nhyhs1lc6bx390jg";
   }
   {
     name = "plantuml";

@@ -1,6 +1,19 @@
 { config, pkgs, ... }:
 
-{
+let
+  vscode-vim-patched = pkgs.vscode-utils.buildVscodeMarketplaceExtension {
+      mktplcRef = {
+        name = "vim";
+        publisher = "vscodevim";
+        version = "1.24.1";
+        sha256 = "00gq6mqqwqipc6d7di2x9mmi1lya11vhkkww9563avchavczb9sv";
+      };
+      postPatch = ''
+        sed -i 's/\[\["w","rite"\],D.WriteCommand.argParser\]/\[\["w","rite"\],D.WriteCommand.argParser\],\[\["W","rite"\],D.WriteCommand.argParser\],\[\["Wa","ll"\],j.WallCommand.argParser\],\[\["WA","ll"\],j.WallCommand.argParser\]/g' ./out/extension.js
+      '';
+    };
+
+in {
   virtualisation.docker = {
     enable = true;
     enableOnBoot = false;
@@ -48,7 +61,7 @@
 
     # unstable.vscode-fhs
     (vscode-with-extensions.override {
-      vscodeExtensions = [ vscode-extensions.ms-vsliveshare.vsliveshare ] ++ map
+      vscodeExtensions = [ vscode-extensions.ms-vsliveshare.vsliveshare vscode-vim-patched ] ++ map
         (extension: vscode-utils.buildVscodeMarketplaceExtension {
           mktplcRef = {
            inherit (extension) name publisher version sha256;
@@ -56,9 +69,10 @@
         })
         (import ./vscode-extensions.nix).extensions;
     })
+    rnix-lsp # nix language server
 
     # openjdk16-bootstrap
-    amazon-corretto17
+    # amazon-corretto17
   ];
 
   # Solves problems with file watchers, too many open files
