@@ -3,6 +3,10 @@
 # Get latest container ID
 alias dl="docker ps -l -q"
 
+dPort() {
+  docker port $(docker ps -aqf "name=$1") $2 | awk -F':' '{ print $2 }'
+}
+
 # Get container process
 alias dps="docker ps | less -iS"
 
