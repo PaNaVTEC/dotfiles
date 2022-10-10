@@ -19,7 +19,7 @@ style = "fg:black bg:#FFC107"
 read_only_style = "fg:black bg:#FFC107"
 format = "[ $path ]($style)[$read_only]($read_only_style)[](fg:#FFC107)"
 truncation_length = 8
-truncation_symbol = " "
+truncation_symbol = "…/"
 
 [git_branch]
 symbol = ""
