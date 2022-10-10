@@ -7,6 +7,9 @@
     pinta
     libreoffice
     qbittorrent
+    transmission-qt
+    filezilla
+    via
     vlc
     baobab
     unstable.ledger-live-desktop
