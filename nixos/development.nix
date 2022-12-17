@@ -62,18 +62,14 @@ in {
 
     # unstable.vscode-fhs
     (unstable.vscode-with-extensions.override {
-      vscodeExtensions = [ vscode-extensions.ms-vsliveshare.vsliveshare vscode-extensions.ms-vscode.cpptools vscode-vim-patched ] ++ map
-        (extension: vscode-utils.buildVscodeMarketplaceExtension {
-          mktplcRef = {
-           inherit (extension) name publisher version sha256;
-          };
-        })
-        (import ./vscode-extensions.nix).extensions;
+      vscodeExtensions = with vscode-extensions; [
+        ms-vsliveshare.vsliveshare
+        ms-vscode.cpptools
+      ] ++ [
+        vscode-vim-patched
+      ] ++ vscode-utils.extensionsFromVscodeMarketplace (import ./vscode-extensions.nix).extensions;
     })
     rnix-lsp # nix language server
-
-    # openjdk16-bootstrap
-    # amazon-corretto17
   ];
 
   # Solves problems with file watchers, too many open files
