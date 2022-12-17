@@ -5,7 +5,6 @@ haskell.haskell
 justusadam.language-haskell
 scalameta.metals
 scala-lang.scala
-arrterian.nix-env-selector
 jnoortheen.nix-ide
 shd101wyy.markdown-preview-enhanced
 redhat.vscode-yaml
@@ -16,3 +15,4 @@ martybegood.single-editor-tabs
 ryuta46.multi-command
 Smithy.smithy-vscode-extension
 jebbs.plantuml
+42Crunch.vscode-openapi

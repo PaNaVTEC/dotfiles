@@ -63,9 +63,7 @@
     unstable.gnomeExtensions.appindicator
     unstable.gnomeExtensions.just-perfection
     unstable.gnomeExtensions.draw-on-you-screen-2
-    unstable.gnomeExtensions.sound-output-device-chooser
     unstable.gnomeExtensions.duckduckgo-search-provider
-    unstable.gnomeExtensions.bitcoin-markets
     unstable.gnomeExtensions.vitals
     unstable.gnomeExtensions.extensions-sync
     unstable.gnomeExtensions.workspaces-bar

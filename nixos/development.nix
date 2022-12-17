@@ -43,6 +43,7 @@ in {
     gitAndTools.hub
     gitAndTools.diff-so-fancy
     mob
+    platformio
 
     gnupg
     pinentry
@@ -60,8 +61,8 @@ in {
     sqlite # Required by helm-dash
 
     # unstable.vscode-fhs
-    (vscode-with-extensions.override {
-      vscodeExtensions = [ vscode-extensions.ms-vsliveshare.vsliveshare vscode-vim-patched ] ++ map
+    (unstable.vscode-with-extensions.override {
+      vscodeExtensions = [ vscode-extensions.ms-vsliveshare.vsliveshare vscode-extensions.ms-vscode.cpptools vscode-vim-patched ] ++ map
         (extension: vscode-utils.buildVscodeMarketplaceExtension {
           mktplcRef = {
            inherit (extension) name publisher version sha256;

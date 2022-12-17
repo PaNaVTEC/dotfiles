@@ -5,6 +5,7 @@
   "git.autofetch": true,
   "editor.renderControlCharacters": true,
   "editor.tabSize": 2,
+  "editor.glyphMargin": false,
   "editor.autoClosingDelete": "never",
   "editor.autoClosingBrackets": "never",
   "editor.autoClosingOvertype": "never",
@@ -33,10 +34,6 @@
     }
   ],
   "telemetry.telemetryLevel": "off",
-  "gitlens.currentLine.enabled": false,
-  "gitlens.hovers.currentLine.over": "line",
-  "gitlens.statusBar.alignment": "left",
-  "gitlens.hovers.enabled": false,
   "terminal.integrated.enableMultiLinePasteWarning": false,
   "terminal.integrated.smoothScrolling": true,
   "editor.inlineSuggest.enabled": true,
@@ -115,7 +112,6 @@
     "**/.ammonite": true
   },
   "editor.minimap.renderCharacters": false,
-  "gitlens.codeLens.enabled": false,
   "extensions.autoUpdate": false,
   "extensions.autoCheckUpdates": false,
   "update.mode": "none",
@@ -126,7 +122,8 @@
   "editor.foldingImportsByDefault": true,
   "editor.showFoldingControls": "never",
   "terminal.integrated.shellIntegration.decorationsEnabled": "never",
-  "metals.serverVersion": "0.11.8+96-734fbf48-SNAPSHOT",
   "metals.testUserInterface": "Code Lenses",
-  "editor.stickyScroll.enabled": true
+  "editor.stickyScroll.enabled": true,
+  "auto-build.defaultEnv.name": "STM32F103RE_creality_maple",
+  "auto-build.showOnStart": true
 }

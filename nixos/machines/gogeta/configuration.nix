@@ -67,6 +67,7 @@
     kernelModules = [
       "kvm-amd" # enables virtualization
       "nct6775" # enables cpu sensors
+      "amdgpu"
     ];
 
     loader = {
@@ -85,7 +86,6 @@
           allowDiscards = true;
         };
       };
-      kernelModules = [ "amdgpu" ];
     };
   };
 }

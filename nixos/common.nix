@@ -16,6 +16,7 @@
       ./audio.nix
       ./users.nix
       ./bluetooth.nix
+      ./threedprinting.nix
     ];
 
   time.timeZone = "Europe/Madrid";
