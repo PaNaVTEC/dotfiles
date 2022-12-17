@@ -1,0 +1,6 @@
+**/custom.el
+**/elpa/
+**/history
+**/*.elc
+**/projectile-bookmarks.eld
+**/eln-cache

@@ -33,11 +33,10 @@
       stable = import <stable> {
         config = config.nixpkgs.config;
       };
-      # sudo nix-channel --add https://nixos.org/channels/nixpkgs-unstable unstable
+      # sudo nix-channel --add https://nixos.org/channels/nixpkgs-unstable unstable && nix-channel --update
       unstable = import <unstable> {
         config = config.nixpkgs.config;
       };
-      amazon-corretto17 = pkgs.callPackage ./pkgs/amazon-corretto17 {};
     };
   };
 

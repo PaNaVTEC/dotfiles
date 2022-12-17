@@ -2,27 +2,42 @@
   "editor.rulers": [
     80
   ],
-  "git.autofetch": true,
-  "editor.renderControlCharacters": true,
-  "editor.tabSize": 2,
-  "editor.glyphMargin": false,
-  "editor.autoClosingDelete": "never",
   "editor.autoClosingBrackets": "never",
+  "editor.autoClosingDelete": "never",
   "editor.autoClosingOvertype": "never",
+  "editor.bracketPairColorization.enabled": true,
   "editor.cursorBlinking": "smooth",
+  "editor.foldingImportsByDefault": true,
   "editor.fontFamily": "'Iosevka Nerd Font','Droid Sans Mono', 'monospace', monospace",
   "editor.fontSize": 14,
-  "editor.bracketPairColorization.enabled": true,
-  "editor.renderWhitespace": "trailing",
+  "editor.glyphMargin": false,
+  "editor.inlineSuggest.enabled": true,
+  "editor.minimap.renderCharacters": false,
+  "editor.renderControlCharacters": true,
   "editor.renderLineHighlight": "none",
-  "workbench.startupEditor": "none",
-  "workbench.preferredLightColorTheme": "Default Dark+",
+  "editor.renderWhitespace": "trailing",
+  "editor.showFoldingControls": "never",
+  "editor.stickyScroll.enabled": true,
+  "editor.tabSize": 2,
+  "extensions.autoCheckUpdates": false,
+  "extensions.autoUpdate": false,
+  "git.autofetch": true,
+  "haskell.manageHLS": "PATH",
+  "metals.testUserInterface": "Code Lenses",
+  "nix.enableLanguageServer": true,
+  "telemetry.telemetryLevel": "off",
+  "terminal.integrated.enableMultiLinePasteWarning": false,
+  "terminal.integrated.shellIntegration.decorationsEnabled": "never",
+  "terminal.integrated.smoothScrolling": true,
+  "update.mode": "none",
+  "window.menuBarVisibility": "toggle",
   "workbench.colorTheme": "Nord",
   "workbench.editor.showTabs": false,
+  "workbench.preferredLightColorTheme": "Default Dark+",
+  "workbench.startupEditor": "none",
   "workbench.colorCustomizations": {
     "editorWhitespace.foreground": "#ff0000"
   },
-  "nix.enableLanguageServer": true,
   "multiCommand.commands": [
     {
       "command": "multiCommand.toggleAllPanels",
@@ -33,10 +48,6 @@
       ]
     }
   ],
-  "telemetry.telemetryLevel": "off",
-  "terminal.integrated.enableMultiLinePasteWarning": false,
-  "terminal.integrated.smoothScrolling": true,
-  "editor.inlineSuggest.enabled": true,
   "vim.ignorecase": false,
   "vim.foldfix": true,
   "vim.leader": ",",
@@ -104,26 +115,12 @@
       ]
     }
   ],
-  "haskell.manageHLS": "PATH",
-  "window.menuBarVisibility": "toggle",
   "files.watcherExclude": {
     "**/.bloop": true,
     "**/.metals": true,
     "**/.ammonite": true
   },
-  "editor.minimap.renderCharacters": false,
-  "extensions.autoUpdate": false,
-  "extensions.autoCheckUpdates": false,
-  "update.mode": "none",
   "task.problemMatchers.neverPrompt": {
     "shell": true
-  },
-  "github-enterprise.uri": "https://ghe.siriusxm.com/",
-  "editor.foldingImportsByDefault": true,
-  "editor.showFoldingControls": "never",
-  "terminal.integrated.shellIntegration.decorationsEnabled": "never",
-  "metals.testUserInterface": "Code Lenses",
-  "editor.stickyScroll.enabled": true,
-  "auto-build.defaultEnv.name": "STM32F103RE_creality_maple",
-  "auto-build.showOnStart": true
+  }
 }
