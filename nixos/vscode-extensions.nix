@@ -2,26 +2,26 @@
   {
     name = "vscode-docker";
     publisher = "ms-azuretools";
-    version = "1.23.1";
-    sha256 = "0gck916yzn09rh863gyaaf2nhjqnv0gqdkzcn1fjy7956sn9w073";
+    version = "1.23.2";
+    sha256 = "1475hhfxy6s9s24x9qj2q3jb01zmyk9y8w0v8gd3l07j6zslwsj7";
   }
   {
     name = "vscode-pull-request-github";
     publisher = "github";
-    version = "0.55.2022120109";
-    sha256 = "036gfgj3iyz4w3j74zhx3zh7m7rmakm2lg0h7mm11lqbpfwwrki1";
+    version = "0.57.2022121509";
+    sha256 = "1snncijirh4wwbjv4vna240rs8zpla740yhkzhq3f9zh5wjka6bc";
   }
   {
     name = "gitlens";
     publisher = "eamodio";
-    version = "2022.12.104";
-    sha256 = "10liz2d9ljlw4xvj44vlc1zkcvsmaqw2h70yrhq6ffbcw0049f9b";
+    version = "2022.12.1619";
+    sha256 = "0gwz49yiqjc23782g3xc5ahragqx3s6ki1277lkljjnmbi8d7wni";
   }
   {
     name = "haskell";
     publisher = "haskell";
-    version = "2.2.1";
-    sha256 = "14p9g07zsb3da4ilaasgsdvh3wagfzayqr8ichsf6k5c952zi8fk";
+    version = "2.2.2";
+    sha256 = "1d5b0p6r9ipwb7j4cx9w13vq31h78bh2sfwl54xri4gyvialhryd";
   }
   {
     name = "language-haskell";
@@ -32,8 +32,8 @@
   {
     name = "metals";
     publisher = "scalameta";
-    version = "1.20.7";
-    sha256 = "05bf1gjpmk5jlpxsyskryd7j7h59824s2yjfq40k1jmw99baa5q8";
+    version = "1.20.9";
+    sha256 = "15xs5d3hh0ighc8g707mb2r0kkpxx2rwd8id9h2ndb4xa2cpaqim";
   }
   {
     name = "scala";
@@ -98,14 +98,14 @@
   {
     name = "plantuml";
     publisher = "jebbs";
-    version = "2.17.4";
-    sha256 = "1s6jp1rx1k03ir7j3fsyqkhnnp9m6akabznb4pmjxpkvn2wzlz3y";
+    version = "2.17.5";
+    sha256 = "0l0amipyf74bkyiksnqfy2qcvv3qsshk9bqqqx28fk06nvx1zy8b";
   }
   {
     name = "vscode-openapi";
     publisher = "42Crunch";
-    version = "4.15.9";
-    sha256 = "0cg4a5j0yiab802n5k9wh29hzymswykp390v45vq4a8zryjkjg8g";
+    version = "4.15.10";
+    sha256 = "1r54hgjd9shw4qi6nvsnrlmvrjvpl2y8q1rqxciqcwzbahjp0ym9";
   }
 ];
 }
