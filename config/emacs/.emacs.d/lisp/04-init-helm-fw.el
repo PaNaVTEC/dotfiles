@@ -4,7 +4,6 @@
      :init (use-package helm-projectile :ensure t)
      :diminish (helm-mode . "")
      :config
-     (require 'helm-config)
      (require 'helm-misc)
      (require 'helm-projectile)
      (require 'helm-locate)

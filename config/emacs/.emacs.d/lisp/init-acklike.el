@@ -24,12 +24,12 @@
   'grep-find-ignored-directories
   (list "SCCS" "RCS" "CVS" "MCVS" ".svn" "coverage" ".git" ".hg" ".bzr" "_MTN" "_darcs" "{arch}" "objects" "build" "out" "dist" "node_modules" ".nyc_output" ".awcache" ".stack-work"))
 
-(use-package
-  xah-find
-  :ensure t
-  :defer t
-  :config
-  (location-list-buffer (rx bos "*xah-find output*")))
+;(use-package
+;  xah-find
+;  :ensure t
+;  :defer t
+;  :config
+;  (location-list-buffer (rx bos "*xah-find output*")))
 
 (use-package
   helm-ag

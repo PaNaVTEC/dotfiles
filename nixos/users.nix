@@ -37,6 +37,7 @@ in
       file.".xcolors".source = /home/panavtec/dotfiles/config/xresources/.xcolors;
       file.".Xresources".source = /home/panavtec/dotfiles/config/xresources/.Xresources;
       file.".Xdefaults".source = /home/panavtec/dotfiles/config/xresources/.Xdefaults;
+      file.".emacs.d/init.el".source = /home/panavtec/dotfiles/config/emacs/.emacs.d/init.el;
     };
   };
 }

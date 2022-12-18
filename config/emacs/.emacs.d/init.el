@@ -28,7 +28,8 @@
 (load custom-file)
 
 ;; Load modules
-(defvar lisp-directory (expand-file-name "lisp" user-emacs-directory))
+(defvar lisp-directory (expand-file-name "lisp" "/home/panavtec/dotfiles/config/emacs/.emacs.d"))
+;(defvar lisp-directory (expand-file-name "lisp" user-emacs-directory))
 (add-to-list 'load-path lisp-directory)
 (mapc (lambda (file-name)
         (require (intern (file-name-sans-extension file-name))))
