@@ -19,3 +19,5 @@ if [[ $(uname) == "Linux" ]]; then
   setxkbmap -layout us -variant altgr-intl -option nodeadkeys
   eval $(dircolors ~/.dircolors)
 fi
+
+eval "$(direnv hook bash)"

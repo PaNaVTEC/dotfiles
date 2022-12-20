@@ -2,20 +2,20 @@
   {
     name = "vscode-docker";
     publisher = "ms-azuretools";
-    version = "1.23.2";
-    sha256 = "1475hhfxy6s9s24x9qj2q3jb01zmyk9y8w0v8gd3l07j6zslwsj7";
+    version = "1.23.3";
+    sha256 = "05lxa03hh5rslg7351dw87zlrp4drqy1jmpms1aml0yn1jxfb9yj";
   }
   {
     name = "vscode-pull-request-github";
     publisher = "github";
-    version = "0.57.2022121509";
-    sha256 = "1snncijirh4wwbjv4vna240rs8zpla740yhkzhq3f9zh5wjka6bc";
+    version = "0.57.2022121916";
+    sha256 = "0zng27sr9czbcypgn473x0n136rlpbz04yz86x28gsw3y8r3dmgg";
   }
   {
     name = "gitlens";
     publisher = "eamodio";
-    version = "2022.12.1619";
-    sha256 = "0gwz49yiqjc23782g3xc5ahragqx3s6ki1277lkljjnmbi8d7wni";
+    version = "2022.12.2001";
+    sha256 = "1ll0rvrv5sll3ryz8fahh629a6kri32jzk0gx4i738isr9y5fc0a";
   }
   {
     name = "haskell";
