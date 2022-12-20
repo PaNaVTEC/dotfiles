@@ -13,3 +13,11 @@ createProjectScala () {
   sbt ensimeConfig
   sbt scalastyleGenerateConfig
 }
+
+cleanupMetalsProject() {
+  rm -rf .bloop/ .bsp/ .idea/ .metals/ project/.bloop/ project/metals.sbt project/project/ project/target/ target/
+}
+
+killSbt() {
+  killAllWithName sbt
+}

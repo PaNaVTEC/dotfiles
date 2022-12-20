@@ -115,3 +115,7 @@ calculator() {
 }
 alias c=calculator
 alias calc=calculator
+
+killAllWithName() {
+  kill -9 `ps aux | grep $1 | grep -v grep | awk '{print $2}'`
+}
