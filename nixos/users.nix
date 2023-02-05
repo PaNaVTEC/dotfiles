@@ -67,6 +67,7 @@ in
         in {
           sources = [ (mkTuple [ "xkb" "us+altgr-intl" ]) ];
           xkb-options = [ "terminate:ctrl_alt_bksp" ];
+          color-scheme = "prefer-dark";
         };
 
       "org/gnome/desktop/wm/keybindings" = {
@@ -82,8 +83,22 @@ in
         toggle-maximized = ["<Super>f"];
       };
 
+      # Needed so switch-to-workspace works
+      "org/gnome/shell/keybindings" = {
+        switch-to-application-1 = [""];
+        switch-to-application-2 = [""];
+        switch-to-application-3 = [""];
+        switch-to-application-4 = [""];
+        switch-to-application-5 = [""];
+        switch-to-application-6 = [""];
+        switch-to-application-7 = [""];
+        switch-to-application-8 = [""];
+        switch-to-application-9 = [""];
+      };
+
       "org/gnome/desktop/wm/preferences" = {
         titlebar-font = "Iosevka Bold 11";
+        audible-bell = false;
       };
 
       "org/gnome/nautilus/preferences" = {
