@@ -19,6 +19,8 @@
 
     opengl.driSupport = true;
     opengl.driSupport32Bit = true;
+
+    cpu.amd.updateMicrocode = true;
   };
 
   services.xserver = {
@@ -26,9 +28,16 @@
   };
 
   boot = {
+    kernelPackages = pkgs.linuxPackages_6_1;
     kernelModules = [
       "kvm-amd" # enables virtualization
+      "amd-pstate" # enables new cpu scaling
       "amdgpu"
+    ];
+
+    kernelParams = [
+      "initcall_blacklist=acpi_cpufreq_init" # blacklist to use amd p-state
+      "amd_pstate=passive"
     ];
 
     loader = {
@@ -46,6 +55,5 @@
         allowDiscards = true;
       };
     };
-  
   };
 }
