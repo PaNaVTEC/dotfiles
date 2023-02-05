@@ -18,7 +18,6 @@ in {
     enable = true;
     enableOnBoot = false;
     autoPrune.enable = true;
-    extraOptions = "--config-file=/etc/docker-daemon.json";
   };
 
   programs.gnupg.agent = {
@@ -60,8 +59,8 @@ in {
     emacs
     sqlite # Required by helm-dash
 
-    # unstable.vscode-fhs
-    (unstable.vscode-with-extensions.override {
+    # unstable.vscode-with-extensions
+    (vscode-with-extensions.override {
       vscodeExtensions = with vscode-extensions; [
         ms-vsliveshare.vsliveshare
         ms-vscode.cpptools
