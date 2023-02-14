@@ -1,6 +1,5 @@
 ms-azuretools.vscode-docker
 github.vscode-pull-request-github
-eamodio.gitlens
 haskell.haskell
 justusadam.language-haskell
 scalameta.metals

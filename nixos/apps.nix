@@ -6,26 +6,22 @@
     evince
     pinta
     libreoffice
-    qbittorrent
-    transmission-qt
     filezilla
     via
     vlc
     baobab
     unstable.ledger-live-desktop
     signal-desktop
-    solaar
     unstable.android-udev-rules
     # record audio
     audacity
     # sign pdfs
     xournal
-    unetbootin
     synergy
     calibre
     appimage-run
-    wine-staging
-    lutris
     audio-recorder
+    unstable.portfolio
+    unstable.bitwarden
   ];
 }

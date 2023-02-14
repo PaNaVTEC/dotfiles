@@ -2,6 +2,9 @@
 
 let
   home-manager = builtins.fetchTarball "https://github.com/nix-community/home-manager/archive/master.tar.gz";
+  xdgBrowser = ["chromium-browser.desktop"];
+  xdgImageViewer = ["org.gnome.eog.desktop"];
+  xdgVlc = ["vlc.desktop"];
 in
 {
   imports = [
@@ -19,6 +22,85 @@ in
     xdg.configFile."Code/User/keybindings.json".source = /home/panavtec/dotfiles/config/vscode/.config/Code/User/keybindings.json;
     xdg.configFile."Code/User/settings.json".source = /home/panavtec/dotfiles/config/vscode/.config/Code/User/settings.json;
     xdg.configFile."starship.toml".source = /home/panavtec/dotfiles/config/starship/.config/starship.toml;
+
+    ## Debugging tools:
+    ## XDG_UTILS_DEBUG_LEVEL=2 xdg-mime query filetype foo.pdf
+    ## XDG_UTILS_DEBUG_LEVEL=2 xdg-mime query default application/pdf
+    ## fd evince.desktop /
+    xdg.mimeApps = {
+      enable = true;
+      associations.added = {
+        "application/pdf" = ["org.gnome.Evince.desktop"];
+        "video/mp4" = xdgVlc;
+        "image/bmp" = xdgImageViewer;
+        "image/gif" = xdgImageViewer;
+        "image/jpg" = xdgImageViewer;
+        "image/pjpeg" = xdgImageViewer;
+        "image/png" = xdgImageViewer;
+        "image/tiff" = xdgImageViewer;
+        "image/webp" = xdgImageViewer;
+        "image/x-bmp" = xdgImageViewer;
+        "image/x-gray" = xdgImageViewer;
+        "image/x-icb" = xdgImageViewer;
+        "image/x-ico" = xdgImageViewer;
+        "image/x-png" = xdgImageViewer;
+        "image/x-portable-anymap" = xdgImageViewer;
+        "image/x-portable-bitmap" = xdgImageViewer;
+        "image/x-portable-graymap" = xdgImageViewer;
+        "image/x-portable-pixmap" = xdgImageViewer;
+        "image/x-xbitmap" = xdgImageViewer;
+        "image/x-xpixmap" = xdgImageViewer;
+        "image/x-pcx" = xdgImageViewer;
+        "image/svg+xml" = xdgImageViewer;
+        "image/svg+xml-compressed" = xdgImageViewer;
+        "image/vnd.wap.wbmp" = xdgImageViewer;
+        "image/x-icns" = xdgImageViewer;
+      };
+      defaultApplications = {
+        "application/pdf" = ["org.gnome.Evince.desktop"];
+        "text/html" = xdgBrowser;
+        "application/x-extension-htm" = xdgBrowser;
+        "application/x-extension-html" = xdgBrowser;
+        "application/x-extension-shtml" = xdgBrowser;
+        "application/xhtml+xml" = xdgBrowser;
+        "application/x-extension-xhtml" = xdgBrowser;
+        "application/x-extension-xht" = xdgBrowser;
+        "x-scheme-handler/http" = xdgBrowser;
+        "x-scheme-handler/https" = xdgBrowser;
+        "x-scheme-handler/ftp" = xdgBrowser;
+        "x-scheme-handler/chrome" = xdgBrowser;
+        "x-scheme-handler/about" = xdgBrowser;
+        "x-scheme-handler/unknown" = xdgBrowser;
+        "x-scheme-handler/mailto" = xdgBrowser;
+        "x-scheme-handler/webcal" = xdgBrowser;
+        "default-web-browser" = xdgBrowser;
+        "video/mp4" = xdgVlc;
+        "image/jpeg" = xdgImageViewer;
+        "image/bmp" = xdgImageViewer;
+        "image/gif" = xdgImageViewer;
+        "image/jpg" = xdgImageViewer;
+        "image/pjpeg" = xdgImageViewer;
+        "image/png" = xdgImageViewer;
+        "image/tiff" = xdgImageViewer;
+        "image/webp" = xdgImageViewer;
+        "image/x-bmp" = xdgImageViewer;
+        "image/x-gray" = xdgImageViewer;
+        "image/x-icb" = xdgImageViewer;
+        "image/x-ico" = xdgImageViewer;
+        "image/x-png" = xdgImageViewer;
+        "image/x-portable-anymap" = xdgImageViewer;
+        "image/x-portable-bitmap" = xdgImageViewer;
+        "image/x-portable-graymap" = xdgImageViewer;
+        "image/x-portable-pixmap" = xdgImageViewer;
+        "image/x-xbitmap" = xdgImageViewer;
+        "image/x-xpixmap" = xdgImageViewer;
+        "image/x-pcx" = xdgImageViewer;
+        "image/svg+xml"= xdgImageViewer;
+        "image/svg+xml-compressed" = xdgImageViewer;
+        "image/vnd.wap.wbmp" = xdgImageViewer;
+        "image/x-icns" = xdgImageViewer;
+      };
+    };
 
     home = {
       stateVersion = "22.11";
@@ -41,6 +123,7 @@ in
       file.".Xresources".source = /home/panavtec/dotfiles/config/xresources/.Xresources;
       file.".Xdefaults".source = /home/panavtec/dotfiles/config/xresources/.Xdefaults;
       file.".emacs.d/init.el".source = /home/panavtec/dotfiles/config/emacs/.emacs.d/init.el;
+      file.".gitignore.global".source = /home/panavtec/dotfiles/config/git/.gitignore.global;
     };
 
     dconf.settings = {
@@ -51,6 +134,7 @@ in
       "org/gnome/desktop/interface" = {
         clock-show-weekday = true;
         color-scheme = "prefer-dark";
+        gtk-theme = "Adwaita-dark";
         document-font-name = "Iosevka 11";
         enable-animations = true;
         enable-hot-corners = false;
