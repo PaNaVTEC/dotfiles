@@ -124,6 +124,7 @@ in
       file.".Xdefaults".source = /home/panavtec/dotfiles/config/xresources/.Xdefaults;
       file.".emacs.d/init.el".source = /home/panavtec/dotfiles/config/emacs/.emacs.d/init.el;
       file.".gitignore.global".source = /home/panavtec/dotfiles/config/git/.gitignore.global;
+      file.".git-completion.bash".source = /home/panavtec/dotfiles/config/git/.git-completion.bash;
     };
 
     dconf.settings = {
