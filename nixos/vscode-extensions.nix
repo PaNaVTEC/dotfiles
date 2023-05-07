@@ -2,20 +2,20 @@
   {
     name = "vscode-docker";
     publisher = "ms-azuretools";
-    version = "1.24.0";
-    sha256 = "1fgkqcjxg77n434jjna8hs7qrj1cmq060sb7gidsagni18lzi7fd";
+    version = "1.25.0";
+    sha256 = "1hif7f2323v1lkhzqi7n50psh5bw2jbc6h736fhv61jlfvb2z8bk";
   }
   {
     name = "vscode-pull-request-github";
     publisher = "github";
-    version = "0.59.2023030609";
-    sha256 = "1x1g7lfsdyh1xj8bb2d931f2brhzsrqsd889d73vn741mp6xcf5n";
+    version = "0.63.2023050409";
+    sha256 = "0r2v3kxc9gbnzish8g88a43vcqx6sr31m7dyl6xz98120ramqak5";
   }
   {
     name = "haskell";
     publisher = "haskell";
-    version = "2.2.2";
-    sha256 = "1d5b0p6r9ipwb7j4cx9w13vq31h78bh2sfwl54xri4gyvialhryd";
+    version = "2.2.4";
+    sha256 = "1qsvfb2a2k48gndda92w91z9acis43a151cdwmkmb8qprl311768";
   }
   {
     name = "language-haskell";
@@ -26,8 +26,8 @@
   {
     name = "metals";
     publisher = "scalameta";
-    version = "1.22.0";
-    sha256 = "1zrq1xsdhhd09i7dsff3fb0g59s1z9gqg948jlcj8vxg5fa3whrd";
+    version = "1.23.1";
+    sha256 = "1sqsclkhfnrhfczwlki4g82w4q0dqdg73532zcb17519krd0i2ih";
   }
   {
     name = "scala";
@@ -50,8 +50,8 @@
   {
     name = "vscode-yaml";
     publisher = "redhat";
-    version = "1.11.10112022";
-    sha256 = "0i53n9whcfpds9496r4pa27j3zmd4jc1kpkf4m4rfxzswwngg47x";
+    version = "1.12.2";
+    sha256 = "193spsdrfwl6yf1c9k10c6s6azyq15h4jgz76gqz44c4d2yx0c8j";
   }
   {
     name = "nord-visual-studio-code";
@@ -68,8 +68,8 @@
   {
     name = "direnv";
     publisher = "mkhl";
-    version = "0.10.1";
-    sha256 = "0m89sx1qqdkwa9pfmd9b11lp8z0dqpi6jn27js5q4ymscyg41bqd";
+    version = "0.12.1";
+    sha256 = "0lizp7r2l6dayhvxkz3ghsgywz9magvy7lzkc5dkcqxcsi1p4klb";
   }
   {
     name = "single-editor-tabs";
@@ -86,8 +86,8 @@
   {
     name = "smithy-vscode-extension";
     publisher = "Smithy";
-    version = "0.5.2";
-    sha256 = "0rwfc1dhfpmmn3sqvv73d1y5dwn0nmqv4wdsgbvhd5j3m8imbr79";
+    version = "0.5.3";
+    sha256 = "0925phy7iqm924gqm48j5aq5n99l3mjk80xvpnrqz8hkxf5kbkxs";
   }
   {
     name = "plantuml";
@@ -98,8 +98,8 @@
   {
     name = "vscode-openapi";
     publisher = "42Crunch";
-    version = "4.15.16";
-    sha256 = "1f3cm1m6pfr6h4g1xb85cf45w773zar6vi2mz3qpjds96c6bs62v";
+    version = "4.16.6";
+    sha256 = "0xcrm9qddxlsbhhzwfsddpqwjwgr8wj52g0n9v4ghb94idr54wdb";
   }
 ];
 }
