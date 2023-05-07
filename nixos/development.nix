@@ -1,7 +1,7 @@
 { config, pkgs, ... }:
 
 let
-  vscode-vim-patched = pkgs.vscode-utils.buildVscodeMarketplaceExtension {
+  vscode-vim-patched = pkgs.unstable.vscode-utils.buildVscodeMarketplaceExtension {
       mktplcRef = {
         name = "vim";
         publisher = "vscodevim";
@@ -55,18 +55,17 @@ in {
     direnv
 
     # Ide/editors
-    unstable.jetbrains.idea-community
+    # unstable.jetbrains.idea-community
     emacs
     sqlite # Required by helm-dash
 
     # unstable.vscode-with-extensions
-    (vscode-with-extensions.override {
-      vscodeExtensions = with vscode-extensions; [
+    (unstable.vscode-with-extensions.override {
+      vscodeExtensions = with unstable.vscode-extensions; [
         ms-vsliveshare.vsliveshare
         ms-vscode.cpptools
-      ] ++ [
-        vscode-vim-patched
-      ] ++ vscode-utils.extensionsFromVscodeMarketplace (import ./vscode-extensions.nix).extensions;
+        vscodevim.vim
+      ] ++ unstable.vscode-utils.extensionsFromVscodeMarketplace (import ./vscode-extensions.nix).extensions;
     })
     rnix-lsp # nix language server
   ];

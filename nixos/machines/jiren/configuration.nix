@@ -16,10 +16,7 @@
     enableRedistributableFirmware = true;
     ledger.enable = true;
     logitech.wireless.enable = true;
-
     opengl.driSupport = true;
-    opengl.driSupport32Bit = true;
-
     cpu.amd.updateMicrocode = true;
   };
 

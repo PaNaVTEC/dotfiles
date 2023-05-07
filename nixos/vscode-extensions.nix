@@ -2,20 +2,14 @@
   {
     name = "vscode-docker";
     publisher = "ms-azuretools";
-    version = "1.23.3";
-    sha256 = "05lxa03hh5rslg7351dw87zlrp4drqy1jmpms1aml0yn1jxfb9yj";
+    version = "1.24.0";
+    sha256 = "1fgkqcjxg77n434jjna8hs7qrj1cmq060sb7gidsagni18lzi7fd";
   }
   {
     name = "vscode-pull-request-github";
     publisher = "github";
-    version = "0.59.2023020215";
-    sha256 = "035ggakcha63wflvkc62vifvbidw74sh6np3fmf0vv6dv3pyh77w";
-  }
-  {
-    name = "gitlens";
-    publisher = "eamodio";
-    version = "2023.2.304";
-    sha256 = "1is0mfxl2qyf00i5p80nh6bfaz0a0sa4gvdr32fjbizgnz9465k8";
+    version = "0.59.2023030609";
+    sha256 = "1x1g7lfsdyh1xj8bb2d931f2brhzsrqsd889d73vn741mp6xcf5n";
   }
   {
     name = "haskell";
@@ -32,8 +26,8 @@
   {
     name = "metals";
     publisher = "scalameta";
-    version = "1.21.2";
-    sha256 = "0krb51vg1wd3p6vp6n844dfwfaij7av9xkzcacdajkrk5p2fyr9r";
+    version = "1.22.0";
+    sha256 = "1zrq1xsdhhd09i7dsff3fb0g59s1z9gqg948jlcj8vxg5fa3whrd";
   }
   {
     name = "scala";
@@ -50,8 +44,8 @@
   {
     name = "markdown-preview-enhanced";
     publisher = "shd101wyy";
-    version = "0.6.7";
-    sha256 = "0afs7n7xzknr3riax712rkr1vq9qvjq0bjy73py0nvi976k33n76";
+    version = "0.6.8";
+    sha256 = "1gas3243w532kg4ms0h1622dhv1i6lfx98ffi5s952bj1cg5mm7l";
   }
   {
     name = "vscode-yaml";

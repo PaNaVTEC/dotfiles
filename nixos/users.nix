@@ -22,6 +22,7 @@ in
     xdg.configFile."Code/User/keybindings.json".source = /home/panavtec/dotfiles/config/vscode/.config/Code/User/keybindings.json;
     xdg.configFile."Code/User/settings.json".source = /home/panavtec/dotfiles/config/vscode/.config/Code/User/settings.json;
     xdg.configFile."starship.toml".source = /home/panavtec/dotfiles/config/starship/.config/starship.toml;
+    xdg.configFile."alacritty.yml".source = /home/panavtec/dotfiles/config/alacritty/alacritty.yml;
 
     ## Debugging tools:
     ## XDG_UTILS_DEBUG_LEVEL=2 xdg-mime query filetype foo.pdf
@@ -195,7 +196,7 @@ in
 
       "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0" = {
         binding = "<Shift><Super>Return";
-        command = "urxvt";
+        command = "alacritty";
         name = "Launch terminal";
       };
 
