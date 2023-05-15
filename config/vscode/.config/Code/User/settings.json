@@ -123,7 +123,7 @@
   "task.problemMatchers.neverPrompt": {
     "shell": true
   },
-  "metals.serverVersion": "0.11.11+3-81dab9c6-SNAPSHOT",
+  "metals.serverVersion": "0.11.12+32-09988e82-SNAPSHOT",
   "metals.showImplicitArguments": false,
   "metals.showInferredType": false
 }
