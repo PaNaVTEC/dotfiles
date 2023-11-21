@@ -26,7 +26,7 @@ in {
     pinentryFlavor = "gnome3";
   };
 
-  # programs.adb.enable = true;
+  programs.adb.enable = true;
   programs.java = {
     enable = true;
     # package = pkgs.openjdk16-bootstrap;
@@ -42,7 +42,10 @@ in {
     gitAndTools.hub
     gitAndTools.diff-so-fancy
     mob
-    platformio
+    postman
+
+    # Mobile apps
+    unstable.android-studio
 
     gnupg
     pinentry

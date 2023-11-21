@@ -29,6 +29,8 @@
 
   nixpkgs.config = {
     allowUnfree = true;
+    android_sdk.accept_license = true;
+
     packageOverrides = pkgs: {
       stable = import <stable> {
         config = config.nixpkgs.config;
@@ -37,7 +39,12 @@
       unstable = import <unstable> {
         config = config.nixpkgs.config;
       };
+      nur = import (builtins.fetchTarball "https://github.com/nix-community/NUR/archive/master.tar.gz") {
+        inherit pkgs;
+      };
     };
+
+    permittedInsecurePackages = ["electron-24.8.6"];
   };
 
   # This value determines the NixOS release from which the default

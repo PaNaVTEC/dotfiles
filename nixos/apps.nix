@@ -15,6 +15,7 @@
     unstable.android-udev-rules
     # record audio
     audacity
+    qbittorrent
     # sign pdfs
     xournal
     synergy
@@ -23,5 +24,6 @@
     audio-recorder
     unstable.portfolio
     unstable.bitwarden
+    pkgs.nur.repos.k3a.ib-tws
   ];
 }
