@@ -15,7 +15,7 @@ createProjectScala () {
 }
 
 cleanupMetalsProject() {
-  rm -rf .bloop/ .bsp/ .idea/ .metals/ project/.bloop/ project/metals.sbt project/project/ project/target/ target/
+  rm -rf .bloop/ .bsp/ .idea/ .metals/ project/.bloop/ project/metals.sbt project/project/ project/target/ target/ service/target smithy/target lambda/target
 }
 
 killSbt() {
