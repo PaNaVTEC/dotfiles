@@ -21,5 +21,9 @@
     "key": "ctrl+r",
     "command": "metals.run-current-file",
     "when": "editorTextFocus"
+  },
+  {
+    "key": "ctrl+p",
+    "command": "workbench.action.quickOpen"
   }
 ]

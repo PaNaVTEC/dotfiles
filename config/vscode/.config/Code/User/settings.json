@@ -9,6 +9,7 @@
   "editor.cursorBlinking": "smooth",
   "editor.foldingImportsByDefault": true,
   "editor.fontFamily": "'Iosevka Nerd Font','Droid Sans Mono', 'monospace', monospace",
+  "editor.fontLigatures": true,
   "editor.fontSize": 14,
   "editor.glyphMargin": false,
   "editor.inlineSuggest.enabled": true,
@@ -123,7 +124,17 @@
   "task.problemMatchers.neverPrompt": {
     "shell": true
   },
-  "metals.serverVersion": "0.11.12+32-09988e82-SNAPSHOT",
+	"debug.openDebug": "openOnDebugBreak",
+	"debug.internalConsoleOptions": "openOnSessionStart",
+	"[dart]": {
+		"editor.formatOnSave": true,
+		"editor.formatOnType": true,
+		"editor.selectionHighlight": false,
+		"editor.suggestSelection": "first",
+		"editor.tabCompletion": "onlySnippets",
+		"editor.wordBasedSuggestions": false,
+  },
+  "metals.serverVersion": "1.1.0",
   "metals.showImplicitArguments": false,
   "metals.showInferredType": false
 }
