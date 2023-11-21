@@ -14,6 +14,7 @@
       "nngceckbapebfimnlniiiahkandclblb" # bitwarden
       "kbfnbcaeplbcioakkpcpgfkobkghlhen" # grammarly
       "neebplgakaahbhdphmkckjjcegoiijjo" # keepa
+      "cgdjpilhipecahhcilnafpblkieebhea" # send to kindle
 #      "dcpihecpambacapedldabdbpakmachpb;https://github.com/iamadamdev/bypass-paywalls-chrome/archive/master.zip"
     ];
     extraOpts = {
