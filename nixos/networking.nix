@@ -1,9 +1,11 @@
 { config, pkgs, ... }:
 
 {
-  nixpkgs.overlays = [
-    (import "${builtins.fetchTarball https://github.com/vlaci/openconnect-sso/archive/master.tar.gz}/overlay.nix")
-  ];
+  services.globalprotect = {
+    enable = true;
+    # if you need a Host Integrity Protection report
+    csdWrapper = "${pkgs.openconnect}/libexec/openconnect/hipreport.sh";
+  };
 
   networking = {
     networkmanager.enable = true;
@@ -19,8 +21,6 @@
     wirelesstools
     wireguard-tools
     protonvpn-gui
-    #openconnect_unstable
-    openconnect-sso
-    unstable.networkmanager-openconnect
+    globalprotect-openconnect
   ];
 }
