@@ -1,7 +1,14 @@
 { config, pkgs, lib, ... }:
 
 {
+  virtualisation = {
+    waydroid.enable = true;
+    lxd.enable = true;
+  };
+
   environment.systemPackages = with pkgs; [
+    unstable.weston
+    unstable.wl-clipboard
     dropbox
     evince
     pinta

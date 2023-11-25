@@ -6,14 +6,15 @@
     # displayManager.startx.enable = true;
     # desktopManager.plasma5.enable = true;
     desktopManager.gnome.enable = true;
-    windowManager.i3 = {
-      package = pkgs.i3-gaps;
-      enable = true;
-    };
+    # windowManager.i3 = {
+    #   package = pkgs.i3-gaps;
+    #   enable = true;
+    # };
     libinput.enable = true;
     layout = "us";
     xkbVariant = "altgr-intl";
     exportConfiguration = true;
+    videoDrivers=["amdgpu"];
   };
 
   environment.variables = {
@@ -35,11 +36,11 @@
     xorg.xdpyinfo
     xorg.xprop
     acpi
-    dmenu
-    dunst
-    i3blocks
     sysstat
-    i3lock-pixeled
+    # dmenu
+    # dunst
+    # i3blocks
+    # i3lock-pixeled
     arandr
     feh
 
@@ -66,7 +67,6 @@
     unstable.gnomeExtensions.duckduckgo-search-provider
     unstable.gnomeExtensions.vitals
     unstable.gnomeExtensions.extensions-sync
-    unstable.gnomeExtensions.workspaces-bar
     unstable.gnomeExtensions.unite
     unstable.gnomeExtensions.forge
     gnome.dconf-editor

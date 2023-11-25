@@ -33,7 +33,7 @@
   "update.mode": "none",
   "window.menuBarVisibility": "toggle",
   "workbench.colorTheme": "Nord",
-  "workbench.editor.showTabs": false,
+  "workbench.editor.showTabs": "single",
   "workbench.preferredLightColorTheme": "Default Dark+",
   "workbench.startupEditor": "none",
   "workbench.colorCustomizations": {

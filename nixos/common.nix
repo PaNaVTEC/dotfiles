@@ -12,7 +12,6 @@
       ./security.nix
       ./web-browsers.nix
       ./cli.nix
-      ./messaging.nix
       ./audio.nix
       ./users.nix
       ./bluetooth.nix
