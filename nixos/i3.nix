@@ -60,15 +60,14 @@
     # Gnome
     unstable.gnome.gnome-tweaks
 
-    unstable.gnomeExtensions.pop-shell
-    unstable.gnomeExtensions.appindicator
-    unstable.gnomeExtensions.just-perfection
-    unstable.gnomeExtensions.draw-on-you-screen-2
-    unstable.gnomeExtensions.duckduckgo-search-provider
-    unstable.gnomeExtensions.vitals
-    unstable.gnomeExtensions.extensions-sync
-    unstable.gnomeExtensions.unite
-    unstable.gnomeExtensions.forge
+    gnomeExtensions.appindicator
+    gnomeExtensions.just-perfection
+    gnomeExtensions.draw-on-you-screen-2
+    gnomeExtensions.duckduckgo-search-provider
+    gnomeExtensions.vitals
+    gnomeExtensions.extensions-sync
+    gnomeExtensions.unite
+    gnomeExtensions.forge
     gnome.dconf-editor
   ];
 }

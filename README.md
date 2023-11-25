@@ -1,14 +1,25 @@
-# dotfiles
+# dotfiles based on nixos
 
-My configuration automated to be setted up in minutes. 
+## Upgrade
 
-Includes configuration, themes, colors... of the following:
-- i3-gaps
-- dunst
-- py3status
-- redshift
-- termite
+```
+sudo nix-channel --list | grep nixos
+```
 
-To install it, just run setup/setup.sh
+To upgrade:
 
-![2016-11-10-130330_1920x1080_scrot](https://cloud.githubusercontent.com/assets/837104/20177787/78db90d6-a746-11e6-8b26-290f062912e4.png)
+```
+nix-channel --add https://channels.nixos.org/nixos-23.05 nixos
+```
+or to unstable:
+
+```
+nix-channel --add https://channels.nixos.org/nixos-unstable nixos
+```
+
+Update as well `users.nix` with the same version of the channel for home-manager. And then:
+
+```
+nixos-rebuild switch --upgrade
+```
+

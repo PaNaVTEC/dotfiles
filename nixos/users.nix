@@ -1,8 +1,7 @@
 { config, pkgs, lib, ... }:
 
 let
-  #home-manager = builtins.fetchTarball "https://github.com/nix-community/home-manager/archive/master.tar.gz";
-  home-manager = builtins.fetchTarball "https://github.com/nix-community/home-manager/archive/release-22.11.tar.gz";
+  home-manager = builtins.fetchTarball "https://github.com/nix-community/home-manager/archive/release-23.05.tar.gz";
   xdgBrowser = ["chromium-browser.desktop"];
   xdgImageViewer = ["org.gnome.eog.desktop"];
   xdgVlc = ["vlc.desktop"];
