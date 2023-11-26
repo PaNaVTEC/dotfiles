@@ -2,7 +2,7 @@
 
 {
   environment.systemPackages = with pkgs; [
-    exa
+    unstable.eza
     unzip
     unrar
     jq
