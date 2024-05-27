@@ -41,11 +41,7 @@ in {
     gibo
     gitAndTools.hub
     gitAndTools.diff-so-fancy
-    mob
-    postman
-
-    # Mobile apps
-    unstable.android-studio
+    # pkgs.nur.repos.running-grass.postman
 
     gnupg
     pinentry
@@ -61,6 +57,7 @@ in {
     # unstable.jetbrains.idea-community
     emacs
     sqlite # Required by helm-dash
+    devbox
 
     # unstable.vscode-with-extensions
     (unstable.vscode-with-extensions.override {

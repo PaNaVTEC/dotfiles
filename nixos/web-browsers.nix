@@ -15,7 +15,7 @@
       "kbfnbcaeplbcioakkpcpgfkobkghlhen" # grammarly
       "neebplgakaahbhdphmkckjjcegoiijjo" # keepa
       "cgdjpilhipecahhcilnafpblkieebhea" # send to kindle
-#      "dcpihecpambacapedldabdbpakmachpb;https://github.com/iamadamdev/bypass-paywalls-chrome/archive/master.zip"
+      "plfbhieilacgkdnphcdehdnhjenmnima" # epoch converter
     ];
     extraOpts = {
       "BrowserSignin" = 0;

@@ -27,11 +27,10 @@
   "metals.testUserInterface": "Code Lenses",
   "nix.enableLanguageServer": true,
   "telemetry.telemetryLevel": "off",
-  "terminal.integrated.enableMultiLinePasteWarning": false,
+  "terminal.integrated.enableMultiLinePasteWarning": "never",
   "terminal.integrated.shellIntegration.decorationsEnabled": "never",
   "terminal.integrated.smoothScrolling": true,
   "update.mode": "none",
-  "window.menuBarVisibility": "toggle",
   "workbench.colorTheme": "Nord",
   "workbench.editor.showTabs": "single",
   "workbench.preferredLightColorTheme": "Default Dark+",
@@ -132,9 +131,9 @@
 		"editor.selectionHighlight": false,
 		"editor.suggestSelection": "first",
 		"editor.tabCompletion": "onlySnippets",
-		"editor.wordBasedSuggestions": false,
+		"editor.wordBasedSuggestions": "off"
   },
-  "metals.serverVersion": "1.1.0",
+  "metals.serverVersion": "1.3.1",
   "metals.showImplicitArguments": false,
-  "metals.showInferredType": false
+  "metals.showInferredType": "false",
 }

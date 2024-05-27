@@ -1,5 +1,4 @@
 ms-azuretools.vscode-docker
-github.vscode-pull-request-github
 haskell.haskell
 justusadam.language-haskell
 scalameta.metals
@@ -19,3 +18,4 @@ eamodio.gitlens
 GitHub.vscode-github-actions
 Dart-Code.dart-code
 Dart-Code.flutter
+bierner.markdown-mermaid

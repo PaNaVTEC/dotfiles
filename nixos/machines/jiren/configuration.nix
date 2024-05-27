@@ -29,6 +29,8 @@
     videoDrivers = [ "amdgpu" ];
   };
 
+  services.hardware.openrgb.enable = true;
+
   boot = {
     kernelPackages = pkgs.linuxPackages_6_1;
     kernelModules = [

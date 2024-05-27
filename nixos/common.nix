@@ -43,7 +43,10 @@
       };
     };
 
-    permittedInsecurePackages = ["electron-24.8.6"];
+    permittedInsecurePackages = [
+      "electron-24.8.6"
+      "nix-2.15.3"
+    ];
   };
 
   # This value determines the NixOS release from which the default

@@ -32,5 +32,6 @@
     unstable.portfolio
     unstable.bitwarden
     pkgs.nur.repos.k3a.ib-tws
+    slack
   ];
 }
