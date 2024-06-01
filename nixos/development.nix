@@ -23,7 +23,7 @@ in {
   programs.gnupg.agent = {
     enable = true;
     enableSSHSupport = true;
-    pinentryFlavor = "gnome3";
+    # pinentryFlavor = "gnome3";
   };
 
   programs.adb.enable = true;
@@ -41,11 +41,9 @@ in {
     gibo
     gitAndTools.hub
     gitAndTools.diff-so-fancy
-    # pkgs.nur.repos.running-grass.postman
 
     gnupg
     pinentry
-    pinentry-gnome
 
     docker-compose
     virtualbox
@@ -67,7 +65,6 @@ in {
         vscodevim.vim
       ] ++ unstable.vscode-utils.extensionsFromVscodeMarketplace (import ./vscode-extensions.nix).extensions;
     })
-    rnix-lsp # nix language server
   ];
 
   # Solves problems with file watchers, too many open files

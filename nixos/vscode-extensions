@@ -1,13 +1,10 @@
-ms-azuretools.vscode-docker
 haskell.haskell
 justusadam.language-haskell
 scalameta.metals
 scala-lang.scala
-jnoortheen.nix-ide
 shd101wyy.markdown-preview-enhanced
 redhat.vscode-yaml
 arcticicestudio.nord-visual-studio-code
-humao.rest-client
 mkhl.direnv
 martybegood.single-editor-tabs
 ryuta46.multi-command
@@ -15,7 +12,6 @@ Smithy.smithy-vscode-extension
 jebbs.plantuml
 42Crunch.vscode-openapi
 eamodio.gitlens
-GitHub.vscode-github-actions
 Dart-Code.dart-code
 Dart-Code.flutter
 bierner.markdown-mermaid

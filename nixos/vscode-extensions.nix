@@ -1,11 +1,5 @@
 { extensions = [
   {
-    name = "vscode-docker";
-    publisher = "ms-azuretools";
-    version = "1.29.1";
-    sha256 = "0zba6g0cw2h42gfvrlx0x2axlj61hkrfjfg5kyd14fqzi4n9jmxs";
-  }
-  {
     name = "haskell";
     publisher = "haskell";
     version = "2.5.3";
@@ -20,20 +14,14 @@
   {
     name = "metals";
     publisher = "scalameta";
-    version = "1.34.2";
-    sha256 = "0pjkcswpczj4ikkz3ix03gn96f2nwxd3hibb8a2i7849rsz2mfi2";
+    version = "1.35.5";
+    sha256 = "0fdfrz97fawcz4ah6qnwapyy9g9ymxfgng6fd6j5xnghkpsav8wv";
   }
   {
     name = "scala";
     publisher = "scala-lang";
     version = "0.5.7";
     sha256 = "0zkyrhgkm3q1zbzjz5yj85gkabwa3v9pd4xq9ym3ryvn1992ncvj";
-  }
-  {
-    name = "nix-ide";
-    publisher = "jnoortheen";
-    version = "0.3.1";
-    sha256 = "1cpfckh6zg8byi6x1llkdls24w9b0fvxx4qybi9zfcy5gc60r6nk";
   }
   {
     name = "markdown-preview-enhanced";
@@ -52,12 +40,6 @@
     publisher = "arcticicestudio";
     version = "0.19.0";
     sha256 = "05bmzrmkw9syv2wxqlfddc3phjads6ql2grknws85fcqzqbfl1kb";
-  }
-  {
-    name = "rest-client";
-    publisher = "humao";
-    version = "0.25.1";
-    sha256 = "19yc3hvhyr2na741z6ajgigxckagvfrcq3h6y958bl4107vxjb0d";
   }
   {
     name = "direnv";
@@ -92,32 +74,26 @@
   {
     name = "vscode-openapi";
     publisher = "42Crunch";
-    version = "4.26.1";
-    sha256 = "0xx1lizqjwi6f7r3sgwbzn5vf0z30ghxma3hm2jdliym5jpd5i7z";
+    version = "4.26.2";
+    sha256 = "1k98rj679hfacrs0vb90b63y4pz2r9vmp85jjcmpwiamxm6wzpml";
   }
   {
     name = "gitlens";
     publisher = "eamodio";
-    version = "2024.5.2505";
-    sha256 = "1jilq3brqvag4djksnckaxlk8g8ia6h89kcxnr2z8mcgyajqgycf";
-  }
-  {
-    name = "vscode-github-actions";
-    publisher = "GitHub";
-    version = "0.26.2";
-    sha256 = "16kp1yxs798jp8ffqq3ixm3pyz4f3wgdkdyjpjy94ppqp4aklixh";
+    version = "2024.5.2905";
+    sha256 = "05k045yiv0pi2j2c6cjvl8r9f7k4kmm0qlc3fihpg5w7256ldwsr";
   }
   {
     name = "dart-code";
     publisher = "Dart-Code";
-    version = "3.89.20240513";
-    sha256 = "0kkwdbxfrfj16ja0aga847airbcbhg1sj0iqil7h5rjin1bi2xdd";
+    version = "3.91.20240529";
+    sha256 = "1ks4d3qsn12i8n597nzf0xd6l9rwf5yh2cqqh44524ydfs6j6ay9";
   }
   {
     name = "flutter";
     publisher = "Dart-Code";
-    version = "3.89.20240501";
-    sha256 = "0y7g8rb0gszrx4hjdfkqimn30yh1hs90x1mrrzc9k74dncxrrjv4";
+    version = "3.91.20240529";
+    sha256 = "1q0xq2kndwnz2dlxw0hc01kb2fhwxynryxq2gb2a9yzdslzpqbcb";
   }
   {
     name = "markdown-mermaid";

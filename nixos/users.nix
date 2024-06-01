@@ -1,7 +1,7 @@
 { config, pkgs, lib, ... }:
 
 let
-  home-manager = builtins.fetchTarball "https://github.com/nix-community/home-manager/archive/release-23.11.tar.gz";
+  home-manager = builtins.fetchTarball "https://github.com/nix-community/home-manager/archive/release-24.05.tar.gz";
   xdgBrowser = ["chromium-browser.desktop"];
   xdgImageViewer = ["org.gnome.eog.desktop"];
   xdgVlc = ["vlc.desktop"];
@@ -18,11 +18,21 @@ in
      ];
   };
 
+  xdg.mime.defaultApplications = {
+    "text/html" = "chromium.desktop";
+    "x-scheme-handler/http" = "chromium.desktop";
+    "x-scheme-handler/https" = "chromium.desktop";
+    "x-scheme-handler/about" = "chromium.desktop";
+    "x-scheme-handler/unknown" = "chromium.desktop";
+  };
+
+  programs.dconf.enable = true;
+
   home-manager.users.panavtec = {
     xdg.configFile."Code/User/keybindings.json".source = /home/panavtec/dotfiles/config/vscode/.config/Code/User/keybindings.json;
     xdg.configFile."Code/User/settings.json".source = /home/panavtec/dotfiles/config/vscode/.config/Code/User/settings.json;
     xdg.configFile."starship.toml".source = /home/panavtec/dotfiles/config/starship/.config/starship.toml;
-    xdg.configFile."alacritty.yml".source = /home/panavtec/dotfiles/config/alacritty/alacritty.yml;
+    xdg.configFile."alacritty.toml".source = /home/panavtec/dotfiles/config/alacritty/alacritty.toml;
 
     ## Debugging tools:
     ## XDG_UTILS_DEBUG_LEVEL=2 xdg-mime query filetype foo.pdf

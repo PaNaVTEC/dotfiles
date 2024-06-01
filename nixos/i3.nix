@@ -10,12 +10,14 @@
     #   package = pkgs.i3-gaps;
     #   enable = true;
     # };
-    libinput.enable = true;
-    layout = "us";
-    xkbVariant = "altgr-intl";
+    xkb = {
+      layout = "us";
+      variant = "altgr-intl";
+    };
     exportConfiguration = true;
     videoDrivers=["amdgpu"];
   };
+  services.libinput.enable = true;
 
   environment.variables = {
     XCURSOR_SIZE= "32";
@@ -62,7 +64,7 @@
 
     gnomeExtensions.appindicator
     gnomeExtensions.just-perfection
-    gnomeExtensions.draw-on-you-screen-2
+    # gnomeExtensions.draw-on-you-screen-2
     gnomeExtensions.duckduckgo-search-provider
     gnomeExtensions.vitals
     gnomeExtensions.extensions-sync
