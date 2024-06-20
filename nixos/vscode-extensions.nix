@@ -32,8 +32,8 @@
   {
     name = "vscode-yaml";
     publisher = "redhat";
-    version = "1.14.0";
-    sha256 = "0pww9qndd2vsizsibjsvscz9fbfx8srrj67x4vhmwr581q674944";
+    version = "1.15.0";
+    sha256 = "0hqbfqwszfwxia2flh92z70zd57azpl5i3zapy8s5j3bh8sln69n";
   }
   {
     name = "nord-visual-studio-code";
@@ -74,14 +74,14 @@
   {
     name = "vscode-openapi";
     publisher = "42Crunch";
-    version = "4.26.2";
-    sha256 = "1k98rj679hfacrs0vb90b63y4pz2r9vmp85jjcmpwiamxm6wzpml";
+    version = "4.26.3";
+    sha256 = "1ryic3w75d4nxx5a9hzfg5b2ybvlvvmzvjhxg1prdsa5zdqsz9wq";
   }
   {
     name = "gitlens";
     publisher = "eamodio";
-    version = "2024.5.2905";
-    sha256 = "05k045yiv0pi2j2c6cjvl8r9f7k4kmm0qlc3fihpg5w7256ldwsr";
+    version = "2024.6.905";
+    sha256 = "0w3hxz246vj2lc8mvq948pzg96i49lcrvyf3wrb2iibnp2ymy86i";
   }
   {
     name = "dart-code";

@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ pkgs, ... }:
 
 {
   imports =
@@ -32,7 +32,6 @@
   services.hardware.openrgb.enable = true;
 
   boot = {
-    kernelPackages = pkgs.linuxPackages_6_1;
     kernelModules = [
       "kvm-amd" # enables virtualization
       "amd-pstate" # enables new cpu scaling

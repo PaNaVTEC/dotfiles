@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ pkgs, ... }:
 
 {
   services.globalprotect = {
@@ -21,5 +21,6 @@
     wireguard-tools
     protonvpn-gui
     globalprotect-openconnect
+    networkmanager-openconnect
   ];
 }

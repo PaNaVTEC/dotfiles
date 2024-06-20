@@ -1,19 +1,6 @@
-{ config, pkgs, ... }:
+{ pkgs, config, ... }:
 
-let
-  vscode-vim-patched = pkgs.unstable.vscode-utils.buildVscodeMarketplaceExtension {
-      mktplcRef = {
-        name = "vim";
-        publisher = "vscodevim";
-        version = "1.24.1";
-        sha256 = "00gq6mqqwqipc6d7di2x9mmi1lya11vhkkww9563avchavczb9sv";
-      };
-      postPatch = ''
-        sed -i 's/\[\["w","rite"\],D.WriteCommand.argParser\]/\[\["w","rite"\],D.WriteCommand.argParser\],\[\["W","rite"\],D.WriteCommand.argParser\],\[\["Wa","ll"\],j.WallCommand.argParser\],\[\["WA","ll"\],j.WallCommand.argParser\]/g' ./out/extension.js
-      '';
-    };
-
-in {
+{
   virtualisation.docker = {
     enable = true;
     enableOnBoot = false;
@@ -50,6 +37,8 @@ in {
     linuxHeaders
 
     direnv
+    alacritty
+    lunarvim
 
     # Ide/editors
     # unstable.jetbrains.idea-community
@@ -66,6 +55,35 @@ in {
       ] ++ unstable.vscode-utils.extensionsFromVscodeMarketplace (import ./vscode-extensions.nix).extensions;
     })
   ];
+  
+  # oLlama
+  networking.firewall.allowedTCPPorts = [11434];
+  services.ollama = {
+    enable = true;
+    environmentVariables = {
+      # "OLLAMA_ORIGINS" = "https://hollama.fernando.is";
+      "OLLAMA_ORIGINS" = "*";
+    };
+  }; 
+
+  # sudo nix-channel --add https://nixos.org/channels/nixos-unstable unstable
+  imports = [ <unstable/nixos/modules/services/misc/open-webui.nix> ];
+  services.open-webui = {
+    enable = true;
+    package = pkgs.unstable.open-webui;
+    host = "0.0.0.0";
+    port = 3000;
+    environment = {
+      ANONYMIZED_TELEMETRY = "False";
+      DO_NOT_TRACK = "True";
+      SCARF_NO_ANALYTICS = "True";
+      TRANSFORMERS_CACHE = "${config.services.open-webui.stateDir}/cache";
+      OLLAMA_API_BASE_URL = "http://127.0.0.1:11434";
+      # Disable authentication
+      WEBUI_AUTH = "False";
+    };
+    openFirewall = true;
+  };
 
   # Solves problems with file watchers, too many open files
   security.pam.loginLimits = [
@@ -76,11 +94,4 @@ in {
       value = "65536";
     }
   ];
-
-  # Add yourself as a trusted user so you can use the Nix binary caches
-  # nix.settings.trusted-users = [ "root" "panavtec" "@wheel" "@sudo" ];
-
-  # auth keyring for VS Code
-  # services.gnome.gnome-keyring.enable = true;
-  # programs.seahorse.enable = true;
 }

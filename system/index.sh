@@ -20,7 +20,7 @@ alias grep="grep --color=auto"
 alias connectvpn='sudo toggle-openvpn.sh'
 alias wireup='sudo wg-quick up wg0-client'
 alias wiredown='sudo wg-quick down wg0-client'
-alias dotfiles='(cd "$DOTFILES_LOCATION" && emacs -nw)'
+alias dotfiles='lvim $DOTFILES_LOCATION'
 alias ffs='sudo $(fc -ln -1)'
 alias shortcuts="$DOTFILES_LOCATION/config/shortcuts/shortcuts.sh"
 alias cls='printf "\033c"'
