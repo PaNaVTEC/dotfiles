@@ -1,10 +1,11 @@
-{ config, pkgs, ... }:
+{ pkgs, ... }:
 
 {
   environment.systemPackages = with pkgs; [
     google-chrome
     chromium
     firefox
+    opera
   ];
 
   programs.chromium = {

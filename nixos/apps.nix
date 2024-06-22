@@ -1,4 +1,4 @@
-{ config, pkgs, lib, ... }:
+{ config, pkgs, ... }:
 
 {
   virtualisation = {
@@ -31,7 +31,7 @@
     audio-recorder
     unstable.portfolio
     unstable.bitwarden
-    pkgs.nur.repos.k3a.ib-tws
+    config.nur.repos.k3a.ib-tws
     slack
   ];
 }

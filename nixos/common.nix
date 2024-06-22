@@ -1,4 +1,4 @@
-{ config, pkgs, lib, ... }:
+{ lib, ... }:
 
 {
   imports =
@@ -25,26 +25,6 @@
 
   systemd.services.systemd-udev-settle.enable = lib.mkForce false;
   systemd.services.NetworkManager-wait-online.enable = lib.mkForce false;
-
-  nixpkgs.config = {
-    allowUnfree = true;
-    android_sdk.accept_license = true;
-
-    packageOverrides = pkgs: {
-      stable = import <stable> {
-        config = config.nixpkgs.config;
-      };
-      # sudo nix-channel --add https://nixos.org/channels/nixpkgs-unstable unstable && nix-channel --update
-      unstable = import <unstable> {
-        config = config.nixpkgs.config;
-      };
-      nur = import (builtins.fetchTarball "https://github.com/nix-community/NUR/archive/master.tar.gz") {
-        inherit pkgs;
-      };
-    };
-
-    permittedInsecurePackages = ["electron-24.8.6" "nix-2.15.3"];
-  };
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions

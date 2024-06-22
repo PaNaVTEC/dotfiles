@@ -1,10 +1,10 @@
-{ config, pkgs, ... }:
+{ ... }:
 
 {
   imports =
     [
       ../../common.nix
-      /etc/nixos/hardware-configuration.nix
+      ./hardware-configuration.nix
     ];
 
   networking = {
@@ -17,10 +17,6 @@
     ledger.enable = true;
     cpu.amd.updateMicrocode = true;
   };
-
-#  services.xserver = {
-#    videoDrivers = [ "amdgpu" ];
-#  };
 
   boot = {
     kernelModules = [
