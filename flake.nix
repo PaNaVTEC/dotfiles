@@ -41,20 +41,26 @@
       ];
     in
     {
-      # sudo nixos-rebuild --flake .#goku switch
       nixosConfigurations = {
+        # sudo nixos-rebuild --flake .#goku switch
         goku = nixos.lib.nixosSystem {
           system = "x86_64-linux";
+          specialArgs.channels = { inherit nixos nixos-unstable; };
           modules = baseModules ++ [
             nixos-hardware.nixosModules.common-pc-laptop-ssd
             nixos-hardware.nixosModules.common-hidpi
+            nixos-hardware.nixosModules.common-cpu-amd-pstate
             ./nixos/machines/goku/configuration.nix
           ];
         };
+        # sudo nixos-rebuild --flake .#jiren switch
         jiren = nixos.lib.nixosSystem {
           system = "x86_64-linux";
+          specialArgs.channels = { inherit nixos nixos-unstable; };
           modules = baseModules ++ [
-            nixos-hardware.nixosModules.common-pc-laptop-ssd
+            nixos-hardware.nixosModules.common-pc-ssd
+            nixos-hardware.nixosModules.common-cpu-amd-pstate
+            nixos-hardware.nixosModules.common-gpu-amd
             ./nixos/machines/jiren/configuration.nix
           ];
         };

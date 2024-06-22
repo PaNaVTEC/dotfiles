@@ -1,4 +1,4 @@
-{ pkgs, config, ... }:
+{ pkgs, channels, config, ... }:
 
 {
   virtualisation.docker = {
@@ -66,8 +66,7 @@
     };
   }; 
 
-  # sudo nix-channel --add https://nixos.org/channels/nixos-unstable unstable
-  imports = [ <unstable/nixos/modules/services/misc/open-webui.nix> ];
+  imports = [ "${channels.nixos-unstable}/nixos/modules/services/misc/open-webui.nix" ];
   services.open-webui = {
     enable = true;
     package = pkgs.unstable.open-webui;

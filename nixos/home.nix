@@ -1,4 +1,4 @@
-{ home-manager, lib, ... }:
+{ home-manager, pkgs, lib, ... }:
 
 let
   xdgBrowser = ["chromium-browser.desktop"];
@@ -10,6 +10,10 @@ in
   xdg.configFile."Code/User/settings.json".source = ../config/vscode/.config/Code/User/settings.json;
   xdg.configFile."starship.toml".source = ../config/starship/.config/starship.toml;
   xdg.configFile."alacritty.toml".source = ../config/alacritty/alacritty.toml;
+  # xdg.configFile.nvim = {
+  #   onChange = "PATH=$PATH:${pkgs.git}/bin ${pkgs.neovim}/bin/nvim --headless +quitall";
+  #   source = ../config/nvim;
+  # };
 
   ## Debugging tools:
   ## XDG_UTILS_DEBUG_LEVEL=2 xdg-mime query filetype foo.pdf

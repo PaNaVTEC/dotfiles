@@ -21,12 +21,6 @@
   boot = {
     kernelModules = [
       "kvm-amd" # enables virtualization
-      "amd-pstate" # enables new cpu scaling
-    ];
-
-    kernelParams = [
-      "initcall_blacklist=acpi_cpufreq_init" # blacklist to use amd p-state
-      "amd_pstate=passive"
     ];
 
     loader = {

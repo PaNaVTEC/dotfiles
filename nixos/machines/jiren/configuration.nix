@@ -4,7 +4,7 @@
   imports =
     [
       ../../common.nix
-      /etc/nixos/hardware-configuration.nix
+      ./hardware-configuration.nix
     ];
 
   networking = {
@@ -16,12 +16,6 @@
     enableRedistributableFirmware = true;
     ledger.enable = true;
     logitech.wireless.enable = true;
-    opengl = {
-      driSupport = true;
-      driSupport32Bit = true;
-      enable = true;
-      extraPackages = with pkgs;[vaapiVdpau libvdpau-va-gl];
-    };
     cpu.amd.updateMicrocode = true;
   };
 
@@ -34,13 +28,6 @@
   boot = {
     kernelModules = [
       "kvm-amd" # enables virtualization
-      "amd-pstate" # enables new cpu scaling
-      "amdgpu"
-    ];
-
-    kernelParams = [
-      "initcall_blacklist=acpi_cpufreq_init" # blacklist to use amd p-state
-      "amd_pstate=passive"
     ];
 
     loader = {
