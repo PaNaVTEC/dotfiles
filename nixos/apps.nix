@@ -20,6 +20,7 @@
     unstable.ledger-live-desktop
     signal-desktop
     unstable.android-udev-rules
+    alacritty
     # record audio
     audacity
     qbittorrent

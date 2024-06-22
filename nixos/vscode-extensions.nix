@@ -14,8 +14,8 @@
   {
     name = "metals";
     publisher = "scalameta";
-    version = "1.35.5";
-    sha256 = "0fdfrz97fawcz4ah6qnwapyy9g9ymxfgng6fd6j5xnghkpsav8wv";
+    version = "1.36.0";
+    sha256 = "0nd0y6ar884566pjk70qvhppjkq28r69lrxg9nfkqfxrd6xr62md";
   }
   {
     name = "scala";
@@ -80,14 +80,14 @@
   {
     name = "gitlens";
     publisher = "eamodio";
-    version = "2024.6.905";
-    sha256 = "0w3hxz246vj2lc8mvq948pzg96i49lcrvyf3wrb2iibnp2ymy86i";
+    version = "2024.6.2205";
+    sha256 = "1qq0h41wdwqk2zyf45a1m596xfnrgmd8vdd16lky8n7iisqp9ipq";
   }
   {
     name = "dart-code";
     publisher = "Dart-Code";
-    version = "3.91.20240529";
-    sha256 = "1ks4d3qsn12i8n597nzf0xd6l9rwf5yh2cqqh44524ydfs6j6ay9";
+    version = "3.91.20240620";
+    sha256 = "07mnrx4jn8qp72411s6ny1k795b40g1a4jznjhpdvwdfj8g38bxa";
   }
   {
     name = "flutter";
@@ -98,8 +98,8 @@
   {
     name = "markdown-mermaid";
     publisher = "bierner";
-    version = "1.23.0";
-    sha256 = "0azf61v4gm4izb4s83bjxnfnnglnql6w5mxjf8pkq38wr56k31sc";
+    version = "1.23.1";
+    sha256 = "1qyhm4cq5i2f1c17hy61bhr3h6ydg44s52ygqq6cga712mw951c5";
   }
 ];
 }

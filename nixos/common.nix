@@ -5,7 +5,6 @@
     [
       ./networking.nix
       ./i3.nix
-      ./urxvt.nix
       ./fonts.nix
       ./apps.nix
       ./development.nix

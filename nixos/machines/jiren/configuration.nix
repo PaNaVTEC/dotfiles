@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ ... }:
 
 {
   imports =
@@ -32,7 +32,7 @@
 
     loader = {
       systemd-boot = {
-        configurationLimit = 20;
+        configurationLimit = 10;
         enable = true;
       };
       efi.canTouchEfiVariables = true;

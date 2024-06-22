@@ -10,18 +10,12 @@
   programs.gnupg.agent = {
     enable = true;
     enableSSHSupport = true;
-    # pinentryFlavor = "gnome3";
   };
 
   programs.adb.enable = true;
   programs.java = {
     enable = true;
-    # package = pkgs.openjdk16-bootstrap;
   };
-
-  # environment.variables = {
-  #   JAVA_HOME = "/run/current-system/sw";
-  # };
 
   environment.systemPackages = with pkgs; [
     git
@@ -41,7 +35,6 @@
     lunarvim
 
     # Ide/editors
-    # unstable.jetbrains.idea-community
     emacs
     sqlite # Required by helm-dash
     devbox
