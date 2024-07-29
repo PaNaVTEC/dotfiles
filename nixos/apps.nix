@@ -24,6 +24,7 @@
     # record audio
     audacity
     qbittorrent
+    cinnamon.warpinator
     # sign pdfs
     xournal
     synergy
@@ -35,4 +36,9 @@
     config.nur.repos.k3a.ib-tws
     slack
   ];
+  # warpinator
+  networking.firewall = {
+    allowedTCPPorts = [ 42000 42001 ];
+    allowedUDPPorts = [ 5353 ];
+  };
 }

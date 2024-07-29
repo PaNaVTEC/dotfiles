@@ -42,6 +42,7 @@
 
     #exfat
     exfat
+    exfatprogs
     ntfs3g
     # fat32
     dosfstools

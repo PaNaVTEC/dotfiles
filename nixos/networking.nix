@@ -6,6 +6,15 @@
     csdWrapper = "${pkgs.openconnect}/libexec/openconnect/hipreport.sh";
   };
 
+  services.clamav = {
+    scanner.enable = true;
+    updater = {
+      enable = true;
+      frequency = 1;
+      interval = "weekly";
+    };
+  };
+
   networking = {
     networkmanager.enable = true;
     firewall.enable = false;
