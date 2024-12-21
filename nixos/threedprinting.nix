@@ -2,7 +2,8 @@
 
 {
   environment.systemPackages = with pkgs; [
-    unstable.cura
     unstable.fstl
+    unstable.orca-slicer
+    unstable.bambu-studio
   ];
 }

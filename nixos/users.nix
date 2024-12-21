@@ -7,6 +7,7 @@
        "wheel" "networkmanager" "systemd-journal" "audio" "video" "disk" "docker" "plugdev" "adbusers" "adb"
      ];
   };
+  users.extraGroups.vboxusers.members = [ "panavtec" ];
 
   xdg.mime.defaultApplications = {
     "text/html" = "chromium.desktop";

@@ -23,7 +23,6 @@
     starship
     nix-prefetch-git
     bat
-    youtube-dl
     exfat
     tldr
     killall
@@ -50,7 +49,7 @@
   ];
 
   programs = {
-    bash.enableCompletion = true;
+    bash.completion.enable = true;
     tmux.enable = true;
   };
 }

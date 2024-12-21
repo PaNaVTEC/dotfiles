@@ -3,13 +3,7 @@
 {
   services.xserver = {
     enable = true;
-    # displayManager.startx.enable = true;
-    # desktopManager.plasma5.enable = true;
     desktopManager.gnome.enable = true;
-    # windowManager.i3 = {
-    #   package = pkgs.i3-gaps;
-    #   enable = true;
-    # };
     xkb = {
       layout = "us";
       variant = "altgr-intl";
@@ -23,7 +17,7 @@
     XCURSOR_SIZE= "32";
   };
 
-  environment.gnome.excludePackages = with pkgs.gnome; [
+  environment.gnome.excludePackages = with pkgs; [
     gnome-maps
     gnome-terminal
     gnome-music
@@ -39,10 +33,6 @@
     xorg.xprop
     acpi
     sysstat
-    # dmenu
-    # dunst
-    # i3blocks
-    # i3lock-pixeled
     arandr
     feh
 
@@ -60,16 +50,16 @@
     cups
     system-config-printer
     # Gnome
-    unstable.gnome.gnome-tweaks
+    unstable.gnome-tweaks
+    cheese
 
     gnomeExtensions.appindicator
     gnomeExtensions.just-perfection
     # gnomeExtensions.draw-on-you-screen-2
-    gnomeExtensions.duckduckgo-search-provider
     gnomeExtensions.vitals
-    gnomeExtensions.extensions-sync
     gnomeExtensions.unite
-    gnomeExtensions.forge
-    gnome.dconf-editor
+    unstable.gnomeExtensions.forge
+    unstable.gnomeExtensions.easyScreenCast
+    dconf-editor
   ];
 }

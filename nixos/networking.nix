@@ -31,5 +31,6 @@
     protonvpn-gui
     globalprotect-openconnect
     networkmanager-openconnect
+    gp-saml-gui
   ];
 }

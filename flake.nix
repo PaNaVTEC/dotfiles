@@ -2,12 +2,23 @@
   description = "panavtec/NixOS configuration";
 
   inputs = {
-    nixos.url = "github:NixOS/nixpkgs/nixos-24.05";
+    nixos.url = "github:NixOS/nixpkgs/nixos-24.11";
     nixos-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
     nixos-hardware.url = "github:NixOS/nixos-hardware";
-    home-manager.url = "github:nix-community/home-manager/release-24.05";
-    home-manager.inputs.nixpkgs.follows = "nixos";
     nur.url = "github:nix-community/NUR";
+    home-manager = {
+      url = "github:nix-community/home-manager/release-24.11";
+      inputs.nixpkgs.follows = "nixos";
+    };
+    nvchad-starter = {
+      url = "path:./config/nvchad";
+      flake = false;
+    };
+    nvchad4nix = {
+      url = "github:nix-community/nix4nvchad";
+      inputs.nixpkgs.follows = "nixos";
+      inputs.nvchad-starter.follows = "nvchad-starter";
+    };
   };
 
   outputs =
@@ -16,6 +27,7 @@
     , nixos-hardware
     , home-manager
     , nur
+    , nvchad4nix
     , ...
     }@attrs:
     let
@@ -25,18 +37,22 @@
           config.allowUnfree= true;
         };
       };
+      overlayNvChad = final: prev: {
+        nvchad = nvchad4nix.packages."${prev.system}".nvchad;
+      };
       baseModules = [
         {
           nixpkgs.config.allowUnfree = true;
-          nixpkgs.overlays = [ overlayNixOSUnstable ];
+          nixpkgs.overlays = [ overlayNixOSUnstable overlayNvChad ];
         }
-        nur.nixosModules.nur
-        home-manager.nixosModules.home-manager
-        {
-          home-manager.useGlobalPkgs = true;
-          home-manager.useUserPackages = false;
-          home-manager.users.panavtec = import ./nixos/home.nix;
-          home-manager.extraSpecialArgs = attrs;
+        nur.modules.nixos.default
+        home-manager.nixosModules.home-manager {
+          home-manager = {
+            useGlobalPkgs = true;
+            useUserPackages = false;
+            users.panavtec = import ./nixos/home.nix;
+            extraSpecialArgs = attrs;
+          };
         }
       ];
     in

@@ -2,8 +2,21 @@
 
 {
   virtualisation = {
-    waydroid.enable = true;
     lxd.enable = true;
+    virtualbox = {
+      host = {
+        enable = true;
+        enableExtensionPack = true;
+        enableKvm = true;
+        enableHardening = false;
+        addNetworkInterface = false;
+      };
+      guest = {
+        enable = true;
+        clipboard = true;
+        dragAndDrop = true;
+      };
+    };
   };
 
   environment.systemPackages = with pkgs; [
@@ -24,7 +37,6 @@
     # record audio
     audacity
     qbittorrent
-    cinnamon.warpinator
     # sign pdfs
     xournal
     synergy
@@ -33,8 +45,9 @@
     audio-recorder
     unstable.portfolio
     unstable.bitwarden
-    config.nur.repos.k3a.ib-tws
+    # config.nur.repos.k3a.ib-tws
     slack
+    unstable.postman
   ];
   # warpinator
   networking.firewall = {
