@@ -45,7 +45,7 @@
     audio-recorder
     unstable.portfolio
     unstable.bitwarden
-    # config.nur.repos.k3a.ib-tws
+    nur.repos.k3a.ib-tws
     slack
     unstable.postman
   ];

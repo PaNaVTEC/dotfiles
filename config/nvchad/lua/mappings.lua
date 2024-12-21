@@ -22,6 +22,8 @@ map("n", "<leader>la", function() vim.lsp.buf.code_action() end,  { desc = "LSP 
 map("n", "<leader>lr", function() vim.lsp.buf.rename() end,       { desc = "LSP rename" })
 map("n", "<leader>lf", function() require("conform").format { lsp_fallback = true } end, { desc = "format files" })
 
+map("n", "]b", "<cmd>:bnext", { desc = "Go to the next buffer" })
+map("n", "[b", "<cmd>:bprevious", { desc = "Go to the previous buffer" })
 map("n", "<leader>lw", "<cmd>%s/\\s\\+$//e<cr>:noh<cr>", { desc = "Delete trailing whitespace" })
 
 -- Avoid common typos

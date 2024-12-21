@@ -43,7 +43,7 @@
       baseModules = [
         {
           nixpkgs.config.allowUnfree = true;
-          nixpkgs.overlays = [ overlayNixOSUnstable overlayNvChad ];
+          nixpkgs.overlays = [ overlayNixOSUnstable overlayNvChad nur.overlays.default ];
         }
         nur.modules.nixos.default
         home-manager.nixosModules.home-manager {

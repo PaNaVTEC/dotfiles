@@ -8,6 +8,7 @@ in
 {
   imports = [
     ./programs/nvchad.nix
+    ./programs/dropbox.nix
   ];
 
   xdg.configFile."Code/User/keybindings.json".source = ../config/vscode/.config/Code/User/keybindings.json;
